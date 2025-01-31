@@ -160,8 +160,23 @@ namespace IntelligentFactory
         {
             try
             {
-                
+                List<CheckBox> enableList = new List<CheckBox> { ChkEnable1, ChkEnable2, ChkEnable3, ChkEnable4, ChkEnable5};
+                List<UITextBox> exposureList = new List<UITextBox> { TbExposure1, TbExposure2, TbExposure3, TbExposure4, TbExposure5 };
+                List<UITextBox> gainList = new List<UITextBox> { TbGain1, TbGain2, TbGain3, TbGain4, TbGain5 };
+                for (int i = 0; i < enableList.Count; i++)
+                {
+                    enableList[i].Checked = Global.System.Recipe.GrabManager.Nodes[i].Enabled;
+                }
 
+                for (int i = 0; i < exposureList.Count; i++)
+                {
+                    exposureList[i].Text = Global.System.Recipe.GrabManager.Nodes[i].ExposureTime_us.ToString();
+                }
+
+                for (int i = 0; i < gainList.Count; i++)
+                {
+                    gainList[i].Text = Global.System.Recipe.GrabManager.Nodes[i].Gain.ToString();
+                }
             }
             catch (Exception ex)
             {
@@ -472,7 +487,7 @@ namespace IntelligentFactory
                         }
 
                         break;
-                    case "GRAB (1~5)":
+                    case "GRAB (5)":
                         {
                             if (checkCameraStatus() == false) return;
 
@@ -492,11 +507,12 @@ namespace IntelligentFactory
                                 camera.Grab(false);
 
                                 bool success = camera.IsGrabDone.WaitOne(1000);
-
+                                _imagesGrab[i] = null;
                                 Global.ImagesGrab[i] = null;
 
                                 if (success)
                                 {
+                                    _imagesGrab[i] = new CogImage24PlanarColor((Bitmap)camera.ImageGrab);
                                     Global.ImagesGrab[i] = new CogImage24PlanarColor((Bitmap)camera.ImageGrab);
                                 }
 
@@ -745,7 +761,55 @@ namespace IntelligentFactory
 
         private void BtnIQHWApply_Click(object sender, EventArgs e)
         {
-            Global.System.Recipe.GrabManager
+            ApplyIQ_HW();
+        }
+
+        private void ApplyIQ_HW()
+        {
+            Global.System.Recipe.GrabManager.Nodes[0] = new CNodeGrab()
+            {
+                ExposureTime_us = int.Parse(TbExposure1.Text),
+                Enabled = ChkEnable1.Checked,
+                Gain = float.Parse(TbGain1.Text),
+                Light = int.Parse(TbLight1.Text),
+            };
+
+            Global.System.Recipe.GrabManager.Nodes[1] = new CNodeGrab()
+            {
+                ExposureTime_us = int.Parse(TbExposure2.Text),
+                Enabled = ChkEnable2.Checked,
+                Gain = float.Parse(TbGain2.Text),
+                Light = int.Parse(TbLight2.Text),
+            };
+
+            Global.System.Recipe.GrabManager.Nodes[2] = new CNodeGrab()
+            {
+                ExposureTime_us = int.Parse(TbExposure3.Text),
+                Enabled = ChkEnable3.Checked,
+                Gain = float.Parse(TbGain3.Text),
+                Light = int.Parse(TbLight3.Text),
+            };
+
+            Global.System.Recipe.GrabManager.Nodes[3] = new CNodeGrab()
+            {
+                ExposureTime_us = int.Parse(TbExposure4.Text),
+                Enabled = ChkEnable4.Checked,
+                Gain = float.Parse(TbGain4.Text),
+                Light = int.Parse(TbLight4.Text),
+            };
+
+            Global.System.Recipe.GrabManager.Nodes[4] = new CNodeGrab()
+            {
+                ExposureTime_us = int.Parse(TbExposure5.Text),
+                Enabled = ChkEnable5.Checked,
+                Gain = float.Parse(TbGain5.Text),
+                Light = int.Parse(TbLight5.Text),
+            };
+        }
+
+        private void uiGroupBox14_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void timerCalibration_Tick(object sender, EventArgs e)
@@ -904,6 +968,8 @@ namespace IntelligentFactory
         private void btnSave_Click(object sender, EventArgs e)
         {
             //Global.Setting.Save(Global.Setting.RecipeName);
+            ApplyIQ_HW();
+            Global.System.Recipe.GrabManager.SaveConfig();
             InitUI();
         }
 

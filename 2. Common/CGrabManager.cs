@@ -34,7 +34,6 @@ namespace IntelligentFactory
 
         public void SaveConfig()
         {
-            for (int i = 0; i < Nodes.Length; i++) Nodes[i].Index = i;
             string _path = $"{Global.m_MainPJTRoot}\\PBA_LIBRARY\\{Global.Instance.System.Recipe.CODE}";
             if (!Directory.Exists(_path)) Directory.CreateDirectory(_path);
             string strFilePath = Path.Combine(_path, "Grab.xml");
@@ -46,8 +45,8 @@ namespace IntelligentFactory
     public class CNodeGrab
     {
         public int ExposureTime_us { get; set; } = 5000;
-        public int Gain { get; set; } = 1;
-        public int Index { get; set; } = 0;
+        public float Gain { get; set; } = 1.0F;
         public bool Enabled { get; set; } = false;
+        public int Light { get; set; } = 100;
     }
 }
