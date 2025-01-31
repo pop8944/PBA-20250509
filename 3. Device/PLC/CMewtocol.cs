@@ -1,0 +1,2235 @@
+﻿using PanasonicPlcTest.Mewtocol;
+using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.IO.Ports;
+using System.Reflection;
+using System.Text;
+using System.Threading;
+
+namespace IntelligentFactory
+{
+    public class CMewtocol
+    {
+        public EngineBase engine = null;
+
+        private SerialPort m_Sp = null;
+
+        public string PortName { get; set; } = "COM3"; // 저장용 portname
+        public int BaudRate { get; set; } = 19200;
+        public int DataBits { get; set; } = 8;
+        public StopBits nStopBits { get; set; } = StopBits.One;
+        public Parity nParity { get; set; } = Parity.Odd;
+
+        private Thread nThread = null;
+        private bool Thread_Send_Run = false;
+        //private bool Thread_Recv_Run = false;
+        //private bool IsOpen = false;
+
+        // 통신 딜레이
+        private int nDelay_v = 100;
+
+        public List<CSignal_Mewtocol> QueryQueue = new List<CSignal_Mewtocol>();
+        public ConcurrentQueue<(string, string, Type, object)> CommandQueue = new ConcurrentQueue<(string, string, Type, object)>();
+
+        // 폴란드 버젼에 처리 변수
+        public CSignal_Mewtocol INPUT_BOARD_ING;          // 설비로 보드 진입중 플래그 [ 폴란드 버젼 필요]
+        public CSignal_Mewtocol OUTPUT_BOARD_CONVEYOR_IN; // CONVEYOR로 보드 진입중 플래그 [ 폴란드 버젼 필요]
+        public CSignal_Mewtocol OUTPUT_BOARD_CONVEYOR_ID; // CONVEYOR에 있는 보드의 ID [ 폴란드 버젼 ]
+        public CSignal_Mewtocol OUTPUT_BOARD_CONVEYOR_ING; // CONVEYOR에 보드 진입중 플래그 [ 폴란드 버젼 ]
+
+        // 광주 공통 버젼에 처리 변수..
+        public CSignal_Mewtocol CALL_STAGE_OUT;          //CALL STAGE로 보드 배출 시 상태 플래그
+        public CSignal_Mewtocol CALL_STAGE_EXISTS;       // CALL STAGE의 보드 유무 상태 플래그
+        public CSignal_Mewtocol CALL_STAGE_BOARD_ID;     // CALL STAGE로 배출된 보드 ID
+
+        public CBufferData BUFFER01 = null;
+        public CBufferData BUFFER02 = null;
+        public CBufferData BUFFER03 = null;
+        public CBufferData BUFFER04 = null;
+        public CBufferData BUFFER05 = null;
+        public CBufferData BUFFER06 = null;
+        public CBufferData BUFFER07 = null;
+        public CBufferData BUFFER08 = null;
+        public CBufferData BUFFER09 = null;
+        public CBufferData BUFFER10 = null;
+        public CBufferData BUFFER11 = null;
+        public CBufferData BUFFER12 = null;
+
+        //public List<CBufferData> BUFFER_ALL = new List<CBufferData>();
+        //BUFFER EXIST
+
+        public CSignal_Mewtocol IN_BUFFER1_EXISTS;
+        public CSignal_Mewtocol IN_BUFFER2_EXISTS;
+        public CSignal_Mewtocol IN_BUFFER3_EXISTS;
+        public CSignal_Mewtocol IN_BUFFER4_EXISTS;
+        public CSignal_Mewtocol IN_BUFFER5_EXISTS;
+        public CSignal_Mewtocol IN_BUFFER6_EXISTS;
+        public CSignal_Mewtocol IN_BUFFER7_EXISTS;
+        public CSignal_Mewtocol IN_BUFFER8_EXISTS;
+        public CSignal_Mewtocol IN_BUFFER9_EXISTS;
+        public CSignal_Mewtocol IN_BUFFER10_EXISTS;
+        public CSignal_Mewtocol IN_BUFFER11_EXISTS;
+        public CSignal_Mewtocol IN_BUFFER12_EXISTS;
+
+        //BUFFER RESULT
+
+        public CSignal_Mewtocol IN_BUFFER1_RESULT;
+        public CSignal_Mewtocol IN_BUFFER2_RESULT;
+        public CSignal_Mewtocol IN_BUFFER3_RESULT;
+        public CSignal_Mewtocol IN_BUFFER4_RESULT;
+        public CSignal_Mewtocol IN_BUFFER5_RESULT;
+        public CSignal_Mewtocol IN_BUFFER6_RESULT;
+        public CSignal_Mewtocol IN_BUFFER7_RESULT;
+        public CSignal_Mewtocol IN_BUFFER8_RESULT;
+        public CSignal_Mewtocol IN_BUFFER9_RESULT;
+        public CSignal_Mewtocol IN_BUFFER10_RESULT;
+        public CSignal_Mewtocol IN_BUFFER11_RESULT;
+        public CSignal_Mewtocol IN_BUFFER12_RESULT;
+
+        public CSignal_Mewtocol DEBUG_R2141_NG_JUDGE_SET;
+        public CSignal_Mewtocol DEBUG_R918_INSP_POS_ACTION;
+        public CSignal_Mewtocol DEBUG_R559_RACK_ENTERING;
+        public CSignal_Mewtocol DEBUG_R2120_RACK_ENTERING_NG_SET;
+
+        //BUFFER ID
+
+        public CSignal_Mewtocol IN_BUFFER1_ID;
+        public CSignal_Mewtocol IN_BUFFER2_ID;
+        public CSignal_Mewtocol IN_BUFFER3_ID;
+        public CSignal_Mewtocol IN_BUFFER4_ID;
+        public CSignal_Mewtocol IN_BUFFER5_ID;
+        public CSignal_Mewtocol IN_BUFFER6_ID;
+        public CSignal_Mewtocol IN_BUFFER7_ID;
+        public CSignal_Mewtocol IN_BUFFER8_ID;
+        public CSignal_Mewtocol IN_BUFFER9_ID;
+        public CSignal_Mewtocol IN_BUFFER10_ID;
+        public CSignal_Mewtocol IN_BUFFER11_ID;
+        public CSignal_Mewtocol IN_BUFFER12_ID;
+
+
+        public CSignal_Mewtocol OUT_INS_COMPLETE;
+        public CSignal_Mewtocol OUT_INS_COMPLETE_ID;
+
+        public CSignal_Mewtocol OUT_NGtoOK;
+        public CSignal_Mewtocol OUT_NGtoRETEST;
+        public CSignal_Mewtocol OUT_NGboardCALL;
+
+        public CSignal_Mewtocol OUT_NGtoOK_SlotNum;
+        public CSignal_Mewtocol OUT_NGtoRETEST_SlotNum;
+        public CSignal_Mewtocol OUT_NGboardCALL_SlotNum;
+
+        public CSignal_Mewtocol OUT_STAGEOK;
+        public CSignal_Mewtocol OUT_STAGERETEST;
+        public CSignal_Mewtocol OUT_STAGECALL;
+
+        private bool IsRun = false;
+        public bool IsOpen
+        {
+            get
+            {
+                if (engine == null) return false;
+                return engine.IsConnected;
+            }
+        }
+
+        private const int ENQ = 0x05;
+        private const int ACK = 0x06;
+        private const int NAK = 0x15;
+        private const int EOT = 0x04;
+        private const int ETX = 0x03;
+        private const int LF = 0x0A;
+
+        private const string Header = "%EE#";
+        private const string CR = "\r";  //0x0D
+        private const int delay_v = 100;
+
+        //INPUT FLAG
+        //DT9900~DT9999 STAGE 보드 ID
+        //private int STAGE_BOARD_ID_START_ADRESS = 9900; //DT9900
+
+        //R711 ~ R71C 버퍼별 보드 적재 유무
+        private const string BUFFER_EXIST = "R711";
+
+        //R751 ~ R75C 버퍼별 보드 결과
+        private const string BUFFER_RESULT = "R751";
+
+        //버퍼 주소 (DT10100~DT10199) ~ (DT11200~DT11299) PCB ID DATA 슬롯 12개
+        //private int BUFFER1_START_ADRESS = 10100; //DT
+
+
+        public bool isSimulMode = false;
+        public List<string> Buffer_InBoard_PrevCall = new List<string>();
+        public List<CBufferSimul> BUFFERS = new List<CBufferSimul>();
+        public List<DateTime> inTimes = new List<DateTime>();
+        public string inBuffer = "";
+
+        // 버퍼 사이트 타입...
+        // 어드레스 맵이 다른부분으로 인해 별도 분리
+        // 디폴트 광주 [true]
+
+        public CMewtocol(bool _type)
+        {
+            for (int i = 0; i < 12; i++)
+            {
+                BUFFERS.Add(new CBufferSimul(false, true, ""));
+                inTimes.Add(new DateTime());
+            }
+
+        }
+
+        // _type : true [광주, 말레시아] false [폴란드]
+        // 어드레스 맵이 다른 형라서 형태 적용...
+        public void Adress_Init()
+        {
+            QueryQueue.Clear();
+            //BUFFER_ALL.Clear();
+
+            // 광주, 말레시아 버젼
+            if (Global.Instance.Setting.Enviroment.Country == Setting_Enviroment.COUNTRY.KOR)
+            {
+                INPUT_BOARD_ING = new CSignal_Mewtocol("%EE#RCSR070110\r", "INPUT_BOARD_ING", "R701");
+                //INPUT
+                CALL_STAGE_OUT = new CSignal_Mewtocol("%EE#RCSR070213\r", "STAGE_OUT", "R702");
+                CALL_STAGE_EXISTS = new CSignal_Mewtocol("%EE#RCSR070312\r", "STAGE_EXISTS", "R703");
+
+
+                IN_BUFFER1_EXISTS = new CSignal_Mewtocol("%01#RCSR071110\r", "BUFFER1_EXISTS", "R711");
+                IN_BUFFER2_EXISTS = new CSignal_Mewtocol("%01#RCSR071213\r", "BUFFER2_EXISTS", "R712");
+                IN_BUFFER3_EXISTS = new CSignal_Mewtocol("%01#RCSR071312\r", "BUFFER3_EXISTS", "R713");
+                IN_BUFFER4_EXISTS = new CSignal_Mewtocol("%01#RCSR071415\r", "BUFFER4_EXISTS", "R714");
+                IN_BUFFER5_EXISTS = new CSignal_Mewtocol("%01#RCSR071514\r", "BUFFER5_EXISTS", "R715");
+                IN_BUFFER6_EXISTS = new CSignal_Mewtocol("%01#RCSR071617\r", "BUFFER6_EXISTS", "R716");
+                IN_BUFFER7_EXISTS = new CSignal_Mewtocol("%01#RCSR071716\r", "BUFFER7_EXISTS", "R717");
+                IN_BUFFER8_EXISTS = new CSignal_Mewtocol("%01#RCSR071819\r", "BUFFER8_EXISTS", "R718");
+                IN_BUFFER9_EXISTS = new CSignal_Mewtocol("%01#RCSR071918\r", "BUFFER9_EXISTS", "R719");
+                IN_BUFFER10_EXISTS = new CSignal_Mewtocol("%01#RCSR071A60\r", "BUFFER10_EXISTS", "R71A");
+                IN_BUFFER11_EXISTS = new CSignal_Mewtocol("%01#RCSR071B63\r", "BUFFER11_EXISTS", "R71B");
+                IN_BUFFER12_EXISTS = new CSignal_Mewtocol("%01#RCSR071C62\r", "BUFFER12_EXISTS", "R71C");
+
+                IN_BUFFER1_RESULT = new CSignal_Mewtocol("%EE#RCSR075115\r", "BUFFER1_RESULT", "R751");
+                IN_BUFFER2_RESULT = new CSignal_Mewtocol("%EE#RCSR075216\r", "BUFFER2_RESULT", "R752");
+                IN_BUFFER3_RESULT = new CSignal_Mewtocol("%EE#RCSR075317\r", "BUFFER3_RESULT", "R753");
+                IN_BUFFER4_RESULT = new CSignal_Mewtocol("%EE#RCSR075410\r", "BUFFER4_RESULT", "R754");
+                IN_BUFFER5_RESULT = new CSignal_Mewtocol("%EE#RCSR075511\r", "BUFFER5_RESULT", "R755");
+                IN_BUFFER6_RESULT = new CSignal_Mewtocol("%EE#RCSR075612\r", "BUFFER6_RESULT", "R756");
+                IN_BUFFER7_RESULT = new CSignal_Mewtocol("%EE#RCSR075713\r", "BUFFER7_RESULT", "R757");
+                IN_BUFFER8_RESULT = new CSignal_Mewtocol("%EE#RCSR07581C\r", "BUFFER8_RESULT", "R758");
+                IN_BUFFER9_RESULT = new CSignal_Mewtocol("%EE#RCSR07591D\r", "BUFFER9_RESULT", "R759");
+                IN_BUFFER10_RESULT = new CSignal_Mewtocol("%EE#RCSR075A65\r", "BUFFER10_RESULT", "R75A");
+                IN_BUFFER11_RESULT = new CSignal_Mewtocol("%EE#RCSR075B66\r", "BUFFER11_RESULT", "R75B");
+                IN_BUFFER12_RESULT = new CSignal_Mewtocol("%EE#RCSR075C67\r", "BUFFER12_RESULT", "R75C");
+
+                CALL_STAGE_BOARD_ID = new CSignal_Mewtocol("%EE#RDD099000999954\r", "STAGE_ID", "DT09900");
+                IN_BUFFER1_ID = new CSignal_Mewtocol("%EE#RDD101001019954\r", "BUFFER1_ID", "DT10100");
+                IN_BUFFER2_ID = new CSignal_Mewtocol("%EE#RDD102001029954\r", "BUFFER2_ID", "DT10200");
+                IN_BUFFER3_ID = new CSignal_Mewtocol("%EE#RDD103001039954\r", "BUFFER3_ID", "DT10300");
+                IN_BUFFER4_ID = new CSignal_Mewtocol("%EE#RDD104001049954\r", "BUFFER4_ID", "DT10400");
+                IN_BUFFER5_ID = new CSignal_Mewtocol("%EE#RDD105001059954\r", "BUFFER5_ID", "DT10500");
+                IN_BUFFER6_ID = new CSignal_Mewtocol("%EE#RDD106001069954\r", "BUFFER6_ID", "DT10600");
+                IN_BUFFER7_ID = new CSignal_Mewtocol("%EE#RDD107001079954\r", "BUFFER7_ID", "DT10700");
+                IN_BUFFER8_ID = new CSignal_Mewtocol("%EE#RDD108001089954\r", "BUFFER8_ID", "DT10800");
+                IN_BUFFER9_ID = new CSignal_Mewtocol("%EE#RDD109001099954\r", "BUFFER9_ID", "DT10900");
+                IN_BUFFER10_ID = new CSignal_Mewtocol("%EE#RDD110001109954\r", "BUFFER10_ID", "DT11000");
+                IN_BUFFER11_ID = new CSignal_Mewtocol("%EE#RDD111001119954\r", "BUFFER11_ID", "DT11100");
+                IN_BUFFER12_ID = new CSignal_Mewtocol("%EE#RDD112001129954\r", "BUFFER12_ID", "DT11200");
+
+                OUT_INS_COMPLETE = new CSignal_Mewtocol("%EE#WCSR070912C", "INS_COMPLETE", "R709");
+                OUT_INS_COMPLETE_ID = new CSignal_Mewtocol("", "INS_COMPLETE_ID", "DT9800");
+
+                BUFFER01 = new CBufferData(IN_BUFFER1_EXISTS, IN_BUFFER1_RESULT, IN_BUFFER1_ID);
+                BUFFER02 = new CBufferData(IN_BUFFER2_EXISTS, IN_BUFFER2_RESULT, IN_BUFFER2_ID);
+                BUFFER03 = new CBufferData(IN_BUFFER3_EXISTS, IN_BUFFER3_RESULT, IN_BUFFER3_ID);
+                BUFFER04 = new CBufferData(IN_BUFFER4_EXISTS, IN_BUFFER4_RESULT, IN_BUFFER4_ID);
+                BUFFER05 = new CBufferData(IN_BUFFER5_EXISTS, IN_BUFFER5_RESULT, IN_BUFFER5_ID);
+                BUFFER06 = new CBufferData(IN_BUFFER6_EXISTS, IN_BUFFER6_RESULT, IN_BUFFER6_ID);
+                BUFFER07 = new CBufferData(IN_BUFFER7_EXISTS, IN_BUFFER7_RESULT, IN_BUFFER7_ID);
+                BUFFER08 = new CBufferData(IN_BUFFER8_EXISTS, IN_BUFFER8_RESULT, IN_BUFFER8_ID);
+                BUFFER09 = new CBufferData(IN_BUFFER9_EXISTS, IN_BUFFER9_RESULT, IN_BUFFER9_ID);
+                BUFFER10 = new CBufferData(IN_BUFFER10_EXISTS, IN_BUFFER10_RESULT, IN_BUFFER10_ID);
+                BUFFER11 = new CBufferData(IN_BUFFER11_EXISTS, IN_BUFFER11_RESULT, IN_BUFFER11_ID);
+                BUFFER12 = new CBufferData(IN_BUFFER12_EXISTS, IN_BUFFER12_RESULT, IN_BUFFER12_ID);
+
+                //BUFFER_ALL.Add(BUFFER01);
+                //BUFFER_ALL.Add(BUFFER02);
+                //BUFFER_ALL.Add(BUFFER03);
+                //BUFFER_ALL.Add(BUFFER04);
+                //BUFFER_ALL.Add(BUFFER05);
+                //BUFFER_ALL.Add(BUFFER06);
+                //BUFFER_ALL.Add(BUFFER07);
+                //BUFFER_ALL.Add(BUFFER08);
+                //BUFFER_ALL.Add(BUFFER09);
+                //BUFFER_ALL.Add(BUFFER10);
+                //BUFFER_ALL.Add(BUFFER11);
+                //BUFFER_ALL.Add(BUFFER12);
+
+                //QueryQueue.Add(CALL_STAGE_OUT);
+                //QueryQueue.Add(CALL_STAGE_EXISTS);
+                QueryQueue.Add(CALL_STAGE_BOARD_ID);
+
+                //QueryQueue.Add(IN_BUFFER1_EXISTS);
+                //QueryQueue.Add(IN_BUFFER1_RESULT);
+                QueryQueue.Add(IN_BUFFER1_ID);
+
+                //QueryQueue.Add(IN_BUFFER2_EXISTS);
+                //QueryQueue.Add(IN_BUFFER2_RESULT);
+                //QueryQueue.Add(IN_BUFFER2_ID);
+
+                //QueryQueue.Add(IN_BUFFER3_EXISTS);
+                //QueryQueue.Add(IN_BUFFER3_RESULT);
+                QueryQueue.Add(IN_BUFFER3_ID);
+
+                //QueryQueue.Add(IN_BUFFER4_EXISTS);
+                //QueryQueue.Add(IN_BUFFER4_RESULT);
+                //QueryQueue.Add(IN_BUFFER4_ID);
+
+                //QueryQueue.Add(IN_BUFFER5_EXISTS);
+                //QueryQueue.Add(IN_BUFFER5_RESULT);
+                QueryQueue.Add(IN_BUFFER5_ID);
+
+                //QueryQueue.Add(IN_BUFFER6_EXISTS);
+                //QueryQueue.Add(IN_BUFFER6_RESULT);
+                QueryQueue.Add(IN_BUFFER6_ID);
+
+                //QueryQueue.Add(IN_BUFFER7_EXISTS);
+                //QueryQueue.Add(IN_BUFFER7_RESULT);
+                QueryQueue.Add(IN_BUFFER7_ID);
+
+                //QueryQueue.Add(IN_BUFFER8_EXISTS);
+                //QueryQueue.Add(IN_BUFFER8_RESULT);
+                //QueryQueue.Add(IN_BUFFER8_ID);
+
+                //QueryQueue.Add(IN_BUFFER9_EXISTS);
+                //QueryQueue.Add(IN_BUFFER9_RESULT);
+                QueryQueue.Add(IN_BUFFER9_ID);
+
+                //QueryQueue.Add(IN_BUFFER10_EXISTS);
+                //QueryQueue.Add(IN_BUFFER10_RESULT);
+                //QueryQueue.Add(IN_BUFFER10_ID);
+
+                //QueryQueue.Add(IN_BUFFER11_EXISTS);
+                //QueryQueue.Add(IN_BUFFER11_RESULT);
+                QueryQueue.Add(IN_BUFFER11_ID);
+
+                //QueryQueue.Add(IN_BUFFER12_EXISTS);
+                //QueryQueue.Add(IN_BUFFER12_RESULT);
+                QueryQueue.Add(IN_BUFFER12_ID);
+            }
+            // 폴란드 버젼..
+            // 수정 작업중....
+            else
+            {
+                //INPUT
+                INPUT_BOARD_ING = new CSignal_Mewtocol("%EE#RCSR070110\r", "INPUT_BOARD_ING", "R701");
+                OUTPUT_BOARD_CONVEYOR_IN = new CSignal_Mewtocol("%EE#RCSR070213\r", "OUTPUT_BOARD_CONVEYOR_IN", "R702");
+                OUTPUT_BOARD_CONVEYOR_ING = new CSignal_Mewtocol("%EE#RCSR070D65\r", "OUTPUT_BOARD_CONVEYOR_ING", "R70D");
+                OUTPUT_BOARD_CONVEYOR_ID = new CSignal_Mewtocol("%EE#RDD099000999954\r", "OUTPUT_BOARD_CONVEYOR_ID", "DT9900");
+
+                IN_BUFFER1_EXISTS = new CSignal_Mewtocol("%01#RCSR071110\r", "BUFFER1_EXISTS", "R711");
+                IN_BUFFER2_EXISTS = new CSignal_Mewtocol("%01#RCSR071213\r", "BUFFER2_EXISTS", "R712");
+                IN_BUFFER3_EXISTS = new CSignal_Mewtocol("%01#RCSR071312\r", "BUFFER3_EXISTS", "R713");
+                IN_BUFFER4_EXISTS = new CSignal_Mewtocol("%01#RCSR071415\r", "BUFFER4_EXISTS", "R714");
+                IN_BUFFER5_EXISTS = new CSignal_Mewtocol("%01#RCSR071514\r", "BUFFER5_EXISTS", "R715");
+                IN_BUFFER6_EXISTS = new CSignal_Mewtocol("%01#RCSR071617\r", "BUFFER6_EXISTS", "R716");
+                IN_BUFFER7_EXISTS = new CSignal_Mewtocol("%01#RCSR071716\r", "BUFFER7_EXISTS", "R717");
+                IN_BUFFER8_EXISTS = new CSignal_Mewtocol("%01#RCSR071819\r", "BUFFER8_EXISTS", "R718");
+                IN_BUFFER9_EXISTS = new CSignal_Mewtocol("%01#RCSR071918\r", "BUFFER9_EXISTS", "R719");
+                IN_BUFFER10_EXISTS = new CSignal_Mewtocol("%01#RCSR071A60\r", "BUFFER10_EXISTS", "R71A");
+                IN_BUFFER11_EXISTS = new CSignal_Mewtocol("%01#RCSR071B63\r", "BUFFER11_EXISTS", "R71B");
+                IN_BUFFER12_EXISTS = new CSignal_Mewtocol("%01#RCSR071C62\r", "BUFFER12_EXISTS", "R71C");
+
+                IN_BUFFER1_RESULT = new CSignal_Mewtocol("%EE#RCSR075115\r", "BUFFER1_RESULT", "R751");
+                IN_BUFFER2_RESULT = new CSignal_Mewtocol("%EE#RCSR075216\r", "BUFFER2_RESULT", "R752");
+                IN_BUFFER3_RESULT = new CSignal_Mewtocol("%EE#RCSR075317\r", "BUFFER3_RESULT", "R753");
+                IN_BUFFER4_RESULT = new CSignal_Mewtocol("%EE#RCSR075410\r", "BUFFER4_RESULT", "R754");
+                IN_BUFFER5_RESULT = new CSignal_Mewtocol("%EE#RCSR075511\r", "BUFFER5_RESULT", "R755");
+                IN_BUFFER6_RESULT = new CSignal_Mewtocol("%EE#RCSR075612\r", "BUFFER6_RESULT", "R756");
+                IN_BUFFER7_RESULT = new CSignal_Mewtocol("%EE#RCSR075713\r", "BUFFER7_RESULT", "R757");
+                IN_BUFFER8_RESULT = new CSignal_Mewtocol("%EE#RCSR07581C\r", "BUFFER8_RESULT", "R758");
+                IN_BUFFER9_RESULT = new CSignal_Mewtocol("%EE#RCSR07591D\r", "BUFFER9_RESULT", "R759");
+                IN_BUFFER10_RESULT = new CSignal_Mewtocol("%EE#RCSR075A65\r", "BUFFER10_RESULT", "R75A");
+                IN_BUFFER11_RESULT = new CSignal_Mewtocol("%EE#RCSR075B66\r", "BUFFER11_RESULT", "R75B");
+                IN_BUFFER12_RESULT = new CSignal_Mewtocol("%EE#RCSR075C67\r", "BUFFER12_RESULT", "R75C");
+
+                IN_BUFFER1_ID = new CSignal_Mewtocol("%EE#RDD101001019954\r", "BUFFER1_ID", "DT10100");
+                IN_BUFFER2_ID = new CSignal_Mewtocol("%EE#RDD102001029954\r", "BUFFER2_ID", "DT10200");
+                IN_BUFFER3_ID = new CSignal_Mewtocol("%EE#RDD103001039954\r", "BUFFER3_ID", "DT10300");
+                IN_BUFFER4_ID = new CSignal_Mewtocol("%EE#RDD104001049954\r", "BUFFER4_ID", "DT10400");
+                IN_BUFFER5_ID = new CSignal_Mewtocol("%EE#RDD105001059954\r", "BUFFER5_ID", "DT10500");
+                IN_BUFFER6_ID = new CSignal_Mewtocol("%EE#RDD106001069954\r", "BUFFER6_ID", "DT10600");
+                IN_BUFFER7_ID = new CSignal_Mewtocol("%EE#RDD107001079954\r", "BUFFER7_ID", "DT10700");
+                IN_BUFFER8_ID = new CSignal_Mewtocol("%EE#RDD108001089954\r", "BUFFER8_ID", "DT10800");
+                IN_BUFFER9_ID = new CSignal_Mewtocol("%EE#RDD109001099954\r", "BUFFER9_ID", "DT10900");
+                IN_BUFFER10_ID = new CSignal_Mewtocol("%EE#RDD110001109954\r", "BUFFER10_ID", "DT11000");
+                IN_BUFFER11_ID = new CSignal_Mewtocol("%EE#RDD111001119954\r", "BUFFER11_ID", "DT11100");
+                IN_BUFFER12_ID = new CSignal_Mewtocol("%EE#RDD112001129954\r", "BUFFER12_ID", "DT11200");
+
+                BUFFER01 = new CBufferData(IN_BUFFER1_EXISTS, IN_BUFFER1_RESULT, IN_BUFFER1_ID);
+                BUFFER02 = new CBufferData(IN_BUFFER2_EXISTS, IN_BUFFER2_RESULT, IN_BUFFER2_ID);
+                BUFFER03 = new CBufferData(IN_BUFFER3_EXISTS, IN_BUFFER3_RESULT, IN_BUFFER3_ID);
+                BUFFER04 = new CBufferData(IN_BUFFER4_EXISTS, IN_BUFFER4_RESULT, IN_BUFFER4_ID);
+                BUFFER05 = new CBufferData(IN_BUFFER5_EXISTS, IN_BUFFER5_RESULT, IN_BUFFER5_ID);
+                BUFFER06 = new CBufferData(IN_BUFFER6_EXISTS, IN_BUFFER6_RESULT, IN_BUFFER6_ID);
+                BUFFER07 = new CBufferData(IN_BUFFER7_EXISTS, IN_BUFFER7_RESULT, IN_BUFFER7_ID);
+                BUFFER08 = new CBufferData(IN_BUFFER8_EXISTS, IN_BUFFER8_RESULT, IN_BUFFER8_ID);
+                BUFFER09 = new CBufferData(IN_BUFFER9_EXISTS, IN_BUFFER9_RESULT, IN_BUFFER9_ID);
+                BUFFER10 = new CBufferData(IN_BUFFER10_EXISTS, IN_BUFFER10_RESULT, IN_BUFFER10_ID);
+                BUFFER11 = new CBufferData(IN_BUFFER11_EXISTS, IN_BUFFER11_RESULT, IN_BUFFER11_ID);
+                BUFFER12 = new CBufferData(IN_BUFFER12_EXISTS, IN_BUFFER12_RESULT, IN_BUFFER12_ID);
+
+                //BUFFER_ALL.Add(BUFFER01);
+                //BUFFER_ALL.Add(BUFFER02);
+                //BUFFER_ALL.Add(BUFFER03);
+                //BUFFER_ALL.Add(BUFFER04);
+                //BUFFER_ALL.Add(BUFFER05);
+                //BUFFER_ALL.Add(BUFFER06);
+                //BUFFER_ALL.Add(BUFFER07);
+                //BUFFER_ALL.Add(BUFFER08);
+                //BUFFER_ALL.Add(BUFFER09);
+                //BUFFER_ALL.Add(BUFFER10);
+                //BUFFER_ALL.Add(BUFFER11);
+                //BUFFER_ALL.Add(BUFFER12);
+
+                //QueryQueue.Add(INPUT_BOARD_ING);
+                //QueryQueue.Add(OUTPUT_BOARD_CONVEYOR_IN);
+                //QueryQueue.Add(OUTPUT_BOARD_CONVEYOR_ING);
+                //QueryQueue.Add(OUTPUT_BOARD_CONVEYOR_ID);
+
+                //QueryQueue.Add(IN_BUFFER1_EXISTS);
+                //QueryQueue.Add(IN_BUFFER1_RESULT);
+                QueryQueue.Add(IN_BUFFER2_ID);
+
+                //QueryQueue.Add(IN_BUFFER2_EXISTS);
+                //QueryQueue.Add(IN_BUFFER2_RESULT);
+                //QueryQueue.Add(IN_BUFFER2_ID);
+
+                //QueryQueue.Add(IN_BUFFER3_EXISTS);
+                //QueryQueue.Add(IN_BUFFER3_RESULT);
+                QueryQueue.Add(IN_BUFFER4_ID);
+
+                //QueryQueue.Add(IN_BUFFER4_EXISTS);
+                //QueryQueue.Add(IN_BUFFER4_RESULT);
+                //QueryQueue.Add(IN_BUFFER4_ID);
+
+                //QueryQueue.Add(IN_BUFFER5_EXISTS);
+                //QueryQueue.Add(IN_BUFFER5_RESULT);
+                QueryQueue.Add(IN_BUFFER6_ID);
+
+                //QueryQueue.Add(IN_BUFFER6_EXISTS);
+                //QueryQueue.Add(IN_BUFFER6_RESULT);
+                //QueryQueue.Add(IN_BUFFER6_ID);
+
+                //QueryQueue.Add(IN_BUFFER7_EXISTS);
+                //QueryQueue.Add(IN_BUFFER7_RESULT);
+                QueryQueue.Add(IN_BUFFER8_ID);
+
+                //QueryQueue.Add(IN_BUFFER8_EXISTS);
+                //QueryQueue.Add(IN_BUFFER8_RESULT);
+                //QueryQueue.Add(IN_BUFFER8_ID);
+
+                //QueryQueue.Add(IN_BUFFER9_EXISTS);
+                //QueryQueue.Add(IN_BUFFER9_RESULT);
+                QueryQueue.Add(IN_BUFFER10_ID);
+
+                //QueryQueue.Add(IN_BUFFER10_EXISTS);
+                //QueryQueue.Add(IN_BUFFER10_RESULT);
+                //QueryQueue.Add(IN_BUFFER10_ID);
+
+                //QueryQueue.Add(IN_BUFFER11_EXISTS);
+                //QueryQueue.Add(IN_BUFFER11_RESULT);
+                QueryQueue.Add(IN_BUFFER12_ID);
+
+                //QueryQueue.Add(IN_BUFFER12_EXISTS);
+                //QueryQueue.Add(IN_BUFFER12_RESULT);
+                //QueryQueue.Add(IN_BUFFER12_ID);
+            }
+
+        }
+
+        public (string, string, string) GetSignal_Mewtoxcol(int idx)
+        {
+            string Exist = "";
+            string ID = "";
+            string Result = "NG";
+
+            if (idx == 0)
+            {
+                Exist = IN_BUFFER1_EXISTS.Value == 1 ? "V" : "";
+                ID = IN_BUFFER1_ID.ID;
+                Result = IN_BUFFER1_RESULT.Value == 1 ? "OK" : "NG";
+            }
+            else if (idx == 1)
+            {
+                Exist = IN_BUFFER2_EXISTS.Value == 1 ? "V" : "";
+                ID = IN_BUFFER2_ID.ID;
+                Result = IN_BUFFER2_RESULT.Value == 1 ? "OK" : "NG";
+            }
+            else if (idx == 2)
+            {
+                Exist = IN_BUFFER3_EXISTS.Value == 1 ? "V" : "";
+                ID = IN_BUFFER3_ID.ID;
+                Result = IN_BUFFER3_RESULT.Value == 1 ? "OK" : "NG";
+            }
+            else if (idx == 3)
+            {
+                Exist = IN_BUFFER4_EXISTS.Value == 1 ? "V" : "";
+                ID = IN_BUFFER4_ID.ID;
+                Result = IN_BUFFER4_RESULT.Value == 1 ? "OK" : "NG";
+            }
+            else if (idx == 4)
+            {
+                Exist = IN_BUFFER5_EXISTS.Value == 1 ? "V" : "";
+                ID = IN_BUFFER5_ID.ID;
+                Result = IN_BUFFER5_RESULT.Value == 1 ? "OK" : "NG";
+            }
+            else if (idx == 5)
+            {
+                Exist = IN_BUFFER6_EXISTS.Value == 1 ? "V" : "";
+                ID = IN_BUFFER6_ID.ID;
+                Result = IN_BUFFER6_RESULT.Value == 1 ? "OK" : "NG";
+            }
+            else if (idx == 6)
+            {
+                Exist = IN_BUFFER7_EXISTS.Value == 1 ? "V" : "";
+                ID = IN_BUFFER7_ID.ID;
+                Result = IN_BUFFER7_RESULT.Value == 1 ? "OK" : "NG";
+            }
+            else if (idx == 7)
+            {
+                Exist = IN_BUFFER8_EXISTS.Value == 1 ? "V" : "";
+                ID = IN_BUFFER8_ID.ID;
+                Result = IN_BUFFER8_RESULT.Value == 1 ? "OK" : "NG";
+            }
+            else if (idx == 8)
+            {
+                Exist = IN_BUFFER9_EXISTS.Value == 1 ? "V" : "";
+                ID = IN_BUFFER9_ID.ID;
+                Result = IN_BUFFER9_RESULT.Value == 1 ? "OK" : "NG";
+            }
+            else if (idx == 9)
+            {
+                Exist = IN_BUFFER10_EXISTS.Value == 1 ? "V" : "";
+                ID = IN_BUFFER10_ID.ID;
+                Result = IN_BUFFER10_RESULT.Value == 1 ? "OK" : "NG";
+            }
+            else if (idx == 10)
+            {
+                Exist = IN_BUFFER11_EXISTS.Value == 1 ? "V" : "";
+                ID = IN_BUFFER11_ID.ID;
+                Result = IN_BUFFER11_RESULT.Value == 1 ? "OK" : "NG";
+            }
+            else if (idx == 11)
+            {
+                Exist = IN_BUFFER12_EXISTS.Value == 1 ? "V" : "";
+                ID = IN_BUFFER12_ID.ID;
+                Result = IN_BUFFER12_RESULT.Value == 1 ? "OK" : "NG";
+            }
+
+            return (Exist, ID, Result);
+        }
+
+        public bool Connect()
+        {
+            try
+            {
+                engine = new ComEngine(PortName, BaudRate, Parity.Odd, StopBits.One, 8);
+                engine.Connect();
+
+                if (engine != null && engine.IsConnected)
+                {
+                    StartThreadMEWTOCOL();
+                }
+            }
+            catch (Exception ex)
+            {
+                CLogger.Add(LOG.EXCEPTION, "[FAILED] {0}==>{1}   Execption ==> {2}", MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name, ex.Message);
+                //IF_Util.ShowMessageBox("EXCEPTION", $"[FAILED] {MethodBase.GetCurrentMethod().ReflectedType.Name}==>{MethodBase.GetCurrentMethod().Name}   Execption ==> {ex.Message}");
+            }
+
+            //if (m_Sp == null)
+            //{
+            //    m_Sp = new SerialPort();
+            //}
+
+            //m_Sp.PortName = PortName;
+            //m_Sp.BaudRate = BaudRate;
+            //m_Sp.DataBits = DataBits;
+            //m_Sp.StopBits = nStopBits;
+            //m_Sp.Parity = nParity;
+
+            Adress_Init();
+
+            // 정상적으로 연결되었을때...
+            //if (Open())
+            //{
+            //    StartThreadMEWTOCOL();
+
+            //    //ThreadData_Send();          // Send 데이터 셋..
+            //    //ThreadData_Recv();          // Recv 데이터 파싱..
+            //}
+            //else
+            //{
+            //    CLogger.Add(LOG.DEVICE, "NG BUFFER NOT CONNECT!! CHECK Please!!");
+            //}
+
+            return IsRun;
+        }
+
+        // 시리얼 통신 연결 시도..확인
+        private bool Open()
+        {
+            try
+            {
+                m_Sp.Open();
+                m_Sp.WriteTimeout = 500;
+                IsRun = true;
+                return IsRun;
+            }
+            catch
+            {
+                IsRun = false;
+                return IsRun;
+            }
+
+        }
+
+        public bool DisConnect()
+        {
+            if (IsOpen)
+            {
+                StopThreadMEWTOCOL();
+                engine.Disconnect();
+
+                IsRun = false;
+
+                return true;
+            }
+            return false;
+        }
+
+        public string ReadWord(char code, string address)
+        {
+            string returnV = null;
+
+            string temp = Header;
+            string senddata = null;
+            string readtemp = null;
+
+            temp += "RCC" + code.ToString() + ZeroPlus(4, address) + ZeroPlus(4, address);
+            senddata = temp.ToUpper() + get_bcc_code(temp.ToUpper()) + CR;
+
+            if (IsOpen)
+            {
+                try
+                {
+                    m_Sp.Write(senddata);
+                }
+                catch { return returnV = null; }
+
+                System.Threading.Thread.Sleep(delay_v);
+
+                try
+                {
+                    readtemp = m_Sp.ReadTo(CR);
+                    if (readtemp[3] == '$')
+                    {
+                        returnV = readtemp.ToString()[8].ToString() + readtemp.ToString()[9].ToString() + readtemp.ToString()[6].ToString() + readtemp.ToString()[7].ToString();
+                    }
+                }
+                catch { return returnV = null; }
+            }
+
+            return returnV;
+        }
+
+        public string ReadWdata(char code, int address, int address2)
+        {
+            string returnV = null;
+
+            string temp = Header;
+            string senddata = null;
+            string readtemp = null;
+            //string readvalue = null;
+
+            temp += "RD" + code.ToString() + ZeroPlus(5, address.ToString()) + ZeroPlus(5, address2.ToString());
+            senddata = temp.ToUpper() + get_bcc_code(temp.ToUpper()) + CR;
+
+            if (IsRun)
+            {
+                try
+                {
+                    m_Sp.Write(senddata);
+                }
+                catch { return returnV = null; }
+
+                System.Threading.Thread.Sleep(delay_v);
+
+                try
+                {
+                    readtemp = m_Sp.ReadTo(CR);
+
+                    if (readtemp[3] == '$')
+                    {
+                        //string tmp = readtemp.Substring(5, readtemp.IndexOf('\r') - 5);
+                        string tmp = readtemp.Substring(6, readtemp.IndexOf("&") - 5);
+
+                        string tmptmp = tmp.Substring(0, tmp.Length - 3);
+
+                        List<string> tmpDATA = new List<string>();
+
+                        int j = 0;
+                        for (int i = 0; i < (tmptmp.Length / 4); i++)
+                        {
+                            tmpDATA.Add(tmptmp.Substring(j, 4));
+                            j += 4;
+                        }
+
+                        for (int k = 0; k < tmpDATA.Count; k++)
+                        {
+                            tmpDATA[k] = tmpDATA[k].ToString()[2].ToString() + tmpDATA[k].ToString()[3].ToString() + tmpDATA[k].ToString()[0].ToString() + tmpDATA[k].ToString()[1].ToString();
+
+                            returnV += Hex2ASC(tmpDATA[k].Substring(2, 2));
+                        }
+                    }
+                }
+                catch { return returnV = null; }
+            }
+
+            return returnV;
+        }
+
+        /// <summary>
+        /// bit 단위로 읽기
+        /// </summary>
+        /// <param name="code">X,Y,R,L,T,C 접점가능</param>
+        /// <param name="data">읽을 데이터주소</param>
+        /// <returns>BOOL 놀리값 리턴</returns>
+        public bool ReadBit(char code, string data)
+        {
+            bool returnV = false;
+            string temp = Header;
+            string senddata = null;
+            string readtemp = null;
+
+            temp += "RCS" + code.ToString() + ZeroPlus(4, data);
+
+            senddata = temp.ToUpper() + get_bcc_code(temp.ToUpper()) + CR;
+
+            if (IsOpen)
+            {
+                try
+                {
+                    m_Sp.Write(senddata);
+                }
+                catch { return returnV = false; }
+
+                System.Threading.Thread.Sleep(delay_v);
+
+                try
+                {
+                    readtemp = m_Sp.ReadTo(CR);
+                    if (readtemp[3] == '$')
+                    {
+                        if (readtemp[6] == '1') returnV = true;
+                        if (readtemp[6] == '0') returnV = false;
+                    }
+                }
+                catch { return returnV = false; }
+            }
+            return returnV;
+        }
+
+        //private string strSummary = "";
+
+        public bool ReadBit(string device)
+        {
+            bool returnV = false;
+            string temp = Header;
+            string senddata = null;
+            //string readtemp = null;
+
+            string code = device.Substring(0, 1);
+            string data = device.Substring(1, device.Length - 1);
+
+            temp += "RCS" + code.ToString() + ZeroPlus(4, data);
+
+            senddata = temp.ToUpper() + get_bcc_code(temp.ToUpper()) + CR;
+
+            return returnV;
+        }
+
+
+
+        /// <summary>
+        /// Word 읽기
+        /// </summary>
+        /// <param name="code">D,L,F</param>
+        /// <param name="address">접점주소</param>
+        /// <returns>문자열 이지만 값은 10진수</returns>
+        public string ReadWdata(char code, int address)
+        {
+            string returnV = null;
+
+            string temp = Header;
+            string senddata = null;
+            string readtemp = null;
+            string readvalue = null;
+
+            temp += "RD" + code.ToString() + ZeroPlus(5, address.ToString()) + ZeroPlus(5, address.ToString());
+            senddata = temp.ToUpper() + get_bcc_code(temp.ToUpper()) + CR;
+
+            if (IsOpen)
+            {
+                try
+                {
+                    m_Sp.Write(senddata);
+                }
+                catch { return returnV = null; }
+
+                System.Threading.Thread.Sleep(delay_v);
+
+                try
+                {
+                    readtemp = m_Sp.ReadTo(CR);
+                    if (readtemp[3] == '$')
+                    {
+                        readvalue = readtemp.ToString()[8].ToString() + readtemp.ToString()[9].ToString() + readtemp.ToString()[6].ToString() + readtemp.ToString()[7].ToString();
+
+                        returnV = Convert.ToInt32(readvalue, 16).ToString();
+                    }
+                }
+                catch { return returnV = null; }
+            }
+
+            return returnV;
+        }
+
+        /// <summary>
+        /// Double Word 읽기
+        /// </summary>
+        /// <param name="code">D,L,F</param>
+        /// <param name="address">접점주소</param>
+        /// <returns>문자열 이지만 값은 10진수</returns>
+        public string ReadWDdata(char code, int address)
+        {
+            string returnV = null;
+
+            string temp = Header;
+            string senddata = null;
+            string readtemp = null;
+            string readvalue = null;
+
+            temp += "RD" + code.ToString() + ZeroPlus(5, address.ToString()) + ZeroPlus(5, (address += 1).ToString());
+            senddata = temp.ToUpper() + get_bcc_code(temp.ToUpper()) + CR;
+
+            if (IsOpen)
+            {
+                try
+                {
+                    m_Sp.Write(senddata);
+                }
+                catch { return returnV = null; }
+
+                System.Threading.Thread.Sleep(delay_v);
+
+                try
+                {
+                    readtemp = m_Sp.ReadTo(CR);
+                    if (readtemp[3] == '$')
+                    {
+                        readvalue = readtemp.ToString()[12].ToString() + readtemp.ToString()[13].ToString() + readtemp.ToString()[10].ToString() + readtemp.ToString()[11].ToString();
+                        readvalue += readtemp.ToString()[8].ToString() + readtemp.ToString()[9].ToString() + readtemp.ToString()[6].ToString() + readtemp.ToString()[7].ToString();
+                        returnV = Convert.ToInt64(readvalue, 16).ToString();
+                    }
+                }
+                catch { return returnV = null; }
+            }
+
+            return returnV;
+        }
+
+        /// <summary>
+        /// word 단위 데이터 기록
+        /// </summary>
+        /// <param name="code">Y,R,L 이 사용가능</param>
+        /// <param name="address">접점 주소</param>
+        /// <param name="data">작성될 값4자리 16진수</param>
+        /// <returns>BOOL 논리 데이터 정상시 TRUE</returns>
+        public bool WriteWord(char code, string address, string data)
+        {
+            bool returnV = false;
+
+            string cdata = null;
+            string temp = Header;
+            string senddata = null;
+            string readtemp = null;
+
+            cdata = data.ToString()[1].ToString() + data.ToString()[0].ToString() + data.ToString()[3].ToString() + data.ToString()[2].ToString();
+
+            temp += "WCC" + code.ToString() + ZeroPlus(4, address) + ZeroPlus(4, address) + cdata + cdata;
+            senddata = temp.ToUpper() + get_bcc_code(temp.ToUpper()) + CR;
+
+            if (IsOpen)
+            {
+                try
+                {
+                    m_Sp.Write(senddata);
+                }
+                catch { return returnV = false; }
+
+                System.Threading.Thread.Sleep(delay_v);
+
+                try
+                {
+                    readtemp = m_Sp.ReadTo(CR);
+                    if (readtemp[3] == '$')
+                    {
+                        returnV = true;
+                    }
+                }
+                catch { return returnV = false; }
+            }
+            return returnV;
+        }
+
+        public void Command_ReTest(int nBufferID)
+        {
+            if (IF_Util.ShowMessageBox("CHECK", $"Do you want to [Buffer ID : {nBufferID}] Re-test?"))
+            {
+                CommandQueue.Enqueue(("D", "9701", typeof(short), nBufferID));
+                CommandQueue.Enqueue(("R", "70B", typeof(bool), true));
+
+                //WriteWdata('d', 9701, nBufferID);
+                //Writebit('r', "70B", true);
+
+                SetTime(nBufferID, new DateTime());
+            }
+        }
+
+        // 해당 어드레스는 광주 / 폴란드 같음..
+        public void Command_FinalOK(int nBufferID)
+        {
+            if (!isSimulMode)
+            {
+                if (IF_Util.ShowMessageBox("CHECK", "Do you want to Final-OK?"))
+                {
+
+                    CommandQueue.Enqueue(("D", "9700", typeof(short), nBufferID));
+                    CommandQueue.Enqueue(("R", "70A", typeof(bool), true));
+
+                    SetTime(nBufferID, new DateTime());
+                }
+            }
+            else
+            {
+                BUFFERS[nBufferID].SetData(false, true, "");
+            }
+        }
+
+        public static string ByteToHexString(byte[] InBytes)
+        {
+            char segment = (char)0;
+            StringBuilder sb = new StringBuilder();
+            foreach (byte InByte in InBytes)
+            {
+                if (segment == 0) sb.Append(string.Format("{0:X2}", InByte));
+                else sb.Append(string.Format("{0:X2}{1}", InByte, segment));
+            }
+
+            if (segment != 0 && sb.Length > 1 && sb[sb.Length - 1] == segment)
+            {
+                sb.Remove(sb.Length - 1, 1);
+            }
+            return sb.ToString();
+        }
+
+
+        /// <summary>
+        /// 데이터값 DOUBLE word 단위 입력
+        /// </summary>
+        /// <param name="code">D,L,F 가능</param>
+        /// <param name="address">주서번지</param>
+        /// <param name="data">십진수 입력값</param>
+        /// <returns>전송결과 부울값 리턴</returns>
+
+
+        /// <summary>
+        /// PLC 현재 상태 값 리턴 01$RT/기종코드2)(버전2)(프로그램용량2)(동작모드2)
+        /// /시스템용링크정보 2//에러플래크 2//자기진단에러 4/
+        /// </summary>
+        /// <returns>문자열 리턴</returns>
+        public string StateChech()
+        {
+            string returnV = null;
+
+            string temp = Header;
+            string senddata = null;
+            string readtemp = null;
+
+            temp += "RT";
+            senddata = temp.ToUpper() + get_bcc_code(temp.ToUpper()) + CR;
+
+            if (IsOpen)
+            {
+                try
+                {
+                    m_Sp.Write(senddata);
+                }
+                catch { return returnV = "!"; }
+
+                System.Threading.Thread.Sleep(delay_v);
+
+                try
+                {
+                    readtemp = m_Sp.ReadTo(CR);
+                    if (readtemp[3] == '$')
+                    {
+                        returnV = readtemp;
+                    }
+                }
+                catch { return returnV = "!"; }
+            }
+            return returnV;
+        }
+
+        /// <summary>
+        /// bcc 코드 생성
+        /// </summary>
+        /// <param name="data">data string 값</param>
+        /// <returns>반환은 xor로 만들어진 2자리의 문자열</returns>
+        private string get_bcc_code(string data)
+        {
+            char[] temp = new char[1024];
+            string hex;
+
+            temp = data.ToCharArray(); //문자열을 문자 변수에 각각 집어 넣음
+
+            int bcc = temp[0];
+
+            for (int i = 1; i < temp.Length; i++)
+            {
+                bcc = bcc ^ temp[i];
+            }
+            hex = bcc.ToString("X2"); //정수로 계산된 bcc 코드를 16진수로 변경 "X2"는 대문자 16진수 두자리라는 옵션
+
+            //BCC 코드가 대문자여야만 통신이 됨
+
+            return hex.ToUpper();
+        }
+
+        /// <summary>
+        /// 공백을 지정 길이만큼 0으로 채워서 문자열로 리턴
+        /// </summary>
+        /// <param name="length">필요 길이 정수값</param>
+        /// <param name="data">수정할 문자열</param>
+        /// <returns>수정된 문자열</returns>
+        private string ZeroPlus(int length, string data)
+        {
+            string retuneV = null;
+            string temp = data;
+
+            if (length > data.Length)
+            {
+                length -= data.Length;
+
+                for (int i = 0; i < length; i++)
+                {
+                    retuneV += "0";
+                }
+
+                retuneV += data;
+            }
+            else { retuneV = data; }
+
+            return retuneV;
+        }
+
+
+        public void StartThreadMEWTOCOL()
+        {
+            if (nThread != null && nThread.IsAlive)
+            {
+                Thread_Send_Run = false;
+                nThread.Abort();
+            }
+
+            nThread = new Thread(new ParameterizedThreadStart(ThreadRead));
+            Thread_Send_Run = true;
+            nThread.Start();
+
+            //Thread t = new Thread(new ParameterizedThreadStart(ThreadMEWTOCOL));
+            //t.Start(ThreadStatusVision);
+        }
+
+        //public void ResetThreadMEWTOCOL()
+        //{
+        //    ThreadStatusVision.End();
+        //}
+
+        public void StopThreadMEWTOCOL()
+        {
+            if (nThread != null && nThread.IsAlive)
+            {
+                Thread_Send_Run = false;
+                nThread.Join(500);
+            }
+
+            //if (!ThreadStatusVision.IsExit())
+            //{
+            //    ThreadStatusVision.Stop(500);
+            //}
+
+            //ResetThreadMEWTOCOL();
+        }
+
+        ///// <summary>
+        ///// 프로그램이 종료가 될때까지 실행되며, 큐에 있는 데이터를 비전검사합니다.
+        ///// </summary>
+        ///// <param name="ob"></param>
+        /////
+        //private object readSync = new object();
+
+        //private uint m_nQueryIndex = 0;
+
+        //public string m_strSumData = "";
+        //private string tmpID;
+
+        //private void ThreadMEWTOCOL(object ob)
+        //{
+        //    int TIME_OUT = 3000;
+        //    CSignal_Mewtocol signal = null;
+        //    string strQuery = "";
+        //    //string strData = "";
+
+        //    try
+        //    {
+        //        while (Thread_Send_Run)
+        //        {
+        //            Thread.Sleep(100);
+        //            int START_TIME = Environment.TickCount;
+
+        //            if (IGlobal.Instance.System.REQ_SYSTEM_CLOSE) return;
+
+        //            {
+        //                try
+        //                {
+        //                    if (CommandQueue.Count > 0)
+        //                    {
+        //                        CommandQueue.TryDequeue(out strQuery);
+        //                    }
+        //                    else
+        //                    {
+        //                        signal = QueryQueue[(int)m_nQueryIndex % QueryQueue.Count];
+        //                        strQuery = signal.Packet;
+
+        //                        m_nQueryIndex++;
+
+        //                        if (strQuery == "")
+        //                        {
+        //                            continue;
+        //                        }
+        //                    }
+
+        //                    if (IGlobal.Instance.Mode.UseRms == false) continue;
+
+        //                    if (m_Sp.IsOpen == false) continue;
+
+        //                    m_Sp.DiscardInBuffer();
+        //                    m_Sp.DiscardOutBuffer();
+        //                    m_Sp.DiscardNull = true;
+        //                    m_Sp.Write(strQuery);
+        //                }
+        //                catch (Exception ex)
+        //                {
+        //                    CLogger.Add(LOG_TYPE.EXCEPTION, "[FAILED] {0}/{1}   Execption ==> {2}", MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name, ex.Message);
+        //                }
+
+        //                while (true)
+        //                {
+        //                    if (Environment.TickCount - START_TIME > TIME_OUT)
+        //                    {
+        //                        IsRun = false;
+        //                    }
+
+        //                    string strDataPacket = "";
+        //                    string strPacket = "";
+
+        //                    //int nStep;
+        //                    try
+        //                    {
+        //                        lock (readSync)
+        //                        {
+        //                            m_Sp.ReadTimeout = 1000;
+        //                            strPacket = m_Sp.ReadTo(CR);// (buff, 0, nRead);
+        //                            int nRead = m_Sp.BytesToRead;
+
+        //                            if (strPacket.Contains("!"))
+        //                            {
+        //                                if (signal.Name.Contains("EXISTS")) Thread.Sleep(10);
+
+        //                                m_Sp.DiscardInBuffer();
+        //                                m_Sp.DiscardOutBuffer();
+        //                                m_Sp.DiscardNull = true;
+        //                                m_Sp.Write(strQuery);
+
+        //                                strPacket = m_Sp.ReadTo(CR);// (buff, 0, nRead);
+        //                                nRead = m_Sp.BytesToRead;
+        //                            }
+
+        //                            if (strPacket.Length > 7)
+        //                            {
+        //                                //nStep = 11;
+        //                                IsRun = true;
+
+        //                                byte[] buff = new byte[nRead];
+        //                                //nStep = 12;
+
+        //                                //nStep = 1;
+        //                                //int nSubstringIndex = m_strSumData.IndexOf('\r');
+        //                                //string strPacket = m_strSumData.Substring(0, nSubstringIndex);
+        //                                //m_strSumData = m_strSumData.Substring(nSubstringIndex + 1, m_strSumData.Length - nSubstringIndex - 1);
+
+        //                                if (strPacket.Length > 7)
+        //                                {
+        //                                    //nStep = 2;
+        //                                    if (strPacket.Contains("%EE$RD"))
+        //                                    {
+        //                                        //nStep = 3;
+        //                                        if (strPacket.Contains("&"))
+        //                                        {
+        //                                            //nStep = 4;
+        //                                            strDataPacket = strPacket.Substring(6, strPacket.IndexOf("&") - 5);
+        //                                            //nStep = 5;
+        //                                            string tmptmp = strDataPacket.Substring(0, strDataPacket.Length - 3);
+        //                                            //nStep = 6;
+
+        //                                            List<string> tmpDATA = new List<string>();
+
+        //                                            int j = 0;
+        //                                            for (int i = 0; i < (tmptmp.Length / 4); i++)
+        //                                            {
+        //                                                tmpDATA.Add(tmptmp.Substring(j, 4));
+        //                                                j += 4;
+        //                                            }
+
+        //                                            for (int k = 0; k < tmpDATA.Count; k++)
+        //                                            {
+        //                                                tmpDATA[k] = tmpDATA[k].ToString()[2].ToString() + tmpDATA[k].ToString()[3].ToString() + tmpDATA[k].ToString()[0].ToString() + tmpDATA[k].ToString()[1].ToString();
+        //                                                tmpID += Hex2ASC(tmpDATA[k].Substring(2, 2));
+        //                                            }
+        //                                            signal.ID = tmpID;
+
+        //                                            if (signal.ID.Contains('/'))
+        //                                            {
+        //                                            }
+        //                                            tmpID = "";
+        //                                        }
+        //                                    }
+        //                                    else
+        //                                    {
+        //                                        if (strPacket[3] == '$')
+        //                                        {
+        //                                            if (int.TryParse(strPacket[6].ToString(), out int value)) signal.Value = value;
+        //                                        }
+        //                                        else
+        //                                        {
+        //                                        }
+        //                                    }
+        //                                }
+        //                                else
+        //                                {
+        //                                }
+
+        //                                break;
+        //                            }
+        //                            else
+        //                            {
+        //                                Thread.Sleep(1);
+        //                                break;
+        //                            }
+        //                        }
+        //                    }
+        //                    catch (Exception ex)
+        //                    {
+        //                        CLogger.Add(LOG_TYPE.EXCEPTION, "[FAILED] {0}/{1}   Execption ==> {2}", MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name, ex.Message);
+        //                        break;
+        //                    }
+
+        //                    //Thread.Sleep(1);
+        //                    //if (IGlobal.Instance.System.REQ_SYSTEM_CLOSE) return;
+        //                }
+        //            }
+        //        }
+        //        //ThreadStatus.End();
+        //    }
+        //    catch (Exception Desc)
+        //    {
+        //        CLogger.Add(LOG_TYPE.EXCEPTION, "[FAILED] MEWTOCOL Fail");
+        //        CLogger.Add(LOG_TYPE.EXCEPTION, "[FAILED] {0}/{1}   Execption ==> {2}", MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name, Desc.Message);
+        //        //ThreadStatus.End();
+        //        this.DisConnect();
+        //    }
+        //}
+
+        /// <summary>
+        /// 프로그램이 종료가 될때까지 실행되며, 큐에 있는 데이터를 비전검사합니다.
+        /// </summary>
+        /// <param name="ob"></param>
+        ///
+        private object readSync = new object();
+
+        //private uint m_nQueryIndex = 0;
+
+        public string m_strSumData = "";
+        int m_nQueryIndex = 0;
+
+        long Cycle = 0;
+        public int CycleTime = 0;
+
+        private void ThreadRead(object ob)
+        {
+            int nRetryCount = 0;
+
+            while (Thread_Send_Run)
+            {
+                Thread.Sleep(1);
+                try
+                {
+                    if (Global.Instance.System.REQ_SYSTEM_CLOSE) return;
+                    if (!Global.Instance.Mode.UseRms) return;
+                    if (IsOpen == false) return;
+
+                    CycleTime = (int)(Environment.TickCount - Cycle);
+                    Cycle = Environment.TickCount;
+
+
+                    string strQuery;
+                    CSignal_Mewtocol signal = null;
+                    int QueryQueuecnt = 0;
+
+                    // 해당큐에 데이터가 있을경우...시리얼에 써주기..
+                    if (CommandQueue.Count > 0)
+                    {
+                        // q에 쌓인 데이터만 쓰기..
+                        CommandQueue.TryDequeue(out (string code, string addr, Type type, object value) item);
+
+                        if (item.code == "R")
+                        {
+                            if (int.TryParse(item.addr, out int parseAddr))
+                            {
+                                var result = engine.WriteContactAreaSinglePoint(item.code, parseAddr, (bool)item.value);
+                                //SetBit(item.addr, (int)item.value);
+                            }
+                            else
+                            {
+                                var result = engine.WriteContactAreaSinglePoint(item.code, item.addr, (bool)item.value);
+                                //SetBit(item.addr, (int)item.value);
+                            }
+
+                        }
+                        else if (item.code == "D")
+                        {
+                            if (int.TryParse(item.addr, out int parseAddr))
+                            {
+                                if (item.type == typeof(string))
+                                {
+                                    var result = engine.WriteString(item.code, parseAddr, (string)item.value);
+                                    CLogger.Add(LOG.COMM, $"QR Send -> NG Buffer Complete");
+                                }
+                                else
+                                {
+                                    var result = engine.WriteDataAreaRegister(item.code, parseAddr, item.type, item.value);
+                                }
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        // 각 어드레스에 맞는 값의 리시브 데이터를 받기위해 처리..
+                        QueryQueuecnt = (int)m_nQueryIndex % QueryQueue.Count;
+                        signal = QueryQueue[QueryQueuecnt];
+
+                        if (Global.Instance.Setting.Enviroment.Country == Setting_Enviroment.COUNTRY.KOR)
+                        {
+
+                            (bool[] bits, CommandResult rst) result1 = engine.ReadContactsAreaWord8(new string[8] {
+                            "R0711" //1. IN_BUFFER1_EXISTS
+                            ,"R0713" //2. IN_BUFFER3_EXISTS
+                            ,"R0715" //3. IN_BUFFER5_EXISTS
+                            ,"R0716" //4. IN_BUFFER6_EXISTS
+                            ,"R0717" //5. IN_BUFFER7_EXISTS
+                            ,"R0719" //6. IN_BUFFER9_EXISTS
+                            ,"R071B" //7. IN_BUFFER11_EXISTS
+                            ,"R071C" //8. IN_BUFFER12_EXISTS      
+                            });
+
+                            if (result1.bits != null)
+                            {
+                                IN_BUFFER1_EXISTS.Value = result1.bits[0] ? 1 : 0;
+                                IN_BUFFER3_EXISTS.Value = result1.bits[1] ? 1 : 0;
+                                IN_BUFFER5_EXISTS.Value = result1.bits[2] ? 1 : 0;
+                                IN_BUFFER6_EXISTS.Value = result1.bits[3] ? 1 : 0;
+                                IN_BUFFER7_EXISTS.Value = result1.bits[4] ? 1 : 0;
+                                IN_BUFFER9_EXISTS.Value = result1.bits[5] ? 1 : 0;
+                                IN_BUFFER11_EXISTS.Value = result1.bits[6] ? 1 : 0;
+                                IN_BUFFER12_EXISTS.Value = result1.bits[7] ? 1 : 0;
+
+                            }
+
+                            (bool[] bits, CommandResult rst) result2 = engine.ReadContactsAreaWord8(new string[8] {
+                             "R0751" //4. IN_BUFFER1_RESULT
+                            ,"R0753" //4. IN_BUFFER3_RESULT
+                            ,"R0755" //1. IN_BUFFER5_RESULT
+                            ,"R0756" //2. IN_BUFFER6_RESULT
+                            ,"R0757" //2. IN_BUFFER7_RESULT
+                            ,"R0759" //3. IN_BUFFER9_RESULT
+                            ,"R075B" //4. IN_BUFFER11_RESULT  
+                            ,"R075C" //4. IN_BUFFER12_RESULT  
+                            });
+
+                            if (result2.bits != null)
+                            {
+                                IN_BUFFER1_RESULT.Value = result2.bits[0] ? 1 : 0;
+                                IN_BUFFER3_RESULT.Value = result2.bits[1] ? 1 : 0;
+                                IN_BUFFER5_RESULT.Value = result2.bits[2] ? 1 : 0;
+                                IN_BUFFER6_RESULT.Value = result2.bits[3] ? 1 : 0;
+                                IN_BUFFER7_RESULT.Value = result2.bits[4] ? 1 : 0;
+                                IN_BUFFER9_RESULT.Value = result2.bits[5] ? 1 : 0;
+                                IN_BUFFER11_RESULT.Value = result2.bits[6] ? 1 : 0;
+                                IN_BUFFER12_RESULT.Value = result2.bits[7] ? 1 : 0;
+                            }
+
+                            (bool[] bits, CommandResult rst) result_Debug = engine.ReadContactsAreaWord8(new string[8] {
+                             "R2141"
+                            ,"R0918"
+                            ,"R0559"
+                            ,"R2120"
+                            ,"R0701" //5. INPUT_BOARD_ING
+                            ,"R0702" //6. CALL_STAGE_OUT
+                            ,"R0703" //7. CALL_STAGE_EXISTS
+                            ,"R0704"
+                            });
+
+                            if (result_Debug.bits != null)
+                            {
+                                if (DEBUG_R2141_NG_JUDGE_SET == null) DEBUG_R2141_NG_JUDGE_SET = new CSignal_Mewtocol("%EE#RCSR070110\r", "DEBUG_R2141_NG_JUDGE_SET", "R2141");
+                                if (DEBUG_R918_INSP_POS_ACTION == null) DEBUG_R918_INSP_POS_ACTION = new CSignal_Mewtocol("%EE#RCSR070110\r", "DEBUG_R918_INSP_POS_ACTION", "R918");
+                                if (DEBUG_R559_RACK_ENTERING == null) DEBUG_R559_RACK_ENTERING = new CSignal_Mewtocol("%EE#RCSR070110\r", "DEBUG_R559_RACK_ENTERING", "R559");
+                                if (DEBUG_R2120_RACK_ENTERING_NG_SET == null) DEBUG_R2120_RACK_ENTERING_NG_SET = new CSignal_Mewtocol("%EE#RCSR070110\r", "DEBUG_R2120_RACK_ENTERING_NG_SET", "R2120");
+
+                                int set1 = result_Debug.bits[0] ? 1 : 0;
+                                int set2 = result_Debug.bits[1] ? 1 : 0;
+                                int set3 = result_Debug.bits[2] ? 1 : 0;
+                                int set4 = result_Debug.bits[3] ? 1 : 0;
+
+                                if (DEBUG_R2141_NG_JUDGE_SET.Value != set1) CLogger.Add(LOG.SEQ, $"NG BUFF STATUS CHANGED ==> DEBUG_R2141_NG_JUDGE_SET prev : {DEBUG_R2141_NG_JUDGE_SET.Value} set : {set1}");
+                                if (DEBUG_R918_INSP_POS_ACTION.Value != set2) CLogger.Add(LOG.SEQ, $"NG BUFF STATUS CHANGED ==> DEBUG_R918_INSP_POS_ACTION prev : {DEBUG_R918_INSP_POS_ACTION.Value} set : {set2}");
+                                if (DEBUG_R559_RACK_ENTERING.Value != set3) CLogger.Add(LOG.SEQ, $"NG BUFF STATUS CHANGED ==> DEBUG_R559_RACK_ENTERING prev : {DEBUG_R559_RACK_ENTERING.Value} set : {set3}");
+                                if (DEBUG_R2120_RACK_ENTERING_NG_SET.Value != set4) CLogger.Add(LOG.SEQ, $"NG BUFF STATUS CHANGED ==> DEBUG_R2120_RACK_ENTERING_NG_SET prev : {DEBUG_R2120_RACK_ENTERING_NG_SET.Value} set : {set4}");
+
+                                DEBUG_R2141_NG_JUDGE_SET.Value = set1;
+                                DEBUG_R918_INSP_POS_ACTION.Value = set2;
+                                DEBUG_R559_RACK_ENTERING.Value = set3;
+                                DEBUG_R2120_RACK_ENTERING_NG_SET.Value = set4;
+                                INPUT_BOARD_ING.Value = result_Debug.bits[4] ? 1 : 0;
+                                CALL_STAGE_OUT.Value = result_Debug.bits[5] ? 1 : 0;
+                                CALL_STAGE_EXISTS.Value = result_Debug.bits[6] ? 1 : 0;
+                            }
+
+                            if (signal.Addr.Contains("DT"))
+                            {
+                                bool isRead = true;
+
+                                if (signal.Name == "BUFFER1_ID" && IN_BUFFER1_EXISTS.Value != 1) isRead = false;
+                                if (signal.Name == "BUFFER3_ID" && IN_BUFFER3_EXISTS.Value != 1) isRead = false;
+                                if (signal.Name == "BUFFER5_ID" && IN_BUFFER5_EXISTS.Value != 1) isRead = false;
+                                if (signal.Name == "BUFFER6_ID" && IN_BUFFER6_EXISTS.Value != 1) isRead = false;
+                                if (signal.Name == "BUFFER7_ID" && IN_BUFFER7_EXISTS.Value != 1) isRead = false;
+                                if (signal.Name == "BUFFER9_ID" && IN_BUFFER9_EXISTS.Value != 1) isRead = false;
+                                if (signal.Name == "BUFFER11_ID" && IN_BUFFER11_EXISTS.Value != 1) isRead = false;
+                                if (signal.Name == "BUFFER12_ID" && IN_BUFFER12_EXISTS.Value != 1) isRead = false;
+
+                                if (isRead)
+                                {
+                                    int addr = int.Parse(signal.Addr.Substring(2));
+                                    var r = engine.ReadDataAreaRegister("D", addr, typeof(string), 100);
+
+                                    if (r.Value != null)
+                                    {
+                                        string readValue = r.Value.ToString();
+                                        signal.ID = readValue.Replace("\0", "");
+                                    }
+                                }
+                                else
+                                {
+                                    signal.ID = "";
+                                }
+                            }
+                        }
+                        else
+                        {
+                            (bool[] bits, CommandResult rst) result1 = engine.ReadContactsAreaWord8(new string[8] {
+                            "R0701" //1. INPUT_BOARD_ING
+                            ,"R0702" //2. OUTPUT_BOARD_CONVEYOR_IN
+                            ,"R070D" //3. OUTPUT_BOARD_CONVEYOR_ING
+                            ,"R0712" //4. IN_BUFFER1_EXISTS
+                            ,"R0714" //2. IN_BUFFER3_EXISTS
+                            ,"R0716" //3. IN_BUFFER5_EXISTS
+                            ,"R0718" //4. IN_BUFFER7_EXISTS
+                            ,"R071A" //4. IN_BUFFER9_EXISTS
+                            });
+
+                            if (result1.bits != null)
+                            {
+                                INPUT_BOARD_ING.Value = result1.bits[0] ? 1 : 0;
+                                OUTPUT_BOARD_CONVEYOR_IN.Value = result1.bits[1] ? 1 : 0;
+                                OUTPUT_BOARD_CONVEYOR_ING.Value = result1.bits[2] ? 1 : 0;
+                                IN_BUFFER2_EXISTS.Value = result1.bits[3] ? 1 : 0;
+                                IN_BUFFER4_EXISTS.Value = result1.bits[4] ? 1 : 0;
+                                IN_BUFFER6_EXISTS.Value = result1.bits[5] ? 1 : 0;
+                                IN_BUFFER8_EXISTS.Value = result1.bits[6] ? 1 : 0;
+                                IN_BUFFER10_EXISTS.Value = result1.bits[7] ? 1 : 0;
+                            }
+
+                            (bool[] bits, CommandResult rst) result2 = engine.ReadContactsAreaWord8(new string[8] {
+                            "R071C" //1. IN_BUFFER11_EXISTS
+                            ,"R0752" //2. IN_BUFFER1_RESULT
+                            ,"R0754" //3. IN_BUFFER3_RESULT
+                            ,"R0756" //4. IN_BUFFER5_RESULT
+                            ,"R0758" //2. IN_BUFFER7_RESULT
+                            ,"R075A" //3. IN_BUFFER9_RESULT
+                            ,"R075C" //4. IN_BUFFER11_RESULT
+                            ,"R075C" //4. -
+                            });
+
+                            if (result2.bits != null)
+                            {
+                                IN_BUFFER12_EXISTS.Value = result2.bits[0] ? 1 : 0;
+                                IN_BUFFER2_RESULT.Value = result2.bits[1] ? 1 : 0;
+                                IN_BUFFER4_RESULT.Value = result2.bits[2] ? 1 : 0;
+                                IN_BUFFER6_RESULT.Value = result2.bits[3] ? 1 : 0;
+                                IN_BUFFER8_RESULT.Value = result2.bits[4] ? 1 : 0;
+                                IN_BUFFER10_RESULT.Value = result2.bits[5] ? 1 : 0;
+                                IN_BUFFER12_RESULT.Value = result2.bits[6] ? 1 : 0;
+                            }
+
+
+                            if (signal.Addr.Contains("DT"))
+                            {
+                                bool isRead = true;
+
+                                if (signal.Name == "BUFFER2_ID" && IN_BUFFER2_EXISTS.Value != 1) isRead = false;
+                                if (signal.Name == "BUFFER4_ID" && IN_BUFFER4_EXISTS.Value != 1) isRead = false;
+                                if (signal.Name == "BUFFER6_ID" && IN_BUFFER6_EXISTS.Value != 1) isRead = false;
+                                if (signal.Name == "BUFFER8_ID" && IN_BUFFER8_EXISTS.Value != 1) isRead = false;
+                                if (signal.Name == "BUFFER10_ID" && IN_BUFFER10_EXISTS.Value != 1) isRead = false;
+                                if (signal.Name == "BUFFER12_ID" && IN_BUFFER12_EXISTS.Value != 1) isRead = false;
+
+                                if (isRead)
+                                {
+                                    int addr = int.Parse(signal.Addr.Substring(2));
+                                    var r = engine.ReadDataAreaRegister("D", addr, typeof(string), 100);
+
+                                    if (r.Value != null)
+                                    {
+                                        string readValue = r.Value.ToString();
+                                        signal.ID = readValue.Replace("\0", "");
+                                    }
+                                }
+                                else
+                                {
+                                    signal.ID = "";
+                                }
+                            }
+                        }
+
+                        m_nQueryIndex++;
+                    }
+                }
+                catch (Exception e)
+                {
+                    string str = "";
+                    if (nRetryCount > 10)
+                    {
+                        str = $"Mewtocl Error and will be disconnected{e.Message}";
+                        CLogger.Add(LOG.EXCEPTION, str);
+
+                        DisConnect();
+                    }
+                    str = $"Can't Mewtocl Interface Error!! {e.Message}";
+                    CLogger.Add(LOG.EXCEPTION, str);
+                    nRetryCount++;
+                    Thread.Sleep(1000);
+                }
+            }
+        }
+
+        // 데이터 써주기..
+        // 리시브 처리도 함께함...
+
+        //// 데이터 읽기..데이터 파싱 처리..
+        //private void Data_Recv()
+        //{
+        //    // 읽고자 하는 데이터가 들어올경우...
+        //    if (m_Sp.BytesToRead > 0) 
+        //    {
+        //        string strDataPacket = "";
+        //        string strPacket = "";
+        //        string tmp_ID = "";
+
+        //        m_Sp.ReadTimeout = 1000;
+        //        strPacket = m_Sp.ReadTo(CR);// (buff, 0, nRead);
+        //        int nRead = m_Sp.BytesToRead;
+
+        //        //if (strPacket.Contains("!"))
+        //        //{
+        //        //    if (signal.Name.Contains("EXISTS")) Thread.Sleep(10);
+
+        //        //    m_Sp.DiscardInBuffer();
+        //        //    m_Sp.DiscardOutBuffer();
+        //        //    m_Sp.DiscardNull = true;
+        //        //    m_Sp.Write(strQuery);
+
+        //        //    strPacket = m_Sp.ReadTo(CR);// (buff, 0, nRead);
+        //        //    nRead = m_Sp.BytesToRead;
+        //        //}
+
+        //        if (strPacket.Length > 7)
+        //        {
+        //            byte[] buff = new byte[nRead];
+
+        //            //nStep = 2;
+        //            if (strPacket.Contains("%EE$RD"))
+        //            {
+        //                //nStep = 3;
+        //                if (strPacket.Contains("&"))
+        //                {
+        //                    //nStep = 4;
+        //                    strDataPacket = strPacket.Substring(6, strPacket.IndexOf("&") - 5);
+        //                    //nStep = 5;
+        //                    string tmptmp = strDataPacket.Substring(0, strDataPacket.Length - 3);
+        //                    //nStep = 6;
+
+        //                    List<string> tmpDATA = new List<string>();
+
+        //                    int j = 0;
+        //                    for (int i = 0; i < (tmptmp.Length / 4); i++)
+        //                    {
+        //                        tmpDATA.Add(tmptmp.Substring(j, 4));
+        //                        j += 4;
+        //                    }
+
+        //                    for (int k = 0; k < tmpDATA.Count; k++)
+        //                    {
+        //                        tmpDATA[k] = tmpDATA[k].ToString()[2].ToString() + tmpDATA[k].ToString()[3].ToString() + tmpDATA[k].ToString()[0].ToString() + tmpDATA[k].ToString()[1].ToString();
+        //                        tmp_ID += Hex2ASC(tmpDATA[k].Substring(2, 2));
+        //                    }
+
+        //                    // 아래 파싱 처리 필요..
+        //                    // 차후 NG BUFFER의 데이터 확인하여 동작 처리시 처리 필요..
+        //                    //signal.ID = tmp_ID;
+        //                }
+        //            }
+        //            else
+        //            {
+        //                if (strPacket[3] == '$')
+        //                {
+        //                    if (int.TryParse(strPacket[6].ToString(), out int value)) signal.Value = value;
+        //                }
+        //                else
+        //                {
+        //                }
+        //            }
+        //        }
+
+        //    }
+        //}
+
+        //private void ThreadMEWTOCOL(object ob)
+        //{
+        //    CThreadStatus ThreadStatus = (CThreadStatus)ob;
+
+        //    ThreadStatus.Start("MEWTOCOL THREAD");
+        //    CLogger.Add(LOG_TYPE.NORMAL, "MEWTOCOL THREAD");
+
+        //    int TIME_OUT = 3000;
+        //    CSignal_Mewtocol signal = null;
+        //    string strQuery = "";
+        //    //string strData = "";
+
+        //    try
+        //    {
+        //        while (!ThreadStatus.IsExit())
+        //        {
+        //            Thread.Sleep(100);
+        //            int START_TIME = Environment.TickCount;
+
+        //            if (IGlobal.Instance.System.REQ_SYSTEM_CLOSE) return;
+
+        //            {
+        //                try
+        //                {
+        //                    if (CommandQueue.Count > 0)
+        //                    {
+        //                        CommandQueue.TryDequeue(out strQuery);
+        //                    }
+        //                    else
+        //                    {
+        //                        signal = QueryQueue[(int)m_nQueryIndex % QueryQueue.Count];
+        //                        strQuery = signal.Packet;
+
+        //                        m_nQueryIndex++;
+
+        //                        if (strQuery == "")
+        //                        {
+        //                            continue;
+        //                        }
+        //                    }
+
+        //                    if (IGlobal.Instance.Mode.UseRms == false) continue;
+
+        //                    if (m_Sp.IsOpen == false) continue;
+
+        //                    m_Sp.DiscardInBuffer();
+        //                    m_Sp.DiscardOutBuffer();
+        //                    m_Sp.DiscardNull = true;
+        //                    m_Sp.Write(strQuery);
+        //                }
+        //                catch (Exception ex)
+        //                {
+        //                    CLogger.Add(LOG_TYPE.EXCEPTION, "[FAILED] {0}/{1}   Execption ==> {2}", MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name, ex.Message);
+        //                }
+
+        //                while (true)
+        //                {
+        //                    if (Environment.TickCount - START_TIME > TIME_OUT)
+        //                    {
+        //                        IsOpen = false;
+        //                    }
+
+        //                    string strDataPacket = "";
+        //                    string strPacket = "";
+
+        //                    //int nStep = 0;
+        //                    try
+        //                    {
+        //                        lock (readSync)
+        //                        {
+        //                            m_Sp.ReadTimeout = 1000;
+        //                            strPacket = m_Sp.ReadTo(CR);// (buff, 0, nRead);
+        //                            int nRead = m_Sp.BytesToRead;
+
+        //                            if (strPacket.Contains("!"))
+        //                            {
+        //                                if (signal.Name.Contains("EXISTS")) Thread.Sleep(10);
+
+        //                                m_Sp.DiscardInBuffer();
+        //                                m_Sp.DiscardOutBuffer();
+        //                                m_Sp.DiscardNull = true;
+        //                                m_Sp.Write(strQuery);
+
+        //                                strPacket = m_Sp.ReadTo(CR);// (buff, 0, nRead);
+        //                                nRead = m_Sp.BytesToRead;
+        //                            }
+
+        //                            if (strPacket.Length > 7)
+        //                            {
+        //                                //nStep = 11;
+        //                                IsOpen = true;
+
+        //                                byte[] buff = new byte[nRead];
+        //                                //nStep = 12;
+
+        //                                //nStep = 1;
+        //                                //int nSubstringIndex = m_strSumData.IndexOf('\r');
+        //                                //string strPacket = m_strSumData.Substring(0, nSubstringIndex);
+        //                                //m_strSumData = m_strSumData.Substring(nSubstringIndex + 1, m_strSumData.Length - nSubstringIndex - 1);
+
+        //                                if (strPacket.Length > 7)
+        //                                {
+        //                                    //nStep = 2;
+        //                                    if (strPacket.Contains("%EE$RD"))
+        //                                    {
+        //                                        //nStep = 3;
+        //                                        if (strPacket.Contains("&"))
+        //                                        {
+        //                                            //nStep = 4;
+        //                                            strDataPacket = strPacket.Substring(6, strPacket.IndexOf("&") - 5);
+        //                                            //nStep = 5;
+        //                                            string tmptmp = strDataPacket.Substring(0, strDataPacket.Length - 3);
+        //                                            //nStep = 6;
+
+        //                                            List<string> tmpDATA = new List<string>();
+
+        //                                            int j = 0;
+        //                                            for (int i = 0; i < (tmptmp.Length / 4); i++)
+        //                                            {
+        //                                                tmpDATA.Add(tmptmp.Substring(j, 4));
+        //                                                j += 4;
+        //                                            }
+
+        //                                            for (int k = 0; k < tmpDATA.Count; k++)
+        //                                            {
+        //                                                tmpDATA[k] = tmpDATA[k].ToString()[2].ToString() + tmpDATA[k].ToString()[3].ToString() + tmpDATA[k].ToString()[0].ToString() + tmpDATA[k].ToString()[1].ToString();
+        //                                                tmpID += Hex2ASC(tmpDATA[k].Substring(2, 2));
+        //                                            }
+        //                                            signal.ID = tmpID;
+
+        //                                            if (signal.ID.Contains('/'))
+        //                                            {
+        //                                            }
+        //                                            tmpID = "";
+        //                                        }
+        //                                    }
+        //                                    else
+        //                                    {
+        //                                        if (strPacket[3] == '$')
+        //                                        {
+        //                                            if (int.TryParse(strPacket[6].ToString(), out int value)) signal.Value = value;
+        //                                        }
+        //                                        else
+        //                                        {
+        //                                        }
+        //                                    }
+        //                                }
+        //                                else
+        //                                {
+        //                                }
+
+        //                                break;
+        //                            }
+        //                            else
+        //                            {
+        //                                Thread.Sleep(1);
+        //                                break;
+        //                            }
+        //                        }
+        //                    }
+        //                    catch (Exception ex)
+        //                    {
+        //                        CLogger.Add(LOG_TYPE.EXCEPTION, "[FAILED] {0}/{1}   Execption ==> {2}", MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name, ex.Message);
+        //                        break;
+        //                    }
+
+        //                    //Thread.Sleep(1);
+        //                    //if (IGlobal.Instance.System.REQ_SYSTEM_CLOSE) return;
+        //                }
+        //            }
+        //        }
+        //        ThreadStatus.End();
+        //    }
+        //    catch (Exception Desc)
+        //    {
+        //        CLogger.Add(LOG_TYPE.EXCEPTION, "[FAILED] MEWTOCOL Fail");
+        //        CLogger.Add(LOG_TYPE.EXCEPTION, "[FAILED] {0}/{1}   Execption ==> {2}", MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name, Desc.Message);
+        //        ThreadStatus.End();
+        //        this.DisConnect();
+        //    }
+        //}
+
+        public string Hex2ASC(string hex)
+        {
+            string res = String.Empty;
+
+            for (int i = 0; i < hex.Length; i = i + 2)
+            {
+                string Char2Con = hex.Substring(i, 2);
+
+                int n = Convert.ToInt32(Char2Con, 16);
+
+                char c = (char)n;
+
+                res += c.ToString();
+            }
+
+            return res;
+        }
+
+        public string GetBufferInPrevCall(int nIndex)
+        {
+            return Buffer_InBoard_PrevCall[nIndex];
+        }
+
+        public void SetBufferInPrevCall(int nIndex, string inData)
+        {
+            Buffer_InBoard_PrevCall[nIndex] = inData;
+        }
+
+        //public bool IsOpen()
+        //{
+        //    bool bIsOpen = false;
+        //    if (!isSimulMode)
+        //        bIsOpen = Mewtocol.IsOpen;
+        //    else
+        //        bIsOpen = bOpen;
+        //    return bIsOpen;
+        //}
+
+        // 폴란드에서만 사용...
+        // 설비로 보드 진입중 플래그 확인
+        // 해당 보드의 플래그가 ON일때만...보드 ID 쓰기..
+        public bool GetInPutBoard()
+        {
+            bool ret = false;
+
+            if (INPUT_BOARD_ING.Value == 1) ret = true;
+
+            return ret;
+        }
+
+
+        public DateTime GetTime(int nIndex)
+        {
+            return inTimes[nIndex];
+        }
+
+        public void SetTime(int nIndex, DateTime dt)
+        {
+            if (nIndex < 0 || nIndex > 12) return;
+            inTimes[nIndex] = dt;
+        }
+
+        public int GetFirstInBuffer()
+        {
+            DateTime findTime = DateTime.Now;
+            int nRet = -1;
+            for (int i = 0; i < inTimes.Count; i++)
+            {
+                if (findTime > GetTime(i) && GetTime(i) != new DateTime())
+                {
+                    findTime = GetTime(i);
+                    nRet = i;
+                }
+            }
+            return nRet;
+        }
+
+        public void SetID(int nIndex, string strID)
+        {
+            if (isSimulMode)
+                BUFFERS[nIndex].SetID(strID);
+            //else
+            //    Mewtocol.BUFFER_ALL[nIndex].ID = strID;
+        }
+
+        public string GetInStageID()
+        {
+            string strRet = "";
+            if (!isSimulMode)
+            {
+                // 광주 공통 사이트
+                if (Global.Instance.Setting.Enviroment.Country == Setting_Enviroment.COUNTRY.KOR) strRet = CALL_STAGE_BOARD_ID.ID;
+                // 폴란드 사이트
+                else strRet = OUTPUT_BOARD_CONVEYOR_ID.ID;
+            }
+
+
+            return strRet;
+        }
+
+        public bool GetInStageBoardOut()
+        {
+            bool bRet = false;
+            if (!isSimulMode)
+                bRet = CALL_STAGE_OUT.IsOn;
+            return bRet;
+        }
+
+        public bool GetInStageExists()
+        {
+            bool bRet = false;
+
+            if (!isSimulMode)
+                bRet = CALL_STAGE_EXISTS.IsOn;
+            return bRet;
+        }
+
+        public int GetBufferCount()
+        {
+            return BUFFERS.Count;
+        }
+
+        public int GetPrevCallCount()
+        {
+            return Buffer_InBoard_PrevCall.Count;
+        }
+
+        public void Command_PCBID_END_JUDGE(bool bOK)
+        {
+            // 해당 부분은 광주 사이트만 존재함..
+            if (Global.Instance.Setting.Enviroment.Country == Setting_Enviroment.COUNTRY.KOR)
+            {
+                if (!isSimulMode)
+                {
+                    CommandQueue.Enqueue(("R", "709", typeof(bool), bOK));
+                }
+                else
+                {
+                    if (!bOK)
+                    {
+                        //int nBufferNo = GetEmptyBufferNo();
+                        //if (nBufferNo >= 0)
+                        //    BUFFERS[nBufferNo].SetData(true, false, inBuffer);
+                        //else
+                        //    IF_Util.ShowMessageBox("ALARM", "NG Buffer Full, Please Empty NG Buffer !!!");
+                    }
+                }
+            }
+        }
+
+        private QRParser inQRData = new QRParser();
+
+        public string GetQRTitle()
+        {
+            return inQRData.GetQRTitle();
+        }
+
+        public QRParser GetQR()
+        {
+            return inQRData;
+        }
+
+        public void SetQRStr(string strQR)
+        {
+            inQRData = new QRParser(strQR, true);
+        }
+
+        // PCB 보드 쓰기...
+
+        //public int GetEmptyBufferNo()
+        //{
+        //    int nRet = -1;
+        //    Random rand = new Random();
+        //    List<int> Empties = GetAvailBuffer();
+        //    if (Empties.Count > 0)
+        //        nRet = Empties[rand.Next(0, Empties.Count)];
+
+        //    //for (int i = 0; i < BUFFERS.Count; i++)
+        //    //{
+        //    //    if (BUFFERS[i].Exist == false)
+        //    //    {
+        //    //        nRet = i;
+        //    //        break;
+        //    //    }
+        //    //}
+        //    if (nRet < 0)
+        //    {
+        //        int delBuffNo = GetFirstInBuffer();
+        //        Command_FinalOK(delBuffNo);
+        //        nRet = delBuffNo;
+        //    }
+        //    return nRet;
+        //}
+
+
+        public bool Command_Stage_Call()
+        {
+            bool bRet = true;
+            if (!isSimulMode)
+            {
+                CommandQueue.Enqueue(("R", "70F", typeof(bool), true));
+            }
+            return bRet;
+        }
+
+
+        public bool Command_Board_Pass()
+        {
+            bool bRet = true;
+            // 광주 사이트...
+            if (Global.Instance.Setting.Enviroment.Country == Setting_Enviroment.COUNTRY.KOR)
+            {
+                if (IF_Util.ShowMessageBox("CHECK", $"Do you want to Call Stage Board Pass?"))
+                {
+                    if (!isSimulMode)
+                    {
+                        CommandQueue.Enqueue(("R", "70D", typeof(bool), true));
+                    }
+                }
+            }
+            // 폴란드 버젼..
+            else
+            {
+                if (IF_Util.ShowMessageBox("CHECK", $"Do you want to NG Conveyor Board Pass?"))
+                {
+                    if (!isSimulMode)
+                    {
+                        CommandQueue.Enqueue(("R", "70E", typeof(bool), true));
+                    }
+                }
+            }
+
+            return bRet;
+        }
+
+        // 해당 부분은 광주에만 있음..
+        public bool Command_CallStage_Board_Retest()
+        {
+            bool bRet = true;
+            // 광주 사이트만 존재..
+            if (Global.Instance.Setting.Enviroment.Country == Setting_Enviroment.COUNTRY.KOR)
+            {
+                if (IF_Util.ShowMessageBox("CHECK", $"Do you want to Call Stage Re-test?"))
+                {
+                    if (!isSimulMode)
+                    {
+                        CommandQueue.Enqueue(("R", "70E", typeof(bool), true));
+                        //bRet = Writebit('r', "70E", true);
+                    }
+                }
+            }
+
+            return bRet;
+        }
+
+
+
+        public bool Command_Board_Out(int nBufferID)
+        {
+            bool bRet = true;
+
+            // 광주와 폴란드 버젼을 별도로 분리 처리...
+            // 어드레스가 다름..
+            // 광주 사이트...
+            if (Global.Instance.Setting.Enviroment.Country == Setting_Enviroment.COUNTRY.KOR)
+            {
+                if (IF_Util.ShowMessageBox("CHECK", $"Do you want to Board Call Stage move?"))
+                {
+                    if (!isSimulMode)
+                    {
+                        CommandQueue.Enqueue(("D", "9702", typeof(short), nBufferID));
+                        CommandQueue.Enqueue(("R", "70C", typeof(bool), true));
+                    }
+                    else
+                    {
+                        BUFFERS[nBufferID].SetData(false, true, "");
+                    }
+
+                    SetTime(nBufferID, new DateTime());
+                }
+            }
+            // 폴란드 버젼
+            else
+            {
+                if (IF_Util.ShowMessageBox("CHECK", $"Do you want to Board NG Conveyor move?"))
+                {
+                    if (!isSimulMode)
+                    {
+                        CommandQueue.Enqueue(("D", "9710", typeof(short), nBufferID));
+                        CommandQueue.Enqueue(("R", "70C", typeof(bool), true));
+                    }
+                    else
+                    {
+                        BUFFERS[nBufferID].SetData(false, true, "");
+                    }
+
+                    SetTime(nBufferID, new DateTime());
+                }
+            }
+
+            return bRet;
+        }
+    }
+
+    public class CSignal_Mewtocol
+    {
+        public string Packet = "";
+        public string Addr = "";
+        public string Name = "";
+        public int Value = 0;
+        public string ID = "";
+
+        public bool IsOn
+        {
+            get { return Value == 1; }
+        }
+
+        public CSignal_Mewtocol(string strPacket, string strName, string strAddr)
+        {
+            this.Packet = strPacket;
+            this.Name = strName;
+            this.Addr = strAddr;
+        }
+
+        public CSignal_Mewtocol()
+        {
+        }
+    }
+
+    public class CBufferData
+    {
+        public CSignal_Mewtocol Exist;
+        public CSignal_Mewtocol Result;
+        public CSignal_Mewtocol ID;
+
+        public CBufferData(CSignal_Mewtocol exist, CSignal_Mewtocol result, CSignal_Mewtocol id)
+        {
+            Exist = exist;
+            Result = result;
+            ID = id;
+        }
+
+        public string GetExist()
+        {
+            return Exist.IsOn ? "V" : "";
+        }
+
+        public string GetResult()
+        {
+            return Result.IsOn ? "OK" : "NG";
+        }
+
+        public string GetID()
+        {
+            return ID.ID.Replace("\0", "");
+        }
+    }
+
+    public class CBufferSimul
+    {
+        public enum ExistNum
+        {
+            X = 0,
+            V,
+        }
+
+        public bool Exist;
+        public bool Result;
+        public string ID;
+
+        public CBufferSimul(bool exist, bool result, string id)
+        {
+            Exist = exist;
+            Result = result;
+            ID = id;
+        }
+
+        public string GetExist()
+        {
+            return Exist ? "V" : "";
+        }
+
+        public string GetResult()
+        {
+            return Result ? "OK" : "NG";
+        }
+
+        public string GetID()
+        {
+            return ID;
+        }
+
+        public void SetID(string strID)
+        {
+            ID = strID;
+        }
+
+        public void SetData(bool bExist, bool bResult, string strID)
+        {
+            Exist = bExist;
+            Result = bResult;
+            ID = strID;
+        }
+    }
+}

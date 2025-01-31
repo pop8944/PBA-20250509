@@ -1,0 +1,1287 @@
+﻿namespace IntelligentFactory
+{
+    partial class FormMenu_Sub
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMenu_Sub));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.pnFormMain = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblDrivedeE = new System.Windows.Forms.Label();
+            this.pb_E = new System.Windows.Forms.ProgressBar();
+            this.lbldriveE = new System.Windows.Forms.Label();
+            this.lblDrivedeD = new System.Windows.Forms.Label();
+            this.pb_D = new System.Windows.Forms.ProgressBar();
+            this.lbldriveD = new System.Windows.Forms.Label();
+            this.lblDrivedeC = new System.Windows.Forms.Label();
+            this.pb_C = new System.Windows.Forms.ProgressBar();
+            this.lbldriveC = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnRMS_Retest = new System.Windows.Forms.Button();
+            this.btnRMS_BoardOut = new System.Windows.Forms.Button();
+            this.btnRMS_StageBoardRetest = new System.Windows.Forms.Button();
+            this.btnRMS_OK = new System.Windows.Forms.Button();
+            this.btnRMS_BoardPass = new System.Windows.Forms.Button();
+            this.btnRMS_StageCall = new System.Windows.Forms.Button();
+            this.lbSelectedBuffer = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lbStageOut = new System.Windows.Forms.Label();
+            this.lbRMS_CalledID = new System.Windows.Forms.Label();
+            this.lbStageExist = new System.Windows.Forms.Label();
+            this.btn_JUDGE_OK = new System.Windows.Forms.Button();
+            this.btnConvert = new System.Windows.Forms.Button();
+            this.btnManualInsp = new System.Windows.Forms.Button();
+            this.lvLogManager = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.gridArray = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbOutputResultNG = new System.Windows.Forms.Label();
+            this.lbOutputResultOK = new System.Windows.Forms.Label();
+            this.lbInputStart = new System.Windows.Forms.Label();
+            this.lbRmsNonUse = new System.Windows.Forms.Label();
+            this.cogDisplay_Array1 = new Cognex.VisionPro.Display.CogDisplay();
+            this.lb_Buffer = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnCountReset = new System.Windows.Forms.Button();
+            this.gridBuffer = new System.Windows.Forms.DataGridView();
+            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbNGfalsePER = new System.Windows.Forms.Label();
+            this.lbNGtruePer = new System.Windows.Forms.Label();
+            this.lbStageBoardID = new System.Windows.Forms.Label();
+            this.lbCountNG_F = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lbCountYield = new System.Windows.Forms.Label();
+            this.lbCountNG_T = new System.Windows.Forms.Label();
+            this.lbCountOK = new System.Windows.Forms.Label();
+            this.lbCountTOTAL = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cogDisplay_Array2 = new Cognex.VisionPro.Display.CogDisplay();
+            this.cogDisplay_Array4 = new Cognex.VisionPro.Display.CogDisplay();
+            this.cogDisplay_Array3 = new Cognex.VisionPro.Display.CogDisplay();
+            this.timerIO = new System.Windows.Forms.Timer(this.components);
+            this.timerStatus = new System.Windows.Forms.Timer(this.components);
+            this.timerMode = new System.Windows.Forms.Timer(this.components);
+            this.tmr_Disp = new System.Windows.Forms.Timer(this.components);
+            this.lblAutoFileDel_C = new System.Windows.Forms.Label();
+            this.lblAutoFileDel_D = new System.Windows.Forms.Label();
+            this.lblAutoFileDel_E = new System.Windows.Forms.Label();
+            this.pnFormMain.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridArray)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cogDisplay_Array1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridBuffer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cogDisplay_Array2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cogDisplay_Array4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cogDisplay_Array3)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // pnFormMain
+            // 
+            this.pnFormMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.pnFormMain.Controls.Add(this.panel2);
+            this.pnFormMain.Controls.Add(this.panel1);
+            this.pnFormMain.Controls.Add(this.btn_JUDGE_OK);
+            this.pnFormMain.Controls.Add(this.btnConvert);
+            this.pnFormMain.Controls.Add(this.btnManualInsp);
+            this.pnFormMain.Controls.Add(this.lvLogManager);
+            this.pnFormMain.Controls.Add(this.gridArray);
+            this.pnFormMain.Controls.Add(this.label2);
+            this.pnFormMain.Controls.Add(this.lbOutputResultNG);
+            this.pnFormMain.Controls.Add(this.lbOutputResultOK);
+            this.pnFormMain.Controls.Add(this.lbInputStart);
+            this.pnFormMain.Controls.Add(this.lbRmsNonUse);
+            this.pnFormMain.Controls.Add(this.cogDisplay_Array1);
+            this.pnFormMain.Controls.Add(this.lb_Buffer);
+            this.pnFormMain.Controls.Add(this.label1);
+            this.pnFormMain.Controls.Add(this.btnCountReset);
+            this.pnFormMain.Controls.Add(this.gridBuffer);
+            this.pnFormMain.Controls.Add(this.lbNGfalsePER);
+            this.pnFormMain.Controls.Add(this.lbNGtruePer);
+            this.pnFormMain.Controls.Add(this.lbStageBoardID);
+            this.pnFormMain.Controls.Add(this.lbCountNG_F);
+            this.pnFormMain.Controls.Add(this.label10);
+            this.pnFormMain.Controls.Add(this.lbCountYield);
+            this.pnFormMain.Controls.Add(this.lbCountNG_T);
+            this.pnFormMain.Controls.Add(this.lbCountOK);
+            this.pnFormMain.Controls.Add(this.lbCountTOTAL);
+            this.pnFormMain.Controls.Add(this.label7);
+            this.pnFormMain.Controls.Add(this.label6);
+            this.pnFormMain.Controls.Add(this.label5);
+            this.pnFormMain.Controls.Add(this.label4);
+            this.pnFormMain.Controls.Add(this.label3);
+            this.pnFormMain.Controls.Add(this.cogDisplay_Array2);
+            this.pnFormMain.Controls.Add(this.cogDisplay_Array4);
+            this.pnFormMain.Controls.Add(this.cogDisplay_Array3);
+            this.pnFormMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnFormMain.Location = new System.Drawing.Point(0, 0);
+            this.pnFormMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnFormMain.Name = "pnFormMain";
+            this.pnFormMain.Size = new System.Drawing.Size(1835, 924);
+            this.pnFormMain.TabIndex = 896;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.lblAutoFileDel_E);
+            this.panel2.Controls.Add(this.lblAutoFileDel_D);
+            this.panel2.Controls.Add(this.lblAutoFileDel_C);
+            this.panel2.Controls.Add(this.lblDrivedeE);
+            this.panel2.Controls.Add(this.pb_E);
+            this.panel2.Controls.Add(this.lbldriveE);
+            this.panel2.Controls.Add(this.lblDrivedeD);
+            this.panel2.Controls.Add(this.pb_D);
+            this.panel2.Controls.Add(this.lbldriveD);
+            this.panel2.Controls.Add(this.lblDrivedeC);
+            this.panel2.Controls.Add(this.pb_C);
+            this.panel2.Controls.Add(this.lbldriveC);
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Location = new System.Drawing.Point(1260, 628);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(398, 144);
+            this.panel2.TabIndex = 2597;
+            // 
+            // lblDrivedeE
+            // 
+            this.lblDrivedeE.BackColor = System.Drawing.Color.Transparent;
+            this.lblDrivedeE.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDrivedeE.ForeColor = System.Drawing.Color.White;
+            this.lblDrivedeE.Location = new System.Drawing.Point(236, 106);
+            this.lblDrivedeE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDrivedeE.Name = "lblDrivedeE";
+            this.lblDrivedeE.Size = new System.Drawing.Size(127, 30);
+            this.lblDrivedeE.TabIndex = 3353;
+            this.lblDrivedeE.Text = "Usage";
+            this.lblDrivedeE.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pb_E
+            // 
+            this.pb_E.Location = new System.Drawing.Point(115, 106);
+            this.pb_E.Name = "pb_E";
+            this.pb_E.Size = new System.Drawing.Size(114, 30);
+            this.pb_E.TabIndex = 3351;
+            // 
+            // lbldriveE
+            // 
+            this.lbldriveE.BackColor = System.Drawing.Color.Transparent;
+            this.lbldriveE.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lbldriveE.ForeColor = System.Drawing.Color.White;
+            this.lbldriveE.Location = new System.Drawing.Point(79, 106);
+            this.lbldriveE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbldriveE.Name = "lbldriveE";
+            this.lbldriveE.Size = new System.Drawing.Size(39, 30);
+            this.lbldriveE.TabIndex = 3352;
+            this.lbldriveE.Text = "E:";
+            this.lbldriveE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblDrivedeD
+            // 
+            this.lblDrivedeD.BackColor = System.Drawing.Color.Transparent;
+            this.lblDrivedeD.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDrivedeD.ForeColor = System.Drawing.Color.White;
+            this.lblDrivedeD.Location = new System.Drawing.Point(235, 73);
+            this.lblDrivedeD.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDrivedeD.Name = "lblDrivedeD";
+            this.lblDrivedeD.Size = new System.Drawing.Size(127, 30);
+            this.lblDrivedeD.TabIndex = 3350;
+            this.lblDrivedeD.Text = "Usage";
+            this.lblDrivedeD.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pb_D
+            // 
+            this.pb_D.Location = new System.Drawing.Point(115, 73);
+            this.pb_D.Name = "pb_D";
+            this.pb_D.Size = new System.Drawing.Size(114, 30);
+            this.pb_D.TabIndex = 3348;
+            // 
+            // lbldriveD
+            // 
+            this.lbldriveD.BackColor = System.Drawing.Color.Transparent;
+            this.lbldriveD.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lbldriveD.ForeColor = System.Drawing.Color.White;
+            this.lbldriveD.Location = new System.Drawing.Point(79, 73);
+            this.lbldriveD.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbldriveD.Name = "lbldriveD";
+            this.lbldriveD.Size = new System.Drawing.Size(39, 30);
+            this.lbldriveD.TabIndex = 3349;
+            this.lbldriveD.Text = "D:";
+            this.lbldriveD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblDrivedeC
+            // 
+            this.lblDrivedeC.BackColor = System.Drawing.Color.Transparent;
+            this.lblDrivedeC.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDrivedeC.ForeColor = System.Drawing.Color.White;
+            this.lblDrivedeC.Location = new System.Drawing.Point(235, 39);
+            this.lblDrivedeC.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDrivedeC.Name = "lblDrivedeC";
+            this.lblDrivedeC.Size = new System.Drawing.Size(127, 30);
+            this.lblDrivedeC.TabIndex = 3347;
+            this.lblDrivedeC.Text = "Usage";
+            this.lblDrivedeC.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pb_C
+            // 
+            this.pb_C.Location = new System.Drawing.Point(115, 39);
+            this.pb_C.Name = "pb_C";
+            this.pb_C.Size = new System.Drawing.Size(114, 30);
+            this.pb_C.TabIndex = 3345;
+            // 
+            // lbldriveC
+            // 
+            this.lbldriveC.BackColor = System.Drawing.Color.Transparent;
+            this.lbldriveC.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lbldriveC.ForeColor = System.Drawing.Color.White;
+            this.lbldriveC.Location = new System.Drawing.Point(79, 39);
+            this.lbldriveC.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbldriveC.Name = "lbldriveC";
+            this.lbldriveC.Size = new System.Drawing.Size(39, 30);
+            this.lbldriveC.TabIndex = 3346;
+            this.lbldriveC.Text = "C:";
+            this.lbldriveC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label9
+            // 
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(73)))), ((int)(((byte)(108)))));
+            this.label9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label9.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(0, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(398, 31);
+            this.label9.TabIndex = 2574;
+            this.label9.Text = "Driver Status";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.btnRMS_Retest);
+            this.panel1.Controls.Add(this.btnRMS_BoardOut);
+            this.panel1.Controls.Add(this.btnRMS_StageBoardRetest);
+            this.panel1.Controls.Add(this.btnRMS_OK);
+            this.panel1.Controls.Add(this.btnRMS_BoardPass);
+            this.panel1.Controls.Add(this.btnRMS_StageCall);
+            this.panel1.Controls.Add(this.lbSelectedBuffer);
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.lbStageOut);
+            this.panel1.Controls.Add(this.lbRMS_CalledID);
+            this.panel1.Controls.Add(this.lbStageExist);
+            this.panel1.Location = new System.Drawing.Point(1260, 406);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(398, 216);
+            this.panel1.TabIndex = 2596;
+            // 
+            // label8
+            // 
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label8.Font = new System.Drawing.Font("Arial", 10F);
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label8.Location = new System.Drawing.Point(4, 5);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(92, 132);
+            this.label8.TabIndex = 2054;
+            this.label8.Text = "STAGE";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnRMS_Retest
+            // 
+            this.btnRMS_Retest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.btnRMS_Retest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRMS_Retest.Font = new System.Drawing.Font("Arial", 10F);
+            this.btnRMS_Retest.ForeColor = System.Drawing.Color.White;
+            this.btnRMS_Retest.Location = new System.Drawing.Point(97, 172);
+            this.btnRMS_Retest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRMS_Retest.Name = "btnRMS_Retest";
+            this.btnRMS_Retest.Size = new System.Drawing.Size(147, 32);
+            this.btnRMS_Retest.TabIndex = 2052;
+            this.btnRMS_Retest.Text = "RE-TEST";
+            this.btnRMS_Retest.UseVisualStyleBackColor = false;
+            this.btnRMS_Retest.Click += new System.EventHandler(this.btnRMS_Retest_Click);
+            // 
+            // btnRMS_BoardOut
+            // 
+            this.btnRMS_BoardOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.btnRMS_BoardOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRMS_BoardOut.Font = new System.Drawing.Font("Arial", 10F);
+            this.btnRMS_BoardOut.ForeColor = System.Drawing.Color.White;
+            this.btnRMS_BoardOut.Location = new System.Drawing.Point(245, 104);
+            this.btnRMS_BoardOut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRMS_BoardOut.Name = "btnRMS_BoardOut";
+            this.btnRMS_BoardOut.Size = new System.Drawing.Size(147, 32);
+            this.btnRMS_BoardOut.TabIndex = 2580;
+            this.btnRMS_BoardOut.Text = "BOARD OUT";
+            this.btnRMS_BoardOut.UseVisualStyleBackColor = false;
+            this.btnRMS_BoardOut.Click += new System.EventHandler(this.btnRMS_BoardOut_Click);
+            // 
+            // btnRMS_StageBoardRetest
+            // 
+            this.btnRMS_StageBoardRetest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.btnRMS_StageBoardRetest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRMS_StageBoardRetest.Font = new System.Drawing.Font("Arial", 10F);
+            this.btnRMS_StageBoardRetest.ForeColor = System.Drawing.Color.White;
+            this.btnRMS_StageBoardRetest.Location = new System.Drawing.Point(97, 71);
+            this.btnRMS_StageBoardRetest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRMS_StageBoardRetest.Name = "btnRMS_StageBoardRetest";
+            this.btnRMS_StageBoardRetest.Size = new System.Drawing.Size(147, 32);
+            this.btnRMS_StageBoardRetest.TabIndex = 2579;
+            this.btnRMS_StageBoardRetest.Text = "RE-TEST";
+            this.btnRMS_StageBoardRetest.UseVisualStyleBackColor = false;
+            this.btnRMS_StageBoardRetest.Click += new System.EventHandler(this.btnRMS_StageBoardRetest_Click);
+            // 
+            // btnRMS_OK
+            // 
+            this.btnRMS_OK.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.btnRMS_OK.Enabled = false;
+            this.btnRMS_OK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRMS_OK.Font = new System.Drawing.Font("Arial", 10F);
+            this.btnRMS_OK.ForeColor = System.Drawing.Color.White;
+            this.btnRMS_OK.Location = new System.Drawing.Point(245, 172);
+            this.btnRMS_OK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRMS_OK.Name = "btnRMS_OK";
+            this.btnRMS_OK.Size = new System.Drawing.Size(147, 32);
+            this.btnRMS_OK.TabIndex = 2053;
+            this.btnRMS_OK.Text = "FINAL-OK";
+            this.btnRMS_OK.UseVisualStyleBackColor = false;
+            this.btnRMS_OK.Click += new System.EventHandler(this.btnRMS_OK_Click);
+            // 
+            // btnRMS_BoardPass
+            // 
+            this.btnRMS_BoardPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.btnRMS_BoardPass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRMS_BoardPass.Font = new System.Drawing.Font("Arial", 10F);
+            this.btnRMS_BoardPass.ForeColor = System.Drawing.Color.White;
+            this.btnRMS_BoardPass.Location = new System.Drawing.Point(97, 104);
+            this.btnRMS_BoardPass.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRMS_BoardPass.Name = "btnRMS_BoardPass";
+            this.btnRMS_BoardPass.Size = new System.Drawing.Size(147, 32);
+            this.btnRMS_BoardPass.TabIndex = 2578;
+            this.btnRMS_BoardPass.Text = "BOARD PASS";
+            this.btnRMS_BoardPass.UseVisualStyleBackColor = false;
+            this.btnRMS_BoardPass.Click += new System.EventHandler(this.btnRMS_BoardPass_Click);
+            // 
+            // btnRMS_StageCall
+            // 
+            this.btnRMS_StageCall.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.btnRMS_StageCall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRMS_StageCall.Font = new System.Drawing.Font("Arial", 10F);
+            this.btnRMS_StageCall.ForeColor = System.Drawing.Color.White;
+            this.btnRMS_StageCall.Location = new System.Drawing.Point(245, 71);
+            this.btnRMS_StageCall.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRMS_StageCall.Name = "btnRMS_StageCall";
+            this.btnRMS_StageCall.Size = new System.Drawing.Size(147, 32);
+            this.btnRMS_StageCall.TabIndex = 2577;
+            this.btnRMS_StageCall.Text = "STAGE CALL";
+            this.btnRMS_StageCall.UseVisualStyleBackColor = false;
+            this.btnRMS_StageCall.Click += new System.EventHandler(this.btnRMS_StageCall_Click);
+            // 
+            // lbSelectedBuffer
+            // 
+            this.lbSelectedBuffer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.lbSelectedBuffer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbSelectedBuffer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbSelectedBuffer.Font = new System.Drawing.Font("Arial", 10F);
+            this.lbSelectedBuffer.ForeColor = System.Drawing.Color.Yellow;
+            this.lbSelectedBuffer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbSelectedBuffer.Location = new System.Drawing.Point(97, 138);
+            this.lbSelectedBuffer.Name = "lbSelectedBuffer";
+            this.lbSelectedBuffer.Size = new System.Drawing.Size(295, 32);
+            this.lbSelectedBuffer.TabIndex = 2002;
+            this.lbSelectedBuffer.Text = "INDEX ==>";
+            this.lbSelectedBuffer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label13
+            // 
+            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label13.Font = new System.Drawing.Font("Arial", 10F);
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label13.Location = new System.Drawing.Point(4, 138);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(92, 67);
+            this.label13.TabIndex = 2572;
+            this.label13.Text = "BUFFER";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbStageOut
+            // 
+            this.lbStageOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.lbStageOut.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbStageOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbStageOut.Font = new System.Drawing.Font("Arial", 10F);
+            this.lbStageOut.ForeColor = System.Drawing.Color.White;
+            this.lbStageOut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbStageOut.Location = new System.Drawing.Point(245, 5);
+            this.lbStageOut.Name = "lbStageOut";
+            this.lbStageOut.Size = new System.Drawing.Size(147, 32);
+            this.lbStageOut.TabIndex = 2057;
+            this.lbStageOut.Text = "OUT";
+            this.lbStageOut.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbRMS_CalledID
+            // 
+            this.lbRMS_CalledID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.lbRMS_CalledID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbRMS_CalledID.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbRMS_CalledID.Font = new System.Drawing.Font("Arial", 10F);
+            this.lbRMS_CalledID.ForeColor = System.Drawing.Color.White;
+            this.lbRMS_CalledID.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbRMS_CalledID.Location = new System.Drawing.Point(97, 38);
+            this.lbRMS_CalledID.Name = "lbRMS_CalledID";
+            this.lbRMS_CalledID.Size = new System.Drawing.Size(295, 32);
+            this.lbRMS_CalledID.TabIndex = 2055;
+            this.lbRMS_CalledID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbStageExist
+            // 
+            this.lbStageExist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.lbStageExist.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbStageExist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbStageExist.Font = new System.Drawing.Font("Arial", 10F);
+            this.lbStageExist.ForeColor = System.Drawing.Color.White;
+            this.lbStageExist.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbStageExist.Location = new System.Drawing.Point(97, 5);
+            this.lbStageExist.Name = "lbStageExist";
+            this.lbStageExist.Size = new System.Drawing.Size(147, 32);
+            this.lbStageExist.TabIndex = 2056;
+            this.lbStageExist.Text = "EXIST";
+            this.lbStageExist.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btn_JUDGE_OK
+            // 
+            this.btn_JUDGE_OK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_JUDGE_OK.Font = new System.Drawing.Font("Arial", 9F);
+            this.btn_JUDGE_OK.ForeColor = System.Drawing.Color.White;
+            this.btn_JUDGE_OK.Location = new System.Drawing.Point(1010, 33);
+            this.btn_JUDGE_OK.Name = "btn_JUDGE_OK";
+            this.btn_JUDGE_OK.Size = new System.Drawing.Size(133, 33);
+            this.btn_JUDGE_OK.TabIndex = 2595;
+            this.btn_JUDGE_OK.Text = "Judge to OK";
+            this.btn_JUDGE_OK.UseVisualStyleBackColor = true;
+            this.btn_JUDGE_OK.Click += new System.EventHandler(this.btn_JUDGE_OK_Click);
+            // 
+            // btnConvert
+            // 
+            this.btnConvert.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConvert.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConvert.ForeColor = System.Drawing.Color.White;
+            this.btnConvert.Location = new System.Drawing.Point(868, 33);
+            this.btnConvert.Name = "btnConvert";
+            this.btnConvert.Size = new System.Drawing.Size(140, 33);
+            this.btnConvert.TabIndex = 2594;
+            this.btnConvert.Text = "Convert Rcp";
+            this.btnConvert.UseVisualStyleBackColor = true;
+            this.btnConvert.Visible = false;
+            this.btnConvert.Click += new System.EventHandler(this.btnTest_Click);
+            // 
+            // btnManualInsp
+            // 
+            this.btnManualInsp.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnManualInsp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManualInsp.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnManualInsp.ForeColor = System.Drawing.Color.White;
+            this.btnManualInsp.Location = new System.Drawing.Point(1144, 33);
+            this.btnManualInsp.Name = "btnManualInsp";
+            this.btnManualInsp.Size = new System.Drawing.Size(108, 33);
+            this.btnManualInsp.TabIndex = 2593;
+            this.btnManualInsp.Text = "INSP";
+            this.btnManualInsp.UseVisualStyleBackColor = true;
+            this.btnManualInsp.Click += new System.EventHandler(this.btnManualInsp_Click);
+            // 
+            // lvLogManager
+            // 
+            this.lvLogManager.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(54)))), ((int)(((byte)(76)))));
+            this.lvLogManager.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lvLogManager.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.lvLogManager.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvLogManager.ForeColor = System.Drawing.Color.White;
+            this.lvLogManager.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.lvLogManager.HideSelection = false;
+            this.lvLogManager.Location = new System.Drawing.Point(1257, 778);
+            this.lvLogManager.MultiSelect = false;
+            this.lvLogManager.Name = "lvLogManager";
+            this.lvLogManager.Size = new System.Drawing.Size(576, 142);
+            this.lvLogManager.TabIndex = 0;
+            this.lvLogManager.UseCompatibleStateImageBehavior = false;
+            this.lvLogManager.View = System.Windows.Forms.View.Details;
+            this.lvLogManager.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvLogManager_MouseDoubleClick);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Width = 800;
+            // 
+            // gridArray
+            // 
+            this.gridArray.AllowUserToAddRows = false;
+            this.gridArray.AllowUserToDeleteRows = false;
+            this.gridArray.AllowUserToResizeColumns = false;
+            this.gridArray.AllowUserToResizeRows = false;
+            this.gridArray.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.gridArray.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle46.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            dataGridViewCellStyle46.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle46.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle46.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            dataGridViewCellStyle46.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle46.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridArray.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle46;
+            this.gridArray.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridArray.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.Column3});
+            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle48.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            dataGridViewCellStyle48.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle48.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle48.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            dataGridViewCellStyle48.SelectionForeColor = System.Drawing.Color.Yellow;
+            dataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridArray.DefaultCellStyle = dataGridViewCellStyle48;
+            this.gridArray.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.gridArray.EnableHeadersVisualStyles = false;
+            this.gridArray.GridColor = System.Drawing.Color.White;
+            this.gridArray.Location = new System.Drawing.Point(4, 778);
+            this.gridArray.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gridArray.MultiSelect = false;
+            this.gridArray.Name = "gridArray";
+            this.gridArray.ReadOnly = true;
+            dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle49.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle49.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle49.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle49.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle49.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle49.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridArray.RowHeadersDefaultCellStyle = dataGridViewCellStyle49;
+            this.gridArray.RowHeadersVisible = false;
+            this.gridArray.RowHeadersWidth = 62;
+            this.gridArray.RowTemplate.Height = 50;
+            this.gridArray.RowTemplate.ReadOnly = true;
+            this.gridArray.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridArray.Size = new System.Drawing.Size(1251, 141);
+            this.gridArray.TabIndex = 2589;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.FillWeight = 150F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Array";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle47;
+            this.dataGridViewTextBoxColumn2.FillWeight = 300F;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Barcode";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 400;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Result";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 250;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Desc";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 490;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(1020, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(108, 34);
+            this.label2.TabIndex = 2588;
+            this.label2.Text = "I/O";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbOutputResultNG
+            // 
+            this.lbOutputResultNG.BackColor = System.Drawing.Color.DimGray;
+            this.lbOutputResultNG.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbOutputResultNG.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.lbOutputResultNG.ForeColor = System.Drawing.Color.White;
+            this.lbOutputResultNG.Location = new System.Drawing.Point(1333, 1);
+            this.lbOutputResultNG.Name = "lbOutputResultNG";
+            this.lbOutputResultNG.Size = new System.Drawing.Size(100, 35);
+            this.lbOutputResultNG.TabIndex = 2587;
+            this.lbOutputResultNG.Text = "RESULT NG";
+            this.lbOutputResultNG.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbOutputResultOK
+            // 
+            this.lbOutputResultOK.BackColor = System.Drawing.Color.DimGray;
+            this.lbOutputResultOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbOutputResultOK.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.lbOutputResultOK.ForeColor = System.Drawing.Color.White;
+            this.lbOutputResultOK.Location = new System.Drawing.Point(1231, 0);
+            this.lbOutputResultOK.Name = "lbOutputResultOK";
+            this.lbOutputResultOK.Size = new System.Drawing.Size(100, 35);
+            this.lbOutputResultOK.TabIndex = 2586;
+            this.lbOutputResultOK.Text = "RESULT OK";
+            this.lbOutputResultOK.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbInputStart
+            // 
+            this.lbInputStart.BackColor = System.Drawing.Color.DimGray;
+            this.lbInputStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbInputStart.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.lbInputStart.ForeColor = System.Drawing.Color.White;
+            this.lbInputStart.Location = new System.Drawing.Point(1129, -1);
+            this.lbInputStart.Name = "lbInputStart";
+            this.lbInputStart.Size = new System.Drawing.Size(100, 35);
+            this.lbInputStart.TabIndex = 2585;
+            this.lbInputStart.Text = "INSP START";
+            this.lbInputStart.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbRmsNonUse
+            // 
+            this.lbRmsNonUse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(73)))), ((int)(((byte)(108)))));
+            this.lbRmsNonUse.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbRmsNonUse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbRmsNonUse.Font = new System.Drawing.Font("Arial", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbRmsNonUse.ForeColor = System.Drawing.Color.White;
+            this.lbRmsNonUse.Location = new System.Drawing.Point(1260, 71);
+            this.lbRmsNonUse.Name = "lbRmsNonUse";
+            this.lbRmsNonUse.Size = new System.Drawing.Size(572, 324);
+            this.lbRmsNonUse.TabIndex = 2584;
+            this.lbRmsNonUse.Text = "RMS NON USE";
+            this.lbRmsNonUse.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // cogDisplay_Array1
+            // 
+            this.cogDisplay_Array1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cogDisplay_Array1.ColorMapLowerClipColor = System.Drawing.Color.Black;
+            this.cogDisplay_Array1.ColorMapLowerRoiLimit = 0D;
+            this.cogDisplay_Array1.ColorMapPredefined = Cognex.VisionPro.Display.CogDisplayColorMapPredefinedConstants.None;
+            this.cogDisplay_Array1.ColorMapUpperClipColor = System.Drawing.Color.Black;
+            this.cogDisplay_Array1.ColorMapUpperRoiLimit = 1D;
+            this.cogDisplay_Array1.DoubleTapZoomCycleLength = 2;
+            this.cogDisplay_Array1.DoubleTapZoomSensitivity = 2.5D;
+            this.cogDisplay_Array1.Location = new System.Drawing.Point(0, 67);
+            this.cogDisplay_Array1.Margin = new System.Windows.Forms.Padding(4);
+            this.cogDisplay_Array1.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
+            this.cogDisplay_Array1.MouseWheelSensitivity = 1D;
+            this.cogDisplay_Array1.Name = "cogDisplay_Array1";
+            this.cogDisplay_Array1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cogDisplay_Array1.OcxState")));
+            this.cogDisplay_Array1.Size = new System.Drawing.Size(616, 709);
+            this.cogDisplay_Array1.TabIndex = 2583;
+            // 
+            // lb_Buffer
+            // 
+            this.lb_Buffer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(73)))), ((int)(((byte)(108)))));
+            this.lb_Buffer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lb_Buffer.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_Buffer.ForeColor = System.Drawing.Color.White;
+            this.lb_Buffer.Location = new System.Drawing.Point(1257, 35);
+            this.lb_Buffer.Name = "lb_Buffer";
+            this.lb_Buffer.Size = new System.Drawing.Size(575, 31);
+            this.lb_Buffer.TabIndex = 2573;
+            this.lb_Buffer.Text = "Buffer Monitor";
+            this.lb_Buffer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(73)))), ((int)(((byte)(108)))));
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(1, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(1252, 32);
+            this.label1.TabIndex = 2569;
+            this.label1.Text = "Camera";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnCountReset
+            // 
+            this.btnCountReset.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnCountReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCountReset.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnCountReset.ForeColor = System.Drawing.Color.White;
+            this.btnCountReset.Location = new System.Drawing.Point(939, 0);
+            this.btnCountReset.Name = "btnCountReset";
+            this.btnCountReset.Size = new System.Drawing.Size(80, 33);
+            this.btnCountReset.TabIndex = 2568;
+            this.btnCountReset.Text = "RESET";
+            this.btnCountReset.UseVisualStyleBackColor = true;
+            this.btnCountReset.Click += new System.EventHandler(this.btnCountReset_Click);
+            // 
+            // gridBuffer
+            // 
+            this.gridBuffer.AllowUserToAddRows = false;
+            this.gridBuffer.AllowUserToDeleteRows = false;
+            this.gridBuffer.AllowUserToResizeColumns = false;
+            this.gridBuffer.AllowUserToResizeRows = false;
+            this.gridBuffer.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(44)))), ((int)(((byte)(66)))));
+            this.gridBuffer.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle50.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(44)))), ((int)(((byte)(66)))));
+            dataGridViewCellStyle50.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle50.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle50.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(44)))), ((int)(((byte)(66)))));
+            dataGridViewCellStyle50.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle50.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridBuffer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle50;
+            this.gridBuffer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridBuffer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnName,
+            this.Column2,
+            this.Column4,
+            this.Column1});
+            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle53.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(66)))));
+            dataGridViewCellStyle53.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle53.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle53.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(66)))));
+            dataGridViewCellStyle53.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle53.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridBuffer.DefaultCellStyle = dataGridViewCellStyle53;
+            this.gridBuffer.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.gridBuffer.EnableHeadersVisualStyles = false;
+            this.gridBuffer.GridColor = System.Drawing.Color.Black;
+            this.gridBuffer.Location = new System.Drawing.Point(1257, 68);
+            this.gridBuffer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gridBuffer.MultiSelect = false;
+            this.gridBuffer.Name = "gridBuffer";
+            this.gridBuffer.ReadOnly = true;
+            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle54.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle54.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle54.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle54.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle54.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle54.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridBuffer.RowHeadersDefaultCellStyle = dataGridViewCellStyle54;
+            this.gridBuffer.RowHeadersVisible = false;
+            this.gridBuffer.RowHeadersWidth = 62;
+            this.gridBuffer.RowTemplate.Height = 25;
+            this.gridBuffer.RowTemplate.ReadOnly = true;
+            this.gridBuffer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.gridBuffer.Size = new System.Drawing.Size(575, 333);
+            this.gridBuffer.TabIndex = 2051;
+            this.gridBuffer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridBuffer_CellClick);
+            // 
+            // ColumnName
+            // 
+            this.ColumnName.HeaderText = "NO";
+            this.ColumnName.MinimumWidth = 8;
+            this.ColumnName.Name = "ColumnName";
+            this.ColumnName.ReadOnly = true;
+            this.ColumnName.Width = 60;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "IS";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 60;
+            // 
+            // Column4
+            // 
+            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle51;
+            this.Column4.HeaderText = "ID";
+            this.Column4.MinimumWidth = 8;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 300;
+            // 
+            // Column1
+            // 
+            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle52;
+            this.Column1.HeaderText = "RESULT";
+            this.Column1.MinimumWidth = 8;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 150;
+            // 
+            // lbNGfalsePER
+            // 
+            this.lbNGfalsePER.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.lbNGfalsePER.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbNGfalsePER.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbNGfalsePER.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNGfalsePER.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(17)))), ((int)(((byte)(65)))));
+            this.lbNGfalsePER.Location = new System.Drawing.Point(707, 0);
+            this.lbNGfalsePER.Name = "lbNGfalsePER";
+            this.lbNGfalsePER.Size = new System.Drawing.Size(59, 34);
+            this.lbNGfalsePER.TabIndex = 2049;
+            this.lbNGfalsePER.Text = "0000";
+            this.lbNGfalsePER.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbNGtruePer
+            // 
+            this.lbNGtruePer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.lbNGtruePer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbNGtruePer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbNGtruePer.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNGtruePer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(17)))), ((int)(((byte)(65)))));
+            this.lbNGtruePer.Location = new System.Drawing.Point(516, 0);
+            this.lbNGtruePer.Name = "lbNGtruePer";
+            this.lbNGtruePer.Size = new System.Drawing.Size(59, 34);
+            this.lbNGtruePer.TabIndex = 2048;
+            this.lbNGtruePer.Text = "0000";
+            this.lbNGtruePer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbStageBoardID
+            // 
+            this.lbStageBoardID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbStageBoardID.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbStageBoardID.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.lbStageBoardID.ForeColor = System.Drawing.Color.Silver;
+            this.lbStageBoardID.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbStageBoardID.Location = new System.Drawing.Point(0, 926);
+            this.lbStageBoardID.Name = "lbStageBoardID";
+            this.lbStageBoardID.Size = new System.Drawing.Size(192, 28);
+            this.lbStageBoardID.TabIndex = 2017;
+            this.lbStageBoardID.Text = "STAGE BOARD ID";
+            this.lbStageBoardID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbCountNG_F
+            // 
+            this.lbCountNG_F.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.lbCountNG_F.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbCountNG_F.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbCountNG_F.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCountNG_F.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(17)))), ((int)(((byte)(65)))));
+            this.lbCountNG_F.Location = new System.Drawing.Point(645, 0);
+            this.lbCountNG_F.Name = "lbCountNG_F";
+            this.lbCountNG_F.Size = new System.Drawing.Size(61, 34);
+            this.lbCountNG_F.TabIndex = 2010;
+            this.lbCountNG_F.Text = "0000";
+            this.lbCountNG_F.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label10.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(17)))), ((int)(((byte)(65)))));
+            this.label10.Location = new System.Drawing.Point(576, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(68, 34);
+            this.label10.TabIndex = 2009;
+            this.label10.Text = "NG (false)";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbCountYield
+            // 
+            this.lbCountYield.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.lbCountYield.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbCountYield.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbCountYield.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCountYield.ForeColor = System.Drawing.Color.White;
+            this.lbCountYield.Location = new System.Drawing.Point(836, 0);
+            this.lbCountYield.Name = "lbCountYield";
+            this.lbCountYield.Size = new System.Drawing.Size(102, 34);
+            this.lbCountYield.TabIndex = 1969;
+            this.lbCountYield.Text = "0000";
+            this.lbCountYield.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbCountNG_T
+            // 
+            this.lbCountNG_T.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.lbCountNG_T.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbCountNG_T.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbCountNG_T.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCountNG_T.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(17)))), ((int)(((byte)(65)))));
+            this.lbCountNG_T.Location = new System.Drawing.Point(454, 0);
+            this.lbCountNG_T.Name = "lbCountNG_T";
+            this.lbCountNG_T.Size = new System.Drawing.Size(61, 34);
+            this.lbCountNG_T.TabIndex = 1968;
+            this.lbCountNG_T.Text = "0000";
+            this.lbCountNG_T.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbCountOK
+            // 
+            this.lbCountOK.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.lbCountOK.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbCountOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbCountOK.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCountOK.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            this.lbCountOK.Location = new System.Drawing.Point(316, 0);
+            this.lbCountOK.Name = "lbCountOK";
+            this.lbCountOK.Size = new System.Drawing.Size(68, 34);
+            this.lbCountOK.TabIndex = 1967;
+            this.lbCountOK.Text = "0000";
+            this.lbCountOK.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbCountOK.Click += new System.EventHandler(this.lbCountOK_Click);
+            // 
+            // lbCountTOTAL
+            // 
+            this.lbCountTOTAL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.lbCountTOTAL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbCountTOTAL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbCountTOTAL.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCountTOTAL.ForeColor = System.Drawing.Color.White;
+            this.lbCountTOTAL.Location = new System.Drawing.Point(178, 0);
+            this.lbCountTOTAL.Name = "lbCountTOTAL";
+            this.lbCountTOTAL.Size = new System.Drawing.Size(68, 34);
+            this.lbCountTOTAL.TabIndex = 1966;
+            this.lbCountTOTAL.Text = "0000";
+            this.lbCountTOTAL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label7
+            // 
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label7.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(767, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(68, 34);
+            this.label7.TabIndex = 1965;
+            this.label7.Text = "YIELD";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label6.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(17)))), ((int)(((byte)(65)))));
+            this.label6.Location = new System.Drawing.Point(385, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(68, 34);
+            this.label6.TabIndex = 1964;
+            this.label6.Text = "NG (ture)";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label5.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            this.label5.Location = new System.Drawing.Point(247, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 34);
+            this.label5.TabIndex = 1963;
+            this.label5.Text = "OK";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label4.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(109, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 34);
+            this.label4.TabIndex = 1962;
+            this.label4.Text = "TOTAL";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(46)))), ((int)(((byte)(66)))));
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(0, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(108, 34);
+            this.label3.TabIndex = 1961;
+            this.label3.Text = "COUNT";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // cogDisplay_Array2
+            // 
+            this.cogDisplay_Array2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cogDisplay_Array2.ColorMapLowerClipColor = System.Drawing.Color.Black;
+            this.cogDisplay_Array2.ColorMapLowerRoiLimit = 0D;
+            this.cogDisplay_Array2.ColorMapPredefined = Cognex.VisionPro.Display.CogDisplayColorMapPredefinedConstants.None;
+            this.cogDisplay_Array2.ColorMapUpperClipColor = System.Drawing.Color.Black;
+            this.cogDisplay_Array2.ColorMapUpperRoiLimit = 1D;
+            this.cogDisplay_Array2.DoubleTapZoomCycleLength = 2;
+            this.cogDisplay_Array2.DoubleTapZoomSensitivity = 2.5D;
+            this.cogDisplay_Array2.Location = new System.Drawing.Point(624, 66);
+            this.cogDisplay_Array2.Margin = new System.Windows.Forms.Padding(4);
+            this.cogDisplay_Array2.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
+            this.cogDisplay_Array2.MouseWheelSensitivity = 1D;
+            this.cogDisplay_Array2.Name = "cogDisplay_Array2";
+            this.cogDisplay_Array2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cogDisplay_Array2.OcxState")));
+            this.cogDisplay_Array2.Size = new System.Drawing.Size(631, 709);
+            this.cogDisplay_Array2.TabIndex = 1849;
+            // 
+            // cogDisplay_Array4
+            // 
+            this.cogDisplay_Array4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cogDisplay_Array4.ColorMapLowerClipColor = System.Drawing.Color.Black;
+            this.cogDisplay_Array4.ColorMapLowerRoiLimit = 0D;
+            this.cogDisplay_Array4.ColorMapPredefined = Cognex.VisionPro.Display.CogDisplayColorMapPredefinedConstants.None;
+            this.cogDisplay_Array4.ColorMapUpperClipColor = System.Drawing.Color.Black;
+            this.cogDisplay_Array4.ColorMapUpperRoiLimit = 1D;
+            this.cogDisplay_Array4.DoubleTapZoomCycleLength = 2;
+            this.cogDisplay_Array4.DoubleTapZoomSensitivity = 2.5D;
+            this.cogDisplay_Array4.Location = new System.Drawing.Point(624, 42);
+            this.cogDisplay_Array4.Margin = new System.Windows.Forms.Padding(4);
+            this.cogDisplay_Array4.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
+            this.cogDisplay_Array4.MouseWheelSensitivity = 1D;
+            this.cogDisplay_Array4.Name = "cogDisplay_Array4";
+            this.cogDisplay_Array4.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cogDisplay_Array4.OcxState")));
+            this.cogDisplay_Array4.Size = new System.Drawing.Size(626, 709);
+            this.cogDisplay_Array4.TabIndex = 2591;
+            // 
+            // cogDisplay_Array3
+            // 
+            this.cogDisplay_Array3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cogDisplay_Array3.ColorMapLowerClipColor = System.Drawing.Color.Black;
+            this.cogDisplay_Array3.ColorMapLowerRoiLimit = 0D;
+            this.cogDisplay_Array3.ColorMapPredefined = Cognex.VisionPro.Display.CogDisplayColorMapPredefinedConstants.None;
+            this.cogDisplay_Array3.ColorMapUpperClipColor = System.Drawing.Color.Black;
+            this.cogDisplay_Array3.ColorMapUpperRoiLimit = 1D;
+            this.cogDisplay_Array3.DoubleTapZoomCycleLength = 2;
+            this.cogDisplay_Array3.DoubleTapZoomSensitivity = 2.5D;
+            this.cogDisplay_Array3.Location = new System.Drawing.Point(74, 596);
+            this.cogDisplay_Array3.Margin = new System.Windows.Forms.Padding(4);
+            this.cogDisplay_Array3.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
+            this.cogDisplay_Array3.MouseWheelSensitivity = 1D;
+            this.cogDisplay_Array3.Name = "cogDisplay_Array3";
+            this.cogDisplay_Array3.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cogDisplay_Array3.OcxState")));
+            this.cogDisplay_Array3.Size = new System.Drawing.Size(626, 217);
+            this.cogDisplay_Array3.TabIndex = 2590;
+            // 
+            // timerIO
+            // 
+            this.timerIO.Enabled = true;
+            this.timerIO.Interval = 500;
+            this.timerIO.Tick += new System.EventHandler(this.timerIO_Tick);
+            // 
+            // timerStatus
+            // 
+            this.timerStatus.Enabled = true;
+            this.timerStatus.Interval = 1000;
+            this.timerStatus.Tick += new System.EventHandler(this.timerStatus_Tick);
+            // 
+            // timerMode
+            // 
+            this.timerMode.Enabled = true;
+            this.timerMode.Interval = 500;
+            this.timerMode.Tick += new System.EventHandler(this.timerMode_Tick);
+            // 
+            // tmr_Disp
+            // 
+            this.tmr_Disp.Enabled = true;
+            this.tmr_Disp.Interval = 1000;
+            this.tmr_Disp.Tick += new System.EventHandler(this.tmr_Disp_Tick);
+            // 
+            // lblAutoFileDel_C
+            // 
+            this.lblAutoFileDel_C.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblAutoFileDel_C.Font = new System.Drawing.Font("굴림", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblAutoFileDel_C.ForeColor = System.Drawing.Color.White;
+            this.lblAutoFileDel_C.Location = new System.Drawing.Point(4, 39);
+            this.lblAutoFileDel_C.Name = "lblAutoFileDel_C";
+            this.lblAutoFileDel_C.Size = new System.Drawing.Size(82, 30);
+            this.lblAutoFileDel_C.TabIndex = 2598;
+            this.lblAutoFileDel_C.Text = "File Del";
+            this.lblAutoFileDel_C.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblAutoFileDel_D
+            // 
+            this.lblAutoFileDel_D.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblAutoFileDel_D.Font = new System.Drawing.Font("굴림", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblAutoFileDel_D.ForeColor = System.Drawing.Color.White;
+            this.lblAutoFileDel_D.Location = new System.Drawing.Point(4, 73);
+            this.lblAutoFileDel_D.Name = "lblAutoFileDel_D";
+            this.lblAutoFileDel_D.Size = new System.Drawing.Size(82, 30);
+            this.lblAutoFileDel_D.TabIndex = 3354;
+            this.lblAutoFileDel_D.Text = "File Del";
+            this.lblAutoFileDel_D.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblAutoFileDel_E
+            // 
+            this.lblAutoFileDel_E.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblAutoFileDel_E.Font = new System.Drawing.Font("굴림", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblAutoFileDel_E.ForeColor = System.Drawing.Color.White;
+            this.lblAutoFileDel_E.Location = new System.Drawing.Point(4, 106);
+            this.lblAutoFileDel_E.Name = "lblAutoFileDel_E";
+            this.lblAutoFileDel_E.Size = new System.Drawing.Size(82, 30);
+            this.lblAutoFileDel_E.TabIndex = 3355;
+            this.lblAutoFileDel_E.Text = "File Del";
+            this.lblAutoFileDel_E.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // FormMenu_Sub
+            // 
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.ClientSize = new System.Drawing.Size(1835, 924);
+            this.ControlBox = false;
+            this.Controls.Add(this.pnFormMain);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "FormMenu_Sub";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.Text = "_00";
+            this.Load += new System.EventHandler(this.FormMenu_Sub_Load);
+            this.pnFormMain.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridArray)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cogDisplay_Array1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridBuffer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cogDisplay_Array2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cogDisplay_Array4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cogDisplay_Array3)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Panel pnFormMain;
+        private System.Windows.Forms.Button btn_JUDGE_OK;
+        private System.Windows.Forms.Button btnConvert;
+        private System.Windows.Forms.Button btnManualInsp;
+        private System.Windows.Forms.ListView lvLogManager;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.DataGridView gridArray;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbOutputResultNG;
+        private System.Windows.Forms.Label lbOutputResultOK;
+        private System.Windows.Forms.Label lbInputStart;
+        private System.Windows.Forms.Label lbRmsNonUse;
+        internal Cognex.VisionPro.Display.CogDisplay cogDisplay_Array1;
+        private System.Windows.Forms.Button btnRMS_BoardOut;
+        private System.Windows.Forms.Button btnRMS_StageBoardRetest;
+        private System.Windows.Forms.Button btnRMS_BoardPass;
+        private System.Windows.Forms.Button btnRMS_StageCall;
+        private System.Windows.Forms.Label lb_Buffer;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnCountReset;
+        private System.Windows.Forms.Label lbStageOut;
+        private System.Windows.Forms.Label lbStageExist;
+        private System.Windows.Forms.Label lbRMS_CalledID;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lbSelectedBuffer;
+        private System.Windows.Forms.Button btnRMS_OK;
+        private System.Windows.Forms.Button btnRMS_Retest;
+        private System.Windows.Forms.DataGridView gridBuffer;
+        private System.Windows.Forms.Label lbNGfalsePER;
+        private System.Windows.Forms.Label lbNGtruePer;
+        private System.Windows.Forms.Label lbStageBoardID;
+        private System.Windows.Forms.Label lbCountNG_F;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lbCountYield;
+        private System.Windows.Forms.Label lbCountNG_T;
+        private System.Windows.Forms.Label lbCountOK;
+        private System.Windows.Forms.Label lbCountTOTAL;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        internal Cognex.VisionPro.Display.CogDisplay cogDisplay_Array2;
+        internal Cognex.VisionPro.Display.CogDisplay cogDisplay_Array4;
+        internal Cognex.VisionPro.Display.CogDisplay cogDisplay_Array3;
+        private System.Windows.Forms.Timer timerIO;
+        private System.Windows.Forms.Timer timerStatus;
+        private System.Windows.Forms.Timer timerMode;
+        private System.Windows.Forms.Timer tmr_Disp;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ProgressBar pb_C;
+        private System.Windows.Forms.Label lbldriveC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.Label lblDrivedeC;
+        private System.Windows.Forms.Label lblDrivedeD;
+        private System.Windows.Forms.ProgressBar pb_D;
+        private System.Windows.Forms.Label lbldriveD;
+        private System.Windows.Forms.Label lblDrivedeE;
+        private System.Windows.Forms.ProgressBar pb_E;
+        private System.Windows.Forms.Label lbldriveE;
+        private System.Windows.Forms.Label lblAutoFileDel_C;
+        private System.Windows.Forms.Label lblAutoFileDel_E;
+        private System.Windows.Forms.Label lblAutoFileDel_D;
+    }
+}

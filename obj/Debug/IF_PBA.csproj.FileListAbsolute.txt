@@ -1,0 +1,77 @@
+D:\exe_Vision_PBA\dll\x86\OpenCvSharpExtern.dll
+D:\exe_Vision_PBA\dll\x86\opencv_videoio_ffmpeg430.dll
+D:\exe_Vision_PBA\dll\x64\OpenCvSharpExtern.dll
+D:\exe_Vision_PBA\dll\x64\opencv_videoio_ffmpeg430_64.dll
+D:\exe_Vision_PBA\log4net.config
+D:\exe_Vision_PBA\IF_PBA.exe.config
+D:\exe_Vision_PBA\IF_PBA.exe.manifest
+D:\exe_Vision_PBA\IF_PBA.application
+D:\exe_Vision_PBA\IF_PBA.exe
+D:\exe_Vision_PBA\IF_PBA.pdb
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\Interop.ADOX.dll
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IF_PBA.csproj.ResolveComReference.cache
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormMenu_Sub.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormSettings_ColorList.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormMenu_Viewer.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormMenu_IO_Edit.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormMenu_PbaLibrary.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormMenu_Measure.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormMenu_IO.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormMenu_Log.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormMenu_Settings.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormSettings_GrabManager.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormMenu_PbaLibrary2.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormMenu_FindLineTool.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormMenu_OCR.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormMenu_ARC_Tester.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormPopUp_ImageView2.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormPopUp_ImageView.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormPopUp_Settings_Masking.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormMenuRecipe.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormMenu_Viewer_Temp.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormMenu_Vision.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormPopUp_Settings_DefaultParameter.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormPopUp_Authorization_DoubleCheck.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormPopUp_ProgressBar.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormPopUp_Viewer_Alarm.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormPopup_Progress.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormPopUp_Alarm.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\Sunny.UI.UINotifier.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IF_UI.RJForms.Private.RJMessageForm.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IF_UI.RJForms.RJPrintForm.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IF_UI.RJForms.RJSettingsForm.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormPopUp_Keyboard.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.Version.FormPopUp_Version.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.LogViewer.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.RichTextBoxEx.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.CLIGHTCON_JSL_200.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.Device.DevLightController.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.ILightController_DPS.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.ILightController_ATL.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.Vision._1._Tools.OpenCV.FormSettings_CVEdge.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormPopUp_MessageBox.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormMenu_MainFrame.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormPopUp_Settings_Illumination.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormPopUp_Settings_Camera.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.CIndexData.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.Properties.Resources.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IntelligentFactory.FormPopUp_ImageEditView.resources
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IF_PBA.csproj.GenerateResource.cache
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IF_PBA.csproj.CoreCompileInputs.cache
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IF_PBA.TrustInfo.xml
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IF_PBA.exe.manifest
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IF_PBA.application
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IF_PBA.csproj.CopyComplete
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IF_PBA.exe
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IF_PBA.pdb
+C:\PBA_EXEPATH_TEST\dll\x86\OpenCvSharpExtern.dll
+C:\PBA_EXEPATH_TEST\dll\x86\opencv_videoio_ffmpeg430.dll
+C:\PBA_EXEPATH_TEST\dll\x64\OpenCvSharpExtern.dll
+C:\PBA_EXEPATH_TEST\dll\x64\opencv_videoio_ffmpeg430_64.dll
+C:\PBA_EXEPATH_TEST\log4net.config
+C:\PBA_EXEPATH_TEST\IF_PBA.exe.config
+C:\PBA_EXEPATH_TEST\IF_PBA.exe.manifest
+C:\PBA_EXEPATH_TEST\IF_PBA.application
+C:\PBA_EXEPATH_TEST\IF_PBA.exe
+C:\PBA_EXEPATH_TEST\IF_PBA.pdb
+D:\BACKUP\개선 프로그램\SS_PBA_20250108\obj\Debug\IF_PBA.csproj.AssemblyReference.cache
