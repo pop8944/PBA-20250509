@@ -46,6 +46,7 @@ namespace IntelligentFactory
     public class CNodeGrab
     {
         public int ExposureTime_us { get; set; } = 5000;
+        public int Gain { get; set; } = 1;
         public int Index { get; set; } = 0;
         public bool Enabled { get; set; } = false;
     }

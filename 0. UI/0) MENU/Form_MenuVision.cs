@@ -485,6 +485,7 @@ namespace IntelligentFactory
                             for (int i = 0; i < 5; i++)
                             {
                                 camera.SetExposure(recipe.GrabManager.Nodes[i].ExposureTime_us);
+                                camera.SetGain(recipe.GrabManager.Nodes[i].Gain);
 
                                 Thread.Sleep(10);
 
@@ -740,6 +741,11 @@ namespace IntelligentFactory
             }
 
             return true;           
+        }
+
+        private void BtnIQHWApply_Click(object sender, EventArgs e)
+        {
+            Global.System.Recipe.GrabManager
         }
 
         private void timerCalibration_Tick(object sender, EventArgs e)
