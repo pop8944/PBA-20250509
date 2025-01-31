@@ -135,7 +135,7 @@ namespace IntelligentFactory
             this.lbl_DateTime = new System.Windows.Forms.Label();
             this.lblStatusMode = new System.Windows.Forms.Label();
             this.lblMode = new Sunny.UI.UILedLabel();
-            this.btnOper_Start = new Sunny.UI.UISymbolButton();
+            this.btnAutoStart = new Sunny.UI.UISymbolButton();
             this.uiSymbolButton3 = new Sunny.UI.UISymbolButton();
             this.btnOper_Pause = new Sunny.UI.UISymbolButton();
             this.btnOper_Stop = new Sunny.UI.UISymbolButton();
@@ -1156,6 +1156,7 @@ namespace IntelligentFactory
             this.btnMenu_Setting.Text = "SETTING";
             this.btnMenu_Setting.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnMenu_Setting.TipsFont = new System.Drawing.Font("Arial", 9.75F);
+            this.btnMenu_Setting.Click += new System.EventHandler(this.OnMenuClick);
             // 
             // uiSymbolButton2
             // 
@@ -1194,6 +1195,7 @@ namespace IntelligentFactory
             this.uiSymbolButton2.Text = "RMS";
             this.uiSymbolButton2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.uiSymbolButton2.TipsFont = new System.Drawing.Font("Arial", 9.75F);
+            this.uiSymbolButton2.Click += new System.EventHandler(this.OnMenuClick);
             // 
             // btnMenu_Device
             // 
@@ -1232,6 +1234,7 @@ namespace IntelligentFactory
             this.btnMenu_Device.Text = "DI/DO";
             this.btnMenu_Device.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnMenu_Device.TipsFont = new System.Drawing.Font("Arial", 9.75F);
+            this.btnMenu_Device.Click += new System.EventHandler(this.OnMenuClick);
             // 
             // btnMenu_Vision
             // 
@@ -1270,6 +1273,7 @@ namespace IntelligentFactory
             this.btnMenu_Vision.Text = "VISION";
             this.btnMenu_Vision.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnMenu_Vision.TipsFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMenu_Vision.Click += new System.EventHandler(this.OnMenuClick);
             // 
             // btnMenu_Model
             // 
@@ -1308,6 +1312,7 @@ namespace IntelligentFactory
             this.btnMenu_Model.Text = "MODEL";
             this.btnMenu_Model.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnMenu_Model.TipsFont = new System.Drawing.Font("Arial", 9.75F);
+            this.btnMenu_Model.Click += new System.EventHandler(this.OnMenuClick);
             // 
             // btnMenu_Main
             // 
@@ -1347,6 +1352,7 @@ namespace IntelligentFactory
             this.btnMenu_Main.Text = "MAIN";
             this.btnMenu_Main.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnMenu_Main.TipsFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMenu_Main.Click += new System.EventHandler(this.OnMenuClick);
             // 
             // pnlLogViewer
             // 
@@ -1896,39 +1902,39 @@ namespace IntelligentFactory
             this.lblMode.TabIndex = 3439;
             this.lblMode.Text = "READY";
             // 
-            // btnOper_Start
+            // btnAutoStart
             // 
-            this.btnOper_Start.CircleRectWidth = 0;
-            this.btnOper_Start.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnOper_Start.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btnOper_Start.FillColor2 = System.Drawing.Color.Gray;
-            this.btnOper_Start.FillColorGradientDirection = System.Windows.Forms.FlowDirection.BottomUp;
-            this.btnOper_Start.FillDisableColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.btnOper_Start.FillHoverColor = System.Drawing.Color.SlateGray;
-            this.btnOper_Start.FillPressColor = System.Drawing.Color.SlateGray;
-            this.btnOper_Start.FillSelectedColor = System.Drawing.Color.White;
-            this.btnOper_Start.Font = new System.Drawing.Font("맑은 고딕", 8F, System.Drawing.FontStyle.Bold);
-            this.btnOper_Start.ForeSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.btnOper_Start.Location = new System.Drawing.Point(1611, 30);
-            this.btnOper_Start.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnOper_Start.Name = "btnOper_Start";
-            this.btnOper_Start.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.btnOper_Start.Radius = 4;
-            this.btnOper_Start.RectColor = System.Drawing.Color.White;
-            this.btnOper_Start.RectHoverColor = System.Drawing.Color.White;
-            this.btnOper_Start.RectPressColor = System.Drawing.Color.White;
-            this.btnOper_Start.RectSelectedColor = System.Drawing.Color.White;
-            this.btnOper_Start.RectSize = 2;
-            this.btnOper_Start.Size = new System.Drawing.Size(75, 45);
-            this.btnOper_Start.Symbol = 61515;
-            this.btnOper_Start.SymbolOffset = new System.Drawing.Point(0, -7);
-            this.btnOper_Start.SymbolSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.btnOper_Start.SymbolSize = 20;
-            this.btnOper_Start.TabIndex = 3435;
-            this.btnOper_Start.Tag = "MAIN";
-            this.btnOper_Start.Text = "START";
-            this.btnOper_Start.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnOper_Start.TipsFont = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnAutoStart.CircleRectWidth = 0;
+            this.btnAutoStart.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAutoStart.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.btnAutoStart.FillColor2 = System.Drawing.Color.Gray;
+            this.btnAutoStart.FillColorGradientDirection = System.Windows.Forms.FlowDirection.BottomUp;
+            this.btnAutoStart.FillDisableColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnAutoStart.FillHoverColor = System.Drawing.Color.SlateGray;
+            this.btnAutoStart.FillPressColor = System.Drawing.Color.SlateGray;
+            this.btnAutoStart.FillSelectedColor = System.Drawing.Color.White;
+            this.btnAutoStart.Font = new System.Drawing.Font("맑은 고딕", 8F, System.Drawing.FontStyle.Bold);
+            this.btnAutoStart.ForeSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnAutoStart.Location = new System.Drawing.Point(1611, 30);
+            this.btnAutoStart.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnAutoStart.Name = "btnAutoStart";
+            this.btnAutoStart.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.btnAutoStart.Radius = 4;
+            this.btnAutoStart.RectColor = System.Drawing.Color.White;
+            this.btnAutoStart.RectHoverColor = System.Drawing.Color.White;
+            this.btnAutoStart.RectPressColor = System.Drawing.Color.White;
+            this.btnAutoStart.RectSelectedColor = System.Drawing.Color.White;
+            this.btnAutoStart.RectSize = 2;
+            this.btnAutoStart.Size = new System.Drawing.Size(75, 45);
+            this.btnAutoStart.Symbol = 61515;
+            this.btnAutoStart.SymbolOffset = new System.Drawing.Point(0, -7);
+            this.btnAutoStart.SymbolSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnAutoStart.SymbolSize = 20;
+            this.btnAutoStart.TabIndex = 3435;
+            this.btnAutoStart.Tag = "MAIN";
+            this.btnAutoStart.Text = "START";
+            this.btnAutoStart.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAutoStart.TipsFont = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             // 
             // uiSymbolButton3
             // 
@@ -2041,7 +2047,7 @@ namespace IntelligentFactory
             this.ClientSize = new System.Drawing.Size(1920, 1052);
             this.ControlBox = false;
             this.Controls.Add(this.lblMode);
-            this.Controls.Add(this.btnOper_Start);
+            this.Controls.Add(this.btnAutoStart);
             this.Controls.Add(this.uiSymbolButton3);
             this.Controls.Add(this.btnOper_Pause);
             this.Controls.Add(this.btnOper_Stop);
@@ -2207,7 +2213,7 @@ namespace IntelligentFactory
         private System.Windows.Forms.Label lblStatusMode;
         private Sunny.UI.UISymbolButton uiSymbolButton5;
         private Sunny.UI.UILedLabel lblMode;
-        private Sunny.UI.UISymbolButton btnOper_Start;
+        private Sunny.UI.UISymbolButton btnAutoStart;
         private Sunny.UI.UISymbolButton uiSymbolButton3;
         private Sunny.UI.UISymbolButton btnOper_Pause;
         private Sunny.UI.UISymbolButton btnOper_Stop;

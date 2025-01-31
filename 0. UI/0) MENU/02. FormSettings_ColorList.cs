@@ -61,7 +61,7 @@ namespace IntelligentFactory
             }
             else
             {
-                Global.Instance.FrmVision.InitJobs();
+                //Global.Instance.FrmVision.InitJobs();
             }
         }
 

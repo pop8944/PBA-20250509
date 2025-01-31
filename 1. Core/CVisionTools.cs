@@ -17,7 +17,8 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 using Vila.Extensions;
-using static IntelligentFactory.FormMenu_Vision;
+//using static IntelligentFactory.FormMenu_Vision;
+using static IntelligentFactory.Form_MenuVision;
 using static IntelligentFactory.TcpIp;
 
 namespace IntelligentFactory

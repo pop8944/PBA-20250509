@@ -48,6 +48,11 @@ namespace IntelligentFactory
 
         public Cognex.VisionPro.CogImage24PlanarColor[] _imagesGrab = new Cognex.VisionPro.CogImage24PlanarColor[5];
 
+        public Cognex.VisionPro.CogImage8Grey m_imgSource_Mono = new Cognex.VisionPro.CogImage8Grey();
+        public static Cognex.VisionPro.CogImage24PlanarColor m_imgSource_Color = new Cognex.VisionPro.CogImage24PlanarColor();
+        public Cognex.VisionPro.CogImage24PlanarColor m_imgSource_Color_FullBoard = new Cognex.VisionPro.CogImage24PlanarColor();
+        public Cognex.VisionPro.CogImage8Grey m_imgSource_Mono_FullBoard = new Cognex.VisionPro.CogImage8Grey();
+
         public Form_MenuVision()
         {
             InitializeComponent();
@@ -61,7 +66,7 @@ namespace IntelligentFactory
             _CogDisplayStatus.ForeColor = Color.White;
             pnlDisplayStatus.Controls.Add(_CogDisplayStatus);
 
-            Global.SeqInitialize.EventInitEnd += OnInitEnd;
+            //Global.SeqInitialize.EventInitEnd += OnInitEnd;
         }
         private void Form_MenuVision_Load(object sender, EventArgs e)
         {
@@ -539,14 +544,14 @@ namespace IntelligentFactory
                                         {
                                             imgOrg_Index0 = new CogImage24PlanarColor(_imagesGrab[0]);
                                         }
-                                        if (chkAlignNoUse.Checked == false) _imagesGrab[imageIndex] = CVisionTools.RotateMarkedImage(new CogImage24PlanarColor(imgOrg_Index0), _imagesGrab[imageIndex], _selectedFiducialLibrary);
+                                        //if (chkAlignNoUse.Checked == false) _imagesGrab[imageIndex] = CVisionTools.RotateMarkedImage(new CogImage24PlanarColor(imgOrg_Index0), _imagesGrab[imageIndex], _selectedFiducialLibrary);
 
                                         imageIndex++;
                                     }
                                 }
                                 m_imgSource_Color = _imagesGrab[0];
 
-                                SelectGrabImage(0, false);
+                                //SelectGrabImage(0, false);
 
                                 m_imgSource_Color_FullBoard = new Cognex.VisionPro.CogImage24PlanarColor(m_imgSource_Color);
                                 m_imgSource_Mono_FullBoard = Cognex.VisionPro.CogImageConvert.GetIntensityImage(m_imgSource_Color, 0, 0, m_imgSource_Color.Width, m_imgSource_Color.Height);
@@ -832,7 +837,7 @@ namespace IntelligentFactory
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Global.Setting.Save(Global.Setting.RecipeName);
+            //Global.Setting.Save(Global.Setting.RecipeName);
             InitUI();
         }
 
@@ -884,6 +889,69 @@ namespace IntelligentFactory
 
                 IF_Util.ShowMessageBox("Error", $"[FAILED] {MethodBase.GetCurrentMethod().ReflectedType.Name}==>{MethodBase.GetCurrentMethod().Name}   Execption ==> {ex.Message}");
             }
+        }
+    }
+
+    public class cColorResult
+    {
+        // Image Data
+        public Mat imgAll { get; set; } = new Mat();
+
+        public Mat imgBin { get; set; } = new Mat();
+
+        // Recipe Data
+        public Scalar scrMin { get; set; } = new Scalar();
+
+        public Scalar scrMax { get; set; } = new Scalar();
+
+        //int nThreshold = 0;
+        public int nRangeAreaMax { get; set; } = 0;
+
+        public int nRangeAreaMin { get; set; } = 0;
+        public int nThreshold { get; set; } = 0;
+
+        public void InputAreaInfo(int min, int max)
+        {
+            nRangeAreaMax = max; nRangeAreaMin = min;
+        }
+
+        public void InputAreaInfo(int min, int max, int thres)
+        {
+            nRangeAreaMax = max; nRangeAreaMin = min; nThreshold = thres;
+        }
+
+        public void InputColorInfo(Scalar min, Scalar max)
+        {
+            scrMax = max; scrMin = min;
+        }
+
+        public void InputImages(Mat bin, Mat all)
+        {
+            imgAll = all.Clone(); imgBin = bin.Clone();
+        }
+
+        public void SetJob(ref CJob job)
+        {
+            job.Min2 = (int)scrMin.Val2;
+            job.Max2 = (int)scrMax.Val2;
+            job.Min1 = (int)scrMin.Val1;
+            job.Max1 = (int)scrMax.Val1;
+            job.Min0 = (int)scrMin.Val0;
+            job.Max0 = (int)scrMax.Val0;
+            job.RangeAreaMax = nRangeAreaMax;
+            job.RangeAreaMin = nRangeAreaMin;
+            job.Threshold = nThreshold;
+            job.UseColorRange = true;
+        }
+
+        public Mat GetImgFull()
+        {
+            return imgAll.Clone();
+        }
+
+        public Mat GetImgBin()
+        {
+            return imgBin.Clone();
         }
     }
 }

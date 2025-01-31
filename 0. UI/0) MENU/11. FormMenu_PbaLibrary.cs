@@ -180,7 +180,7 @@ namespace IntelligentFactory
             }
             else
             {
-                Global.Instance.FrmVision.InitJobs();
+                //Global.Instance.FrmVision.InitJobs();
             }
         }
 
@@ -244,7 +244,7 @@ namespace IntelligentFactory
 
                             //2024.03.11 : 송현수
                             //Global.Instance.System.Recipe.JsonFile_Save(1, strFolderPath, true);
-                            Global.Instance.FrmVision.InitJobs();
+                            //Global.Instance.FrmVision.InitJobs();
                             InitList();
                         }
                         else
@@ -267,7 +267,7 @@ namespace IntelligentFactory
 
                             Global.Instance.System.Recipe.CODE = strName;
                             Global.Instance.System.Recipe.SaveConfig();
-                            Global.Instance.FrmVision.InitJobs();
+                            //Global.Instance.FrmVision.InitJobs();
                             InitList();
                         }
                         else

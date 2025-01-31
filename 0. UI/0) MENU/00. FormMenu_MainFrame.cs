@@ -262,7 +262,7 @@ namespace IntelligentFactory
 
         private void OnMenuClick(object sender, EventArgs e)
         {
-            Button btn = (sender as Button);
+            UISymbolButton btn = (sender as UISymbolButton);
 
             //btnMenuMain.BackColor = DEFINE.COLOR_NAVY;
             //btnMenuVisionTeaching.BackColor = DEFINE.COLOR_NAVY;
@@ -300,7 +300,8 @@ namespace IntelligentFactory
 
                     if (Global.Instance.FrmVision == null || !Global.Instance.FrmVision.Created)
                     {
-                        Global.Instance.FrmVision = new FormMenu_Vision();
+                        //Global.Instance.FrmVision = new FormMenu_Vision();
+                        Global.Instance.FrmVision = new Form_MenuVision();
                         FrmSet(Global.Instance.FrmVision);
                     }
                     else

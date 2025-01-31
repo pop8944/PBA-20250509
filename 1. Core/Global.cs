@@ -120,7 +120,7 @@ namespace IntelligentFactory
         // 해당 사용 폼 모두 생성 관리 진행...
         public FormMenu_MainFrame FrmMain = null;
         public FormPopup_Progress Progress = null;
-        public FormMenu_Vision FrmVision = null;
+        public Form_MenuVision FrmVision = null;
         public FormMenu_Sub FrmSub = null;
         public FormMenu_Viewer FrmViewer = null;
         public FormMenu_IO FrmIO = null;
@@ -289,7 +289,7 @@ namespace IntelligentFactory
             // 폼 생성...
             FrmMain = new FormMenu_MainFrame();
             // 폼 생성...
-            FrmVision = new FormMenu_Vision();
+            FrmVision = new Form_MenuVision();
             FrmSub = new FormMenu_Sub();
             FrmViewer = new FormMenu_Viewer();
             FrmIO = new FormMenu_IO();
