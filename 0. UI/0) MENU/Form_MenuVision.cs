@@ -580,7 +580,9 @@ namespace IntelligentFactory
                                     }
                                 }
                                 m_imgSource_Color = _imagesGrab[0];
+                                btnViewGrabIndex1.Selected = true;
                                 DispMain.Image = m_imgSource_Color;
+                                
                                 DispMain.Fit();
                                 RefreshDispGrabIdx();
 
@@ -837,27 +839,16 @@ namespace IntelligentFactory
             {
                 UnselectGrabIndex();
 
-                string viewIndex = "";
+                int grabIndex = 0;
 
                 if (sender is UIButton)
                 {   
-                    viewIndex = (sender as UIButton).Text.ToString().ToUpper();
-
-                    (sender as UIButton).Selected = true;
-                }
-
-                switch (viewIndex)
-                {
-                    case "SETTING":
-                        {
-
-                        }
-                        break;
-                    case "RESULT":
-                        {
-
-                        }
-                        break;
+                    grabIndex = (sender as UIButton).Text.ToInt();
+                    if (_imagesGrab[grabIndex - 1] != null)
+                    {
+                        (sender as UIButton).Selected = true;
+                        DispMain.Image = _imagesGrab[grabIndex - 1];
+                    }
                 }
             }
             catch (Exception ex)
