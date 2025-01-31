@@ -31,6 +31,7 @@ namespace IntelligentFactory
         Global Global = Global.Instance;
         private string _thisName = MethodBase.GetCurrentMethod().ReflectedType.FullName;
 
+        List<CogDisplay> dispIdxList;
         private Bitmap _image = null;
 
         private LogViewer logViewList = new LogViewer();
@@ -72,12 +73,13 @@ namespace IntelligentFactory
         {
             string MethodName = MethodBase.GetCurrentMethod().Name;
             Trace.WriteLine($"[[{_thisName}.{MethodName} :: Start]]");
-
+            dispIdxList = new List<CogDisplay> { DisplayGrabIdx1, DisplayGrabIdx2, DisplayGrabIdx3, DisplayGrabIdx4, DisplayGrabIdx5 };
             try
             {
                 InitEvent();
                 InitComponents();
                 InitUI();
+                GrabDisp_TaskRun();
             }
             catch (Exception ex)
             {
@@ -96,6 +98,34 @@ namespace IntelligentFactory
                 IF_Util.ShowMessageBox("EXCEPTION", $"[FAILED] {MethodBase.GetCurrentMethod().ReflectedType.Name}==>{MethodBase.GetCurrentMethod().Name}   Execption ==> {ex.Message}");
             }
             
+        }
+
+        bool GrabDisp = false;
+        private void GrabDisp_TaskRun()
+        {
+            GrabDisp = true;
+            Task.Run(async () =>
+            {
+                while (GrabDisp)
+                {
+                    await Task.Delay(1);
+                    Grab_Recive();
+                }
+            });
+        }
+        private void Grab_Recive()
+        {
+            // 화면 디스플레이 처리..
+            // 라이브일때만 화면 디스플레이...
+            if (Global.Instance.Device.Cameras[0].ImageGrab != null && Global.Device.Cameras[0].IsLive)
+            {
+                m_imgSource_Color = new CogImage24PlanarColor(Global.Instance.Device.Cameras[0].ImageGrab); //new Cognex.VisionPro.CogImage24PlanarColor((Cognex.VisionPro.CogImage24PlanarColor)CCognexUtil.FlipRotateEx(Global.Instance.Device.Cameras[DEFINE.CAM1].ImageCogGrab, (CogIPOneImageFlipRotateOperationConstants)Enum.Parse(typeof(CogIPOneImageFlipRotateOperationConstants), Global.Parameter.Cam1_ImageProcess.FlipRotate), true));
+                m_imgSource_Mono = Cognex.VisionPro.CogImageConvert.GetIntensityImage(m_imgSource_Color, 0, 0, m_imgSource_Color.Width, m_imgSource_Color.Height);
+                m_imgSource_Color_FullBoard = new Cognex.VisionPro.CogImage24PlanarColor(m_imgSource_Color);
+                m_imgSource_Mono_FullBoard = Cognex.VisionPro.CogImageConvert.GetIntensityImage(m_imgSource_Color, 0, 0, m_imgSource_Color.Width, m_imgSource_Color.Height);
+
+                DispMain.Image = new CogImage24PlanarColor(Global.Instance.Device.Cameras[0].ImageGrab);//Global.Instance.Device.Cameras[0].ImageCogGrab;
+            }
         }
 
         private void OnInitEnd(object sender, EventArgs e)
@@ -515,7 +545,7 @@ namespace IntelligentFactory
                         }
                         break;
                     case DEFINE.Image_Load:
-                    case "LOAD (1~5)":
+                    case "LOAD (5)":
                         try
                         {
                             CommonOpenFileDialog FBD = new CommonOpenFileDialog();
@@ -526,7 +556,7 @@ namespace IntelligentFactory
                                 string selectedFolderPath = FBD.FileName;
 
                                 string[] fileEntries = Directory.GetFiles(selectedFolderPath);
-
+                                Array.Sort(fileEntries);
                                 int fileCount = Math.Min(fileEntries.Length, 5);
                                 _imagesGrab = new CogImage24PlanarColor[5];
                                 CogImage24PlanarColor imgOrg_Index0 = new CogImage24PlanarColor();
@@ -550,8 +580,9 @@ namespace IntelligentFactory
                                     }
                                 }
                                 m_imgSource_Color = _imagesGrab[0];
-
-                                //SelectGrabImage(0, false);
+                                DispMain.Image = m_imgSource_Color;
+                                DispMain.Fit();
+                                RefreshDispGrabIdx();
 
                                 m_imgSource_Color_FullBoard = new Cognex.VisionPro.CogImage24PlanarColor(m_imgSource_Color);
                                 m_imgSource_Mono_FullBoard = Cognex.VisionPro.CogImageConvert.GetIntensityImage(m_imgSource_Color, 0, 0, m_imgSource_Color.Width, m_imgSource_Color.Height);
@@ -649,6 +680,14 @@ namespace IntelligentFactory
             }
         }
 
+        private void RefreshDispGrabIdx()
+        {
+            for (int i = 0; i < _imagesGrab.Count(); i++)
+            {
+                dispIdxList[i].Image = _imagesGrab[i];
+            }
+        }
+
         private bool checkCameraStatus()
         {
             try
@@ -737,10 +776,6 @@ namespace IntelligentFactory
                 IF_Util.ShowMessageBox("Error", $"[FAILED] {MethodBase.GetCurrentMethod().ReflectedType.Name}==>{MethodBase.GetCurrentMethod().Name}   Execption ==> {ex.Message}");
                 CLogger.Exception(MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name, ex);
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
         }
 
         private void OnClickViewMode(object sender, EventArgs e)
