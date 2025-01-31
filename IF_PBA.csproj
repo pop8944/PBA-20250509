@@ -590,17 +590,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="0. UI\0%29 MENU\00. FormMenu_MainFrame_Backup.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="0. UI\0%29 MENU\00. FormMenu_MainFrame_Backup.Designer.cs">
-      <DependentUpon>00. FormMenu_MainFrame_Backup.cs</DependentUpon>
-    </Compile>
-    <Compile Include="0. UI\0%29 MENU\00. FormMenu_MainFrame_Backup1.Designer.cs">
-      <DependentUpon>00. FormMenu_MainFrame_Backup.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="0. UI\0%29 MENU\00. FormMenu_MainFrame1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -611,12 +600,6 @@
     </Compile>
     <Compile Include="0. UI\0%29 MENU\00. FormMenu_Sub.Designer.cs">
       <DependentUpon>00. FormMenu_Sub.cs</DependentUpon>
-    </Compile>
-    <Compile Include="0. UI\0%29 MENU\01. FormMenu_Vision_Backup.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="0. UI\0%29 MENU\01. FormMenu_Vision_Backup.Designer.cs">
-      <DependentUpon>01. FormMenu_Vision_Backup.cs</DependentUpon>
     </Compile>
     <Compile Include="0. UI\0%29 MENU\02. FormSettings_ColorList.cs">
       <SubType>Form</SubType>
@@ -1113,17 +1096,8 @@
     </Compile>
     <Compile Include="Vision\1. Tools\OpenCV_New\CTempleteMatching.cs" />
     <Content Include="TextFile1.txt" />
-    <EmbeddedResource Include="0. UI\0%29 MENU\00. FormMenu_MainFrame_Backup.resx">
-      <DependentUpon>00. FormMenu_MainFrame_Backup.cs</DependentUpon>
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>00. FormMenu_MainFrame_Backup1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="0. UI\0%29 MENU\00. FormMenu_Sub.resx">
       <DependentUpon>00. FormMenu_Sub.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="0. UI\0%29 MENU\01. FormMenu_Vision_Backup.resx">
-      <DependentUpon>01. FormMenu_Vision_Backup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="0. UI\0%29 MENU\02. FormSettings_ColorList.resx">
       <DependentUpon>02. FormSettings_ColorList.cs</DependentUpon>
