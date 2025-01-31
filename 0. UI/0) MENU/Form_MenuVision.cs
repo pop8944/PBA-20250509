@@ -800,6 +800,7 @@ namespace IntelligentFactory
         {
             string MethodName = MethodBase.GetCurrentMethod().Name;
             Trace.WriteLine($"[[{_thisName}.{MethodName} :: Start]]");
+            if (DispMain.Image == null) return;
 
             try
             {
@@ -807,11 +808,11 @@ namespace IntelligentFactory
 
                 string viewType = "";
                 string viewIndex = "";
+                int selectedGrabIndex = GetSelectedGrabIndex();
 
-                
                 if (sender is UISymbolButton)
-                {   
-                    viewType = (sender as  UISymbolButton).Tag.ToString().ToUpper();
+                {
+                    viewType = (sender as UISymbolButton).Tag.ToString().ToUpper();
                     //viewIndex = (sender as UISymbolButton).Text.ToString().ToUpper();
 
                     (sender as UISymbolButton).Selected = true;
@@ -838,7 +839,8 @@ namespace IntelligentFactory
                         break;
                     case "FULL":
                         {
-                            //DispMain.Image = 
+                            DispMain.Image = _imagesGrab[selectedGrabIndex - 1];
+                            DispMain.Fit();
                         }
                         break;
                 }
@@ -850,6 +852,16 @@ namespace IntelligentFactory
 
                 IF_Util.ShowMessageBox("Error", $"[FAILED] {MethodBase.GetCurrentMethod().ReflectedType.Name}==>{MethodBase.GetCurrentMethod().Name}   Execption ==> {ex.Message}");
             }            
+        }
+
+        private int GetSelectedGrabIndex()
+        {
+            List<UIButton> tempList = new List<UIButton> { btnViewGrabIndex1, btnViewGrabIndex2, btnViewGrabIndex3, btnViewGrabIndex4, btnViewGrabIndex5 };
+            for (int i = 0; i < tempList.Count; i++)
+            {
+                if (tempList[i].Selected) return i + 1;
+            }
+            return -1;
         }
 
         private void OnClickGrabIndex(object sender, EventArgs e)            
