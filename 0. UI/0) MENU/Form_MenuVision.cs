@@ -47,7 +47,7 @@ namespace IntelligentFactory
         OpenCvSharp.Point2d currentPoint1 = new OpenCvSharp.Point2d(0, 0);
         OpenCvSharp.Point2d currentPoint2 = new OpenCvSharp.Point2d(0, 0);
 
-        public Cognex.VisionPro.CogImage24PlanarColor[] _imagesGrab = new Cognex.VisionPro.CogImage24PlanarColor[5];
+        private Cognex.VisionPro.CogImage24PlanarColor[] _imagesGrab = new Cognex.VisionPro.CogImage24PlanarColor[5];
 
         public Cognex.VisionPro.CogImage8Grey m_imgSource_Mono = new Cognex.VisionPro.CogImage8Grey();
         public static Cognex.VisionPro.CogImage24PlanarColor m_imgSource_Color = new Cognex.VisionPro.CogImage24PlanarColor();
@@ -457,8 +457,13 @@ namespace IntelligentFactory
 
                             using (CogImage24PlanarColor img = new CogImage24PlanarColor(camera.ImageGrab))
                             {
+                                _imagesGrab = new CogImage24PlanarColor[5];
+                                Global.ImagesGrab = new CogImage24PlanarColor[5];
+                                _imagesGrab[0] = img;
+                                Global.ImagesGrab[0] = img;
+                                RefreshDispGrabIdx();
                                 DispMain.Image = new CogImage24PlanarColor(img);
-
+                                DispMain.Fit();
                                 //m_imgSource_Color = new CogImage24PlanarColor((CogImage24PlanarColor)CCognexUtil.FlipRotateEx(img, (CogIPOneImageFlipRotateOperationConstants)Enum.Parse(typeof(CogIPOneImageFlipRotateOperationConstants), Global.Parameter.Cam1_ImageProcess.FlipRotate), true));
                                 //m_imgSource_Mono = CogImageConvert.GetIntensityImage(m_imgSource_Color, 0, 0, m_imgSource_Color.Width, m_imgSource_Color.Height);
                                 //m_imgSource_Color_FullBoard = new CogImage24PlanarColor(m_imgSource_Color);
@@ -528,14 +533,22 @@ namespace IntelligentFactory
 
                                 if (ofd.ShowDialog() == DialogResult.OK)
                                 {
+
+                                    _imagesGrab = new CogImage24PlanarColor[5];
+                                    Global.ImagesGrab = new CogImage24PlanarColor[5];
+                                    _imagesGrab[0] = new CogImage24PlanarColor(new Bitmap(ofd.FileName));
+                                    Global.ImagesGrab[0] = new CogImage24PlanarColor(new Bitmap(ofd.FileName));
+                                    RefreshDispGrabIdx();
+                                    
+                                    // m_imgSource_Color, Mono, Fullboard 대체 어따쓰는거임 ?
                                     m_imgSource_Color = new CogImage24PlanarColor(new Bitmap(ofd.FileName));
                                     m_imgSource_Mono = new CogImage8Grey(new Bitmap(ofd.FileName));
+                                    m_imgSource_Color_FullBoard = new CogImage24PlanarColor(new Bitmap(ofd.FileName));
+                                    m_imgSource_Mono_FullBoard = new CogImage8Grey(new Bitmap(ofd.FileName));
 
                                     DispMain.Image = m_imgSource_Color;
                                     DispMain.Fit(true);
 
-                                    m_imgSource_Color_FullBoard = new CogImage24PlanarColor(new Bitmap(ofd.FileName));
-                                    m_imgSource_Mono_FullBoard = new CogImage8Grey(new Bitmap(ofd.FileName));
                                 }
                             }
                             catch (Exception ex)
@@ -638,7 +651,8 @@ namespace IntelligentFactory
                         break;
                     case "SAVE (1)":
                         // 세이브하는것을 묻기전에 이미지가 있는지 확인
-                        if (!m_imgSource_Color.Allocated)
+                        //if (!m_imgSource_Color.Allocated)
+                        if (DispMain.Image == null)
                         {
                             IF_Util.ShowMessageBox("NO IMAGE", "Please proceed with Grab");
                             return;
@@ -667,7 +681,9 @@ namespace IntelligentFactory
                     case "ORIGINAL":
                         {
                             if (DispMain.Image == null) return;
-                            DispMain.Image = m_imgSource_Color.ScaleImage(DispMain.Image.Width, DispMain.Image.Height);
+                            DispMain.Image = _imagesGrab[0].ScaleImage(DispMain.Image.Width, DispMain.Image.Height);
+                            btnViewGrabIndex1.Selected = true;
+                            DispMain.Fit();
                             DispMain.InteractiveGraphics.Clear();
                             DispMain.StaticGraphics.Clear();
                         }
@@ -795,7 +811,8 @@ namespace IntelligentFactory
                 
                 if (sender is UISymbolButton)
                 {   
-                    viewIndex = (sender as UISymbolButton).Text.ToString().ToUpper();
+                    viewType = (sender as  UISymbolButton).Tag.ToString().ToUpper();
+                    //viewIndex = (sender as UISymbolButton).Text.ToString().ToUpper();
 
                     (sender as UISymbolButton).Selected = true;
                 }
@@ -817,6 +834,11 @@ namespace IntelligentFactory
                     case "RESULT":
                         {
 
+                        }
+                        break;
+                    case "FULL":
+                        {
+                            //DispMain.Image = 
                         }
                         break;
                 }
