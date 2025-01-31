@@ -518,6 +518,11 @@ namespace IntelligentFactory
 
                                 Thread.Sleep(10);
                             }
+
+                            btnViewGrabIndex1.Selected = true;
+                            DispMain.Image = _imagesGrab[0];
+                            DispMain.Fit();
+                            RefreshDispGrabIdx();
                         }
                         break;
                     case "LIVE":
