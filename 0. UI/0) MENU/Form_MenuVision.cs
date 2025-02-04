@@ -979,6 +979,8 @@ namespace IntelligentFactory
             try
             {
                 UnselectGrabIndex();
+                UnselectViewMode();
+                btnView_Full.Selected = true;
 
                 int grabIndex = 0;
 
