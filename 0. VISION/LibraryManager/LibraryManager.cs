@@ -65,7 +65,7 @@ namespace IntelligentFactory
                 {
                     LocationNo = part.LocationNo,
                     PosX = Math.Round(double.Parse(part.PosX) / 0.07, 3),
-                    PosY = Math.Round(double.Parse(part.PosY) / 0.07, 3),
+                    PosY = Global.Instance.System.Recipe.FiducialLibrary.RegionArray1.Height - Math.Round(double.Parse(part.PosY) / 0.07, 3),
                     PosAngle = double.Parse(part.PosAngle),
                     Enabled = part.Enabled,
                     PartCode = part.PartCode,
@@ -77,7 +77,6 @@ namespace IntelligentFactory
 
         public void Save(string libraryName)
         {
-
             string path = $"{Application.StartupPath}\\LIBRARY\\{libraryName}\\{Name}.json";
             string currRecipe;
 
