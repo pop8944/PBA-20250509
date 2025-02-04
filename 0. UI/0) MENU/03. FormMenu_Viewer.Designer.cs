@@ -1401,7 +1401,6 @@ namespace IntelligentFactory
             this.rab_TxtOutput.Style = Sunny.UI.UIStyle.Custom;
             this.rab_TxtOutput.TabIndex = 3365;
             this.rab_TxtOutput.Text = "TXT";
-            this.rab_TxtOutput.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // rab_ExcelOutput
             // 
@@ -1418,7 +1417,6 @@ namespace IntelligentFactory
             this.rab_ExcelOutput.Style = Sunny.UI.UIStyle.Custom;
             this.rab_ExcelOutput.TabIndex = 3364;
             this.rab_ExcelOutput.Text = "EXCEL";
-            this.rab_ExcelOutput.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // cboJudgeType
             // 
@@ -1931,7 +1929,6 @@ namespace IntelligentFactory
             this.tcJobType.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tcJobType.TabIndex = 2741;
             this.tcJobType.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tcJobType.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // tP_NGBuffer
             // 
@@ -2169,7 +2166,6 @@ namespace IntelligentFactory
             this.rab_TxtOutput_Board.Style = Sunny.UI.UIStyle.Custom;
             this.rab_TxtOutput_Board.TabIndex = 3363;
             this.rab_TxtOutput_Board.Text = "TXT";
-            this.rab_TxtOutput_Board.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // cboJudgeType_Board
             // 
@@ -2229,7 +2225,6 @@ namespace IntelligentFactory
             this.rab_ExcelOutput_Board.Style = Sunny.UI.UIStyle.Custom;
             this.rab_ExcelOutput_Board.TabIndex = 3362;
             this.rab_ExcelOutput_Board.Text = "EXCEL";
-            this.rab_ExcelOutput_Board.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // cboID_Board
             // 
@@ -2813,7 +2808,6 @@ namespace IntelligentFactory
             this.uiPanel1.TabIndex = 2745;
             this.uiPanel1.Text = "uiPanel1";
             this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiPanel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // cogDisplay_Crop_NG
             // 
@@ -2869,7 +2863,6 @@ namespace IntelligentFactory
             this.uiPanel2.TabIndex = 2746;
             this.uiPanel2.Text = "uiPanel2";
             this.uiPanel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiPanel2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // label6
             // 
@@ -3063,6 +3056,8 @@ namespace IntelligentFactory
             this.combo_History_ModelName.DataSource = null;
             this.combo_History_ModelName.FillColor = System.Drawing.Color.White;
             this.combo_History_ModelName.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.combo_History_ModelName.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            this.combo_History_ModelName.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.combo_History_ModelName.Location = new System.Drawing.Point(158, 0);
             this.combo_History_ModelName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.combo_History_ModelName.MinimumSize = new System.Drawing.Size(63, 0);
@@ -3070,10 +3065,11 @@ namespace IntelligentFactory
             this.combo_History_ModelName.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
             this.combo_History_ModelName.Size = new System.Drawing.Size(122, 24);
             this.combo_History_ModelName.Style = Sunny.UI.UIStyle.Custom;
+            this.combo_History_ModelName.SymbolSize = 24;
             this.combo_History_ModelName.TabIndex = 1990;
             this.combo_History_ModelName.Text = "ALL";
             this.combo_History_ModelName.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.combo_History_ModelName.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.combo_History_ModelName.Watermark = "";
             // 
             // FormMenu_Viewer
             // 

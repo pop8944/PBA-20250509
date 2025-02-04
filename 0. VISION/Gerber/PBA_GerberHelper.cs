@@ -35,9 +35,9 @@ namespace IntelligentFactory
                         PosX = worksheet.Cells[row, 3].Text, // C 열 (3번 컬럼)
                         PosY = worksheet.Cells[row, 4].Text, // D 열 (4번 컬럼)
                         PosAngle = worksheet.Cells[row, 5].Text, // E 열 (5번 컬럼)
-                        ArrayIndex = int.Parse(worksheet.Cells[row, 6].Text), // H 열 (8번 컬럼)
+                        ArrayIndex = int.Parse(worksheet.Cells[row, 7].Text), // H 열 (7번 컬럼)
                         PartCode = worksheet.Cells[row, 8].Text, // H 열 (8번 컬럼)
-                        Enabled = bool.Parse(worksheet.Cells[row, 12].Text) // L 열 (12번 컬럼)
+                        Enabled = !bool.Parse(worksheet.Cells[row, 12].Text) // L 열 (12번 컬럼)
                     };
 
                     gerberInfo.Add(data);

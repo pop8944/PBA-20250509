@@ -748,12 +748,12 @@
     <Compile Include="0. UI\1%29 POPUP\IFNotify.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="0. VISION\Manager\IF_VisionLogicManager.cs" />
+    <Compile Include="0. VISION\Manager\IF_VisionLogicInfo.cs" />
     <Compile Include="0. VISION\Parameter\IF_VisionParam_Blob.cs" />
     <Compile Include="0. VISION\Parameter\IF_VisionParam_ColorEx.cs" />
     <Compile Include="0. VISION\Parameter\IF_VisionParam_FindLine.cs" />
     <Compile Include="0. VISION\Parameter\IF_VisionParam_Matching.cs" />
-    <Compile Include="0. VISION\Parts Lbirary\PartsLibrary.cs" />
+    <Compile Include="0. VISION\LibraryManager\LibraryManager.cs" />
     <Compile Include="0. VISION\Gerber\PBA_GerberHelper.cs" />
     <Compile Include="0. VISION\Gerber\PBA_GerberInfo.cs" />
     <Compile Include="1. Core\CSetting.cs" />

@@ -49,6 +49,8 @@ namespace IntelligentFactory
         public CInspJobs JobManager_Array4/* = new CInspJobs()*/;
 
         public Library_Fiducial FiducialLibrary { get; set; } = new Library_Fiducial();
+        public LibraryManager LibraryManager { get; set; } = new LibraryManager("DEFAULT");
+        public LibraryManager LoadedGerber { get; set; }
 
         public CInspJobs[] JobManager = new CInspJobs[4];
         public CGrabManager GrabManager { get; set; } = new CGrabManager();

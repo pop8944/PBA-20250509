@@ -20,7 +20,7 @@ namespace IntelligentFactory
 
         public int FiducialGrabIndex { get; set; } = 0;
 
-        public Rectangle RegionArray1 { get; set; } = new Rectangle(100, 100, 100, 100);
+        public Rectangle RegionArray1 { get; set; } = new Rectangle(260, 150, 2340, 3400);
         public Rectangle RegionArray2 { get; set; } = new Rectangle(100, 100, 100, 100);
         public Rectangle RegionArray3 { get; set; } = new Rectangle(100, 100, 100, 100);
         public Rectangle RegionArray4 { get; set; } = new Rectangle(100, 100, 100, 100);

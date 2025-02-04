@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -9,48 +11,74 @@ using Newtonsoft.Json.Linq;
 
 namespace IntelligentFactory
 {
-    [Serializable]
-    public class IF_VisionLogicManager
+    public class LibraryManager
     {
-        public string PartCode { get; set; } = "";
-        public string LocationNo { get; set; } = "";
+        public string Name { get; set; } = "";
 
-        public double PosX { get; set; }
-        public double PosY { get; set; }
-        public double PosAngle { get; set; }
-        public string Description { get; set; } = "";
-        public bool Enabled { get; set; } = false;        
+        //public ConcurrentDictionary<int, List<IF_VisionLogicInfo>> Library { get; set; } = null;
+        public ConcurrentDictionary<int, List<IF_VisionLogicInfo>> Library { get; set; } = new ConcurrentDictionary<int, List<IF_VisionLogicInfo>> ();
 
-        public List<IF_VisionParamObject> Logics { get; set; }
-        public IF_VisionLogicManager(string name)
+        public LibraryManager(string name)
         {
-            PartCode = name;
+            Name = name;
         }
 
-        public IF_VisionLogicManager Load(string libraryName)
+        public LibraryManager Load(string libraryName)
         {
-            string path = $"{Application.StartupPath}\\LIBRARY\\{libraryName}\\{PartCode}.json";
+            string path = $"{Application.StartupPath}\\LIBRARY\\{libraryName}\\{Name}.json";
 
 
-            IF_VisionLogicManager newData = null;
+            LibraryManager newData = null;
 
             if (File.Exists(path))
             {
-                newData = JsonConvert.DeserializeObject<IF_VisionLogicManager>(File.ReadAllText(path), new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All });
+                newData = JsonConvert.DeserializeObject<LibraryManager>(File.ReadAllText(path), new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All });
 
                 if (newData != null)
                     return newData;
             }
 
-            newData = new IF_VisionLogicManager(PartCode);
+            newData = new LibraryManager(Name);
             newData.Save(libraryName);
+            return newData;
+        }
+
+        public LibraryManager LoadGerber(string gerberPath)
+        {
+            LibraryManager newData = new LibraryManager(Name);
+            List<PBA_GerberInfo> parts = PBA_GerberHelper.GetGerberInfo(gerberPath);
+
+            // 가장 큰 ArrayIndex 값
+            int arrayCount = parts.Max(p => p.ArrayIndex);
+
+            if(newData.Library != null) newData.Library.Clear();
+
+            for (int i = 0; i < arrayCount; i++)
+            {
+                newData.Library.TryAdd((i + 1), new List<IF_VisionLogicInfo>());
+            }
+            
+            //Library
+            foreach (var part in parts)
+            {
+                newData.Library[part.ArrayIndex].Add(new IF_VisionLogicInfo(part.PartCode)
+                {
+                    LocationNo = part.LocationNo,
+                    PosX = double.Parse(part.PosX),
+                    PosY = double.Parse(part.PosY),
+                    PosAngle = double.Parse(part.PosAngle),
+                    Enabled = part.Enabled,
+                    PartCode = part.PartCode,
+                });
+            }
+
             return newData;
         }
 
         public void Save(string libraryName)
         {
-            
-            string path = $"{Application.StartupPath}\\LIBRARY\\{libraryName}\\{PartCode}.json";
+
+            string path = $"{Application.StartupPath}\\LIBRARY\\{libraryName}\\{Name}.json";
             string currRecipe;
 
             try

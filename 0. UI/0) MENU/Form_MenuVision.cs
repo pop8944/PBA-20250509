@@ -592,6 +592,7 @@ namespace IntelligentFactory
 
                                 string[] fileEntries = Directory.GetFiles(selectedFolderPath);
                                 Array.Sort(fileEntries);
+                                
                                 int fileCount = Math.Min(fileEntries.Length, 5);
                                 _imagesGrab = new CogImage24PlanarColor[5];
                                 CogImage24PlanarColor imgOrg_Index0 = new CogImage24PlanarColor();
@@ -817,6 +818,37 @@ namespace IntelligentFactory
 
         }
 
+        private void BtnGerberLoad_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.InitialDirectory = Global.m_MainPJTRoot;
+                ofd.Filter = "Gerber Files(*.xlsx)|*.xlsx";
+
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    TbGerberPath.Text = ofd.FileName;
+                    Global.System.Recipe.LoadedGerber = Global.System.Recipe.LibraryManager.LoadGerber(ofd.FileName);
+                    DgvGerberInfo.Rows.Clear();
+                    List<IF_VisionLogicInfo> library = Global.System.Recipe.LoadedGerber.Library[1];
+                    foreach (IF_VisionLogicInfo info in library)
+                    {
+                        DgvGerberInfo.Rows.Add(new object[] { info.LocationNo, info.PartCode, info.Enabled, $"X: {info.PosX}, Y: {info.PosY}"});
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void BtnReplaceLibrary_Click(object sender, EventArgs e)
+        {
+            //Global.System.Recipe.LibraryManager = Global.System.Recipe.LoadedGerber;
+        }
+
         private void timerCalibration_Tick(object sender, EventArgs e)
         {
             try
@@ -904,7 +936,7 @@ namespace IntelligentFactory
                 {
                     case "SETTING":
                         {
-
+                            DispMain.Image = new CogImage24PlanarColor(IF_Util.Crop(_imagesGrab[selectedGrabIndex - 1].ToBitmap(), Global.System.Recipe.FiducialLibrary.RegionArray1));
                         }
                         break;
                     case "RESULT":
