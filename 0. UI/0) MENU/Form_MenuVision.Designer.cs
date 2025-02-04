@@ -1775,7 +1775,6 @@ namespace IntelligentFactory
             this.uiGroupBox14.TabIndex = 3541;
             this.uiGroupBox14.Text = "I.Q ( Exposure, Gain, Light )";
             this.uiGroupBox14.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiGroupBox14.Click += new System.EventHandler(this.uiGroupBox14_Click);
             // 
             // label89
             // 

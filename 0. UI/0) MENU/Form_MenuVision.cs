@@ -814,11 +814,6 @@ namespace IntelligentFactory
             };
         }
 
-        private void uiGroupBox14_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void BtnGerberLoad_Click(object sender, EventArgs e)
         {
             try
