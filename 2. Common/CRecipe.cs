@@ -121,7 +121,7 @@ namespace IntelligentFactory
 
             try
             {
-                FiducialLibrary = FiducialLibrary.Load(CODE, FIducialLibrary_Number);
+                //FiducialLibrary = FiducialLibrary.Load(CODE, FIducialLibrary_Number);
             }
             catch (Exception ex)
             {
