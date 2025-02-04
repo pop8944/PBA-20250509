@@ -15,8 +15,8 @@ namespace IntelligentFactory
         public string PartCode { get; set; } = "";
         public string LocationNo { get; set; } = "";
 
-        public double PosX { get; set; }
-        public double PosY { get; set; }
+        public int PosX { get; set; }
+        public int PosY { get; set; }
         public double PosAngle { get; set; }
         public string Description { get; set; } = "";
         public bool Enabled { get; set; } = false;        

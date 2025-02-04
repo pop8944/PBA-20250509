@@ -11,6 +11,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using System.Windows.Forms;
 
 using Cognex.VisionPro;
@@ -834,7 +835,7 @@ namespace IntelligentFactory
                     List<IF_VisionLogicInfo> library = Global.System.Recipe.LoadedGerber.Library[1];
                     foreach (IF_VisionLogicInfo info in library)
                     {
-                        DgvGerberInfo.Rows.Add(new object[] { info.LocationNo, info.PartCode, info.Enabled, $"X: {info.PosX}, Y: {info.PosY}"});
+                        DgvGerberInfo.Rows.Add(new object[] { info.LocationNo, info.PartCode, info.Enabled, $"X: {info.PosX.ToString()}, Y: {info.PosY.ToString()}"});
                     }
                 }
             }
@@ -846,7 +847,29 @@ namespace IntelligentFactory
 
         private void BtnReplaceLibrary_Click(object sender, EventArgs e)
         {
+            if (DispMain == null) return;
+            Global.System.Recipe.LibraryManager.Library = new System.Collections.Concurrent.ConcurrentDictionary<int, List<IF_VisionLogicInfo>>();
+            Global.System.Recipe.LibraryManager.Library[1] = Global.System.Recipe.LoadedGerber.Library[1];
+
+            DgvJobList.Rows.Clear();
+            foreach(IF_VisionLogicInfo info in Global.System.Recipe.LibraryManager.Library[1])
+            DgvJobList.Rows.Add(new object[] {info.LocationNo, info.Enabled, info.PartCode});
             //Global.System.Recipe.LibraryManager = Global.System.Recipe.LoadedGerber;
+        }
+
+        private void BtnRegionVisible_Click(object sender, EventArgs e)
+        {
+            DispMain.Image = new CogImage24PlanarColor(IF_Util.Crop(_imagesGrab[0].ToBitmap(), Global.System.Recipe.FiducialLibrary.RegionArray1));
+            DispMain.InteractiveGraphics.Clear();
+            CogGraphicInteractiveCollection cg = new CogGraphicInteractiveCollection();
+            foreach (IF_VisionLogicInfo info in Global.System.Recipe.LoadedGerber.Library[1])
+            {
+                if (!info.Enabled) continue;
+                Rectangle tempRect = new Rectangle(info.PosX - 100/2, info.PosY - 100 / 2, 100, 100);
+                CogRectangle rect = CConverter.RectToCogRect(tempRect);
+                cg.Add(rect);
+            }
+            DispMain.InteractiveGraphics.AddList(cg, "GerberROI", true);
         }
 
         private void timerCalibration_Tick(object sender, EventArgs e)

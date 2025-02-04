@@ -64,8 +64,8 @@ namespace IntelligentFactory
                 newData.Library[part.ArrayIndex].Add(new IF_VisionLogicInfo(part.PartCode)
                 {
                     LocationNo = part.LocationNo,
-                    PosX = Math.Round(double.Parse(part.PosX) / 0.07, 3),
-                    PosY = Global.Instance.System.Recipe.FiducialLibrary.RegionArray1.Height - Math.Round(double.Parse(part.PosY) / 0.07, 3),
+                    PosX = (int)(double.Parse(part.PosX) / 0.07),
+                    PosY = (int)(Global.Instance.System.Recipe.FiducialLibrary.RegionArray1.Height - double.Parse(part.PosY) / 0.07),
                     PosAngle = double.Parse(part.PosAngle),
                     Enabled = part.Enabled,
                     PartCode = part.PartCode,
