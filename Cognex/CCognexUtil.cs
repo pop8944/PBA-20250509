@@ -97,6 +97,10 @@ namespace IntelligentFactory
                 {
                     (tool as CogFindCircleTool).RunParams = CogSerializer.LoadObjectFromFile(strPath) as CogFindCircle;
                 }
+                if (tool is CogPMAlignTool)
+                {
+                   tool = CogSerializer.LoadObjectFromFile(strPath) as CogPMAlignTool;
+                }
             }
             catch (Exception ex)
             {

@@ -41,6 +41,7 @@ namespace IntelligentFactory
                     Global.Instance.bRecipeChangeEnd = false;
                     Global.Instance.System.Recipe.LoadTools();
                     Global.Instance.Setting.Load(Global.System.Recipe.Name);
+                    Global.Instance.System.Recipe.LibraryManager.Load("TEST");
 
 
                     CLogger.Add(LOG.NORMAL, $"[Model : {Global.System.Recipe.Name}]LoadTools");

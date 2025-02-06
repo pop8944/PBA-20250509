@@ -12,8 +12,8 @@ namespace IntelligentFactory
     [Serializable]
     public class IF_VisionLogicInfo
     {
+        public string LocationNo { get; set; } = ""; // ID
         public string PartCode { get; set; } = "";
-        public string LocationNo { get; set; } = "";
 
         public int PosX { get; set; }
         public int PosY { get; set; }
@@ -21,7 +21,9 @@ namespace IntelligentFactory
         public string Description { get; set; } = "";
         public bool Enabled { get; set; } = false;        
 
-        public List<IF_VisionParamObject> Logics { get; set; }
+        //public Dictionary<string, IF_VisionParamObject> Logics { get; set; }
+        public List<IF_VisionParamObject> Logics { get; set; } = new List<IF_VisionParamObject>();
+
         public IF_VisionLogicInfo(string name)
         {
             PartCode = name;

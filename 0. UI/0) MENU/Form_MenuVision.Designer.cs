@@ -40,6 +40,9 @@ namespace IntelligentFactory
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -53,9 +56,11 @@ namespace IntelligentFactory
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("asdf");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("ImageProcessing", new System.Windows.Forms.TreeNode[] {
+            treeNode1});
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Algorithm");
             this.timerStatus = new System.Windows.Forms.Timer(this.components);
             this.pnlCogDisplay = new System.Windows.Forms.Panel();
             this.DispMain = new Cognex.VisionPro.Display.CogDisplay();
@@ -195,15 +200,15 @@ namespace IntelligentFactory
             this.label67 = new System.Windows.Forms.Label();
             this.uiLine17 = new Sunny.UI.UILine();
             this.uiGroupBox12 = new Sunny.UI.UIGroupBox();
-            this.label55 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.uiSymbolButton15 = new Sunny.UI.UISymbolButton();
-            this.uiSymbolButton16 = new Sunny.UI.UISymbolButton();
-            this.uiTextBox14 = new Sunny.UI.UITextBox();
+            this.cbIQContinuous = new System.Windows.Forms.CheckBox();
+            this.lbCurrentFocusValue = new System.Windows.Forms.Label();
+            this.lbBestFocusValue = new System.Windows.Forms.Label();
+            this.btnIQStop = new Sunny.UI.UISymbolButton();
+            this.btnIQStart = new Sunny.UI.UISymbolButton();
+            this.tbMasterHeight = new Sunny.UI.UITextBox();
             this.label38 = new System.Windows.Forms.Label();
-            this.uiSymbolButton9 = new Sunny.UI.UISymbolButton();
-            this.uiTextBox7 = new Sunny.UI.UITextBox();
-            this.uiTextBox8 = new Sunny.UI.UITextBox();
+            this.tbPixelSize = new Sunny.UI.UITextBox();
+            this.tbMasterWidth = new Sunny.UI.UITextBox();
             this.label34 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.tabPage10 = new System.Windows.Forms.TabPage();
@@ -319,42 +324,352 @@ namespace IntelligentFactory
             this.btnPreProcessRun_One = new Sunny.UI.UISymbolButton();
             this.btnPreProcessDel = new Sunny.UI.UISymbolButton();
             this.btnPreProcessAdd = new Sunny.UI.UISymbolButton();
-            this.tabPage18 = new System.Windows.Forms.TabPage();
-            this.label77 = new System.Windows.Forms.Label();
-            this.label74 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.label83 = new System.Windows.Forms.Label();
-            this.label78 = new System.Windows.Forms.Label();
-            this.label65 = new System.Windows.Forms.Label();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.label82 = new System.Windows.Forms.Label();
-            this.label79 = new System.Windows.Forms.Label();
-            this.label69 = new System.Windows.Forms.Label();
+            this.uiTabControl4 = new Sunny.UI.UITabControl();
             this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.label75 = new System.Windows.Forms.Label();
-            this.label70 = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.label80 = new System.Windows.Forms.Label();
-            this.label71 = new System.Windows.Forms.Label();
             this.tabPage9 = new System.Windows.Forms.TabPage();
-            this.label81 = new System.Windows.Forms.Label();
-            this.label72 = new System.Windows.Forms.Label();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.uiTabControlMenu1 = new Sunny.UI.UITabControlMenu();
             this.tabPage11 = new System.Windows.Forms.TabPage();
-            this.label84 = new System.Windows.Forms.Label();
+            this.tbJobPattern_AcceptScore = new Sunny.UI.UITextBox();
+            this.tbJobPattern_MinScore = new Sunny.UI.UITextBox();
+            this.tbPatternMasterCount = new Sunny.UI.UITextBox();
+            this.label137 = new System.Windows.Forms.Label();
+            this.lblDetectedPatternCount = new System.Windows.Forms.Label();
+            this.btnJobPatternDelete = new Sunny.UI.UISymbolButton();
+            this.comboJobPattern_PatternType = new MetroFramework.Controls.MetroComboBox();
+            this.lblTrained = new System.Windows.Forms.Label();
+            this.label100 = new System.Windows.Forms.Label();
+            this.label69 = new System.Windows.Forms.Label();
+            this.uiSymbolButton12 = new Sunny.UI.UISymbolButton();
+            this.label70 = new System.Windows.Forms.Label();
+            this.label71 = new System.Windows.Forms.Label();
+            this.btnJobPattern_Roi = new Sunny.UI.UISymbolButton();
+            this.btnJobPattern_Train = new Sunny.UI.UISymbolButton();
+            this.btnJobPattern_Find = new Sunny.UI.UISymbolButton();
+            this.label110 = new System.Windows.Forms.Label();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.cogDisplay_JobPattern = new Cognex.VisionPro.Display.CogDisplay();
+            this.label65 = new System.Windows.Forms.Label();
+            this.tabPage18 = new System.Windows.Forms.TabPage();
+            this.txt_PinMatchingScoreMin = new Sunny.UI.UITextBox();
+            this.txtBlobThreshold = new Sunny.UI.UITextBox();
+            this.tbAreaMax = new Sunny.UI.UITextBox();
+            this.tbAreaMin = new Sunny.UI.UITextBox();
+            this.btnGetBlobPos = new System.Windows.Forms.Button();
+            this.btnJobBlob_Roi = new Sunny.UI.UISymbolButton();
+            this.CogDisplay_FinMatchingTemplateImg = new Cognex.VisionPro.Display.CogDisplay();
+            this.uiSymbolButton29 = new Sunny.UI.UISymbolButton();
+            this.label83 = new System.Windows.Forms.Label();
+            this.label82 = new System.Windows.Forms.Label();
+            this.label72 = new System.Windows.Forms.Label();
             this.label73 = new System.Windows.Forms.Label();
-            this.tabPage19 = new System.Windows.Forms.TabPage();
             this.label86 = new System.Windows.Forms.Label();
-            this.label85 = new System.Windows.Forms.Label();
-            this.tabPage20 = new System.Windows.Forms.TabPage();
+            this.uiSymbolButton32 = new Sunny.UI.UISymbolButton();
             this.label88 = new System.Windows.Forms.Label();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.label118 = new System.Windows.Forms.Label();
+            this.uiSymbolButton33 = new Sunny.UI.UISymbolButton();
+            this.uiSymbolButton64 = new Sunny.UI.UISymbolButton();
+            this.uiSymbolButton65 = new Sunny.UI.UISymbolButton();
+            this.btnJobBlobInsp = new System.Windows.Forms.Button();
+            this.tabPage19 = new System.Windows.Forms.TabPage();
+            this.tbYMaxValue = new Sunny.UI.UITextBox();
+            this.tbYMinValue = new Sunny.UI.UITextBox();
+            this.tbXMaxValue = new Sunny.UI.UITextBox();
+            this.tbXMinValue = new Sunny.UI.UITextBox();
+            this.tbAngleMaxValue = new Sunny.UI.UITextBox();
+            this.tbAngleMinValue = new Sunny.UI.UITextBox();
+            this.tbLineEdgeContrast = new Sunny.UI.UITextBox();
+            this.btnDistanceDetail = new Sunny.UI.UISymbolButton();
+            this.numericDistanceSamplingCount = new System.Windows.Forms.NumericUpDown();
+            this.numericDistanceThickness = new System.Windows.Forms.NumericUpDown();
+            this.label74 = new System.Windows.Forms.Label();
+            this.label75 = new System.Windows.Forms.Label();
+            this.cbYValue = new System.Windows.Forms.CheckBox();
+            this.cbXValue = new System.Windows.Forms.CheckBox();
+            this.cbAngle = new System.Windows.Forms.CheckBox();
+            this.label117 = new System.Windows.Forms.Label();
+            this.label111 = new System.Windows.Forms.Label();
+            this.label112 = new System.Windows.Forms.Label();
+            this.label113 = new System.Windows.Forms.Label();
+            this.label106 = new System.Windows.Forms.Label();
+            this.label107 = new System.Windows.Forms.Label();
+            this.label109 = new System.Windows.Forms.Label();
+            this.label77 = new System.Windows.Forms.Label();
+            this.label78 = new System.Windows.Forms.Label();
+            this.label79 = new System.Windows.Forms.Label();
+            this.btnJobDistanceInsp = new Sunny.UI.UISymbolButton();
+            this.btnJobDistance_Roi = new Sunny.UI.UISymbolButton();
+            this.uiSymbolButton66 = new Sunny.UI.UISymbolButton();
+            this.comboLineEdgePolarity = new MetroFramework.Controls.MetroComboBox();
+            this.label80 = new System.Windows.Forms.Label();
+            this.comboLineEdgeScorer = new MetroFramework.Controls.MetroComboBox();
+            this.label81 = new System.Windows.Forms.Label();
+            this.label84 = new System.Windows.Forms.Label();
+            this.tabPage26 = new System.Windows.Forms.TabPage();
+            this.btnEyeD_ColorExInsp = new Sunny.UI.UISymbolButton();
+            this.btnEyeD_ColorSetting = new Sunny.UI.UISymbolButton();
+            this.chkEyeD_UseColor = new System.Windows.Forms.CheckBox();
+            this.label85 = new System.Windows.Forms.Label();
+            this.btnEyeD_DistSetting = new Sunny.UI.UISymbolButton();
+            this.btnJobEyeD_DistanceInsp = new Sunny.UI.UISymbolButton();
+            this.chkEyeD_UseDist = new System.Windows.Forms.CheckBox();
+            this.label131 = new System.Windows.Forms.Label();
             this.label87 = new System.Windows.Forms.Label();
-            this.uiSymbolButton63 = new Sunny.UI.UISymbolButton();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.panel56 = new System.Windows.Forms.Panel();
+            this.checkBox59 = new System.Windows.Forms.CheckBox();
+            this.label147 = new System.Windows.Forms.Label();
+            this.panel57 = new System.Windows.Forms.Panel();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label150 = new System.Windows.Forms.Label();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.checkBox55 = new System.Windows.Forms.CheckBox();
+            this.checkBox56 = new System.Windows.Forms.CheckBox();
+            this.checkBox57 = new System.Windows.Forms.CheckBox();
+            this.checkBox58 = new System.Windows.Forms.CheckBox();
+            this.chkJobEyeD_UseSpecRegion = new System.Windows.Forms.CheckBox();
+            this.label148 = new System.Windows.Forms.Label();
+            this.panel40 = new System.Windows.Forms.Panel();
+            this.label91 = new System.Windows.Forms.Label();
+            this.panel41 = new System.Windows.Forms.Panel();
+            this.cbRotateImageAngle = new MetroFramework.Controls.MetroComboBox();
+            this.checkBox26 = new System.Windows.Forms.CheckBox();
+            this.checkBox27 = new System.Windows.Forms.CheckBox();
+            this.checkBox47 = new System.Windows.Forms.CheckBox();
+            this.checkBox48 = new System.Windows.Forms.CheckBox();
+            this.panel35 = new System.Windows.Forms.Panel();
+            this.label92 = new System.Windows.Forms.Label();
+            this.panel36 = new System.Windows.Forms.Panel();
+            this.txtEyeDMaxCount = new Sunny.UI.UITextBox();
+            this.checkBox22 = new System.Windows.Forms.CheckBox();
+            this.checkBox23 = new System.Windows.Forms.CheckBox();
+            this.checkBox24 = new System.Windows.Forms.CheckBox();
+            this.checkBox25 = new System.Windows.Forms.CheckBox();
+            this.panel32 = new System.Windows.Forms.Panel();
+            this.label93 = new System.Windows.Forms.Label();
+            this.panel33 = new System.Windows.Forms.Panel();
+            this.lblEyeDResult = new System.Windows.Forms.Label();
+            this.checkBox38 = new System.Windows.Forms.CheckBox();
+            this.checkBox39 = new System.Windows.Forms.CheckBox();
+            this.checkBox40 = new System.Windows.Forms.CheckBox();
+            this.checkBox45 = new System.Windows.Forms.CheckBox();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.label129 = new System.Windows.Forms.Label();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.txtEyeDCorrectAnswer = new Sunny.UI.UITextBox();
+            this.checkBox9 = new System.Windows.Forms.CheckBox();
+            this.checkBox19 = new System.Windows.Forms.CheckBox();
+            this.checkBox20 = new System.Windows.Forms.CheckBox();
+            this.checkBox21 = new System.Windows.Forms.CheckBox();
+            this.panel28 = new System.Windows.Forms.Panel();
+            this.label128 = new System.Windows.Forms.Label();
+            this.panel29 = new System.Windows.Forms.Panel();
+            this.txtEyeDMinScore = new Sunny.UI.UITextBox();
+            this.checkBox34 = new System.Windows.Forms.CheckBox();
+            this.checkBox35 = new System.Windows.Forms.CheckBox();
+            this.checkBox36 = new System.Windows.Forms.CheckBox();
+            this.checkBox37 = new System.Windows.Forms.CheckBox();
+            this.btnJobEyeD_Roi = new Sunny.UI.UISymbolButton();
+            this.btnjobEyeDFind = new Sunny.UI.UISymbolButton();
+            this.panel24 = new System.Windows.Forms.Panel();
+            this.label126 = new System.Windows.Forms.Label();
+            this.panel25 = new System.Windows.Forms.Panel();
+            this.checkBox28 = new System.Windows.Forms.CheckBox();
+            this.checkBox31 = new System.Windows.Forms.CheckBox();
+            this.numericEyeDOkCount = new System.Windows.Forms.NumericUpDown();
+            this.checkBox32 = new System.Windows.Forms.CheckBox();
+            this.checkBox33 = new System.Windows.Forms.CheckBox();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.label125 = new System.Windows.Forms.Label();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.comboEyeDInferType = new MetroFramework.Controls.MetroComboBox();
+            this.checkBox11 = new System.Windows.Forms.CheckBox();
+            this.checkBox16 = new System.Windows.Forms.CheckBox();
+            this.checkBox29 = new System.Windows.Forms.CheckBox();
+            this.checkBox30 = new System.Windows.Forms.CheckBox();
+            this.panel30 = new System.Windows.Forms.Panel();
+            this.label127 = new System.Windows.Forms.Label();
+            this.panel31 = new System.Windows.Forms.Panel();
+            this.btnGetEyeDModelNames = new System.Windows.Forms.Button();
+            this.comboEyeDModelName = new MetroFramework.Controls.MetroComboBox();
+            this.checkBox41 = new System.Windows.Forms.CheckBox();
+            this.checkBox42 = new System.Windows.Forms.CheckBox();
+            this.checkBox43 = new System.Windows.Forms.CheckBox();
+            this.checkBox44 = new System.Windows.Forms.CheckBox();
+            this.tabPage27 = new System.Windows.Forms.TabPage();
+            this.lbColorMaxArea = new Sunny.UI.UITextBox();
+            this.lbColorMinArea = new Sunny.UI.UITextBox();
+            this.label94 = new System.Windows.Forms.Label();
+            this.label95 = new System.Windows.Forms.Label();
+            this.label96 = new System.Windows.Forms.Label();
+            this.panel43 = new System.Windows.Forms.Panel();
+            this.lbThreshold_Color = new System.Windows.Forms.Label();
+            this.trbThreshold_Color = new MetroFramework.Controls.MetroTrackBar();
+            this.label97 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.label98 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.label99 = new System.Windows.Forms.Label();
+            this.lbJobColor_Area = new System.Windows.Forms.Label();
+            this.btnJobColor_Insp = new System.Windows.Forms.Button();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.label101 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnJobColor_Roi = new System.Windows.Forms.Button();
+            this.btnJobColor_AutoColor = new System.Windows.Forms.Button();
+            this.lbExtractedColor2 = new System.Windows.Forms.Label();
+            this.lbExtractedColor = new System.Windows.Forms.Label();
+            this.panel23 = new System.Windows.Forms.Panel();
+            this.cboColorAlg = new MetroFramework.Controls.MetroComboBox();
+            this.label102 = new System.Windows.Forms.Label();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.cboColorCoordinate = new MetroFramework.Controls.MetroComboBox();
+            this.label103 = new System.Windows.Forms.Label();
+            this.tabPage28 = new System.Windows.Forms.TabPage();
+            this.panel64 = new System.Windows.Forms.Panel();
+            this.txtColorEx_B = new Sunny.UI.UITextBox();
+            this.txtColorEx_G = new Sunny.UI.UITextBox();
+            this.txtColorEx_R = new Sunny.UI.UITextBox();
+            this.label168 = new System.Windows.Forms.Label();
+            this.radioColorEx_Range45 = new System.Windows.Forms.RadioButton();
+            this.radioColorEx_Range30 = new System.Windows.Forms.RadioButton();
+            this.radioColorEx_Range15 = new System.Windows.Forms.RadioButton();
+            this.label171 = new System.Windows.Forms.Label();
+            this.label170 = new System.Windows.Forms.Label();
+            this.label169 = new System.Windows.Forms.Label();
+            this.chkColorEx_SimpleMode = new System.Windows.Forms.CheckBox();
+            this.label167 = new System.Windows.Forms.Label();
+            this.btnJobColorEx_Roi = new Sunny.UI.UISymbolButton();
+            this.lblJobColorEx_ResultColor = new System.Windows.Forms.Label();
+            this.btnJobColorEx_Get = new System.Windows.Forms.Button();
+            this.label130 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.comboCorrectColorEx = new MetroFramework.Controls.MetroComboBox();
+            this.label132 = new System.Windows.Forms.Label();
+            this.uiSymbolButton67 = new Sunny.UI.UISymbolButton();
+            this.label133 = new System.Windows.Forms.Label();
+            this.tabPage29 = new System.Windows.Forms.TabPage();
+            this.tbIgnoreCount = new Sunny.UI.UITextBox();
+            this.tbCircleThickness = new Sunny.UI.UITextBox();
+            this.tbCircleContrast = new Sunny.UI.UITextBox();
+            this.tbCondensorRectRadio = new Sunny.UI.UITextBox();
+            this.tbCircleRectH = new Sunny.UI.UITextBox();
+            this.tbCircleRectW = new Sunny.UI.UITextBox();
+            this.btnJobCondensor_DistSetting = new Sunny.UI.UISymbolButton();
+            this.btnJobCondensor_DistInsp = new Sunny.UI.UISymbolButton();
+            this.chkCondensor_UseDist = new System.Windows.Forms.CheckBox();
+            this.label149 = new System.Windows.Forms.Label();
+            this.btnCondensorAutoRegion = new Sunny.UI.UISymbolButton();
+            this.label104 = new System.Windows.Forms.Label();
+            this.comboCondensorPolarity = new MetroFramework.Controls.MetroComboBox();
+            this.label105 = new System.Windows.Forms.Label();
+            this.label108 = new System.Windows.Forms.Label();
+            this.label114 = new System.Windows.Forms.Label();
+            this.label115 = new System.Windows.Forms.Label();
+            this.btnJobCondensor_Inspection = new Sunny.UI.UISymbolButton();
+            this.label116 = new System.Windows.Forms.Label();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.radioCondensorTB = new Sunny.UI.UIRadioButton();
+            this.radioCondensorLR = new Sunny.UI.UIRadioButton();
+            this.label119 = new System.Windows.Forms.Label();
+            this.label120 = new System.Windows.Forms.Label();
+            this.btnJobCondensor_Roi = new Sunny.UI.UISymbolButton();
+            this.uiSymbolButton68 = new Sunny.UI.UISymbolButton();
+            this.tabPage30 = new System.Windows.Forms.TabPage();
+            this.txtJobConnector_OKArea = new Sunny.UI.UITextBox();
+            this.label163 = new System.Windows.Forms.Label();
+            this.panel62 = new System.Windows.Forms.Panel();
+            this.radioJobConnector_AreaRB = new Sunny.UI.UIRadioButton();
+            this.radioJobConnector_AreaLT = new Sunny.UI.UIRadioButton();
+            this.uiSymbolButton69 = new Sunny.UI.UISymbolButton();
+            this.btnJobConnector_Projection = new Sunny.UI.UISymbolButton();
+            this.label162 = new System.Windows.Forms.Label();
+            this.txtJobConnector_AreaMax = new Sunny.UI.UITextBox();
+            this.txtJobConnector_AreaMin = new Sunny.UI.UITextBox();
+            this.label161 = new System.Windows.Forms.Label();
+            this.label155 = new System.Windows.Forms.Label();
+            this.txtJobConnector_BoxHeight = new Sunny.UI.UITextBox();
+            this.label160 = new System.Windows.Forms.Label();
+            this.txtJobConnector_BoxWidth = new Sunny.UI.UITextBox();
+            this.chkJobConnector_BinInv = new System.Windows.Forms.CheckBox();
+            this.label157 = new System.Windows.Forms.Label();
+            this.txtJobConnector_Threshold = new Sunny.UI.UITextBox();
+            this.label159 = new System.Windows.Forms.Label();
+            this.label158 = new System.Windows.Forms.Label();
+            this.checkBox60 = new System.Windows.Forms.CheckBox();
+            this.uiSymbolButton70 = new Sunny.UI.UISymbolButton();
+            this.label154 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.metroComboBox3 = new MetroFramework.Controls.MetroComboBox();
+            this.label152 = new System.Windows.Forms.Label();
+            this.label156 = new System.Windows.Forms.Label();
+            this.txtJobConnector_Score = new Sunny.UI.UITextBox();
+            this.label151 = new System.Windows.Forms.Label();
+            this.panel61 = new System.Windows.Forms.Panel();
+            this.radioJobConnector_TB = new Sunny.UI.UIRadioButton();
+            this.radioJobConnector_LR = new Sunny.UI.UIRadioButton();
+            this.label153 = new System.Windows.Forms.Label();
+            this.panel58 = new System.Windows.Forms.Panel();
+            this.cogDisplay_Connector = new Cognex.VisionPro.Display.CogDisplay();
+            this.label165 = new System.Windows.Forms.Label();
+            this.btnJobConnector_Roi = new Sunny.UI.UISymbolButton();
+            this.btnJobConnector_Train = new Sunny.UI.UISymbolButton();
+            this.btnJobConnector_Find = new Sunny.UI.UISymbolButton();
+            this.label164 = new System.Windows.Forms.Label();
+            this.tabPage31 = new System.Windows.Forms.TabPage();
+            this.panel63 = new System.Windows.Forms.Panel();
+            this.lblJobPin_MeasColor = new System.Windows.Forms.Label();
+            this.lblJobPin_ShapeColor = new System.Windows.Forms.Label();
+            this.chkJobPin_UseColorMatching = new System.Windows.Forms.CheckBox();
+            this.label166 = new System.Windows.Forms.Label();
+            this.chk_BlobPos_UseAlign = new System.Windows.Forms.CheckBox();
+            this.panel55 = new System.Windows.Forms.Panel();
+            this.label145 = new System.Windows.Forms.Label();
+            this.btnJobPin_Master = new Sunny.UI.UISymbolButton();
+            this.panel53 = new System.Windows.Forms.Panel();
+            this.label144 = new System.Windows.Forms.Label();
+            this.panel54 = new System.Windows.Forms.Panel();
+            this.chk_Pin_BinaryInv = new System.Windows.Forms.CheckBox();
+            this.nb_Pin_Threshold = new System.Windows.Forms.NumericUpDown();
+            this.checkBox53 = new System.Windows.Forms.CheckBox();
+            this.checkBox54 = new System.Windows.Forms.CheckBox();
+            this.panel47 = new System.Windows.Forms.Panel();
+            this.label142 = new System.Windows.Forms.Label();
+            this.panel48 = new System.Windows.Forms.Panel();
+            this.nb_Pin_SpecRoi_Height = new System.Windows.Forms.NumericUpDown();
+            this.label143 = new System.Windows.Forms.Label();
+            this.nb_Pin_SpecRoi_Width = new System.Windows.Forms.NumericUpDown();
+            this.checkBox51 = new System.Windows.Forms.CheckBox();
+            this.checkBox52 = new System.Windows.Forms.CheckBox();
+            this.panel42 = new System.Windows.Forms.Panel();
+            this.label139 = new System.Windows.Forms.Label();
+            this.panel44 = new System.Windows.Forms.Panel();
+            this.nb_Pin_AreaMax = new System.Windows.Forms.NumericUpDown();
+            this.label141 = new System.Windows.Forms.Label();
+            this.nb_Pin_AreaMin = new System.Windows.Forms.NumericUpDown();
+            this.checkBox49 = new System.Windows.Forms.CheckBox();
+            this.checkBox50 = new System.Windows.Forms.CheckBox();
+            this.btnJobPin_Roi = new Sunny.UI.UISymbolButton();
+            this.btnJobPin_Find = new Sunny.UI.UISymbolButton();
+            this.panel59 = new System.Windows.Forms.Panel();
+            this.label146 = new System.Windows.Forms.Label();
+            this.panel60 = new System.Windows.Forms.Panel();
+            this.nb_Pin_OkCount = new System.Windows.Forms.NumericUpDown();
+            this.checkBox71 = new System.Windows.Forms.CheckBox();
+            this.checkBox72 = new System.Windows.Forms.CheckBox();
             this.label25 = new System.Windows.Forms.Label();
+            this.DgvLogicList = new System.Windows.Forms.DataGridView();
+            this.uiSymbolButton63 = new Sunny.UI.UISymbolButton();
             this.label24 = new System.Windows.Forms.Label();
             this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.uiSymbolButton60 = new Sunny.UI.UISymbolButton();
             this.uiSymbolButton61 = new Sunny.UI.UISymbolButton();
-            this.uiSymbolButton62 = new Sunny.UI.UISymbolButton();
+            this.BtnLogicAdd = new Sunny.UI.UISymbolButton();
             this.uiLine25 = new Sunny.UI.UILine();
             this.uiSymbolButton59 = new Sunny.UI.UISymbolButton();
             this.uiLine22 = new Sunny.UI.UILine();
@@ -369,9 +684,9 @@ namespace IntelligentFactory
             this.uiSymbolButton58 = new Sunny.UI.UISymbolButton();
             this.uiButton9 = new Sunny.UI.UIButton();
             this.uiComboBox2 = new Sunny.UI.UIComboBox();
-            this.uiSymbolButton39 = new Sunny.UI.UISymbolButton();
+            this.BtnSettingLogic = new Sunny.UI.UISymbolButton();
             this.label18 = new System.Windows.Forms.Label();
-            this.uiTextBox10 = new Sunny.UI.UITextBox();
+            this.tbLogicName = new Sunny.UI.UITextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -386,8 +701,11 @@ namespace IntelligentFactory
             this.uiSymbolButton36 = new Sunny.UI.UISymbolButton();
             this.uiSymbolButton22 = new Sunny.UI.UISymbolButton();
             this.DgvJobList = new System.Windows.Forms.DataGridView();
+            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridLibraryName = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.gridLibraryEnabled = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uiSymbolButton37 = new Sunny.UI.UISymbolButton();
-            this.uiComboBox1 = new Sunny.UI.UIComboBox();
+            this.cbAlgorithm = new Sunny.UI.UIComboBox();
             this.tabPage15 = new System.Windows.Forms.TabPage();
             this.uiTabControl7 = new Sunny.UI.UITabControl();
             this.tabPage16 = new System.Windows.Forms.TabPage();
@@ -400,10 +718,7 @@ namespace IntelligentFactory
             this.uiSymbolButton7 = new Sunny.UI.UISymbolButton();
             this.uiSymbolButton8 = new Sunny.UI.UISymbolButton();
             this.metroContextMenu1 = new MetroFramework.Controls.MetroContextMenu(this.components);
-            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridLibraryName = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.gridLibraryEnabled = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.TrvLogic = new Sunny.UI.UITreeView();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -447,21 +762,83 @@ namespace IntelligentFactory
             this.uiGroupBox10.SuspendLayout();
             this.uiGroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView1)).BeginInit();
-            this.tabPage18.SuspendLayout();
             this.tabPage5.SuspendLayout();
+            this.uiTabControl4.SuspendLayout();
             this.tabPage6.SuspendLayout();
-            this.tabPage7.SuspendLayout();
-            this.tabPage8.SuspendLayout();
-            this.tabPage9.SuspendLayout();
+            this.uiTabControlMenu1.SuspendLayout();
             this.tabPage11.SuspendLayout();
+            this.panel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cogDisplay_JobPattern)).BeginInit();
+            this.tabPage18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CogDisplay_FinMatchingTemplateImg)).BeginInit();
+            this.panel15.SuspendLayout();
             this.tabPage19.SuspendLayout();
-            this.tabPage20.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericDistanceSamplingCount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericDistanceThickness)).BeginInit();
+            this.tabPage26.SuspendLayout();
+            this.panel17.SuspendLayout();
+            this.panel56.SuspendLayout();
+            this.panel57.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            this.panel40.SuspendLayout();
+            this.panel41.SuspendLayout();
+            this.panel35.SuspendLayout();
+            this.panel36.SuspendLayout();
+            this.panel32.SuspendLayout();
+            this.panel33.SuspendLayout();
+            this.panel10.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.panel28.SuspendLayout();
+            this.panel29.SuspendLayout();
+            this.panel24.SuspendLayout();
+            this.panel25.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericEyeDOkCount)).BeginInit();
+            this.panel18.SuspendLayout();
+            this.panel20.SuspendLayout();
+            this.panel30.SuspendLayout();
+            this.panel31.SuspendLayout();
+            this.tabPage27.SuspendLayout();
+            this.panel43.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
+            this.panel23.SuspendLayout();
+            this.panel19.SuspendLayout();
+            this.tabPage28.SuspendLayout();
+            this.panel64.SuspendLayout();
+            this.tabPage29.SuspendLayout();
+            this.panel13.SuspendLayout();
+            this.tabPage30.SuspendLayout();
+            this.panel62.SuspendLayout();
+            this.panel61.SuspendLayout();
+            this.panel58.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cogDisplay_Connector)).BeginInit();
+            this.tabPage31.SuspendLayout();
+            this.panel63.SuspendLayout();
+            this.panel55.SuspendLayout();
+            this.panel53.SuspendLayout();
+            this.panel54.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nb_Pin_Threshold)).BeginInit();
+            this.panel47.SuspendLayout();
+            this.panel48.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nb_Pin_SpecRoi_Height)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nb_Pin_SpecRoi_Width)).BeginInit();
+            this.panel42.SuspendLayout();
+            this.panel44.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nb_Pin_AreaMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nb_Pin_AreaMin)).BeginInit();
+            this.panel59.SuspendLayout();
+            this.panel60.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nb_Pin_OkCount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvLogicList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvJobList)).BeginInit();
             this.tabPage15.SuspendLayout();
             this.uiTabControl7.SuspendLayout();
             this.tabPage16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // timerStatus
@@ -2725,6 +3102,7 @@ namespace IntelligentFactory
             this.uiGroupBox13.TabIndex = 3469;
             this.uiGroupBox13.Text = "I.Q ( Uniformity)";
             this.uiGroupBox13.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiGroupBox13.Visible = false;
             // 
             // uiSymbolButton10
             // 
@@ -3298,15 +3676,15 @@ namespace IntelligentFactory
             // 
             // uiGroupBox12
             // 
-            this.uiGroupBox12.Controls.Add(this.label55);
-            this.uiGroupBox12.Controls.Add(this.label39);
-            this.uiGroupBox12.Controls.Add(this.uiSymbolButton15);
-            this.uiGroupBox12.Controls.Add(this.uiSymbolButton16);
-            this.uiGroupBox12.Controls.Add(this.uiTextBox14);
+            this.uiGroupBox12.Controls.Add(this.cbIQContinuous);
+            this.uiGroupBox12.Controls.Add(this.lbCurrentFocusValue);
+            this.uiGroupBox12.Controls.Add(this.lbBestFocusValue);
+            this.uiGroupBox12.Controls.Add(this.btnIQStop);
+            this.uiGroupBox12.Controls.Add(this.btnIQStart);
+            this.uiGroupBox12.Controls.Add(this.tbMasterHeight);
             this.uiGroupBox12.Controls.Add(this.label38);
-            this.uiGroupBox12.Controls.Add(this.uiSymbolButton9);
-            this.uiGroupBox12.Controls.Add(this.uiTextBox7);
-            this.uiGroupBox12.Controls.Add(this.uiTextBox8);
+            this.uiGroupBox12.Controls.Add(this.tbPixelSize);
+            this.uiGroupBox12.Controls.Add(this.tbMasterWidth);
             this.uiGroupBox12.Controls.Add(this.label34);
             this.uiGroupBox12.Controls.Add(this.label35);
             this.uiGroupBox12.FillColor = System.Drawing.Color.Transparent;
@@ -3320,132 +3698,144 @@ namespace IntelligentFactory
             this.uiGroupBox12.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
             this.uiGroupBox12.Radius = 10;
             this.uiGroupBox12.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.uiGroupBox12.Size = new System.Drawing.Size(220, 300);
+            this.uiGroupBox12.Size = new System.Drawing.Size(220, 261);
             this.uiGroupBox12.TabIndex = 3467;
             this.uiGroupBox12.Text = "I.Q ( Pixel Size, Focus )";
             this.uiGroupBox12.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label55
+            // cbIQContinuous
             // 
-            this.label55.Font = new System.Drawing.Font("Arial", 8F);
-            this.label55.ForeColor = System.Drawing.Color.Black;
-            this.label55.Location = new System.Drawing.Point(8, 210);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(203, 25);
-            this.label55.TabIndex = 3537;
-            this.label55.Text = "Current Focus Value : 0000";
-            this.label55.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cbIQContinuous.AutoSize = true;
+            this.cbIQContinuous.Location = new System.Drawing.Point(10, 193);
+            this.cbIQContinuous.Name = "cbIQContinuous";
+            this.cbIQContinuous.Size = new System.Drawing.Size(83, 17);
+            this.cbIQContinuous.TabIndex = 3539;
+            this.cbIQContinuous.Text = "Continuous";
+            this.cbIQContinuous.UseVisualStyleBackColor = true;
             // 
-            // label39
+            // lbCurrentFocusValue
             // 
-            this.label39.Font = new System.Drawing.Font("Arial", 8F);
-            this.label39.ForeColor = System.Drawing.Color.Black;
-            this.label39.Location = new System.Drawing.Point(7, 185);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(203, 25);
-            this.label39.TabIndex = 3536;
-            this.label39.Text = "Best Focus Value : 0000";
-            this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbCurrentFocusValue.Font = new System.Drawing.Font("Arial", 8F);
+            this.lbCurrentFocusValue.ForeColor = System.Drawing.Color.Black;
+            this.lbCurrentFocusValue.Location = new System.Drawing.Point(8, 157);
+            this.lbCurrentFocusValue.Name = "lbCurrentFocusValue";
+            this.lbCurrentFocusValue.Size = new System.Drawing.Size(203, 25);
+            this.lbCurrentFocusValue.TabIndex = 3537;
+            this.lbCurrentFocusValue.Text = "Current Focus Value : 0000";
+            this.lbCurrentFocusValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // uiSymbolButton15
+            // lbBestFocusValue
             // 
-            this.uiSymbolButton15.BackColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton15.CircleRectWidth = 0;
-            this.uiSymbolButton15.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiSymbolButton15.FillColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton15.FillColor2 = System.Drawing.Color.Transparent;
-            this.uiSymbolButton15.FillDisableColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton15.FillHoverColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton15.FillPressColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton15.FillSelectedColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton15.Font = new System.Drawing.Font("Arial", 10F);
-            this.uiSymbolButton15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.uiSymbolButton15.ForeDisableColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton15.ForeHoverColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton15.ForePressColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton15.ForeSelectedColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton15.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiSymbolButton15.Location = new System.Drawing.Point(118, 137);
-            this.uiSymbolButton15.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.uiSymbolButton15.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiSymbolButton15.Name = "uiSymbolButton15";
-            this.uiSymbolButton15.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.uiSymbolButton15.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.uiSymbolButton15.RectDisableColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton15.RectHoverColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton15.RectPressColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton15.RectSelectedColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton15.Size = new System.Drawing.Size(85, 30);
-            this.uiSymbolButton15.Style = Sunny.UI.UIStyle.Custom;
-            this.uiSymbolButton15.StyleCustomMode = true;
-            this.uiSymbolButton15.Symbol = 61517;
-            this.uiSymbolButton15.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.uiSymbolButton15.SymbolHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
-            this.uiSymbolButton15.SymbolSize = 18;
-            this.uiSymbolButton15.TabIndex = 3535;
-            this.uiSymbolButton15.Tag = "ZoomIn";
-            this.uiSymbolButton15.Text = "Stop";
-            this.uiSymbolButton15.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbBestFocusValue.Font = new System.Drawing.Font("Arial", 8F);
+            this.lbBestFocusValue.ForeColor = System.Drawing.Color.Black;
+            this.lbBestFocusValue.Location = new System.Drawing.Point(7, 132);
+            this.lbBestFocusValue.Name = "lbBestFocusValue";
+            this.lbBestFocusValue.Size = new System.Drawing.Size(203, 25);
+            this.lbBestFocusValue.TabIndex = 3536;
+            this.lbBestFocusValue.Text = "Best Focus Value : 0000";
+            this.lbBestFocusValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // uiSymbolButton16
+            // btnIQStop
             // 
-            this.uiSymbolButton16.BackColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton16.CircleRectWidth = 0;
-            this.uiSymbolButton16.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiSymbolButton16.FillColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton16.FillColor2 = System.Drawing.Color.Transparent;
-            this.uiSymbolButton16.FillDisableColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton16.FillHoverColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton16.FillPressColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton16.FillSelectedColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton16.Font = new System.Drawing.Font("Arial", 10F);
-            this.uiSymbolButton16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.uiSymbolButton16.ForeDisableColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton16.ForeHoverColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton16.ForePressColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton16.ForeSelectedColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton16.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiSymbolButton16.Location = new System.Drawing.Point(27, 137);
-            this.uiSymbolButton16.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.uiSymbolButton16.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiSymbolButton16.Name = "uiSymbolButton16";
-            this.uiSymbolButton16.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.uiSymbolButton16.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.uiSymbolButton16.RectDisableColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton16.RectHoverColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton16.RectPressColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton16.RectSelectedColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton16.Size = new System.Drawing.Size(85, 30);
-            this.uiSymbolButton16.Style = Sunny.UI.UIStyle.Custom;
-            this.uiSymbolButton16.StyleCustomMode = true;
-            this.uiSymbolButton16.Symbol = 61515;
-            this.uiSymbolButton16.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.uiSymbolButton16.SymbolHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
-            this.uiSymbolButton16.SymbolSize = 18;
-            this.uiSymbolButton16.TabIndex = 3534;
-            this.uiSymbolButton16.Tag = "ZoomIn";
-            this.uiSymbolButton16.Text = "Start";
-            this.uiSymbolButton16.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnIQStop.BackColor = System.Drawing.Color.Transparent;
+            this.btnIQStop.CircleRectWidth = 0;
+            this.btnIQStop.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnIQStop.FillColor = System.Drawing.Color.Transparent;
+            this.btnIQStop.FillColor2 = System.Drawing.Color.Transparent;
+            this.btnIQStop.FillDisableColor = System.Drawing.Color.Transparent;
+            this.btnIQStop.FillHoverColor = System.Drawing.Color.Transparent;
+            this.btnIQStop.FillPressColor = System.Drawing.Color.Transparent;
+            this.btnIQStop.FillSelectedColor = System.Drawing.Color.Transparent;
+            this.btnIQStop.Font = new System.Drawing.Font("Arial", 10F);
+            this.btnIQStop.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnIQStop.ForeDisableColor = System.Drawing.Color.Transparent;
+            this.btnIQStop.ForeHoverColor = System.Drawing.Color.Transparent;
+            this.btnIQStop.ForePressColor = System.Drawing.Color.Transparent;
+            this.btnIQStop.ForeSelectedColor = System.Drawing.Color.Transparent;
+            this.btnIQStop.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIQStop.Location = new System.Drawing.Point(101, 216);
+            this.btnIQStop.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnIQStop.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnIQStop.Name = "btnIQStop";
+            this.btnIQStop.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnIQStop.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnIQStop.RectDisableColor = System.Drawing.Color.Transparent;
+            this.btnIQStop.RectHoverColor = System.Drawing.Color.Transparent;
+            this.btnIQStop.RectPressColor = System.Drawing.Color.Transparent;
+            this.btnIQStop.RectSelectedColor = System.Drawing.Color.Transparent;
+            this.btnIQStop.Size = new System.Drawing.Size(85, 30);
+            this.btnIQStop.Style = Sunny.UI.UIStyle.Custom;
+            this.btnIQStop.StyleCustomMode = true;
+            this.btnIQStop.Symbol = 61517;
+            this.btnIQStop.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnIQStop.SymbolHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
+            this.btnIQStop.SymbolSize = 18;
+            this.btnIQStop.TabIndex = 3535;
+            this.btnIQStop.Tag = "IQStop";
+            this.btnIQStop.Text = "Stop";
+            this.btnIQStop.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnIQStop.Click += new System.EventHandler(this.btnIQCalibration_Click);
             // 
-            // uiTextBox14
+            // btnIQStart
             // 
-            this.uiTextBox14.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBox14.FillColor = System.Drawing.SystemColors.Control;
-            this.uiTextBox14.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uiTextBox14.ForeColor = System.Drawing.Color.Black;
-            this.uiTextBox14.Location = new System.Drawing.Point(109, 63);
-            this.uiTextBox14.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.uiTextBox14.MinimumSize = new System.Drawing.Size(1, 20);
-            this.uiTextBox14.Name = "uiTextBox14";
-            this.uiTextBox14.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.uiTextBox14.RectColor = System.Drawing.Color.DimGray;
-            this.uiTextBox14.ShowText = false;
-            this.uiTextBox14.Size = new System.Drawing.Size(100, 26);
-            this.uiTextBox14.TabIndex = 3525;
-            this.uiTextBox14.Text = "0.00";
-            this.uiTextBox14.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiTextBox14.Type = Sunny.UI.UITextBox.UIEditType.Double;
-            this.uiTextBox14.Watermark = "";
+            this.btnIQStart.BackColor = System.Drawing.Color.Transparent;
+            this.btnIQStart.CircleRectWidth = 0;
+            this.btnIQStart.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnIQStart.FillColor = System.Drawing.Color.Transparent;
+            this.btnIQStart.FillColor2 = System.Drawing.Color.Transparent;
+            this.btnIQStart.FillDisableColor = System.Drawing.Color.Transparent;
+            this.btnIQStart.FillHoverColor = System.Drawing.Color.Transparent;
+            this.btnIQStart.FillPressColor = System.Drawing.Color.Transparent;
+            this.btnIQStart.FillSelectedColor = System.Drawing.Color.Transparent;
+            this.btnIQStart.Font = new System.Drawing.Font("Arial", 10F);
+            this.btnIQStart.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnIQStart.ForeDisableColor = System.Drawing.Color.Transparent;
+            this.btnIQStart.ForeHoverColor = System.Drawing.Color.Transparent;
+            this.btnIQStart.ForePressColor = System.Drawing.Color.Transparent;
+            this.btnIQStart.ForeSelectedColor = System.Drawing.Color.Transparent;
+            this.btnIQStart.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIQStart.Location = new System.Drawing.Point(10, 216);
+            this.btnIQStart.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnIQStart.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnIQStart.Name = "btnIQStart";
+            this.btnIQStart.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnIQStart.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnIQStart.RectDisableColor = System.Drawing.Color.Transparent;
+            this.btnIQStart.RectHoverColor = System.Drawing.Color.Transparent;
+            this.btnIQStart.RectPressColor = System.Drawing.Color.Transparent;
+            this.btnIQStart.RectSelectedColor = System.Drawing.Color.Transparent;
+            this.btnIQStart.Size = new System.Drawing.Size(85, 30);
+            this.btnIQStart.Style = Sunny.UI.UIStyle.Custom;
+            this.btnIQStart.StyleCustomMode = true;
+            this.btnIQStart.Symbol = 61515;
+            this.btnIQStart.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnIQStart.SymbolHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
+            this.btnIQStart.SymbolSize = 18;
+            this.btnIQStart.TabIndex = 3534;
+            this.btnIQStart.Tag = "IQStart";
+            this.btnIQStart.Text = "Start";
+            this.btnIQStart.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnIQStart.Click += new System.EventHandler(this.btnIQCalibration_Click);
+            // 
+            // tbMasterHeight
+            // 
+            this.tbMasterHeight.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbMasterHeight.FillColor = System.Drawing.SystemColors.Control;
+            this.tbMasterHeight.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbMasterHeight.ForeColor = System.Drawing.Color.Black;
+            this.tbMasterHeight.Location = new System.Drawing.Point(109, 63);
+            this.tbMasterHeight.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.tbMasterHeight.MinimumSize = new System.Drawing.Size(1, 20);
+            this.tbMasterHeight.Name = "tbMasterHeight";
+            this.tbMasterHeight.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.tbMasterHeight.RectColor = System.Drawing.Color.DimGray;
+            this.tbMasterHeight.ShowText = false;
+            this.tbMasterHeight.Size = new System.Drawing.Size(100, 26);
+            this.tbMasterHeight.TabIndex = 3525;
+            this.tbMasterHeight.Text = "0.00";
+            this.tbMasterHeight.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tbMasterHeight.Type = Sunny.UI.UITextBox.UIEditType.Double;
+            this.tbMasterHeight.Watermark = "";
             // 
             // label38
             // 
@@ -3458,70 +3848,45 @@ namespace IntelligentFactory
             this.label38.Text = "Master Height (mm)";
             this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // uiSymbolButton9
+            // tbPixelSize
             // 
-            this.uiSymbolButton9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiSymbolButton9.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.uiSymbolButton9.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.uiSymbolButton9.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.uiSymbolButton9.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.uiSymbolButton9.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.uiSymbolButton9.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uiSymbolButton9.Location = new System.Drawing.Point(18, 251);
-            this.uiSymbolButton9.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiSymbolButton9.Name = "uiSymbolButton9";
-            this.uiSymbolButton9.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.uiSymbolButton9.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.uiSymbolButton9.RectPressColor = System.Drawing.Color.White;
-            this.uiSymbolButton9.RectSelectedColor = System.Drawing.Color.White;
-            this.uiSymbolButton9.Size = new System.Drawing.Size(190, 33);
-            this.uiSymbolButton9.Style = Sunny.UI.UIStyle.Custom;
-            this.uiSymbolButton9.StyleCustomMode = true;
-            this.uiSymbolButton9.SymbolOffset = new System.Drawing.Point(-10, 0);
-            this.uiSymbolButton9.SymbolSize = 20;
-            this.uiSymbolButton9.TabIndex = 3524;
-            this.uiSymbolButton9.Text = "Calculate";
-            this.uiSymbolButton9.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tbPixelSize.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbPixelSize.FillColor = System.Drawing.SystemColors.Control;
+            this.tbPixelSize.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPixelSize.ForeColor = System.Drawing.Color.Black;
+            this.tbPixelSize.Location = new System.Drawing.Point(109, 94);
+            this.tbPixelSize.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.tbPixelSize.MinimumSize = new System.Drawing.Size(1, 20);
+            this.tbPixelSize.Name = "tbPixelSize";
+            this.tbPixelSize.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.tbPixelSize.RectColor = System.Drawing.Color.DimGray;
+            this.tbPixelSize.ShowText = false;
+            this.tbPixelSize.Size = new System.Drawing.Size(100, 26);
+            this.tbPixelSize.TabIndex = 3522;
+            this.tbPixelSize.Text = "0.00";
+            this.tbPixelSize.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tbPixelSize.Type = Sunny.UI.UITextBox.UIEditType.Double;
+            this.tbPixelSize.Watermark = "";
             // 
-            // uiTextBox7
+            // tbMasterWidth
             // 
-            this.uiTextBox7.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBox7.FillColor = System.Drawing.SystemColors.Control;
-            this.uiTextBox7.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uiTextBox7.ForeColor = System.Drawing.Color.Black;
-            this.uiTextBox7.Location = new System.Drawing.Point(109, 94);
-            this.uiTextBox7.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.uiTextBox7.MinimumSize = new System.Drawing.Size(1, 20);
-            this.uiTextBox7.Name = "uiTextBox7";
-            this.uiTextBox7.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.uiTextBox7.RectColor = System.Drawing.Color.DimGray;
-            this.uiTextBox7.ShowText = false;
-            this.uiTextBox7.Size = new System.Drawing.Size(100, 26);
-            this.uiTextBox7.TabIndex = 3522;
-            this.uiTextBox7.Text = "0.00";
-            this.uiTextBox7.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiTextBox7.Type = Sunny.UI.UITextBox.UIEditType.Double;
-            this.uiTextBox7.Watermark = "";
-            // 
-            // uiTextBox8
-            // 
-            this.uiTextBox8.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBox8.FillColor = System.Drawing.SystemColors.Control;
-            this.uiTextBox8.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uiTextBox8.ForeColor = System.Drawing.Color.Black;
-            this.uiTextBox8.Location = new System.Drawing.Point(109, 32);
-            this.uiTextBox8.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.uiTextBox8.MinimumSize = new System.Drawing.Size(1, 20);
-            this.uiTextBox8.Name = "uiTextBox8";
-            this.uiTextBox8.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.uiTextBox8.RectColor = System.Drawing.Color.DimGray;
-            this.uiTextBox8.ShowText = false;
-            this.uiTextBox8.Size = new System.Drawing.Size(100, 26);
-            this.uiTextBox8.TabIndex = 3520;
-            this.uiTextBox8.Text = "0.00";
-            this.uiTextBox8.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiTextBox8.Type = Sunny.UI.UITextBox.UIEditType.Double;
-            this.uiTextBox8.Watermark = "";
+            this.tbMasterWidth.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbMasterWidth.FillColor = System.Drawing.SystemColors.Control;
+            this.tbMasterWidth.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbMasterWidth.ForeColor = System.Drawing.Color.Black;
+            this.tbMasterWidth.Location = new System.Drawing.Point(109, 32);
+            this.tbMasterWidth.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.tbMasterWidth.MinimumSize = new System.Drawing.Size(1, 20);
+            this.tbMasterWidth.Name = "tbMasterWidth";
+            this.tbMasterWidth.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.tbMasterWidth.RectColor = System.Drawing.Color.DimGray;
+            this.tbMasterWidth.ShowText = false;
+            this.tbMasterWidth.Size = new System.Drawing.Size(100, 26);
+            this.tbMasterWidth.TabIndex = 3520;
+            this.tbMasterWidth.Text = "0.00";
+            this.tbMasterWidth.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tbMasterWidth.Type = Sunny.UI.UITextBox.UIEditType.Double;
+            this.tbMasterWidth.Watermark = "";
             // 
             // label34
             // 
@@ -3550,7 +3915,7 @@ namespace IntelligentFactory
             this.tabPage10.Controls.Add(this.uiTabControl6);
             this.tabPage10.Location = new System.Drawing.Point(0, 40);
             this.tabPage10.Name = "tabPage10";
-            this.tabPage10.Size = new System.Drawing.Size(1214, 744);
+            this.tabPage10.Size = new System.Drawing.Size(200, 60);
             this.tabPage10.TabIndex = 3;
             this.tabPage10.Text = "02) Model";
             this.tabPage10.UseVisualStyleBackColor = true;
@@ -3568,7 +3933,7 @@ namespace IntelligentFactory
             this.uiTabControl6.MenuStyle = Sunny.UI.UIMenuStyle.Custom;
             this.uiTabControl6.Name = "uiTabControl6";
             this.uiTabControl6.SelectedIndex = 0;
-            this.uiTabControl6.Size = new System.Drawing.Size(1214, 744);
+            this.uiTabControl6.Size = new System.Drawing.Size(200, 60);
             this.uiTabControl6.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.uiTabControl6.TabBackColor = System.Drawing.SystemColors.Control;
             this.uiTabControl6.TabIndex = 3469;
@@ -3589,7 +3954,7 @@ namespace IntelligentFactory
             this.tabPage12.Controls.Add(this.uiGroupBox15);
             this.tabPage12.Location = new System.Drawing.Point(0, 40);
             this.tabPage12.Name = "tabPage12";
-            this.tabPage12.Size = new System.Drawing.Size(1214, 704);
+            this.tabPage12.Size = new System.Drawing.Size(200, 20);
             this.tabPage12.TabIndex = 2;
             this.tabPage12.Text = "Board";
             this.tabPage12.UseVisualStyleBackColor = true;
@@ -4943,16 +5308,17 @@ namespace IntelligentFactory
             // 
             // tabPage14
             // 
+            this.tabPage14.Controls.Add(this.TrvLogic);
             this.tabPage14.Controls.Add(this.label7);
-            this.tabPage14.Controls.Add(this.label25);
-            this.tabPage14.Controls.Add(this.dataGridView2);
             this.tabPage14.Controls.Add(this.uiTabControl3);
+            this.tabPage14.Controls.Add(this.label25);
+            this.tabPage14.Controls.Add(this.DgvLogicList);
             this.tabPage14.Controls.Add(this.uiSymbolButton63);
             this.tabPage14.Controls.Add(this.label24);
             this.tabPage14.Controls.Add(this.checkBox8);
             this.tabPage14.Controls.Add(this.uiSymbolButton60);
             this.tabPage14.Controls.Add(this.uiSymbolButton61);
-            this.tabPage14.Controls.Add(this.uiSymbolButton62);
+            this.tabPage14.Controls.Add(this.BtnLogicAdd);
             this.tabPage14.Controls.Add(this.uiLine25);
             this.tabPage14.Controls.Add(this.uiSymbolButton59);
             this.tabPage14.Controls.Add(this.uiLine22);
@@ -4967,9 +5333,9 @@ namespace IntelligentFactory
             this.tabPage14.Controls.Add(this.uiSymbolButton58);
             this.tabPage14.Controls.Add(this.uiButton9);
             this.tabPage14.Controls.Add(this.uiComboBox2);
-            this.tabPage14.Controls.Add(this.uiSymbolButton39);
+            this.tabPage14.Controls.Add(this.BtnSettingLogic);
             this.tabPage14.Controls.Add(this.label18);
-            this.tabPage14.Controls.Add(this.uiTextBox10);
+            this.tabPage14.Controls.Add(this.tbLogicName);
             this.tabPage14.Controls.Add(this.label19);
             this.tabPage14.Controls.Add(this.label16);
             this.tabPage14.Controls.Add(this.label15);
@@ -4985,7 +5351,7 @@ namespace IntelligentFactory
             this.tabPage14.Controls.Add(this.uiSymbolButton22);
             this.tabPage14.Controls.Add(this.DgvJobList);
             this.tabPage14.Controls.Add(this.uiSymbolButton37);
-            this.tabPage14.Controls.Add(this.uiComboBox1);
+            this.tabPage14.Controls.Add(this.cbAlgorithm);
             this.tabPage14.Location = new System.Drawing.Point(0, 40);
             this.tabPage14.Name = "tabPage14";
             this.tabPage14.Size = new System.Drawing.Size(1214, 784);
@@ -5008,30 +5374,24 @@ namespace IntelligentFactory
             // uiTabControl3
             // 
             this.uiTabControl3.Controls.Add(this.tabPage4);
-            this.uiTabControl3.Controls.Add(this.tabPage18);
             this.uiTabControl3.Controls.Add(this.tabPage5);
             this.uiTabControl3.Controls.Add(this.tabPage6);
-            this.uiTabControl3.Controls.Add(this.tabPage7);
-            this.uiTabControl3.Controls.Add(this.tabPage8);
-            this.uiTabControl3.Controls.Add(this.tabPage9);
-            this.uiTabControl3.Controls.Add(this.tabPage11);
-            this.uiTabControl3.Controls.Add(this.tabPage19);
-            this.uiTabControl3.Controls.Add(this.tabPage20);
             this.uiTabControl3.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.uiTabControl3.Font = new System.Drawing.Font("맑은 고딕", 8F, System.Drawing.FontStyle.Bold);
             this.uiTabControl3.ItemSize = new System.Drawing.Size(50, 40);
-            this.uiTabControl3.Location = new System.Drawing.Point(558, -30);
+            this.uiTabControl3.Location = new System.Drawing.Point(552, 230);
             this.uiTabControl3.MainPage = "";
             this.uiTabControl3.MenuStyle = Sunny.UI.UIMenuStyle.Custom;
             this.uiTabControl3.Name = "uiTabControl3";
             this.uiTabControl3.SelectedIndex = 0;
-            this.uiTabControl3.Size = new System.Drawing.Size(658, 814);
+            this.uiTabControl3.Size = new System.Drawing.Size(658, 550);
             this.uiTabControl3.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.uiTabControl3.TabBackColor = System.Drawing.SystemColors.Control;
-            this.uiTabControl3.TabIndex = 3470;
-            this.uiTabControl3.TabSelectedColor = System.Drawing.Color.Transparent;
+            this.uiTabControl3.TabBackColor = System.Drawing.Color.White;
+            this.uiTabControl3.TabIndex = 3683;
+            this.uiTabControl3.TabSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.uiTabControl3.TabSelectedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
             this.uiTabControl3.TabSelectedHighColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.uiTabControl3.TabUnSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.uiTabControl3.TabUnSelectedForeColor = System.Drawing.Color.DimGray;
             this.uiTabControl3.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
             this.uiTabControl3.TipsFont = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
@@ -5058,7 +5418,7 @@ namespace IntelligentFactory
             this.tabPage4.Controls.Add(this.uiGroupBox3);
             this.tabPage4.Location = new System.Drawing.Point(0, 40);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(658, 774);
+            this.tabPage4.Size = new System.Drawing.Size(658, 510);
             this.tabPage4.TabIndex = 2;
             this.tabPage4.Text = "Board";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -5760,22 +6120,22 @@ namespace IntelligentFactory
             this.uiDataGridView1.AllowUserToDeleteRows = false;
             this.uiDataGridView1.AllowUserToResizeColumns = false;
             this.uiDataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
-            this.uiDataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            this.uiDataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.uiDataGridView1.BackgroundColor = System.Drawing.Color.Silver;
             this.uiDataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.SlateGray;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.SlateGray;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.uiDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.SlateGray;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.SlateGray;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.uiDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.uiDataGridView1.ColumnHeadersHeight = 32;
             this.uiDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.uiDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -5784,14 +6144,14 @@ namespace IntelligentFactory
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.SlateGray;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.uiDataGridView1.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.SlateGray;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.uiDataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
             this.uiDataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.uiDataGridView1.EnableHeadersVisualStyles = false;
             this.uiDataGridView1.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
@@ -5801,22 +6161,22 @@ namespace IntelligentFactory
             this.uiDataGridView1.Name = "uiDataGridView1";
             this.uiDataGridView1.ReadOnly = true;
             this.uiDataGridView1.RectColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.uiDataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.uiDataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.uiDataGridView1.RowHeadersVisible = false;
             this.uiDataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White;
-            this.uiDataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
+            this.uiDataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.uiDataGridView1.RowTemplate.Height = 25;
             this.uiDataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.uiDataGridView1.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
@@ -5969,330 +6329,5622 @@ namespace IntelligentFactory
             this.btnPreProcessAdd.Text = "Add";
             this.btnPreProcessAdd.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             // 
-            // tabPage18
-            // 
-            this.tabPage18.Controls.Add(this.label77);
-            this.tabPage18.Controls.Add(this.label74);
-            this.tabPage18.Location = new System.Drawing.Point(0, 40);
-            this.tabPage18.Name = "tabPage18";
-            this.tabPage18.Size = new System.Drawing.Size(200, 60);
-            this.tabPage18.TabIndex = 9;
-            this.tabPage18.Text = "tabPage18";
-            this.tabPage18.UseVisualStyleBackColor = true;
-            // 
-            // label77
-            // 
-            this.label77.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label77.ForeColor = System.Drawing.Color.Black;
-            this.label77.Location = new System.Drawing.Point(25, 50);
-            this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(427, 20);
-            this.label77.TabIndex = 3659;
-            this.label77.Text = "사용 시 모든 툴의 영역을 Fixture 기준 상대 좌표로 변경";
-            this.label77.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label74
-            // 
-            this.label74.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label74.ForeColor = System.Drawing.Color.Black;
-            this.label74.Location = new System.Drawing.Point(5, 5);
-            this.label74.Name = "label74";
-            this.label74.Size = new System.Drawing.Size(640, 20);
-            this.label74.TabIndex = 3658;
-            this.label74.Text = "Fixturing";
-            this.label74.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.label83);
-            this.tabPage5.Controls.Add(this.label78);
-            this.tabPage5.Controls.Add(this.label65);
+            this.tabPage5.Controls.Add(this.uiTabControl4);
             this.tabPage5.Location = new System.Drawing.Point(0, 40);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(200, 60);
+            this.tabPage5.Size = new System.Drawing.Size(658, 510);
             this.tabPage5.TabIndex = 3;
-            this.tabPage5.Text = "tabPage5";
+            this.tabPage5.Text = "Pre";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // label83
+            // uiTabControl4
             // 
-            this.label83.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label83.ForeColor = System.Drawing.Color.Black;
-            this.label83.Location = new System.Drawing.Point(25, 92);
-            this.label83.Name = "label83";
-            this.label83.Size = new System.Drawing.Size(640, 20);
-            this.label83.TabIndex = 3659;
-            this.label83.Text = "알고리즘은 Pattern Matching, Template Matching, ShapeMatching, Object Detection (AI) 중" +
-    " 선택 가능하도록";
-            this.label83.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label78
-            // 
-            this.label78.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label78.ForeColor = System.Drawing.Color.Black;
-            this.label78.Location = new System.Drawing.Point(25, 50);
-            this.label78.Name = "label78";
-            this.label78.Size = new System.Drawing.Size(427, 20);
-            this.label78.TabIndex = 3658;
-            this.label78.Text = "Geometry 기반, Template 기반 선택 가능하도록 (Mask 기능 필요)";
-            this.label78.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label65
-            // 
-            this.label65.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label65.ForeColor = System.Drawing.Color.Black;
-            this.label65.Location = new System.Drawing.Point(5, 5);
-            this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(640, 20);
-            this.label65.TabIndex = 3654;
-            this.label65.Text = "Pattern Matching";
-            this.label65.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tabPage6
-            // 
-            this.tabPage6.Controls.Add(this.label82);
-            this.tabPage6.Controls.Add(this.label79);
-            this.tabPage6.Controls.Add(this.label69);
-            this.tabPage6.Location = new System.Drawing.Point(0, 40);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(200, 60);
-            this.tabPage6.TabIndex = 4;
-            this.tabPage6.Text = "tabPage6";
-            this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // label82
-            // 
-            this.label82.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label82.ForeColor = System.Drawing.Color.Black;
-            this.label82.Location = new System.Drawing.Point(25, 76);
-            this.label82.Name = "label82";
-            this.label82.Size = new System.Drawing.Size(640, 20);
-            this.label82.TabIndex = 3657;
-            this.label82.Text = "알고리즘은 SimpleBlobDetector, FindContour, Segmentation(AI) 중 선택 가능하도록";
-            this.label82.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label79
-            // 
-            this.label79.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label79.ForeColor = System.Drawing.Color.Black;
-            this.label79.Location = new System.Drawing.Point(25, 50);
-            this.label79.Name = "label79";
-            this.label79.Size = new System.Drawing.Size(640, 20);
-            this.label79.TabIndex = 3656;
-            this.label79.Text = "Blob or Contour 에서 나온 피쳐들에 기준 값으로 판정 가능하도록";
-            this.label79.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label69
-            // 
-            this.label69.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label69.ForeColor = System.Drawing.Color.Black;
-            this.label69.Location = new System.Drawing.Point(5, 5);
-            this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(640, 20);
-            this.label69.TabIndex = 3655;
-            this.label69.Text = "Blob (Contour)";
-            this.label69.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiTabControl4.Controls.Add(this.tabPage7);
+            this.uiTabControl4.Controls.Add(this.tabPage8);
+            this.uiTabControl4.Controls.Add(this.tabPage9);
+            this.uiTabControl4.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.uiTabControl4.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.uiTabControl4.ItemSize = new System.Drawing.Size(150, 40);
+            this.uiTabControl4.Location = new System.Drawing.Point(0, 0);
+            this.uiTabControl4.MainPage = "";
+            this.uiTabControl4.MenuStyle = Sunny.UI.UIMenuStyle.Custom;
+            this.uiTabControl4.Name = "uiTabControl4";
+            this.uiTabControl4.SelectedIndex = 0;
+            this.uiTabControl4.Size = new System.Drawing.Size(656, 491);
+            this.uiTabControl4.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.uiTabControl4.TabBackColor = System.Drawing.Color.White;
+            this.uiTabControl4.TabIndex = 0;
+            this.uiTabControl4.TabSelectedColor = System.Drawing.Color.DimGray;
+            this.uiTabControl4.TabSelectedForeColor = System.Drawing.Color.Black;
+            this.uiTabControl4.TabSelectedHighColor = System.Drawing.Color.Black;
+            this.uiTabControl4.TabUnSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.uiTabControl4.TabUnSelectedForeColor = System.Drawing.Color.Black;
+            this.uiTabControl4.TipsFont = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             // 
             // tabPage7
             // 
-            this.tabPage7.Controls.Add(this.label75);
-            this.tabPage7.Controls.Add(this.label70);
             this.tabPage7.Location = new System.Drawing.Point(0, 40);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(200, 60);
-            this.tabPage7.TabIndex = 5;
-            this.tabPage7.Text = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(656, 451);
+            this.tabPage7.TabIndex = 0;
+            this.tabPage7.Text = "Binalize";
             this.tabPage7.UseVisualStyleBackColor = true;
-            // 
-            // label75
-            // 
-            this.label75.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label75.ForeColor = System.Drawing.Color.Black;
-            this.label75.Location = new System.Drawing.Point(25, 50);
-            this.label75.Name = "label75";
-            this.label75.Size = new System.Drawing.Size(427, 20);
-            this.label75.TabIndex = 3657;
-            this.label75.Text = "두 개의 에지 사이의 Min, Max, Avg 거리 산출";
-            this.label75.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label70
-            // 
-            this.label70.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label70.ForeColor = System.Drawing.Color.Black;
-            this.label70.Location = new System.Drawing.Point(5, 5);
-            this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(640, 20);
-            this.label70.TabIndex = 3656;
-            this.label70.Text = "Measure";
-            this.label70.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tabPage8
             // 
-            this.tabPage8.Controls.Add(this.label80);
-            this.tabPage8.Controls.Add(this.label71);
             this.tabPage8.Location = new System.Drawing.Point(0, 40);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(200, 60);
-            this.tabPage8.TabIndex = 6;
-            this.tabPage8.Text = "tabPage8";
+            this.tabPage8.Size = new System.Drawing.Size(656, 451);
+            this.tabPage8.TabIndex = 1;
+            this.tabPage8.Text = "Morphology";
             this.tabPage8.UseVisualStyleBackColor = true;
-            // 
-            // label80
-            // 
-            this.label80.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label80.ForeColor = System.Drawing.Color.Black;
-            this.label80.Location = new System.Drawing.Point(25, 50);
-            this.label80.Name = "label80";
-            this.label80.Size = new System.Drawing.Size(595, 20);
-            this.label80.TabIndex = 3658;
-            this.label80.Text = "Datum (매칭, 써클피팅, 교점 등의 포인트) 를 기준으로 측정된 거리 산촐 꼭 유연하게 작업 가능하도록";
-            this.label80.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label71
-            // 
-            this.label71.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label71.ForeColor = System.Drawing.Color.Black;
-            this.label71.Location = new System.Drawing.Point(5, 5);
-            this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(640, 20);
-            this.label71.TabIndex = 3657;
-            this.label71.Text = "Distance";
-            this.label71.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tabPage9
             // 
-            this.tabPage9.Controls.Add(this.label81);
-            this.tabPage9.Controls.Add(this.label72);
             this.tabPage9.Location = new System.Drawing.Point(0, 40);
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Size = new System.Drawing.Size(200, 60);
-            this.tabPage9.TabIndex = 7;
-            this.tabPage9.Text = "tabPage9";
+            this.tabPage9.Size = new System.Drawing.Size(656, 451);
+            this.tabPage9.TabIndex = 2;
+            this.tabPage9.Text = "Convolution";
             this.tabPage9.UseVisualStyleBackColor = true;
             // 
-            // label81
+            // tabPage6
             // 
-            this.label81.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label81.ForeColor = System.Drawing.Color.Black;
-            this.label81.Location = new System.Drawing.Point(25, 50);
-            this.label81.Name = "label81";
-            this.label81.Size = new System.Drawing.Size(595, 20);
-            this.label81.TabIndex = 3659;
-            this.label81.Text = "R,G,B 혹은 H.S.V, Y.U.V 모드를 선택하고 체크박스를 통해 각 값에 대한 상하한 비교 가능하도록";
-            this.label81.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tabPage6.Controls.Add(this.uiTabControlMenu1);
+            this.tabPage6.Location = new System.Drawing.Point(0, 40);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(658, 510);
+            this.tabPage6.TabIndex = 4;
+            this.tabPage6.Text = "Core";
+            this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // label72
+            // uiTabControlMenu1
             // 
-            this.label72.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label72.ForeColor = System.Drawing.Color.Black;
-            this.label72.Location = new System.Drawing.Point(5, 5);
-            this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(640, 20);
-            this.label72.TabIndex = 3657;
-            this.label72.Text = "Color Extract";
-            this.label72.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiTabControlMenu1.Alignment = System.Windows.Forms.TabAlignment.Left;
+            this.uiTabControlMenu1.Controls.Add(this.tabPage11);
+            this.uiTabControlMenu1.Controls.Add(this.tabPage18);
+            this.uiTabControlMenu1.Controls.Add(this.tabPage19);
+            this.uiTabControlMenu1.Controls.Add(this.tabPage26);
+            this.uiTabControlMenu1.Controls.Add(this.tabPage27);
+            this.uiTabControlMenu1.Controls.Add(this.tabPage28);
+            this.uiTabControlMenu1.Controls.Add(this.tabPage29);
+            this.uiTabControlMenu1.Controls.Add(this.tabPage30);
+            this.uiTabControlMenu1.Controls.Add(this.tabPage31);
+            this.uiTabControlMenu1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.uiTabControlMenu1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.uiTabControlMenu1.ItemSize = new System.Drawing.Size(90, 30);
+            this.uiTabControlMenu1.Location = new System.Drawing.Point(0, 0);
+            this.uiTabControlMenu1.MenuStyle = Sunny.UI.UIMenuStyle.Custom;
+            this.uiTabControlMenu1.Multiline = true;
+            this.uiTabControlMenu1.Name = "uiTabControlMenu1";
+            this.uiTabControlMenu1.SelectedIndex = 0;
+            this.uiTabControlMenu1.Size = new System.Drawing.Size(655, 512);
+            this.uiTabControlMenu1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.uiTabControlMenu1.TabBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(36)))));
+            this.uiTabControlMenu1.TabIndex = 0;
+            this.uiTabControlMenu1.TabSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.uiTabControlMenu1.TabSelectedForeColor = System.Drawing.Color.White;
+            this.uiTabControlMenu1.TabSelectedHighColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.uiTabControlMenu1.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // tabPage11
             // 
-            this.tabPage11.Controls.Add(this.label84);
-            this.tabPage11.Controls.Add(this.label73);
-            this.tabPage11.Location = new System.Drawing.Point(0, 40);
+            this.tabPage11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tabPage11.Controls.Add(this.tbJobPattern_AcceptScore);
+            this.tabPage11.Controls.Add(this.tbJobPattern_MinScore);
+            this.tabPage11.Controls.Add(this.tbPatternMasterCount);
+            this.tabPage11.Controls.Add(this.label137);
+            this.tabPage11.Controls.Add(this.lblDetectedPatternCount);
+            this.tabPage11.Controls.Add(this.btnJobPatternDelete);
+            this.tabPage11.Controls.Add(this.comboJobPattern_PatternType);
+            this.tabPage11.Controls.Add(this.lblTrained);
+            this.tabPage11.Controls.Add(this.label100);
+            this.tabPage11.Controls.Add(this.label69);
+            this.tabPage11.Controls.Add(this.uiSymbolButton12);
+            this.tabPage11.Controls.Add(this.label70);
+            this.tabPage11.Controls.Add(this.label71);
+            this.tabPage11.Controls.Add(this.btnJobPattern_Roi);
+            this.tabPage11.Controls.Add(this.btnJobPattern_Train);
+            this.tabPage11.Controls.Add(this.btnJobPattern_Find);
+            this.tabPage11.Controls.Add(this.label110);
+            this.tabPage11.Controls.Add(this.panel14);
+            this.tabPage11.Location = new System.Drawing.Point(91, 0);
             this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Size = new System.Drawing.Size(200, 60);
-            this.tabPage11.TabIndex = 8;
-            this.tabPage11.Text = "tabPage11";
-            this.tabPage11.UseVisualStyleBackColor = true;
+            this.tabPage11.Size = new System.Drawing.Size(564, 512);
+            this.tabPage11.TabIndex = 0;
+            this.tabPage11.Text = "Pattern";
             // 
-            // label84
+            // tbJobPattern_AcceptScore
             // 
-            this.label84.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label84.ForeColor = System.Drawing.Color.Black;
-            this.label84.Location = new System.Drawing.Point(25, 50);
-            this.label84.Name = "label84";
-            this.label84.Size = new System.Drawing.Size(633, 33);
-            this.label84.TabIndex = 3660;
-            this.label84.Text = "Pattern, Shape Fitting 후 CenteXY 를 기준으로 n 개의 상대영역을 지정해서 \r\n해당 영역 내 밝기 평균이 최대 or 최소" +
-    " 인 곳을 찾을 수 있도록";
-            this.label84.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tbJobPattern_AcceptScore.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbJobPattern_AcceptScore.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tbJobPattern_AcceptScore.Font = new System.Drawing.Font("Arial", 9F);
+            this.tbJobPattern_AcceptScore.ForeColor = System.Drawing.Color.DimGray;
+            this.tbJobPattern_AcceptScore.Location = new System.Drawing.Point(164, 311);
+            this.tbJobPattern_AcceptScore.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbJobPattern_AcceptScore.MinimumSize = new System.Drawing.Size(1, 16);
+            this.tbJobPattern_AcceptScore.Name = "tbJobPattern_AcceptScore";
+            this.tbJobPattern_AcceptScore.Padding = new System.Windows.Forms.Padding(5);
+            this.tbJobPattern_AcceptScore.RectColor = System.Drawing.Color.White;
+            this.tbJobPattern_AcceptScore.ShowText = false;
+            this.tbJobPattern_AcceptScore.Size = new System.Drawing.Size(110, 30);
+            this.tbJobPattern_AcceptScore.Style = Sunny.UI.UIStyle.Custom;
+            this.tbJobPattern_AcceptScore.TabIndex = 3555;
+            this.tbJobPattern_AcceptScore.Text = "( 0.0 ~ 1.0 )";
+            this.tbJobPattern_AcceptScore.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.tbJobPattern_AcceptScore.Watermark = "";
+            // 
+            // tbJobPattern_MinScore
+            // 
+            this.tbJobPattern_MinScore.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbJobPattern_MinScore.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tbJobPattern_MinScore.Font = new System.Drawing.Font("Arial", 9F);
+            this.tbJobPattern_MinScore.ForeColor = System.Drawing.Color.DimGray;
+            this.tbJobPattern_MinScore.Location = new System.Drawing.Point(164, 275);
+            this.tbJobPattern_MinScore.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbJobPattern_MinScore.MinimumSize = new System.Drawing.Size(1, 16);
+            this.tbJobPattern_MinScore.Name = "tbJobPattern_MinScore";
+            this.tbJobPattern_MinScore.Padding = new System.Windows.Forms.Padding(5);
+            this.tbJobPattern_MinScore.RectColor = System.Drawing.Color.White;
+            this.tbJobPattern_MinScore.ShowText = false;
+            this.tbJobPattern_MinScore.Size = new System.Drawing.Size(110, 30);
+            this.tbJobPattern_MinScore.Style = Sunny.UI.UIStyle.Custom;
+            this.tbJobPattern_MinScore.TabIndex = 3554;
+            this.tbJobPattern_MinScore.Text = "( 0.0 ~ 1.0 )";
+            this.tbJobPattern_MinScore.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.tbJobPattern_MinScore.Watermark = "";
+            // 
+            // tbPatternMasterCount
+            // 
+            this.tbPatternMasterCount.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbPatternMasterCount.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tbPatternMasterCount.Font = new System.Drawing.Font("Arial", 9F);
+            this.tbPatternMasterCount.ForeColor = System.Drawing.Color.DimGray;
+            this.tbPatternMasterCount.Location = new System.Drawing.Point(164, 239);
+            this.tbPatternMasterCount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbPatternMasterCount.MinimumSize = new System.Drawing.Size(1, 16);
+            this.tbPatternMasterCount.Name = "tbPatternMasterCount";
+            this.tbPatternMasterCount.Padding = new System.Windows.Forms.Padding(5);
+            this.tbPatternMasterCount.RectColor = System.Drawing.Color.White;
+            this.tbPatternMasterCount.ShowText = false;
+            this.tbPatternMasterCount.Size = new System.Drawing.Size(110, 30);
+            this.tbPatternMasterCount.Style = Sunny.UI.UIStyle.Custom;
+            this.tbPatternMasterCount.TabIndex = 3553;
+            this.tbPatternMasterCount.Text = "( 0.0 ~ 1.0 )";
+            this.tbPatternMasterCount.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.tbPatternMasterCount.Watermark = "";
+            // 
+            // label137
+            // 
+            this.label137.BackColor = System.Drawing.Color.Transparent;
+            this.label137.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label137.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label137.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label137.ForeColor = System.Drawing.Color.Yellow;
+            this.label137.Location = new System.Drawing.Point(26, 203);
+            this.label137.Name = "label137";
+            this.label137.Size = new System.Drawing.Size(56, 29);
+            this.label137.TabIndex = 3552;
+            this.label137.Text = "(00/05)";
+            this.label137.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblDetectedPatternCount
+            // 
+            this.lblDetectedPatternCount.BackColor = System.Drawing.Color.Transparent;
+            this.lblDetectedPatternCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblDetectedPatternCount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblDetectedPatternCount.Font = new System.Drawing.Font("Arial", 9F);
+            this.lblDetectedPatternCount.ForeColor = System.Drawing.Color.White;
+            this.lblDetectedPatternCount.Location = new System.Drawing.Point(2, 315);
+            this.lblDetectedPatternCount.Name = "lblDetectedPatternCount";
+            this.lblDetectedPatternCount.Size = new System.Drawing.Size(80, 26);
+            this.lblDetectedPatternCount.TabIndex = 3551;
+            this.lblDetectedPatternCount.Text = "Count : 0";
+            this.lblDetectedPatternCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnJobPatternDelete
+            // 
+            this.btnJobPatternDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJobPatternDelete.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPatternDelete.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPatternDelete.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobPatternDelete.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPatternDelete.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPatternDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJobPatternDelete.Location = new System.Drawing.Point(212, 202);
+            this.btnJobPatternDelete.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnJobPatternDelete.Name = "btnJobPatternDelete";
+            this.btnJobPatternDelete.RectColor = System.Drawing.Color.White;
+            this.btnJobPatternDelete.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobPatternDelete.RectPressColor = System.Drawing.Color.White;
+            this.btnJobPatternDelete.RectSelectedColor = System.Drawing.Color.White;
+            this.btnJobPatternDelete.Size = new System.Drawing.Size(91, 30);
+            this.btnJobPatternDelete.Style = Sunny.UI.UIStyle.Custom;
+            this.btnJobPatternDelete.StyleCustomMode = true;
+            this.btnJobPatternDelete.Symbol = 61544;
+            this.btnJobPatternDelete.SymbolOffset = new System.Drawing.Point(-5, 2);
+            this.btnJobPatternDelete.SymbolSize = 10;
+            this.btnJobPatternDelete.TabIndex = 3550;
+            this.btnJobPatternDelete.Text = "Delete";
+            this.btnJobPatternDelete.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // comboJobPattern_PatternType
+            // 
+            this.comboJobPattern_PatternType.FontWeight = MetroFramework.MetroComboBoxWeight.Light;
+            this.comboJobPattern_PatternType.ForeColor = System.Drawing.Color.White;
+            this.comboJobPattern_PatternType.FormattingEnabled = true;
+            this.comboJobPattern_PatternType.ItemHeight = 23;
+            this.comboJobPattern_PatternType.Items.AddRange(new object[] {
+            "Main",
+            "Sub1",
+            "Sub2",
+            "Sub3",
+            "Sub4"});
+            this.comboJobPattern_PatternType.Location = new System.Drawing.Point(83, 203);
+            this.comboJobPattern_PatternType.Name = "comboJobPattern_PatternType";
+            this.comboJobPattern_PatternType.Size = new System.Drawing.Size(127, 29);
+            this.comboJobPattern_PatternType.Style = MetroFramework.MetroColorStyle.Orange;
+            this.comboJobPattern_PatternType.TabIndex = 3540;
+            this.comboJobPattern_PatternType.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.comboJobPattern_PatternType.UseCustomForeColor = true;
+            this.comboJobPattern_PatternType.UseSelectable = true;
+            // 
+            // lblTrained
+            // 
+            this.lblTrained.BackColor = System.Drawing.Color.Transparent;
+            this.lblTrained.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTrained.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblTrained.Font = new System.Drawing.Font("Arial", 8F);
+            this.lblTrained.ForeColor = System.Drawing.Color.White;
+            this.lblTrained.Location = new System.Drawing.Point(2, 203);
+            this.lblTrained.Name = "lblTrained";
+            this.lblTrained.Size = new System.Drawing.Size(23, 29);
+            this.lblTrained.TabIndex = 3549;
+            this.lblTrained.Text = "No";
+            this.lblTrained.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label100
+            // 
+            this.label100.BackColor = System.Drawing.Color.Transparent;
+            this.label100.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label100.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label100.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label100.ForeColor = System.Drawing.Color.White;
+            this.label100.Location = new System.Drawing.Point(83, 233);
+            this.label100.Name = "label100";
+            this.label100.Size = new System.Drawing.Size(80, 36);
+            this.label100.TabIndex = 3548;
+            this.label100.Text = "Master Count";
+            this.label100.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label69
+            // 
+            this.label69.BackColor = System.Drawing.Color.Transparent;
+            this.label69.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label69.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label69.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label69.ForeColor = System.Drawing.Color.White;
+            this.label69.Location = new System.Drawing.Point(2, 233);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(80, 81);
+            this.label69.TabIndex = 3547;
+            this.label69.Text = "Parameter";
+            this.label69.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // uiSymbolButton12
+            // 
+            this.uiSymbolButton12.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiSymbolButton12.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton12.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton12.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.uiSymbolButton12.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton12.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton12.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uiSymbolButton12.Location = new System.Drawing.Point(212, 116);
+            this.uiSymbolButton12.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiSymbolButton12.Name = "uiSymbolButton12";
+            this.uiSymbolButton12.RectColor = System.Drawing.Color.White;
+            this.uiSymbolButton12.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.uiSymbolButton12.RectPressColor = System.Drawing.Color.White;
+            this.uiSymbolButton12.RectSelectedColor = System.Drawing.Color.White;
+            this.uiSymbolButton12.Size = new System.Drawing.Size(91, 42);
+            this.uiSymbolButton12.Style = Sunny.UI.UIStyle.Custom;
+            this.uiSymbolButton12.StyleCustomMode = true;
+            this.uiSymbolButton12.Symbol = 361508;
+            this.uiSymbolButton12.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.uiSymbolButton12.SymbolSize = 20;
+            this.uiSymbolButton12.TabIndex = 3546;
+            this.uiSymbolButton12.Text = "Mask";
+            this.uiSymbolButton12.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // label70
+            // 
+            this.label70.BackColor = System.Drawing.Color.Transparent;
+            this.label70.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label70.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label70.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label70.ForeColor = System.Drawing.Color.White;
+            this.label70.Location = new System.Drawing.Point(83, 306);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(80, 35);
+            this.label70.TabIndex = 3545;
+            this.label70.Text = "Detect Minimum";
+            this.label70.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label71
+            // 
+            this.label71.BackColor = System.Drawing.Color.Transparent;
+            this.label71.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label71.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label71.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label71.ForeColor = System.Drawing.Color.White;
+            this.label71.Location = new System.Drawing.Point(83, 270);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(80, 35);
+            this.label71.TabIndex = 3544;
+            this.label71.Text = "Score (OK) Minimum";
+            this.label71.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnJobPattern_Roi
+            // 
+            this.btnJobPattern_Roi.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJobPattern_Roi.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPattern_Roi.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPattern_Roi.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobPattern_Roi.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPattern_Roi.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPattern_Roi.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJobPattern_Roi.Location = new System.Drawing.Point(212, 30);
+            this.btnJobPattern_Roi.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnJobPattern_Roi.Name = "btnJobPattern_Roi";
+            this.btnJobPattern_Roi.RectColor = System.Drawing.Color.White;
+            this.btnJobPattern_Roi.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobPattern_Roi.RectPressColor = System.Drawing.Color.White;
+            this.btnJobPattern_Roi.RectSelectedColor = System.Drawing.Color.White;
+            this.btnJobPattern_Roi.Size = new System.Drawing.Size(91, 42);
+            this.btnJobPattern_Roi.Style = Sunny.UI.UIStyle.Custom;
+            this.btnJobPattern_Roi.StyleCustomMode = true;
+            this.btnJobPattern_Roi.Symbol = 362923;
+            this.btnJobPattern_Roi.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.btnJobPattern_Roi.SymbolSize = 20;
+            this.btnJobPattern_Roi.TabIndex = 3541;
+            this.btnJobPattern_Roi.Text = "Roi";
+            this.btnJobPattern_Roi.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnJobPattern_Roi.Click += new System.EventHandler(this.btnJobPattern_Roi_Click);
+            // 
+            // btnJobPattern_Train
+            // 
+            this.btnJobPattern_Train.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJobPattern_Train.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPattern_Train.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPattern_Train.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobPattern_Train.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPattern_Train.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPattern_Train.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJobPattern_Train.Location = new System.Drawing.Point(212, 73);
+            this.btnJobPattern_Train.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnJobPattern_Train.Name = "btnJobPattern_Train";
+            this.btnJobPattern_Train.RectColor = System.Drawing.Color.White;
+            this.btnJobPattern_Train.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobPattern_Train.RectPressColor = System.Drawing.Color.White;
+            this.btnJobPattern_Train.RectSelectedColor = System.Drawing.Color.White;
+            this.btnJobPattern_Train.Size = new System.Drawing.Size(91, 42);
+            this.btnJobPattern_Train.Style = Sunny.UI.UIStyle.Custom;
+            this.btnJobPattern_Train.StyleCustomMode = true;
+            this.btnJobPattern_Train.Symbol = 108;
+            this.btnJobPattern_Train.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.btnJobPattern_Train.SymbolSize = 20;
+            this.btnJobPattern_Train.TabIndex = 3542;
+            this.btnJobPattern_Train.Text = "Train";
+            this.btnJobPattern_Train.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // btnJobPattern_Find
+            // 
+            this.btnJobPattern_Find.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJobPattern_Find.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPattern_Find.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPattern_Find.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobPattern_Find.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPattern_Find.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPattern_Find.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJobPattern_Find.Location = new System.Drawing.Point(212, 159);
+            this.btnJobPattern_Find.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnJobPattern_Find.Name = "btnJobPattern_Find";
+            this.btnJobPattern_Find.RectColor = System.Drawing.Color.White;
+            this.btnJobPattern_Find.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobPattern_Find.RectPressColor = System.Drawing.Color.White;
+            this.btnJobPattern_Find.RectSelectedColor = System.Drawing.Color.White;
+            this.btnJobPattern_Find.Size = new System.Drawing.Size(91, 42);
+            this.btnJobPattern_Find.Style = Sunny.UI.UIStyle.Custom;
+            this.btnJobPattern_Find.StyleCustomMode = true;
+            this.btnJobPattern_Find.Symbol = 61442;
+            this.btnJobPattern_Find.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.btnJobPattern_Find.SymbolSize = 20;
+            this.btnJobPattern_Find.TabIndex = 3543;
+            this.btnJobPattern_Find.Text = "Find";
+            this.btnJobPattern_Find.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // label110
+            // 
+            this.label110.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.label110.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label110.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label110.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label110.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label110.ForeColor = System.Drawing.Color.White;
+            this.label110.Location = new System.Drawing.Point(0, 0);
+            this.label110.Name = "label110";
+            this.label110.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label110.Size = new System.Drawing.Size(564, 27);
+            this.label110.TabIndex = 3428;
+            this.label110.Text = "ex) Matching, Reverce, IC Leads ...";
+            this.label110.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel14
+            // 
+            this.panel14.Controls.Add(this.cogDisplay_JobPattern);
+            this.panel14.Controls.Add(this.label65);
+            this.panel14.Location = new System.Drawing.Point(2, 30);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(208, 171);
+            this.panel14.TabIndex = 3405;
+            // 
+            // cogDisplay_JobPattern
+            // 
+            this.cogDisplay_JobPattern.ColorMapLowerClipColor = System.Drawing.Color.Black;
+            this.cogDisplay_JobPattern.ColorMapLowerRoiLimit = 0D;
+            this.cogDisplay_JobPattern.ColorMapPredefined = Cognex.VisionPro.Display.CogDisplayColorMapPredefinedConstants.None;
+            this.cogDisplay_JobPattern.ColorMapUpperClipColor = System.Drawing.Color.Black;
+            this.cogDisplay_JobPattern.ColorMapUpperRoiLimit = 1D;
+            this.cogDisplay_JobPattern.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cogDisplay_JobPattern.DoubleTapZoomCycleLength = 2;
+            this.cogDisplay_JobPattern.DoubleTapZoomSensitivity = 2.5D;
+            this.cogDisplay_JobPattern.Location = new System.Drawing.Point(0, 25);
+            this.cogDisplay_JobPattern.Margin = new System.Windows.Forms.Padding(4);
+            this.cogDisplay_JobPattern.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
+            this.cogDisplay_JobPattern.MouseWheelSensitivity = 1D;
+            this.cogDisplay_JobPattern.Name = "cogDisplay_JobPattern";
+            this.cogDisplay_JobPattern.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cogDisplay_JobPattern.OcxState")));
+            this.cogDisplay_JobPattern.Size = new System.Drawing.Size(208, 146);
+            this.cogDisplay_JobPattern.TabIndex = 3301;
+            // 
+            // label65
+            // 
+            this.label65.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(77)))), ((int)(((byte)(86)))));
+            this.label65.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label65.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label65.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.label65.ForeColor = System.Drawing.Color.White;
+            this.label65.Location = new System.Drawing.Point(0, 0);
+            this.label65.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(208, 25);
+            this.label65.TabIndex = 3300;
+            this.label65.Text = "Pattern";
+            this.label65.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tabPage18
+            // 
+            this.tabPage18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tabPage18.Controls.Add(this.txt_PinMatchingScoreMin);
+            this.tabPage18.Controls.Add(this.txtBlobThreshold);
+            this.tabPage18.Controls.Add(this.tbAreaMax);
+            this.tabPage18.Controls.Add(this.tbAreaMin);
+            this.tabPage18.Controls.Add(this.btnGetBlobPos);
+            this.tabPage18.Controls.Add(this.btnJobBlob_Roi);
+            this.tabPage18.Controls.Add(this.CogDisplay_FinMatchingTemplateImg);
+            this.tabPage18.Controls.Add(this.uiSymbolButton29);
+            this.tabPage18.Controls.Add(this.label83);
+            this.tabPage18.Controls.Add(this.label82);
+            this.tabPage18.Controls.Add(this.label72);
+            this.tabPage18.Controls.Add(this.label73);
+            this.tabPage18.Controls.Add(this.label86);
+            this.tabPage18.Controls.Add(this.uiSymbolButton32);
+            this.tabPage18.Controls.Add(this.label88);
+            this.tabPage18.Controls.Add(this.panel15);
+            this.tabPage18.Controls.Add(this.uiSymbolButton33);
+            this.tabPage18.Controls.Add(this.uiSymbolButton64);
+            this.tabPage18.Controls.Add(this.uiSymbolButton65);
+            this.tabPage18.Controls.Add(this.btnJobBlobInsp);
+            this.tabPage18.Location = new System.Drawing.Point(91, 0);
+            this.tabPage18.Name = "tabPage18";
+            this.tabPage18.Size = new System.Drawing.Size(564, 512);
+            this.tabPage18.TabIndex = 1;
+            this.tabPage18.Text = "Blob";
+            // 
+            // txt_PinMatchingScoreMin
+            // 
+            this.txt_PinMatchingScoreMin.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txt_PinMatchingScoreMin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.txt_PinMatchingScoreMin.Font = new System.Drawing.Font("Arial", 9F);
+            this.txt_PinMatchingScoreMin.ForeColor = System.Drawing.Color.DimGray;
+            this.txt_PinMatchingScoreMin.Location = new System.Drawing.Point(162, 206);
+            this.txt_PinMatchingScoreMin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_PinMatchingScoreMin.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txt_PinMatchingScoreMin.Name = "txt_PinMatchingScoreMin";
+            this.txt_PinMatchingScoreMin.Padding = new System.Windows.Forms.Padding(5);
+            this.txt_PinMatchingScoreMin.RectColor = System.Drawing.Color.White;
+            this.txt_PinMatchingScoreMin.ShowText = false;
+            this.txt_PinMatchingScoreMin.Size = new System.Drawing.Size(140, 30);
+            this.txt_PinMatchingScoreMin.Style = Sunny.UI.UIStyle.Custom;
+            this.txt_PinMatchingScoreMin.TabIndex = 3560;
+            this.txt_PinMatchingScoreMin.Text = "( 0.0 ~ 1.0 )";
+            this.txt_PinMatchingScoreMin.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.txt_PinMatchingScoreMin.Watermark = "";
+            // 
+            // txtBlobThreshold
+            // 
+            this.txtBlobThreshold.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBlobThreshold.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.txtBlobThreshold.Font = new System.Drawing.Font("Arial", 9F);
+            this.txtBlobThreshold.ForeColor = System.Drawing.Color.DimGray;
+            this.txtBlobThreshold.Location = new System.Drawing.Point(79, 341);
+            this.txtBlobThreshold.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtBlobThreshold.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtBlobThreshold.Name = "txtBlobThreshold";
+            this.txtBlobThreshold.Padding = new System.Windows.Forms.Padding(5);
+            this.txtBlobThreshold.RectColor = System.Drawing.Color.White;
+            this.txtBlobThreshold.ShowText = false;
+            this.txtBlobThreshold.Size = new System.Drawing.Size(220, 30);
+            this.txtBlobThreshold.Style = Sunny.UI.UIStyle.Custom;
+            this.txtBlobThreshold.TabIndex = 3559;
+            this.txtBlobThreshold.Text = "( 1 ~ 255 )";
+            this.txtBlobThreshold.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.txtBlobThreshold.Watermark = "";
+            // 
+            // tbAreaMax
+            // 
+            this.tbAreaMax.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbAreaMax.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tbAreaMax.Font = new System.Drawing.Font("Arial", 9F);
+            this.tbAreaMax.ForeColor = System.Drawing.Color.DimGray;
+            this.tbAreaMax.Location = new System.Drawing.Point(79, 305);
+            this.tbAreaMax.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbAreaMax.MinimumSize = new System.Drawing.Size(1, 16);
+            this.tbAreaMax.Name = "tbAreaMax";
+            this.tbAreaMax.Padding = new System.Windows.Forms.Padding(5);
+            this.tbAreaMax.RectColor = System.Drawing.Color.White;
+            this.tbAreaMax.ShowText = false;
+            this.tbAreaMax.Size = new System.Drawing.Size(220, 30);
+            this.tbAreaMax.Style = Sunny.UI.UIStyle.Custom;
+            this.tbAreaMax.TabIndex = 3558;
+            this.tbAreaMax.Text = "( 10 ~ 20000 )";
+            this.tbAreaMax.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.tbAreaMax.Watermark = "";
+            // 
+            // tbAreaMin
+            // 
+            this.tbAreaMin.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbAreaMin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tbAreaMin.Font = new System.Drawing.Font("Arial", 9F);
+            this.tbAreaMin.ForeColor = System.Drawing.Color.DimGray;
+            this.tbAreaMin.Location = new System.Drawing.Point(78, 269);
+            this.tbAreaMin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbAreaMin.MinimumSize = new System.Drawing.Size(1, 16);
+            this.tbAreaMin.Name = "tbAreaMin";
+            this.tbAreaMin.Padding = new System.Windows.Forms.Padding(5);
+            this.tbAreaMin.RectColor = System.Drawing.Color.White;
+            this.tbAreaMin.ShowText = false;
+            this.tbAreaMin.Size = new System.Drawing.Size(220, 30);
+            this.tbAreaMin.Style = Sunny.UI.UIStyle.Custom;
+            this.tbAreaMin.TabIndex = 3557;
+            this.tbAreaMin.Text = "( 10 ~ 200 )";
+            this.tbAreaMin.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.tbAreaMin.Watermark = "";
+            // 
+            // btnGetBlobPos
+            // 
+            this.btnGetBlobPos.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnGetBlobPos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGetBlobPos.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGetBlobPos.ForeColor = System.Drawing.Color.White;
+            this.btnGetBlobPos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGetBlobPos.Location = new System.Drawing.Point(3, 378);
+            this.btnGetBlobPos.Name = "btnGetBlobPos";
+            this.btnGetBlobPos.Size = new System.Drawing.Size(75, 42);
+            this.btnGetBlobPos.TabIndex = 3556;
+            this.btnGetBlobPos.Text = "GetPos";
+            this.btnGetBlobPos.UseVisualStyleBackColor = true;
+            // 
+            // btnJobBlob_Roi
+            // 
+            this.btnJobBlob_Roi.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJobBlob_Roi.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobBlob_Roi.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobBlob_Roi.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobBlob_Roi.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobBlob_Roi.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobBlob_Roi.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJobBlob_Roi.Location = new System.Drawing.Point(80, 378);
+            this.btnJobBlob_Roi.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnJobBlob_Roi.Name = "btnJobBlob_Roi";
+            this.btnJobBlob_Roi.RectColor = System.Drawing.Color.White;
+            this.btnJobBlob_Roi.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobBlob_Roi.RectPressColor = System.Drawing.Color.White;
+            this.btnJobBlob_Roi.RectSelectedColor = System.Drawing.Color.White;
+            this.btnJobBlob_Roi.Size = new System.Drawing.Size(70, 42);
+            this.btnJobBlob_Roi.Style = Sunny.UI.UIStyle.Custom;
+            this.btnJobBlob_Roi.StyleCustomMode = true;
+            this.btnJobBlob_Roi.Symbol = 362923;
+            this.btnJobBlob_Roi.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.btnJobBlob_Roi.SymbolSize = 16;
+            this.btnJobBlob_Roi.TabIndex = 3555;
+            this.btnJobBlob_Roi.Text = "Roi";
+            this.btnJobBlob_Roi.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // CogDisplay_FinMatchingTemplateImg
+            // 
+            this.CogDisplay_FinMatchingTemplateImg.ColorMapLowerClipColor = System.Drawing.Color.Black;
+            this.CogDisplay_FinMatchingTemplateImg.ColorMapLowerRoiLimit = 0D;
+            this.CogDisplay_FinMatchingTemplateImg.ColorMapPredefined = Cognex.VisionPro.Display.CogDisplayColorMapPredefinedConstants.None;
+            this.CogDisplay_FinMatchingTemplateImg.ColorMapUpperClipColor = System.Drawing.Color.Black;
+            this.CogDisplay_FinMatchingTemplateImg.ColorMapUpperRoiLimit = 1D;
+            this.CogDisplay_FinMatchingTemplateImg.DoubleTapZoomCycleLength = 2;
+            this.CogDisplay_FinMatchingTemplateImg.DoubleTapZoomSensitivity = 2.5D;
+            this.CogDisplay_FinMatchingTemplateImg.Location = new System.Drawing.Point(2, 55);
+            this.CogDisplay_FinMatchingTemplateImg.Margin = new System.Windows.Forms.Padding(4);
+            this.CogDisplay_FinMatchingTemplateImg.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
+            this.CogDisplay_FinMatchingTemplateImg.MouseWheelSensitivity = 1D;
+            this.CogDisplay_FinMatchingTemplateImg.Name = "CogDisplay_FinMatchingTemplateImg";
+            this.CogDisplay_FinMatchingTemplateImg.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("CogDisplay_FinMatchingTemplateImg.OcxState")));
+            this.CogDisplay_FinMatchingTemplateImg.Size = new System.Drawing.Size(208, 146);
+            this.CogDisplay_FinMatchingTemplateImg.TabIndex = 3541;
+            // 
+            // uiSymbolButton29
+            // 
+            this.uiSymbolButton29.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiSymbolButton29.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton29.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton29.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.uiSymbolButton29.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton29.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton29.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uiSymbolButton29.Location = new System.Drawing.Point(152, 378);
+            this.uiSymbolButton29.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiSymbolButton29.Name = "uiSymbolButton29";
+            this.uiSymbolButton29.RectColor = System.Drawing.Color.White;
+            this.uiSymbolButton29.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.uiSymbolButton29.RectPressColor = System.Drawing.Color.White;
+            this.uiSymbolButton29.RectSelectedColor = System.Drawing.Color.White;
+            this.uiSymbolButton29.Size = new System.Drawing.Size(71, 42);
+            this.uiSymbolButton29.Style = Sunny.UI.UIStyle.Custom;
+            this.uiSymbolButton29.StyleCustomMode = true;
+            this.uiSymbolButton29.Symbol = 61442;
+            this.uiSymbolButton29.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.uiSymbolButton29.SymbolSize = 20;
+            this.uiSymbolButton29.TabIndex = 3554;
+            this.uiSymbolButton29.Text = "Find";
+            this.uiSymbolButton29.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // label83
+            // 
+            this.label83.BackColor = System.Drawing.Color.Transparent;
+            this.label83.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label83.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label83.Font = new System.Drawing.Font("Arial", 8F);
+            this.label83.ForeColor = System.Drawing.Color.White;
+            this.label83.Location = new System.Drawing.Point(0, 337);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(80, 35);
+            this.label83.TabIndex = 3553;
+            this.label83.Text = "Threshold";
+            this.label83.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label82
+            // 
+            this.label82.BackColor = System.Drawing.Color.Transparent;
+            this.label82.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label82.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label82.Font = new System.Drawing.Font("Arial", 8F);
+            this.label82.ForeColor = System.Drawing.Color.White;
+            this.label82.Location = new System.Drawing.Point(0, 301);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(80, 35);
+            this.label82.TabIndex = 3552;
+            this.label82.Text = "Area (Max)";
+            this.label82.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label72
+            // 
+            this.label72.BackColor = System.Drawing.Color.Transparent;
+            this.label72.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label72.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label72.Font = new System.Drawing.Font("Arial", 8F);
+            this.label72.ForeColor = System.Drawing.Color.White;
+            this.label72.Location = new System.Drawing.Point(-1, 265);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(80, 35);
+            this.label72.TabIndex = 3551;
+            this.label72.Text = "Area (Min)";
+            this.label72.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label73
             // 
-            this.label73.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label73.ForeColor = System.Drawing.Color.Black;
-            this.label73.Location = new System.Drawing.Point(5, 5);
+            this.label73.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.label73.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label73.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label73.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label73.ForeColor = System.Drawing.Color.White;
+            this.label73.Location = new System.Drawing.Point(-2, 237);
             this.label73.Name = "label73";
-            this.label73.Size = new System.Drawing.Size(640, 20);
-            this.label73.TabIndex = 3658;
-            this.label73.Text = "Polarity";
+            this.label73.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label73.Size = new System.Drawing.Size(307, 27);
+            this.label73.TabIndex = 3550;
+            this.label73.Text = "ex) Blob";
             this.label73.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tabPage19
-            // 
-            this.tabPage19.Controls.Add(this.label86);
-            this.tabPage19.Controls.Add(this.label85);
-            this.tabPage19.Location = new System.Drawing.Point(0, 40);
-            this.tabPage19.Name = "tabPage19";
-            this.tabPage19.Size = new System.Drawing.Size(200, 60);
-            this.tabPage19.TabIndex = 10;
-            this.tabPage19.Text = "tabPage19";
-            this.tabPage19.UseVisualStyleBackColor = true;
             // 
             // label86
             // 
-            this.label86.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label86.ForeColor = System.Drawing.Color.Black;
-            this.label86.Location = new System.Drawing.Point(25, 50);
+            this.label86.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.label86.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label86.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label86.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label86.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label86.ForeColor = System.Drawing.Color.White;
+            this.label86.Location = new System.Drawing.Point(0, 0);
             this.label86.Name = "label86";
-            this.label86.Size = new System.Drawing.Size(526, 84);
-            this.label86.TabIndex = 3660;
-            this.label86.Text = "Arithmetic 을 List 형식으로 유연하게 사용 가능하도록\r\n - Add, Substract\r\n - Compare, Multiply, De" +
-    "vide\r\n - Bitwise AND,OR,XOR\r\n";
+            this.label86.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label86.Size = new System.Drawing.Size(564, 27);
+            this.label86.TabIndex = 3549;
+            this.label86.Text = "ex) 12 Pin";
             this.label86.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label85
+            // uiSymbolButton32
             // 
-            this.label85.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label85.ForeColor = System.Drawing.Color.Black;
-            this.label85.Location = new System.Drawing.Point(5, 5);
-            this.label85.Name = "label85";
-            this.label85.Size = new System.Drawing.Size(640, 20);
-            this.label85.TabIndex = 3659;
-            this.label85.Text = "Defects Extract";
-            this.label85.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tabPage20
-            // 
-            this.tabPage20.Controls.Add(this.label88);
-            this.tabPage20.Controls.Add(this.label87);
-            this.tabPage20.Location = new System.Drawing.Point(0, 40);
-            this.tabPage20.Name = "tabPage20";
-            this.tabPage20.Size = new System.Drawing.Size(200, 60);
-            this.tabPage20.TabIndex = 11;
-            this.tabPage20.Text = "tabPage20";
-            this.tabPage20.UseVisualStyleBackColor = true;
+            this.uiSymbolButton32.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiSymbolButton32.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton32.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton32.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.uiSymbolButton32.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton32.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton32.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uiSymbolButton32.Location = new System.Drawing.Point(212, 116);
+            this.uiSymbolButton32.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiSymbolButton32.Name = "uiSymbolButton32";
+            this.uiSymbolButton32.RectColor = System.Drawing.Color.White;
+            this.uiSymbolButton32.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.uiSymbolButton32.RectPressColor = System.Drawing.Color.White;
+            this.uiSymbolButton32.RectSelectedColor = System.Drawing.Color.White;
+            this.uiSymbolButton32.Size = new System.Drawing.Size(91, 42);
+            this.uiSymbolButton32.Style = Sunny.UI.UIStyle.Custom;
+            this.uiSymbolButton32.StyleCustomMode = true;
+            this.uiSymbolButton32.Symbol = 361508;
+            this.uiSymbolButton32.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.uiSymbolButton32.SymbolSize = 20;
+            this.uiSymbolButton32.TabIndex = 3548;
+            this.uiSymbolButton32.Text = "Mask";
+            this.uiSymbolButton32.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             // 
             // label88
             // 
-            this.label88.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label88.ForeColor = System.Drawing.Color.Black;
-            this.label88.Location = new System.Drawing.Point(25, 50);
+            this.label88.BackColor = System.Drawing.Color.Transparent;
+            this.label88.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label88.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label88.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label88.ForeColor = System.Drawing.Color.White;
+            this.label88.Location = new System.Drawing.Point(0, 201);
             this.label88.Name = "label88";
-            this.label88.Size = new System.Drawing.Size(640, 42);
-            this.label88.TabIndex = 3661;
-            this.label88.Text = "앞서 설명된 로직으로 검출된 MBR (BoundingRect) 를 Crop 하거나 고정 영역을 Crop 하여 \r\nClassification 하고 " +
-    "정답과 비교할 수 있도록";
-            this.label88.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label88.Size = new System.Drawing.Size(161, 35);
+            this.label88.TabIndex = 3547;
+            this.label88.Text = "Score (OK) Minimum";
+            this.label88.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel15
+            // 
+            this.panel15.Controls.Add(this.label118);
+            this.panel15.Location = new System.Drawing.Point(2, 30);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(208, 171);
+            this.panel15.TabIndex = 3543;
+            // 
+            // label118
+            // 
+            this.label118.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(77)))), ((int)(((byte)(86)))));
+            this.label118.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label118.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label118.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.label118.ForeColor = System.Drawing.Color.White;
+            this.label118.Location = new System.Drawing.Point(0, 0);
+            this.label118.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label118.Name = "label118";
+            this.label118.Size = new System.Drawing.Size(208, 25);
+            this.label118.TabIndex = 3300;
+            this.label118.Text = "Pattern";
+            this.label118.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // uiSymbolButton33
+            // 
+            this.uiSymbolButton33.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiSymbolButton33.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton33.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton33.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.uiSymbolButton33.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton33.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton33.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uiSymbolButton33.Location = new System.Drawing.Point(212, 30);
+            this.uiSymbolButton33.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiSymbolButton33.Name = "uiSymbolButton33";
+            this.uiSymbolButton33.RectColor = System.Drawing.Color.White;
+            this.uiSymbolButton33.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.uiSymbolButton33.RectPressColor = System.Drawing.Color.White;
+            this.uiSymbolButton33.RectSelectedColor = System.Drawing.Color.White;
+            this.uiSymbolButton33.Size = new System.Drawing.Size(91, 42);
+            this.uiSymbolButton33.Style = Sunny.UI.UIStyle.Custom;
+            this.uiSymbolButton33.StyleCustomMode = true;
+            this.uiSymbolButton33.Symbol = 362923;
+            this.uiSymbolButton33.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.uiSymbolButton33.SymbolSize = 20;
+            this.uiSymbolButton33.TabIndex = 3544;
+            this.uiSymbolButton33.Text = "Roi";
+            this.uiSymbolButton33.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // uiSymbolButton64
+            // 
+            this.uiSymbolButton64.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiSymbolButton64.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton64.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton64.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.uiSymbolButton64.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton64.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton64.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uiSymbolButton64.Location = new System.Drawing.Point(212, 73);
+            this.uiSymbolButton64.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiSymbolButton64.Name = "uiSymbolButton64";
+            this.uiSymbolButton64.RectColor = System.Drawing.Color.White;
+            this.uiSymbolButton64.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.uiSymbolButton64.RectPressColor = System.Drawing.Color.White;
+            this.uiSymbolButton64.RectSelectedColor = System.Drawing.Color.White;
+            this.uiSymbolButton64.Size = new System.Drawing.Size(91, 42);
+            this.uiSymbolButton64.Style = Sunny.UI.UIStyle.Custom;
+            this.uiSymbolButton64.StyleCustomMode = true;
+            this.uiSymbolButton64.Symbol = 108;
+            this.uiSymbolButton64.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.uiSymbolButton64.SymbolSize = 20;
+            this.uiSymbolButton64.TabIndex = 3545;
+            this.uiSymbolButton64.Text = "Train";
+            this.uiSymbolButton64.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // uiSymbolButton65
+            // 
+            this.uiSymbolButton65.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiSymbolButton65.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton65.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton65.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.uiSymbolButton65.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton65.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton65.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uiSymbolButton65.Location = new System.Drawing.Point(212, 159);
+            this.uiSymbolButton65.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiSymbolButton65.Name = "uiSymbolButton65";
+            this.uiSymbolButton65.RectColor = System.Drawing.Color.White;
+            this.uiSymbolButton65.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.uiSymbolButton65.RectPressColor = System.Drawing.Color.White;
+            this.uiSymbolButton65.RectSelectedColor = System.Drawing.Color.White;
+            this.uiSymbolButton65.Size = new System.Drawing.Size(91, 42);
+            this.uiSymbolButton65.Style = Sunny.UI.UIStyle.Custom;
+            this.uiSymbolButton65.StyleCustomMode = true;
+            this.uiSymbolButton65.Symbol = 61442;
+            this.uiSymbolButton65.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.uiSymbolButton65.SymbolSize = 20;
+            this.uiSymbolButton65.TabIndex = 3546;
+            this.uiSymbolButton65.Text = "Find";
+            this.uiSymbolButton65.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // btnJobBlobInsp
+            // 
+            this.btnJobBlobInsp.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnJobBlobInsp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnJobBlobInsp.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJobBlobInsp.ForeColor = System.Drawing.Color.White;
+            this.btnJobBlobInsp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnJobBlobInsp.Location = new System.Drawing.Point(227, 378);
+            this.btnJobBlobInsp.Name = "btnJobBlobInsp";
+            this.btnJobBlobInsp.Size = new System.Drawing.Size(75, 42);
+            this.btnJobBlobInsp.TabIndex = 3542;
+            this.btnJobBlobInsp.Text = "Insp";
+            this.btnJobBlobInsp.UseVisualStyleBackColor = true;
+            // 
+            // tabPage19
+            // 
+            this.tabPage19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tabPage19.Controls.Add(this.tbYMaxValue);
+            this.tabPage19.Controls.Add(this.tbYMinValue);
+            this.tabPage19.Controls.Add(this.tbXMaxValue);
+            this.tabPage19.Controls.Add(this.tbXMinValue);
+            this.tabPage19.Controls.Add(this.tbAngleMaxValue);
+            this.tabPage19.Controls.Add(this.tbAngleMinValue);
+            this.tabPage19.Controls.Add(this.tbLineEdgeContrast);
+            this.tabPage19.Controls.Add(this.btnDistanceDetail);
+            this.tabPage19.Controls.Add(this.numericDistanceSamplingCount);
+            this.tabPage19.Controls.Add(this.numericDistanceThickness);
+            this.tabPage19.Controls.Add(this.label74);
+            this.tabPage19.Controls.Add(this.label75);
+            this.tabPage19.Controls.Add(this.cbYValue);
+            this.tabPage19.Controls.Add(this.cbXValue);
+            this.tabPage19.Controls.Add(this.cbAngle);
+            this.tabPage19.Controls.Add(this.label117);
+            this.tabPage19.Controls.Add(this.label111);
+            this.tabPage19.Controls.Add(this.label112);
+            this.tabPage19.Controls.Add(this.label113);
+            this.tabPage19.Controls.Add(this.label106);
+            this.tabPage19.Controls.Add(this.label107);
+            this.tabPage19.Controls.Add(this.label109);
+            this.tabPage19.Controls.Add(this.label77);
+            this.tabPage19.Controls.Add(this.label78);
+            this.tabPage19.Controls.Add(this.label79);
+            this.tabPage19.Controls.Add(this.btnJobDistanceInsp);
+            this.tabPage19.Controls.Add(this.btnJobDistance_Roi);
+            this.tabPage19.Controls.Add(this.uiSymbolButton66);
+            this.tabPage19.Controls.Add(this.comboLineEdgePolarity);
+            this.tabPage19.Controls.Add(this.label80);
+            this.tabPage19.Controls.Add(this.comboLineEdgeScorer);
+            this.tabPage19.Controls.Add(this.label81);
+            this.tabPage19.Controls.Add(this.label84);
+            this.tabPage19.Location = new System.Drawing.Point(91, 0);
+            this.tabPage19.Name = "tabPage19";
+            this.tabPage19.Size = new System.Drawing.Size(564, 512);
+            this.tabPage19.TabIndex = 2;
+            this.tabPage19.Text = "Distance";
+            // 
+            // tbYMaxValue
+            // 
+            this.tbYMaxValue.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbYMaxValue.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tbYMaxValue.Font = new System.Drawing.Font("Arial", 9F);
+            this.tbYMaxValue.ForeColor = System.Drawing.Color.DimGray;
+            this.tbYMaxValue.Location = new System.Drawing.Point(120, 345);
+            this.tbYMaxValue.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbYMaxValue.MinimumSize = new System.Drawing.Size(1, 16);
+            this.tbYMaxValue.Name = "tbYMaxValue";
+            this.tbYMaxValue.Padding = new System.Windows.Forms.Padding(5);
+            this.tbYMaxValue.RectColor = System.Drawing.Color.White;
+            this.tbYMaxValue.ShowText = false;
+            this.tbYMaxValue.Size = new System.Drawing.Size(184, 30);
+            this.tbYMaxValue.Style = Sunny.UI.UIStyle.Custom;
+            this.tbYMaxValue.TabIndex = 3579;
+            this.tbYMaxValue.Text = "-";
+            this.tbYMaxValue.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.tbYMaxValue.Watermark = "";
+            // 
+            // tbYMinValue
+            // 
+            this.tbYMinValue.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbYMinValue.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tbYMinValue.Font = new System.Drawing.Font("Arial", 9F);
+            this.tbYMinValue.ForeColor = System.Drawing.Color.DimGray;
+            this.tbYMinValue.Location = new System.Drawing.Point(120, 314);
+            this.tbYMinValue.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbYMinValue.MinimumSize = new System.Drawing.Size(1, 16);
+            this.tbYMinValue.Name = "tbYMinValue";
+            this.tbYMinValue.Padding = new System.Windows.Forms.Padding(5);
+            this.tbYMinValue.RectColor = System.Drawing.Color.White;
+            this.tbYMinValue.ShowText = false;
+            this.tbYMinValue.Size = new System.Drawing.Size(184, 30);
+            this.tbYMinValue.Style = Sunny.UI.UIStyle.Custom;
+            this.tbYMinValue.TabIndex = 3578;
+            this.tbYMinValue.Text = "-";
+            this.tbYMinValue.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.tbYMinValue.Watermark = "";
+            // 
+            // tbXMaxValue
+            // 
+            this.tbXMaxValue.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbXMaxValue.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tbXMaxValue.Font = new System.Drawing.Font("Arial", 9F);
+            this.tbXMaxValue.ForeColor = System.Drawing.Color.DimGray;
+            this.tbXMaxValue.Location = new System.Drawing.Point(120, 283);
+            this.tbXMaxValue.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbXMaxValue.MinimumSize = new System.Drawing.Size(1, 16);
+            this.tbXMaxValue.Name = "tbXMaxValue";
+            this.tbXMaxValue.Padding = new System.Windows.Forms.Padding(5);
+            this.tbXMaxValue.RectColor = System.Drawing.Color.White;
+            this.tbXMaxValue.ShowText = false;
+            this.tbXMaxValue.Size = new System.Drawing.Size(184, 30);
+            this.tbXMaxValue.Style = Sunny.UI.UIStyle.Custom;
+            this.tbXMaxValue.TabIndex = 3577;
+            this.tbXMaxValue.Text = "-";
+            this.tbXMaxValue.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.tbXMaxValue.Watermark = "";
+            // 
+            // tbXMinValue
+            // 
+            this.tbXMinValue.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbXMinValue.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tbXMinValue.Font = new System.Drawing.Font("Arial", 9F);
+            this.tbXMinValue.ForeColor = System.Drawing.Color.DimGray;
+            this.tbXMinValue.Location = new System.Drawing.Point(120, 252);
+            this.tbXMinValue.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbXMinValue.MinimumSize = new System.Drawing.Size(1, 16);
+            this.tbXMinValue.Name = "tbXMinValue";
+            this.tbXMinValue.Padding = new System.Windows.Forms.Padding(5);
+            this.tbXMinValue.RectColor = System.Drawing.Color.White;
+            this.tbXMinValue.ShowText = false;
+            this.tbXMinValue.Size = new System.Drawing.Size(184, 30);
+            this.tbXMinValue.Style = Sunny.UI.UIStyle.Custom;
+            this.tbXMinValue.TabIndex = 3576;
+            this.tbXMinValue.Text = "-";
+            this.tbXMinValue.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.tbXMinValue.Watermark = "";
+            // 
+            // tbAngleMaxValue
+            // 
+            this.tbAngleMaxValue.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbAngleMaxValue.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tbAngleMaxValue.Font = new System.Drawing.Font("Arial", 9F);
+            this.tbAngleMaxValue.ForeColor = System.Drawing.Color.DimGray;
+            this.tbAngleMaxValue.Location = new System.Drawing.Point(120, 221);
+            this.tbAngleMaxValue.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbAngleMaxValue.MinimumSize = new System.Drawing.Size(1, 16);
+            this.tbAngleMaxValue.Name = "tbAngleMaxValue";
+            this.tbAngleMaxValue.Padding = new System.Windows.Forms.Padding(5);
+            this.tbAngleMaxValue.RectColor = System.Drawing.Color.White;
+            this.tbAngleMaxValue.ShowText = false;
+            this.tbAngleMaxValue.Size = new System.Drawing.Size(184, 30);
+            this.tbAngleMaxValue.Style = Sunny.UI.UIStyle.Custom;
+            this.tbAngleMaxValue.TabIndex = 3575;
+            this.tbAngleMaxValue.Text = "-";
+            this.tbAngleMaxValue.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.tbAngleMaxValue.Watermark = "";
+            // 
+            // tbAngleMinValue
+            // 
+            this.tbAngleMinValue.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbAngleMinValue.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tbAngleMinValue.Font = new System.Drawing.Font("Arial", 9F);
+            this.tbAngleMinValue.ForeColor = System.Drawing.Color.DimGray;
+            this.tbAngleMinValue.Location = new System.Drawing.Point(120, 190);
+            this.tbAngleMinValue.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbAngleMinValue.MinimumSize = new System.Drawing.Size(1, 16);
+            this.tbAngleMinValue.Name = "tbAngleMinValue";
+            this.tbAngleMinValue.Padding = new System.Windows.Forms.Padding(5);
+            this.tbAngleMinValue.RectColor = System.Drawing.Color.White;
+            this.tbAngleMinValue.ShowText = false;
+            this.tbAngleMinValue.Size = new System.Drawing.Size(184, 30);
+            this.tbAngleMinValue.Style = Sunny.UI.UIStyle.Custom;
+            this.tbAngleMinValue.TabIndex = 3574;
+            this.tbAngleMinValue.Text = "-";
+            this.tbAngleMinValue.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.tbAngleMinValue.Watermark = "";
+            // 
+            // tbLineEdgeContrast
+            // 
+            this.tbLineEdgeContrast.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbLineEdgeContrast.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tbLineEdgeContrast.Font = new System.Drawing.Font("Arial", 9F);
+            this.tbLineEdgeContrast.ForeColor = System.Drawing.Color.DimGray;
+            this.tbLineEdgeContrast.Location = new System.Drawing.Point(120, 98);
+            this.tbLineEdgeContrast.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbLineEdgeContrast.MinimumSize = new System.Drawing.Size(1, 16);
+            this.tbLineEdgeContrast.Name = "tbLineEdgeContrast";
+            this.tbLineEdgeContrast.Padding = new System.Windows.Forms.Padding(5);
+            this.tbLineEdgeContrast.RectColor = System.Drawing.Color.White;
+            this.tbLineEdgeContrast.ShowText = false;
+            this.tbLineEdgeContrast.Size = new System.Drawing.Size(184, 30);
+            this.tbLineEdgeContrast.Style = Sunny.UI.UIStyle.Custom;
+            this.tbLineEdgeContrast.TabIndex = 3573;
+            this.tbLineEdgeContrast.Text = "-";
+            this.tbLineEdgeContrast.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.tbLineEdgeContrast.Watermark = "";
+            // 
+            // btnDistanceDetail
+            // 
+            this.btnDistanceDetail.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDistanceDetail.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnDistanceDetail.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnDistanceDetail.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnDistanceDetail.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnDistanceDetail.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnDistanceDetail.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDistanceDetail.Location = new System.Drawing.Point(15, 424);
+            this.btnDistanceDetail.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnDistanceDetail.Name = "btnDistanceDetail";
+            this.btnDistanceDetail.RectColor = System.Drawing.Color.White;
+            this.btnDistanceDetail.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnDistanceDetail.RectPressColor = System.Drawing.Color.White;
+            this.btnDistanceDetail.RectSelectedColor = System.Drawing.Color.White;
+            this.btnDistanceDetail.Size = new System.Drawing.Size(278, 42);
+            this.btnDistanceDetail.Style = Sunny.UI.UIStyle.Custom;
+            this.btnDistanceDetail.StyleCustomMode = true;
+            this.btnDistanceDetail.Symbol = 61442;
+            this.btnDistanceDetail.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.btnDistanceDetail.SymbolSize = 20;
+            this.btnDistanceDetail.TabIndex = 3572;
+            this.btnDistanceDetail.Text = "Detail";
+            this.btnDistanceDetail.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // numericDistanceSamplingCount
+            // 
+            this.numericDistanceSamplingCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.numericDistanceSamplingCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numericDistanceSamplingCount.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Bold);
+            this.numericDistanceSamplingCount.ForeColor = System.Drawing.Color.White;
+            this.numericDistanceSamplingCount.Location = new System.Drawing.Point(119, 161);
+            this.numericDistanceSamplingCount.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numericDistanceSamplingCount.Name = "numericDistanceSamplingCount";
+            this.numericDistanceSamplingCount.Size = new System.Drawing.Size(184, 27);
+            this.numericDistanceSamplingCount.TabIndex = 3571;
+            this.numericDistanceSamplingCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericDistanceSamplingCount.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // numericDistanceThickness
+            // 
+            this.numericDistanceThickness.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.numericDistanceThickness.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numericDistanceThickness.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Bold);
+            this.numericDistanceThickness.ForeColor = System.Drawing.Color.White;
+            this.numericDistanceThickness.Location = new System.Drawing.Point(120, 130);
+            this.numericDistanceThickness.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericDistanceThickness.Name = "numericDistanceThickness";
+            this.numericDistanceThickness.Size = new System.Drawing.Size(184, 27);
+            this.numericDistanceThickness.TabIndex = 3570;
+            this.numericDistanceThickness.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericDistanceThickness.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label74
+            // 
+            this.label74.BackColor = System.Drawing.Color.Transparent;
+            this.label74.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label74.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label74.Font = new System.Drawing.Font("Arial", 8F);
+            this.label74.ForeColor = System.Drawing.Color.White;
+            this.label74.Location = new System.Drawing.Point(0, 128);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(119, 30);
+            this.label74.TabIndex = 3569;
+            this.label74.Text = "Filter Half Size Pixels";
+            this.label74.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label75
+            // 
+            this.label75.BackColor = System.Drawing.Color.Transparent;
+            this.label75.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label75.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label75.Font = new System.Drawing.Font("Arial", 8F);
+            this.label75.ForeColor = System.Drawing.Color.White;
+            this.label75.Location = new System.Drawing.Point(0, 159);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(119, 30);
+            this.label75.TabIndex = 3568;
+            this.label75.Text = "Number of Caliper";
+            this.label75.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // cbYValue
+            // 
+            this.cbYValue.AutoSize = true;
+            this.cbYValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbYValue.ForeColor = System.Drawing.Color.White;
+            this.cbYValue.Location = new System.Drawing.Point(3, 318);
+            this.cbYValue.Name = "cbYValue";
+            this.cbYValue.Size = new System.Drawing.Size(15, 14);
+            this.cbYValue.TabIndex = 3567;
+            this.cbYValue.UseVisualStyleBackColor = true;
+            // 
+            // cbXValue
+            // 
+            this.cbXValue.AutoSize = true;
+            this.cbXValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbXValue.ForeColor = System.Drawing.Color.White;
+            this.cbXValue.Location = new System.Drawing.Point(3, 256);
+            this.cbXValue.Name = "cbXValue";
+            this.cbXValue.Size = new System.Drawing.Size(15, 14);
+            this.cbXValue.TabIndex = 3566;
+            this.cbXValue.UseVisualStyleBackColor = true;
+            // 
+            // cbAngle
+            // 
+            this.cbAngle.AutoSize = true;
+            this.cbAngle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbAngle.ForeColor = System.Drawing.Color.White;
+            this.cbAngle.Location = new System.Drawing.Point(3, 194);
+            this.cbAngle.Name = "cbAngle";
+            this.cbAngle.Size = new System.Drawing.Size(15, 14);
+            this.cbAngle.TabIndex = 3565;
+            this.cbAngle.UseVisualStyleBackColor = true;
+            // 
+            // label117
+            // 
+            this.label117.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.label117.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label117.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label117.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label117.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label117.ForeColor = System.Drawing.Color.White;
+            this.label117.Location = new System.Drawing.Point(0, 0);
+            this.label117.Name = "label117";
+            this.label117.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label117.Size = new System.Drawing.Size(564, 27);
+            this.label117.TabIndex = 3564;
+            this.label117.Text = "ex) Fiducial - Edge, Fuse Angle ...";
+            this.label117.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label111
+            // 
+            this.label111.BackColor = System.Drawing.Color.Transparent;
+            this.label111.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label111.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label111.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label111.ForeColor = System.Drawing.Color.White;
+            this.label111.Location = new System.Drawing.Point(67, 345);
+            this.label111.Name = "label111";
+            this.label111.Size = new System.Drawing.Size(52, 30);
+            this.label111.TabIndex = 3563;
+            this.label111.Text = "Max";
+            this.label111.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label112
+            // 
+            this.label112.BackColor = System.Drawing.Color.Transparent;
+            this.label112.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label112.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label112.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label112.ForeColor = System.Drawing.Color.White;
+            this.label112.Location = new System.Drawing.Point(67, 314);
+            this.label112.Name = "label112";
+            this.label112.Size = new System.Drawing.Size(52, 30);
+            this.label112.TabIndex = 3562;
+            this.label112.Text = "Min";
+            this.label112.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label113
+            // 
+            this.label113.BackColor = System.Drawing.Color.Transparent;
+            this.label113.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label113.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label113.Font = new System.Drawing.Font("Arial", 8F);
+            this.label113.ForeColor = System.Drawing.Color.White;
+            this.label113.Location = new System.Drawing.Point(0, 314);
+            this.label113.Name = "label113";
+            this.label113.Size = new System.Drawing.Size(66, 61);
+            this.label113.TabIndex = 3561;
+            this.label113.Text = "\r\nDistance\r\n(Y)";
+            this.label113.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label106
+            // 
+            this.label106.BackColor = System.Drawing.Color.Transparent;
+            this.label106.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label106.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label106.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label106.ForeColor = System.Drawing.Color.White;
+            this.label106.Location = new System.Drawing.Point(67, 283);
+            this.label106.Name = "label106";
+            this.label106.Size = new System.Drawing.Size(52, 30);
+            this.label106.TabIndex = 3560;
+            this.label106.Text = "Max";
+            this.label106.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label107
+            // 
+            this.label107.BackColor = System.Drawing.Color.Transparent;
+            this.label107.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label107.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label107.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label107.ForeColor = System.Drawing.Color.White;
+            this.label107.Location = new System.Drawing.Point(67, 252);
+            this.label107.Name = "label107";
+            this.label107.Size = new System.Drawing.Size(52, 30);
+            this.label107.TabIndex = 3559;
+            this.label107.Text = "Min";
+            this.label107.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label109
+            // 
+            this.label109.BackColor = System.Drawing.Color.Transparent;
+            this.label109.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label109.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label109.Font = new System.Drawing.Font("Arial", 8F);
+            this.label109.ForeColor = System.Drawing.Color.White;
+            this.label109.Location = new System.Drawing.Point(0, 252);
+            this.label109.Name = "label109";
+            this.label109.Size = new System.Drawing.Size(66, 61);
+            this.label109.TabIndex = 3558;
+            this.label109.Text = "\r\nDistance\r\n(X)";
+            this.label109.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label77
+            // 
+            this.label77.BackColor = System.Drawing.Color.Transparent;
+            this.label77.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label77.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label77.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label77.ForeColor = System.Drawing.Color.White;
+            this.label77.Location = new System.Drawing.Point(67, 221);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(52, 30);
+            this.label77.TabIndex = 3557;
+            this.label77.Text = "Max";
+            this.label77.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label78
+            // 
+            this.label78.BackColor = System.Drawing.Color.Transparent;
+            this.label78.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label78.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label78.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label78.ForeColor = System.Drawing.Color.White;
+            this.label78.Location = new System.Drawing.Point(67, 190);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(52, 30);
+            this.label78.TabIndex = 3556;
+            this.label78.Text = "Min";
+            this.label78.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label79
+            // 
+            this.label79.BackColor = System.Drawing.Color.Transparent;
+            this.label79.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label79.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label79.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label79.ForeColor = System.Drawing.Color.White;
+            this.label79.Location = new System.Drawing.Point(0, 190);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(66, 61);
+            this.label79.TabIndex = 3555;
+            this.label79.Text = "Degree";
+            this.label79.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnJobDistanceInsp
+            // 
+            this.btnJobDistanceInsp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJobDistanceInsp.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobDistanceInsp.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobDistanceInsp.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobDistanceInsp.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobDistanceInsp.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobDistanceInsp.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJobDistanceInsp.Location = new System.Drawing.Point(185, 376);
+            this.btnJobDistanceInsp.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnJobDistanceInsp.Name = "btnJobDistanceInsp";
+            this.btnJobDistanceInsp.RectColor = System.Drawing.Color.White;
+            this.btnJobDistanceInsp.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobDistanceInsp.RectPressColor = System.Drawing.Color.White;
+            this.btnJobDistanceInsp.RectSelectedColor = System.Drawing.Color.White;
+            this.btnJobDistanceInsp.Size = new System.Drawing.Size(116, 42);
+            this.btnJobDistanceInsp.Style = Sunny.UI.UIStyle.Custom;
+            this.btnJobDistanceInsp.StyleCustomMode = true;
+            this.btnJobDistanceInsp.Symbol = 61515;
+            this.btnJobDistanceInsp.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.btnJobDistanceInsp.SymbolSize = 20;
+            this.btnJobDistanceInsp.TabIndex = 3554;
+            this.btnJobDistanceInsp.Text = "Inspection";
+            this.btnJobDistanceInsp.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // btnJobDistance_Roi
+            // 
+            this.btnJobDistance_Roi.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJobDistance_Roi.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobDistance_Roi.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobDistance_Roi.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobDistance_Roi.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobDistance_Roi.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobDistance_Roi.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJobDistance_Roi.Location = new System.Drawing.Point(0, 376);
+            this.btnJobDistance_Roi.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnJobDistance_Roi.Name = "btnJobDistance_Roi";
+            this.btnJobDistance_Roi.RectColor = System.Drawing.Color.White;
+            this.btnJobDistance_Roi.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobDistance_Roi.RectPressColor = System.Drawing.Color.White;
+            this.btnJobDistance_Roi.RectSelectedColor = System.Drawing.Color.White;
+            this.btnJobDistance_Roi.Size = new System.Drawing.Size(91, 42);
+            this.btnJobDistance_Roi.Style = Sunny.UI.UIStyle.Custom;
+            this.btnJobDistance_Roi.StyleCustomMode = true;
+            this.btnJobDistance_Roi.Symbol = 362923;
+            this.btnJobDistance_Roi.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.btnJobDistance_Roi.SymbolSize = 20;
+            this.btnJobDistance_Roi.TabIndex = 3552;
+            this.btnJobDistance_Roi.Text = "Roi";
+            this.btnJobDistance_Roi.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // uiSymbolButton66
+            // 
+            this.uiSymbolButton66.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiSymbolButton66.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton66.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton66.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.uiSymbolButton66.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton66.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton66.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uiSymbolButton66.Location = new System.Drawing.Point(93, 376);
+            this.uiSymbolButton66.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiSymbolButton66.Name = "uiSymbolButton66";
+            this.uiSymbolButton66.RectColor = System.Drawing.Color.White;
+            this.uiSymbolButton66.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.uiSymbolButton66.RectPressColor = System.Drawing.Color.White;
+            this.uiSymbolButton66.RectSelectedColor = System.Drawing.Color.White;
+            this.uiSymbolButton66.Size = new System.Drawing.Size(91, 42);
+            this.uiSymbolButton66.Style = Sunny.UI.UIStyle.Custom;
+            this.uiSymbolButton66.StyleCustomMode = true;
+            this.uiSymbolButton66.Symbol = 61442;
+            this.uiSymbolButton66.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.uiSymbolButton66.SymbolSize = 20;
+            this.uiSymbolButton66.TabIndex = 3553;
+            this.uiSymbolButton66.Text = "Find";
+            this.uiSymbolButton66.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // comboLineEdgePolarity
+            // 
+            this.comboLineEdgePolarity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.comboLineEdgePolarity.ForeColor = System.Drawing.Color.White;
+            this.comboLineEdgePolarity.FormattingEnabled = true;
+            this.comboLineEdgePolarity.ItemHeight = 23;
+            this.comboLineEdgePolarity.Items.AddRange(new object[] {
+            "Dark → Light",
+            "Light → Dark"});
+            this.comboLineEdgePolarity.Location = new System.Drawing.Point(120, 37);
+            this.comboLineEdgePolarity.Name = "comboLineEdgePolarity";
+            this.comboLineEdgePolarity.Size = new System.Drawing.Size(184, 29);
+            this.comboLineEdgePolarity.Style = MetroFramework.MetroColorStyle.Orange;
+            this.comboLineEdgePolarity.TabIndex = 3549;
+            this.comboLineEdgePolarity.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.comboLineEdgePolarity.UseCustomBackColor = true;
+            this.comboLineEdgePolarity.UseCustomForeColor = true;
+            this.comboLineEdgePolarity.UseSelectable = true;
+            // 
+            // label80
+            // 
+            this.label80.BackColor = System.Drawing.Color.Transparent;
+            this.label80.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label80.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label80.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label80.ForeColor = System.Drawing.Color.White;
+            this.label80.Location = new System.Drawing.Point(0, 36);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(119, 30);
+            this.label80.TabIndex = 3547;
+            this.label80.Text = "Polarity";
+            this.label80.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // comboLineEdgeScorer
+            // 
+            this.comboLineEdgeScorer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.comboLineEdgeScorer.ForeColor = System.Drawing.Color.White;
+            this.comboLineEdgeScorer.FormattingEnabled = true;
+            this.comboLineEdgeScorer.ItemHeight = 23;
+            this.comboLineEdgeScorer.Items.AddRange(new object[] {
+            "Contrast",
+            "Position (From End)",
+            "Position (From Begin)"});
+            this.comboLineEdgeScorer.Location = new System.Drawing.Point(120, 68);
+            this.comboLineEdgeScorer.Name = "comboLineEdgeScorer";
+            this.comboLineEdgeScorer.Size = new System.Drawing.Size(184, 29);
+            this.comboLineEdgeScorer.Style = MetroFramework.MetroColorStyle.Orange;
+            this.comboLineEdgeScorer.TabIndex = 3551;
+            this.comboLineEdgeScorer.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.comboLineEdgeScorer.UseCustomBackColor = true;
+            this.comboLineEdgeScorer.UseCustomForeColor = true;
+            this.comboLineEdgeScorer.UseSelectable = true;
+            // 
+            // label81
+            // 
+            this.label81.BackColor = System.Drawing.Color.Transparent;
+            this.label81.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label81.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label81.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label81.ForeColor = System.Drawing.Color.White;
+            this.label81.Location = new System.Drawing.Point(0, 67);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(119, 30);
+            this.label81.TabIndex = 3550;
+            this.label81.Text = "Order";
+            this.label81.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label84
+            // 
+            this.label84.BackColor = System.Drawing.Color.Transparent;
+            this.label84.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label84.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label84.Font = new System.Drawing.Font("Arial", 8F);
+            this.label84.ForeColor = System.Drawing.Color.White;
+            this.label84.Location = new System.Drawing.Point(0, 98);
+            this.label84.Name = "label84";
+            this.label84.Size = new System.Drawing.Size(119, 30);
+            this.label84.TabIndex = 3548;
+            this.label84.Text = "Contrast Threshold";
+            this.label84.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tabPage26
+            // 
+            this.tabPage26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tabPage26.Controls.Add(this.btnEyeD_ColorExInsp);
+            this.tabPage26.Controls.Add(this.btnEyeD_ColorSetting);
+            this.tabPage26.Controls.Add(this.chkEyeD_UseColor);
+            this.tabPage26.Controls.Add(this.label85);
+            this.tabPage26.Controls.Add(this.btnEyeD_DistSetting);
+            this.tabPage26.Controls.Add(this.btnJobEyeD_DistanceInsp);
+            this.tabPage26.Controls.Add(this.chkEyeD_UseDist);
+            this.tabPage26.Controls.Add(this.label131);
+            this.tabPage26.Controls.Add(this.label87);
+            this.tabPage26.Controls.Add(this.panel17);
+            this.tabPage26.Location = new System.Drawing.Point(91, 0);
+            this.tabPage26.Name = "tabPage26";
+            this.tabPage26.Size = new System.Drawing.Size(564, 512);
+            this.tabPage26.TabIndex = 3;
+            this.tabPage26.Text = "EYE-D";
+            // 
+            // btnEyeD_ColorExInsp
+            // 
+            this.btnEyeD_ColorExInsp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEyeD_ColorExInsp.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnEyeD_ColorExInsp.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnEyeD_ColorExInsp.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnEyeD_ColorExInsp.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnEyeD_ColorExInsp.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnEyeD_ColorExInsp.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEyeD_ColorExInsp.Location = new System.Drawing.Point(159, 475);
+            this.btnEyeD_ColorExInsp.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnEyeD_ColorExInsp.Name = "btnEyeD_ColorExInsp";
+            this.btnEyeD_ColorExInsp.RectColor = System.Drawing.Color.White;
+            this.btnEyeD_ColorExInsp.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnEyeD_ColorExInsp.RectPressColor = System.Drawing.Color.White;
+            this.btnEyeD_ColorExInsp.RectSelectedColor = System.Drawing.Color.White;
+            this.btnEyeD_ColorExInsp.Size = new System.Drawing.Size(140, 30);
+            this.btnEyeD_ColorExInsp.Style = Sunny.UI.UIStyle.Custom;
+            this.btnEyeD_ColorExInsp.StyleCustomMode = true;
+            this.btnEyeD_ColorExInsp.Symbol = 61515;
+            this.btnEyeD_ColorExInsp.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.btnEyeD_ColorExInsp.SymbolSize = 20;
+            this.btnEyeD_ColorExInsp.TabIndex = 3536;
+            this.btnEyeD_ColorExInsp.Text = "Inspection";
+            this.btnEyeD_ColorExInsp.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // btnEyeD_ColorSetting
+            // 
+            this.btnEyeD_ColorSetting.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEyeD_ColorSetting.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnEyeD_ColorSetting.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnEyeD_ColorSetting.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnEyeD_ColorSetting.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnEyeD_ColorSetting.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnEyeD_ColorSetting.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEyeD_ColorSetting.Location = new System.Drawing.Point(13, 475);
+            this.btnEyeD_ColorSetting.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnEyeD_ColorSetting.Name = "btnEyeD_ColorSetting";
+            this.btnEyeD_ColorSetting.RectColor = System.Drawing.Color.White;
+            this.btnEyeD_ColorSetting.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnEyeD_ColorSetting.RectPressColor = System.Drawing.Color.White;
+            this.btnEyeD_ColorSetting.RectSelectedColor = System.Drawing.Color.White;
+            this.btnEyeD_ColorSetting.Size = new System.Drawing.Size(140, 30);
+            this.btnEyeD_ColorSetting.Style = Sunny.UI.UIStyle.Custom;
+            this.btnEyeD_ColorSetting.StyleCustomMode = true;
+            this.btnEyeD_ColorSetting.Symbol = 61459;
+            this.btnEyeD_ColorSetting.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.btnEyeD_ColorSetting.SymbolSize = 20;
+            this.btnEyeD_ColorSetting.TabIndex = 3535;
+            this.btnEyeD_ColorSetting.Text = "Setting";
+            this.btnEyeD_ColorSetting.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // chkEyeD_UseColor
+            // 
+            this.chkEyeD_UseColor.AutoSize = true;
+            this.chkEyeD_UseColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.chkEyeD_UseColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkEyeD_UseColor.ForeColor = System.Drawing.Color.White;
+            this.chkEyeD_UseColor.Location = new System.Drawing.Point(5, 456);
+            this.chkEyeD_UseColor.Name = "chkEyeD_UseColor";
+            this.chkEyeD_UseColor.Size = new System.Drawing.Size(15, 14);
+            this.chkEyeD_UseColor.TabIndex = 3534;
+            this.chkEyeD_UseColor.UseVisualStyleBackColor = false;
+            // 
+            // label85
+            // 
+            this.label85.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.label85.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label85.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label85.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label85.ForeColor = System.Drawing.Color.White;
+            this.label85.Location = new System.Drawing.Point(1, 451);
+            this.label85.Name = "label85";
+            this.label85.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label85.Size = new System.Drawing.Size(308, 21);
+            this.label85.TabIndex = 3533;
+            this.label85.Text = "     Color Extract";
+            this.label85.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnEyeD_DistSetting
+            // 
+            this.btnEyeD_DistSetting.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEyeD_DistSetting.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnEyeD_DistSetting.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnEyeD_DistSetting.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnEyeD_DistSetting.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnEyeD_DistSetting.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnEyeD_DistSetting.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEyeD_DistSetting.Location = new System.Drawing.Point(13, 418);
+            this.btnEyeD_DistSetting.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnEyeD_DistSetting.Name = "btnEyeD_DistSetting";
+            this.btnEyeD_DistSetting.RectColor = System.Drawing.Color.White;
+            this.btnEyeD_DistSetting.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnEyeD_DistSetting.RectPressColor = System.Drawing.Color.White;
+            this.btnEyeD_DistSetting.RectSelectedColor = System.Drawing.Color.White;
+            this.btnEyeD_DistSetting.Size = new System.Drawing.Size(140, 30);
+            this.btnEyeD_DistSetting.Style = Sunny.UI.UIStyle.Custom;
+            this.btnEyeD_DistSetting.StyleCustomMode = true;
+            this.btnEyeD_DistSetting.Symbol = 61459;
+            this.btnEyeD_DistSetting.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.btnEyeD_DistSetting.SymbolSize = 20;
+            this.btnEyeD_DistSetting.TabIndex = 3532;
+            this.btnEyeD_DistSetting.Text = "Setting";
+            this.btnEyeD_DistSetting.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // btnJobEyeD_DistanceInsp
+            // 
+            this.btnJobEyeD_DistanceInsp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJobEyeD_DistanceInsp.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobEyeD_DistanceInsp.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobEyeD_DistanceInsp.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobEyeD_DistanceInsp.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobEyeD_DistanceInsp.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobEyeD_DistanceInsp.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJobEyeD_DistanceInsp.Location = new System.Drawing.Point(159, 418);
+            this.btnJobEyeD_DistanceInsp.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnJobEyeD_DistanceInsp.Name = "btnJobEyeD_DistanceInsp";
+            this.btnJobEyeD_DistanceInsp.RectColor = System.Drawing.Color.White;
+            this.btnJobEyeD_DistanceInsp.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobEyeD_DistanceInsp.RectPressColor = System.Drawing.Color.White;
+            this.btnJobEyeD_DistanceInsp.RectSelectedColor = System.Drawing.Color.White;
+            this.btnJobEyeD_DistanceInsp.Size = new System.Drawing.Size(140, 30);
+            this.btnJobEyeD_DistanceInsp.Style = Sunny.UI.UIStyle.Custom;
+            this.btnJobEyeD_DistanceInsp.StyleCustomMode = true;
+            this.btnJobEyeD_DistanceInsp.Symbol = 61515;
+            this.btnJobEyeD_DistanceInsp.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.btnJobEyeD_DistanceInsp.SymbolSize = 20;
+            this.btnJobEyeD_DistanceInsp.TabIndex = 3531;
+            this.btnJobEyeD_DistanceInsp.Text = "Inspection";
+            this.btnJobEyeD_DistanceInsp.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // chkEyeD_UseDist
+            // 
+            this.chkEyeD_UseDist.AutoSize = true;
+            this.chkEyeD_UseDist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.chkEyeD_UseDist.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkEyeD_UseDist.ForeColor = System.Drawing.Color.White;
+            this.chkEyeD_UseDist.Location = new System.Drawing.Point(5, 398);
+            this.chkEyeD_UseDist.Name = "chkEyeD_UseDist";
+            this.chkEyeD_UseDist.Size = new System.Drawing.Size(15, 14);
+            this.chkEyeD_UseDist.TabIndex = 3530;
+            this.chkEyeD_UseDist.UseVisualStyleBackColor = false;
+            // 
+            // label131
+            // 
+            this.label131.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.label131.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label131.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label131.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label131.ForeColor = System.Drawing.Color.White;
+            this.label131.Location = new System.Drawing.Point(1, 395);
+            this.label131.Name = "label131";
+            this.label131.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label131.Size = new System.Drawing.Size(308, 21);
+            this.label131.TabIndex = 3529;
+            this.label131.Text = "     Distance Measure From Fiducial Mark";
+            this.label131.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label87
             // 
-            this.label87.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label87.ForeColor = System.Drawing.Color.Black;
-            this.label87.Location = new System.Drawing.Point(5, 5);
+            this.label87.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.label87.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label87.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label87.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label87.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label87.ForeColor = System.Drawing.Color.White;
+            this.label87.Location = new System.Drawing.Point(0, 0);
             this.label87.Name = "label87";
-            this.label87.Size = new System.Drawing.Size(640, 20);
-            this.label87.TabIndex = 3660;
-            this.label87.Text = "Classification (AI)";
+            this.label87.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label87.Size = new System.Drawing.Size(564, 27);
+            this.label87.TabIndex = 3527;
+            this.label87.Text = "ex) Relay, Coil, Via ...";
             this.label87.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel17
+            // 
+            this.panel17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel17.Controls.Add(this.panel56);
+            this.panel17.Controls.Add(this.chkJobEyeD_UseSpecRegion);
+            this.panel17.Controls.Add(this.label148);
+            this.panel17.Controls.Add(this.panel40);
+            this.panel17.Controls.Add(this.panel35);
+            this.panel17.Controls.Add(this.panel32);
+            this.panel17.Controls.Add(this.panel10);
+            this.panel17.Controls.Add(this.panel28);
+            this.panel17.Controls.Add(this.btnJobEyeD_Roi);
+            this.panel17.Controls.Add(this.btnjobEyeDFind);
+            this.panel17.Controls.Add(this.panel24);
+            this.panel17.Controls.Add(this.panel18);
+            this.panel17.Controls.Add(this.panel30);
+            this.panel17.Location = new System.Drawing.Point(-1, 26);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(311, 368);
+            this.panel17.TabIndex = 3528;
+            // 
+            // panel56
+            // 
+            this.panel56.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel56.Controls.Add(this.checkBox59);
+            this.panel56.Controls.Add(this.label147);
+            this.panel56.Controls.Add(this.panel57);
+            this.panel56.Controls.Add(this.checkBox57);
+            this.panel56.Controls.Add(this.checkBox58);
+            this.panel56.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel56.Location = new System.Drawing.Point(0, 267);
+            this.panel56.Name = "panel56";
+            this.panel56.Size = new System.Drawing.Size(309, 35);
+            this.panel56.TabIndex = 3522;
+            // 
+            // checkBox59
+            // 
+            this.checkBox59.AutoSize = true;
+            this.checkBox59.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.checkBox59.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox59.ForeColor = System.Drawing.Color.White;
+            this.checkBox59.Location = new System.Drawing.Point(4, 8);
+            this.checkBox59.Name = "checkBox59";
+            this.checkBox59.Size = new System.Drawing.Size(15, 14);
+            this.checkBox59.TabIndex = 3522;
+            this.checkBox59.UseVisualStyleBackColor = false;
+            // 
+            // label147
+            // 
+            this.label147.BackColor = System.Drawing.Color.Transparent;
+            this.label147.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label147.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label147.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label147.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label147.ForeColor = System.Drawing.Color.White;
+            this.label147.Location = new System.Drawing.Point(0, 0);
+            this.label147.Name = "label147";
+            this.label147.Size = new System.Drawing.Size(123, 33);
+            this.label147.TabIndex = 3434;
+            this.label147.Text = "Spec Width\r\n(Min ~ Max)";
+            this.label147.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel57
+            // 
+            this.panel57.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel57.Controls.Add(this.numericUpDown1);
+            this.panel57.Controls.Add(this.label150);
+            this.panel57.Controls.Add(this.numericUpDown2);
+            this.panel57.Controls.Add(this.checkBox55);
+            this.panel57.Controls.Add(this.checkBox56);
+            this.panel57.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel57.Location = new System.Drawing.Point(123, 0);
+            this.panel57.Name = "panel57";
+            this.panel57.Size = new System.Drawing.Size(184, 33);
+            this.panel57.TabIndex = 3408;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numericUpDown1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.numericUpDown1.Font = new System.Drawing.Font("Arial", 15F);
+            this.numericUpDown1.ForeColor = System.Drawing.Color.White;
+            this.numericUpDown1.Location = new System.Drawing.Point(92, 0);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(90, 30);
+            this.numericUpDown1.TabIndex = 3430;
+            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            // 
+            // label150
+            // 
+            this.label150.BackColor = System.Drawing.Color.Transparent;
+            this.label150.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label150.Font = new System.Drawing.Font("Arial", 12F);
+            this.label150.ForeColor = System.Drawing.Color.White;
+            this.label150.Location = new System.Drawing.Point(92, 1);
+            this.label150.Name = "label150";
+            this.label150.Size = new System.Drawing.Size(21, 29);
+            this.label150.TabIndex = 3429;
+            this.label150.Text = "~";
+            this.label150.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.numericUpDown2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numericUpDown2.Font = new System.Drawing.Font("Arial", 15F);
+            this.numericUpDown2.ForeColor = System.Drawing.Color.White;
+            this.numericUpDown2.Location = new System.Drawing.Point(0, 0);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(90, 30);
+            this.numericUpDown2.TabIndex = 3428;
+            this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown2.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // checkBox55
+            // 
+            this.checkBox55.AutoSize = true;
+            this.checkBox55.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox55.ForeColor = System.Drawing.Color.White;
+            this.checkBox55.Location = new System.Drawing.Point(11, 105);
+            this.checkBox55.Name = "checkBox55";
+            this.checkBox55.Size = new System.Drawing.Size(112, 20);
+            this.checkBox55.TabIndex = 1;
+            this.checkBox55.Text = "Use \'EYE-D\'";
+            this.checkBox55.UseVisualStyleBackColor = true;
+            // 
+            // checkBox56
+            // 
+            this.checkBox56.AutoSize = true;
+            this.checkBox56.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox56.ForeColor = System.Drawing.Color.White;
+            this.checkBox56.Location = new System.Drawing.Point(3, 153);
+            this.checkBox56.Name = "checkBox56";
+            this.checkBox56.Size = new System.Drawing.Size(112, 20);
+            this.checkBox56.TabIndex = 0;
+            this.checkBox56.Text = "Use \'EYE-D\'";
+            this.checkBox56.UseVisualStyleBackColor = true;
+            // 
+            // checkBox57
+            // 
+            this.checkBox57.AutoSize = true;
+            this.checkBox57.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox57.ForeColor = System.Drawing.Color.White;
+            this.checkBox57.Location = new System.Drawing.Point(11, 105);
+            this.checkBox57.Name = "checkBox57";
+            this.checkBox57.Size = new System.Drawing.Size(112, 20);
+            this.checkBox57.TabIndex = 1;
+            this.checkBox57.Text = "Use \'EYE-D\'";
+            this.checkBox57.UseVisualStyleBackColor = true;
+            // 
+            // checkBox58
+            // 
+            this.checkBox58.AutoSize = true;
+            this.checkBox58.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox58.ForeColor = System.Drawing.Color.White;
+            this.checkBox58.Location = new System.Drawing.Point(3, 153);
+            this.checkBox58.Name = "checkBox58";
+            this.checkBox58.Size = new System.Drawing.Size(112, 20);
+            this.checkBox58.TabIndex = 0;
+            this.checkBox58.Text = "Use \'EYE-D\'";
+            this.checkBox58.UseVisualStyleBackColor = true;
+            // 
+            // chkJobEyeD_UseSpecRegion
+            // 
+            this.chkJobEyeD_UseSpecRegion.AutoSize = true;
+            this.chkJobEyeD_UseSpecRegion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.chkJobEyeD_UseSpecRegion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkJobEyeD_UseSpecRegion.ForeColor = System.Drawing.Color.White;
+            this.chkJobEyeD_UseSpecRegion.Location = new System.Drawing.Point(5, 346);
+            this.chkJobEyeD_UseSpecRegion.Name = "chkJobEyeD_UseSpecRegion";
+            this.chkJobEyeD_UseSpecRegion.Size = new System.Drawing.Size(15, 14);
+            this.chkJobEyeD_UseSpecRegion.TabIndex = 3521;
+            this.chkJobEyeD_UseSpecRegion.UseVisualStyleBackColor = false;
+            // 
+            // label148
+            // 
+            this.label148.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.label148.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label148.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label148.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label148.ForeColor = System.Drawing.Color.Orange;
+            this.label148.Location = new System.Drawing.Point(0, 343);
+            this.label148.Name = "label148";
+            this.label148.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label148.Size = new System.Drawing.Size(308, 21);
+            this.label148.TabIndex = 3520;
+            this.label148.Text = "     Use Spec Region (Color : Orange)";
+            this.label148.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel40
+            // 
+            this.panel40.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel40.Controls.Add(this.label91);
+            this.panel40.Controls.Add(this.panel41);
+            this.panel40.Controls.Add(this.checkBox47);
+            this.panel40.Controls.Add(this.checkBox48);
+            this.panel40.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel40.Location = new System.Drawing.Point(0, 232);
+            this.panel40.Name = "panel40";
+            this.panel40.Size = new System.Drawing.Size(309, 35);
+            this.panel40.TabIndex = 3492;
+            // 
+            // label91
+            // 
+            this.label91.BackColor = System.Drawing.Color.Transparent;
+            this.label91.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label91.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label91.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label91.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label91.ForeColor = System.Drawing.Color.White;
+            this.label91.Location = new System.Drawing.Point(0, 0);
+            this.label91.Name = "label91";
+            this.label91.Size = new System.Drawing.Size(123, 33);
+            this.label91.TabIndex = 3434;
+            this.label91.Text = "RotateImage";
+            this.label91.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel41
+            // 
+            this.panel41.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel41.Controls.Add(this.cbRotateImageAngle);
+            this.panel41.Controls.Add(this.checkBox26);
+            this.panel41.Controls.Add(this.checkBox27);
+            this.panel41.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel41.Location = new System.Drawing.Point(123, 0);
+            this.panel41.Name = "panel41";
+            this.panel41.Size = new System.Drawing.Size(184, 33);
+            this.panel41.TabIndex = 3408;
+            // 
+            // cbRotateImageAngle
+            // 
+            this.cbRotateImageAngle.Dock = System.Windows.Forms.DockStyle.Left;
+            this.cbRotateImageAngle.FontWeight = MetroFramework.MetroComboBoxWeight.Light;
+            this.cbRotateImageAngle.ForeColor = System.Drawing.Color.White;
+            this.cbRotateImageAngle.FormattingEnabled = true;
+            this.cbRotateImageAngle.ItemHeight = 23;
+            this.cbRotateImageAngle.Items.AddRange(new object[] {
+            "0",
+            "90",
+            "180",
+            "270"});
+            this.cbRotateImageAngle.Location = new System.Drawing.Point(0, 0);
+            this.cbRotateImageAngle.Name = "cbRotateImageAngle";
+            this.cbRotateImageAngle.Size = new System.Drawing.Size(137, 29);
+            this.cbRotateImageAngle.Style = MetroFramework.MetroColorStyle.Orange;
+            this.cbRotateImageAngle.TabIndex = 3418;
+            this.cbRotateImageAngle.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.cbRotateImageAngle.UseCustomForeColor = true;
+            this.cbRotateImageAngle.UseSelectable = true;
+            // 
+            // checkBox26
+            // 
+            this.checkBox26.AutoSize = true;
+            this.checkBox26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox26.ForeColor = System.Drawing.Color.White;
+            this.checkBox26.Location = new System.Drawing.Point(11, 105);
+            this.checkBox26.Name = "checkBox26";
+            this.checkBox26.Size = new System.Drawing.Size(112, 20);
+            this.checkBox26.TabIndex = 1;
+            this.checkBox26.Text = "Use \'EYE-D\'";
+            this.checkBox26.UseVisualStyleBackColor = true;
+            // 
+            // checkBox27
+            // 
+            this.checkBox27.AutoSize = true;
+            this.checkBox27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox27.ForeColor = System.Drawing.Color.White;
+            this.checkBox27.Location = new System.Drawing.Point(3, 153);
+            this.checkBox27.Name = "checkBox27";
+            this.checkBox27.Size = new System.Drawing.Size(112, 20);
+            this.checkBox27.TabIndex = 0;
+            this.checkBox27.Text = "Use \'EYE-D\'";
+            this.checkBox27.UseVisualStyleBackColor = true;
+            // 
+            // checkBox47
+            // 
+            this.checkBox47.AutoSize = true;
+            this.checkBox47.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox47.ForeColor = System.Drawing.Color.White;
+            this.checkBox47.Location = new System.Drawing.Point(11, 105);
+            this.checkBox47.Name = "checkBox47";
+            this.checkBox47.Size = new System.Drawing.Size(112, 20);
+            this.checkBox47.TabIndex = 1;
+            this.checkBox47.Text = "Use \'EYE-D\'";
+            this.checkBox47.UseVisualStyleBackColor = true;
+            // 
+            // checkBox48
+            // 
+            this.checkBox48.AutoSize = true;
+            this.checkBox48.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox48.ForeColor = System.Drawing.Color.White;
+            this.checkBox48.Location = new System.Drawing.Point(3, 153);
+            this.checkBox48.Name = "checkBox48";
+            this.checkBox48.Size = new System.Drawing.Size(112, 20);
+            this.checkBox48.TabIndex = 0;
+            this.checkBox48.Text = "Use \'EYE-D\'";
+            this.checkBox48.UseVisualStyleBackColor = true;
+            // 
+            // panel35
+            // 
+            this.panel35.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel35.Controls.Add(this.label92);
+            this.panel35.Controls.Add(this.panel36);
+            this.panel35.Controls.Add(this.checkBox24);
+            this.panel35.Controls.Add(this.checkBox25);
+            this.panel35.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel35.Location = new System.Drawing.Point(0, 196);
+            this.panel35.Name = "panel35";
+            this.panel35.Size = new System.Drawing.Size(309, 36);
+            this.panel35.TabIndex = 3491;
+            // 
+            // label92
+            // 
+            this.label92.BackColor = System.Drawing.Color.Transparent;
+            this.label92.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label92.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label92.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label92.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label92.ForeColor = System.Drawing.Color.White;
+            this.label92.Location = new System.Drawing.Point(0, 0);
+            this.label92.Name = "label92";
+            this.label92.Size = new System.Drawing.Size(123, 34);
+            this.label92.TabIndex = 3434;
+            this.label92.Text = "Max Count";
+            this.label92.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel36
+            // 
+            this.panel36.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel36.Controls.Add(this.txtEyeDMaxCount);
+            this.panel36.Controls.Add(this.checkBox22);
+            this.panel36.Controls.Add(this.checkBox23);
+            this.panel36.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel36.Location = new System.Drawing.Point(123, 0);
+            this.panel36.Name = "panel36";
+            this.panel36.Size = new System.Drawing.Size(184, 34);
+            this.panel36.TabIndex = 3408;
+            // 
+            // txtEyeDMaxCount
+            // 
+            this.txtEyeDMaxCount.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtEyeDMaxCount.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.txtEyeDMaxCount.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.txtEyeDMaxCount.ForeColor = System.Drawing.Color.White;
+            this.txtEyeDMaxCount.Location = new System.Drawing.Point(1, 1);
+            this.txtEyeDMaxCount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtEyeDMaxCount.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtEyeDMaxCount.Name = "txtEyeDMaxCount";
+            this.txtEyeDMaxCount.Padding = new System.Windows.Forms.Padding(5);
+            this.txtEyeDMaxCount.RectColor = System.Drawing.Color.White;
+            this.txtEyeDMaxCount.ShowText = false;
+            this.txtEyeDMaxCount.Size = new System.Drawing.Size(136, 30);
+            this.txtEyeDMaxCount.Style = Sunny.UI.UIStyle.Custom;
+            this.txtEyeDMaxCount.TabIndex = 3443;
+            this.txtEyeDMaxCount.Text = "0";
+            this.txtEyeDMaxCount.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.txtEyeDMaxCount.Type = Sunny.UI.UITextBox.UIEditType.Integer;
+            this.txtEyeDMaxCount.Watermark = "";
+            // 
+            // checkBox22
+            // 
+            this.checkBox22.AutoSize = true;
+            this.checkBox22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox22.ForeColor = System.Drawing.Color.White;
+            this.checkBox22.Location = new System.Drawing.Point(11, 105);
+            this.checkBox22.Name = "checkBox22";
+            this.checkBox22.Size = new System.Drawing.Size(112, 20);
+            this.checkBox22.TabIndex = 1;
+            this.checkBox22.Text = "Use \'EYE-D\'";
+            this.checkBox22.UseVisualStyleBackColor = true;
+            // 
+            // checkBox23
+            // 
+            this.checkBox23.AutoSize = true;
+            this.checkBox23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox23.ForeColor = System.Drawing.Color.White;
+            this.checkBox23.Location = new System.Drawing.Point(3, 153);
+            this.checkBox23.Name = "checkBox23";
+            this.checkBox23.Size = new System.Drawing.Size(112, 20);
+            this.checkBox23.TabIndex = 0;
+            this.checkBox23.Text = "Use \'EYE-D\'";
+            this.checkBox23.UseVisualStyleBackColor = true;
+            // 
+            // checkBox24
+            // 
+            this.checkBox24.AutoSize = true;
+            this.checkBox24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox24.ForeColor = System.Drawing.Color.White;
+            this.checkBox24.Location = new System.Drawing.Point(11, 105);
+            this.checkBox24.Name = "checkBox24";
+            this.checkBox24.Size = new System.Drawing.Size(112, 20);
+            this.checkBox24.TabIndex = 1;
+            this.checkBox24.Text = "Use \'EYE-D\'";
+            this.checkBox24.UseVisualStyleBackColor = true;
+            // 
+            // checkBox25
+            // 
+            this.checkBox25.AutoSize = true;
+            this.checkBox25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox25.ForeColor = System.Drawing.Color.White;
+            this.checkBox25.Location = new System.Drawing.Point(3, 153);
+            this.checkBox25.Name = "checkBox25";
+            this.checkBox25.Size = new System.Drawing.Size(112, 20);
+            this.checkBox25.TabIndex = 0;
+            this.checkBox25.Text = "Use \'EYE-D\'";
+            this.checkBox25.UseVisualStyleBackColor = true;
+            // 
+            // panel32
+            // 
+            this.panel32.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel32.Controls.Add(this.label93);
+            this.panel32.Controls.Add(this.panel33);
+            this.panel32.Controls.Add(this.checkBox40);
+            this.panel32.Controls.Add(this.checkBox45);
+            this.panel32.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel32.Location = new System.Drawing.Point(0, 176);
+            this.panel32.Name = "panel32";
+            this.panel32.Size = new System.Drawing.Size(309, 20);
+            this.panel32.TabIndex = 3490;
+            // 
+            // label93
+            // 
+            this.label93.BackColor = System.Drawing.Color.Transparent;
+            this.label93.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label93.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label93.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label93.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label93.ForeColor = System.Drawing.Color.White;
+            this.label93.Location = new System.Drawing.Point(0, 0);
+            this.label93.Name = "label93";
+            this.label93.Size = new System.Drawing.Size(123, 18);
+            this.label93.TabIndex = 3434;
+            this.label93.Text = "Result";
+            this.label93.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel33
+            // 
+            this.panel33.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel33.Controls.Add(this.lblEyeDResult);
+            this.panel33.Controls.Add(this.checkBox38);
+            this.panel33.Controls.Add(this.checkBox39);
+            this.panel33.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel33.Location = new System.Drawing.Point(123, 0);
+            this.panel33.Name = "panel33";
+            this.panel33.Size = new System.Drawing.Size(184, 18);
+            this.panel33.TabIndex = 3408;
+            // 
+            // lblEyeDResult
+            // 
+            this.lblEyeDResult.BackColor = System.Drawing.Color.Transparent;
+            this.lblEyeDResult.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblEyeDResult.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblEyeDResult.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblEyeDResult.Font = new System.Drawing.Font("Arial", 8F);
+            this.lblEyeDResult.ForeColor = System.Drawing.Color.White;
+            this.lblEyeDResult.Location = new System.Drawing.Point(0, 0);
+            this.lblEyeDResult.Name = "lblEyeDResult";
+            this.lblEyeDResult.Size = new System.Drawing.Size(182, 16);
+            this.lblEyeDResult.TabIndex = 3435;
+            this.lblEyeDResult.Text = "Result";
+            this.lblEyeDResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // checkBox38
+            // 
+            this.checkBox38.AutoSize = true;
+            this.checkBox38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox38.ForeColor = System.Drawing.Color.White;
+            this.checkBox38.Location = new System.Drawing.Point(11, 105);
+            this.checkBox38.Name = "checkBox38";
+            this.checkBox38.Size = new System.Drawing.Size(112, 20);
+            this.checkBox38.TabIndex = 1;
+            this.checkBox38.Text = "Use \'EYE-D\'";
+            this.checkBox38.UseVisualStyleBackColor = true;
+            // 
+            // checkBox39
+            // 
+            this.checkBox39.AutoSize = true;
+            this.checkBox39.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox39.ForeColor = System.Drawing.Color.White;
+            this.checkBox39.Location = new System.Drawing.Point(3, 153);
+            this.checkBox39.Name = "checkBox39";
+            this.checkBox39.Size = new System.Drawing.Size(112, 20);
+            this.checkBox39.TabIndex = 0;
+            this.checkBox39.Text = "Use \'EYE-D\'";
+            this.checkBox39.UseVisualStyleBackColor = true;
+            // 
+            // checkBox40
+            // 
+            this.checkBox40.AutoSize = true;
+            this.checkBox40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox40.ForeColor = System.Drawing.Color.White;
+            this.checkBox40.Location = new System.Drawing.Point(11, 105);
+            this.checkBox40.Name = "checkBox40";
+            this.checkBox40.Size = new System.Drawing.Size(112, 20);
+            this.checkBox40.TabIndex = 1;
+            this.checkBox40.Text = "Use \'EYE-D\'";
+            this.checkBox40.UseVisualStyleBackColor = true;
+            // 
+            // checkBox45
+            // 
+            this.checkBox45.AutoSize = true;
+            this.checkBox45.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox45.ForeColor = System.Drawing.Color.White;
+            this.checkBox45.Location = new System.Drawing.Point(3, 153);
+            this.checkBox45.Name = "checkBox45";
+            this.checkBox45.Size = new System.Drawing.Size(112, 20);
+            this.checkBox45.TabIndex = 0;
+            this.checkBox45.Text = "Use \'EYE-D\'";
+            this.checkBox45.UseVisualStyleBackColor = true;
+            // 
+            // panel10
+            // 
+            this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel10.Controls.Add(this.label129);
+            this.panel10.Controls.Add(this.panel11);
+            this.panel10.Controls.Add(this.checkBox20);
+            this.panel10.Controls.Add(this.checkBox21);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel10.Location = new System.Drawing.Point(0, 141);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(309, 35);
+            this.panel10.TabIndex = 3489;
+            // 
+            // label129
+            // 
+            this.label129.BackColor = System.Drawing.Color.Transparent;
+            this.label129.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label129.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label129.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label129.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label129.ForeColor = System.Drawing.Color.White;
+            this.label129.Location = new System.Drawing.Point(0, 0);
+            this.label129.Name = "label129";
+            this.label129.Size = new System.Drawing.Size(123, 33);
+            this.label129.TabIndex = 3435;
+            this.label129.Text = "Correct\r\nAnswer";
+            this.label129.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel11
+            // 
+            this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel11.Controls.Add(this.txtEyeDCorrectAnswer);
+            this.panel11.Controls.Add(this.checkBox9);
+            this.panel11.Controls.Add(this.checkBox19);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel11.Location = new System.Drawing.Point(123, 0);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(184, 33);
+            this.panel11.TabIndex = 3409;
+            // 
+            // txtEyeDCorrectAnswer
+            // 
+            this.txtEyeDCorrectAnswer.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtEyeDCorrectAnswer.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.txtEyeDCorrectAnswer.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.txtEyeDCorrectAnswer.ForeColor = System.Drawing.Color.White;
+            this.txtEyeDCorrectAnswer.Location = new System.Drawing.Point(1, 1);
+            this.txtEyeDCorrectAnswer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtEyeDCorrectAnswer.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtEyeDCorrectAnswer.Name = "txtEyeDCorrectAnswer";
+            this.txtEyeDCorrectAnswer.Padding = new System.Windows.Forms.Padding(5);
+            this.txtEyeDCorrectAnswer.RectColor = System.Drawing.Color.White;
+            this.txtEyeDCorrectAnswer.ShowText = false;
+            this.txtEyeDCorrectAnswer.Size = new System.Drawing.Size(136, 30);
+            this.txtEyeDCorrectAnswer.Style = Sunny.UI.UIStyle.Custom;
+            this.txtEyeDCorrectAnswer.TabIndex = 3443;
+            this.txtEyeDCorrectAnswer.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.txtEyeDCorrectAnswer.Watermark = "";
+            // 
+            // checkBox9
+            // 
+            this.checkBox9.AutoSize = true;
+            this.checkBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox9.ForeColor = System.Drawing.Color.White;
+            this.checkBox9.Location = new System.Drawing.Point(11, 105);
+            this.checkBox9.Name = "checkBox9";
+            this.checkBox9.Size = new System.Drawing.Size(112, 20);
+            this.checkBox9.TabIndex = 1;
+            this.checkBox9.Text = "Use \'EYE-D\'";
+            this.checkBox9.UseVisualStyleBackColor = true;
+            // 
+            // checkBox19
+            // 
+            this.checkBox19.AutoSize = true;
+            this.checkBox19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox19.ForeColor = System.Drawing.Color.White;
+            this.checkBox19.Location = new System.Drawing.Point(3, 153);
+            this.checkBox19.Name = "checkBox19";
+            this.checkBox19.Size = new System.Drawing.Size(112, 20);
+            this.checkBox19.TabIndex = 0;
+            this.checkBox19.Text = "Use \'EYE-D\'";
+            this.checkBox19.UseVisualStyleBackColor = true;
+            // 
+            // checkBox20
+            // 
+            this.checkBox20.AutoSize = true;
+            this.checkBox20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox20.ForeColor = System.Drawing.Color.White;
+            this.checkBox20.Location = new System.Drawing.Point(11, 105);
+            this.checkBox20.Name = "checkBox20";
+            this.checkBox20.Size = new System.Drawing.Size(112, 20);
+            this.checkBox20.TabIndex = 1;
+            this.checkBox20.Text = "Use \'EYE-D\'";
+            this.checkBox20.UseVisualStyleBackColor = true;
+            // 
+            // checkBox21
+            // 
+            this.checkBox21.AutoSize = true;
+            this.checkBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox21.ForeColor = System.Drawing.Color.White;
+            this.checkBox21.Location = new System.Drawing.Point(3, 153);
+            this.checkBox21.Name = "checkBox21";
+            this.checkBox21.Size = new System.Drawing.Size(112, 20);
+            this.checkBox21.TabIndex = 0;
+            this.checkBox21.Text = "Use \'EYE-D\'";
+            this.checkBox21.UseVisualStyleBackColor = true;
+            // 
+            // panel28
+            // 
+            this.panel28.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel28.Controls.Add(this.label128);
+            this.panel28.Controls.Add(this.panel29);
+            this.panel28.Controls.Add(this.checkBox36);
+            this.panel28.Controls.Add(this.checkBox37);
+            this.panel28.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel28.Location = new System.Drawing.Point(0, 106);
+            this.panel28.Name = "panel28";
+            this.panel28.Size = new System.Drawing.Size(309, 35);
+            this.panel28.TabIndex = 3419;
+            // 
+            // label128
+            // 
+            this.label128.BackColor = System.Drawing.Color.Transparent;
+            this.label128.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label128.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label128.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label128.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label128.ForeColor = System.Drawing.Color.White;
+            this.label128.Location = new System.Drawing.Point(0, 0);
+            this.label128.Name = "label128";
+            this.label128.Size = new System.Drawing.Size(123, 33);
+            this.label128.TabIndex = 3434;
+            this.label128.Text = "Score (OK) Minimum";
+            this.label128.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel29
+            // 
+            this.panel29.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel29.Controls.Add(this.txtEyeDMinScore);
+            this.panel29.Controls.Add(this.checkBox34);
+            this.panel29.Controls.Add(this.checkBox35);
+            this.panel29.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel29.Location = new System.Drawing.Point(123, 0);
+            this.panel29.Name = "panel29";
+            this.panel29.Size = new System.Drawing.Size(184, 33);
+            this.panel29.TabIndex = 3408;
+            // 
+            // txtEyeDMinScore
+            // 
+            this.txtEyeDMinScore.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtEyeDMinScore.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.txtEyeDMinScore.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.txtEyeDMinScore.ForeColor = System.Drawing.Color.White;
+            this.txtEyeDMinScore.Location = new System.Drawing.Point(1, 1);
+            this.txtEyeDMinScore.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtEyeDMinScore.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtEyeDMinScore.Name = "txtEyeDMinScore";
+            this.txtEyeDMinScore.Padding = new System.Windows.Forms.Padding(5);
+            this.txtEyeDMinScore.RectColor = System.Drawing.Color.White;
+            this.txtEyeDMinScore.ShowText = false;
+            this.txtEyeDMinScore.Size = new System.Drawing.Size(136, 30);
+            this.txtEyeDMinScore.Style = Sunny.UI.UIStyle.Custom;
+            this.txtEyeDMinScore.TabIndex = 3443;
+            this.txtEyeDMinScore.Text = "0.00";
+            this.txtEyeDMinScore.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.txtEyeDMinScore.Type = Sunny.UI.UITextBox.UIEditType.Double;
+            this.txtEyeDMinScore.Watermark = "";
+            // 
+            // checkBox34
+            // 
+            this.checkBox34.AutoSize = true;
+            this.checkBox34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox34.ForeColor = System.Drawing.Color.White;
+            this.checkBox34.Location = new System.Drawing.Point(11, 105);
+            this.checkBox34.Name = "checkBox34";
+            this.checkBox34.Size = new System.Drawing.Size(112, 20);
+            this.checkBox34.TabIndex = 1;
+            this.checkBox34.Text = "Use \'EYE-D\'";
+            this.checkBox34.UseVisualStyleBackColor = true;
+            // 
+            // checkBox35
+            // 
+            this.checkBox35.AutoSize = true;
+            this.checkBox35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox35.ForeColor = System.Drawing.Color.White;
+            this.checkBox35.Location = new System.Drawing.Point(3, 153);
+            this.checkBox35.Name = "checkBox35";
+            this.checkBox35.Size = new System.Drawing.Size(112, 20);
+            this.checkBox35.TabIndex = 0;
+            this.checkBox35.Text = "Use \'EYE-D\'";
+            this.checkBox35.UseVisualStyleBackColor = true;
+            // 
+            // checkBox36
+            // 
+            this.checkBox36.AutoSize = true;
+            this.checkBox36.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox36.ForeColor = System.Drawing.Color.White;
+            this.checkBox36.Location = new System.Drawing.Point(11, 105);
+            this.checkBox36.Name = "checkBox36";
+            this.checkBox36.Size = new System.Drawing.Size(112, 20);
+            this.checkBox36.TabIndex = 1;
+            this.checkBox36.Text = "Use \'EYE-D\'";
+            this.checkBox36.UseVisualStyleBackColor = true;
+            // 
+            // checkBox37
+            // 
+            this.checkBox37.AutoSize = true;
+            this.checkBox37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox37.ForeColor = System.Drawing.Color.White;
+            this.checkBox37.Location = new System.Drawing.Point(3, 153);
+            this.checkBox37.Name = "checkBox37";
+            this.checkBox37.Size = new System.Drawing.Size(112, 20);
+            this.checkBox37.TabIndex = 0;
+            this.checkBox37.Text = "Use \'EYE-D\'";
+            this.checkBox37.UseVisualStyleBackColor = true;
+            // 
+            // btnJobEyeD_Roi
+            // 
+            this.btnJobEyeD_Roi.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJobEyeD_Roi.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobEyeD_Roi.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobEyeD_Roi.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobEyeD_Roi.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobEyeD_Roi.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobEyeD_Roi.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJobEyeD_Roi.Location = new System.Drawing.Point(12, 305);
+            this.btnJobEyeD_Roi.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnJobEyeD_Roi.Name = "btnJobEyeD_Roi";
+            this.btnJobEyeD_Roi.RectColor = System.Drawing.Color.White;
+            this.btnJobEyeD_Roi.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobEyeD_Roi.RectPressColor = System.Drawing.Color.White;
+            this.btnJobEyeD_Roi.RectSelectedColor = System.Drawing.Color.White;
+            this.btnJobEyeD_Roi.Size = new System.Drawing.Size(140, 35);
+            this.btnJobEyeD_Roi.Style = Sunny.UI.UIStyle.Custom;
+            this.btnJobEyeD_Roi.StyleCustomMode = true;
+            this.btnJobEyeD_Roi.Symbol = 362923;
+            this.btnJobEyeD_Roi.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.btnJobEyeD_Roi.SymbolSize = 16;
+            this.btnJobEyeD_Roi.TabIndex = 3487;
+            this.btnJobEyeD_Roi.Text = "Roi";
+            this.btnJobEyeD_Roi.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // btnjobEyeDFind
+            // 
+            this.btnjobEyeDFind.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnjobEyeDFind.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnjobEyeDFind.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnjobEyeDFind.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnjobEyeDFind.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnjobEyeDFind.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnjobEyeDFind.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnjobEyeDFind.Location = new System.Drawing.Point(158, 305);
+            this.btnjobEyeDFind.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnjobEyeDFind.Name = "btnjobEyeDFind";
+            this.btnjobEyeDFind.RectColor = System.Drawing.Color.White;
+            this.btnjobEyeDFind.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnjobEyeDFind.RectPressColor = System.Drawing.Color.White;
+            this.btnjobEyeDFind.RectSelectedColor = System.Drawing.Color.White;
+            this.btnjobEyeDFind.Size = new System.Drawing.Size(140, 35);
+            this.btnjobEyeDFind.Style = Sunny.UI.UIStyle.Custom;
+            this.btnjobEyeDFind.StyleCustomMode = true;
+            this.btnjobEyeDFind.Symbol = 61442;
+            this.btnjobEyeDFind.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.btnjobEyeDFind.SymbolSize = 20;
+            this.btnjobEyeDFind.TabIndex = 3486;
+            this.btnjobEyeDFind.Text = "Find";
+            this.btnjobEyeDFind.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // panel24
+            // 
+            this.panel24.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel24.Controls.Add(this.label126);
+            this.panel24.Controls.Add(this.panel25);
+            this.panel24.Controls.Add(this.checkBox32);
+            this.panel24.Controls.Add(this.checkBox33);
+            this.panel24.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel24.Location = new System.Drawing.Point(0, 70);
+            this.panel24.Name = "panel24";
+            this.panel24.Size = new System.Drawing.Size(309, 36);
+            this.panel24.TabIndex = 3418;
+            // 
+            // label126
+            // 
+            this.label126.BackColor = System.Drawing.Color.Transparent;
+            this.label126.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label126.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label126.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label126.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label126.ForeColor = System.Drawing.Color.White;
+            this.label126.Location = new System.Drawing.Point(0, 0);
+            this.label126.Name = "label126";
+            this.label126.Size = new System.Drawing.Size(123, 34);
+            this.label126.TabIndex = 3434;
+            this.label126.Text = "OK Count";
+            this.label126.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel25
+            // 
+            this.panel25.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel25.Controls.Add(this.checkBox28);
+            this.panel25.Controls.Add(this.checkBox31);
+            this.panel25.Controls.Add(this.numericEyeDOkCount);
+            this.panel25.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel25.Location = new System.Drawing.Point(123, 0);
+            this.panel25.Name = "panel25";
+            this.panel25.Size = new System.Drawing.Size(184, 34);
+            this.panel25.TabIndex = 3408;
+            // 
+            // checkBox28
+            // 
+            this.checkBox28.AutoSize = true;
+            this.checkBox28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox28.ForeColor = System.Drawing.Color.White;
+            this.checkBox28.Location = new System.Drawing.Point(11, 105);
+            this.checkBox28.Name = "checkBox28";
+            this.checkBox28.Size = new System.Drawing.Size(112, 20);
+            this.checkBox28.TabIndex = 1;
+            this.checkBox28.Text = "Use \'EYE-D\'";
+            this.checkBox28.UseVisualStyleBackColor = true;
+            // 
+            // checkBox31
+            // 
+            this.checkBox31.AutoSize = true;
+            this.checkBox31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox31.ForeColor = System.Drawing.Color.White;
+            this.checkBox31.Location = new System.Drawing.Point(3, 153);
+            this.checkBox31.Name = "checkBox31";
+            this.checkBox31.Size = new System.Drawing.Size(112, 20);
+            this.checkBox31.TabIndex = 0;
+            this.checkBox31.Text = "Use \'EYE-D\'";
+            this.checkBox31.UseVisualStyleBackColor = true;
+            // 
+            // numericEyeDOkCount
+            // 
+            this.numericEyeDOkCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.numericEyeDOkCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numericEyeDOkCount.Font = new System.Drawing.Font("Arial", 14F);
+            this.numericEyeDOkCount.ForeColor = System.Drawing.Color.White;
+            this.numericEyeDOkCount.Location = new System.Drawing.Point(1, 2);
+            this.numericEyeDOkCount.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.numericEyeDOkCount.Name = "numericEyeDOkCount";
+            this.numericEyeDOkCount.Size = new System.Drawing.Size(136, 29);
+            this.numericEyeDOkCount.TabIndex = 2771;
+            this.numericEyeDOkCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericEyeDOkCount.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // checkBox32
+            // 
+            this.checkBox32.AutoSize = true;
+            this.checkBox32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox32.ForeColor = System.Drawing.Color.White;
+            this.checkBox32.Location = new System.Drawing.Point(11, 105);
+            this.checkBox32.Name = "checkBox32";
+            this.checkBox32.Size = new System.Drawing.Size(112, 20);
+            this.checkBox32.TabIndex = 1;
+            this.checkBox32.Text = "Use \'EYE-D\'";
+            this.checkBox32.UseVisualStyleBackColor = true;
+            // 
+            // checkBox33
+            // 
+            this.checkBox33.AutoSize = true;
+            this.checkBox33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox33.ForeColor = System.Drawing.Color.White;
+            this.checkBox33.Location = new System.Drawing.Point(3, 153);
+            this.checkBox33.Name = "checkBox33";
+            this.checkBox33.Size = new System.Drawing.Size(112, 20);
+            this.checkBox33.TabIndex = 0;
+            this.checkBox33.Text = "Use \'EYE-D\'";
+            this.checkBox33.UseVisualStyleBackColor = true;
+            // 
+            // panel18
+            // 
+            this.panel18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel18.Controls.Add(this.label125);
+            this.panel18.Controls.Add(this.panel20);
+            this.panel18.Controls.Add(this.checkBox29);
+            this.panel18.Controls.Add(this.checkBox30);
+            this.panel18.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel18.Location = new System.Drawing.Point(0, 35);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(309, 35);
+            this.panel18.TabIndex = 3417;
+            // 
+            // label125
+            // 
+            this.label125.BackColor = System.Drawing.Color.Transparent;
+            this.label125.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label125.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label125.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label125.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label125.ForeColor = System.Drawing.Color.White;
+            this.label125.Location = new System.Drawing.Point(0, 0);
+            this.label125.Name = "label125";
+            this.label125.Size = new System.Drawing.Size(123, 33);
+            this.label125.TabIndex = 3434;
+            this.label125.Text = "Infer Type";
+            this.label125.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel20
+            // 
+            this.panel20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel20.Controls.Add(this.comboEyeDInferType);
+            this.panel20.Controls.Add(this.checkBox11);
+            this.panel20.Controls.Add(this.checkBox16);
+            this.panel20.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel20.Location = new System.Drawing.Point(123, 0);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(184, 33);
+            this.panel20.TabIndex = 3408;
+            // 
+            // comboEyeDInferType
+            // 
+            this.comboEyeDInferType.Dock = System.Windows.Forms.DockStyle.Left;
+            this.comboEyeDInferType.FontWeight = MetroFramework.MetroComboBoxWeight.Light;
+            this.comboEyeDInferType.ForeColor = System.Drawing.Color.White;
+            this.comboEyeDInferType.FormattingEnabled = true;
+            this.comboEyeDInferType.ItemHeight = 23;
+            this.comboEyeDInferType.Items.AddRange(new object[] {
+            "DET",
+            "SEG",
+            "CLS",
+            "OBB",
+            "SAM",
+            "OCR"});
+            this.comboEyeDInferType.Location = new System.Drawing.Point(0, 0);
+            this.comboEyeDInferType.Name = "comboEyeDInferType";
+            this.comboEyeDInferType.Size = new System.Drawing.Size(137, 29);
+            this.comboEyeDInferType.Style = MetroFramework.MetroColorStyle.Orange;
+            this.comboEyeDInferType.TabIndex = 3418;
+            this.comboEyeDInferType.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.comboEyeDInferType.UseCustomForeColor = true;
+            this.comboEyeDInferType.UseSelectable = true;
+            // 
+            // checkBox11
+            // 
+            this.checkBox11.AutoSize = true;
+            this.checkBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox11.ForeColor = System.Drawing.Color.White;
+            this.checkBox11.Location = new System.Drawing.Point(11, 105);
+            this.checkBox11.Name = "checkBox11";
+            this.checkBox11.Size = new System.Drawing.Size(112, 20);
+            this.checkBox11.TabIndex = 1;
+            this.checkBox11.Text = "Use \'EYE-D\'";
+            this.checkBox11.UseVisualStyleBackColor = true;
+            // 
+            // checkBox16
+            // 
+            this.checkBox16.AutoSize = true;
+            this.checkBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox16.ForeColor = System.Drawing.Color.White;
+            this.checkBox16.Location = new System.Drawing.Point(3, 153);
+            this.checkBox16.Name = "checkBox16";
+            this.checkBox16.Size = new System.Drawing.Size(112, 20);
+            this.checkBox16.TabIndex = 0;
+            this.checkBox16.Text = "Use \'EYE-D\'";
+            this.checkBox16.UseVisualStyleBackColor = true;
+            // 
+            // checkBox29
+            // 
+            this.checkBox29.AutoSize = true;
+            this.checkBox29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox29.ForeColor = System.Drawing.Color.White;
+            this.checkBox29.Location = new System.Drawing.Point(11, 105);
+            this.checkBox29.Name = "checkBox29";
+            this.checkBox29.Size = new System.Drawing.Size(112, 20);
+            this.checkBox29.TabIndex = 1;
+            this.checkBox29.Text = "Use \'EYE-D\'";
+            this.checkBox29.UseVisualStyleBackColor = true;
+            // 
+            // checkBox30
+            // 
+            this.checkBox30.AutoSize = true;
+            this.checkBox30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox30.ForeColor = System.Drawing.Color.White;
+            this.checkBox30.Location = new System.Drawing.Point(3, 153);
+            this.checkBox30.Name = "checkBox30";
+            this.checkBox30.Size = new System.Drawing.Size(112, 20);
+            this.checkBox30.TabIndex = 0;
+            this.checkBox30.Text = "Use \'EYE-D\'";
+            this.checkBox30.UseVisualStyleBackColor = true;
+            // 
+            // panel30
+            // 
+            this.panel30.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel30.Controls.Add(this.label127);
+            this.panel30.Controls.Add(this.panel31);
+            this.panel30.Controls.Add(this.checkBox43);
+            this.panel30.Controls.Add(this.checkBox44);
+            this.panel30.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel30.Location = new System.Drawing.Point(0, 0);
+            this.panel30.Name = "panel30";
+            this.panel30.Size = new System.Drawing.Size(309, 35);
+            this.panel30.TabIndex = 3409;
+            // 
+            // label127
+            // 
+            this.label127.BackColor = System.Drawing.Color.Transparent;
+            this.label127.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label127.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label127.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label127.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label127.ForeColor = System.Drawing.Color.White;
+            this.label127.Location = new System.Drawing.Point(0, 0);
+            this.label127.Name = "label127";
+            this.label127.Size = new System.Drawing.Size(123, 33);
+            this.label127.TabIndex = 3433;
+            this.label127.Text = "Model Name";
+            this.label127.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel31
+            // 
+            this.panel31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel31.Controls.Add(this.btnGetEyeDModelNames);
+            this.panel31.Controls.Add(this.comboEyeDModelName);
+            this.panel31.Controls.Add(this.checkBox41);
+            this.panel31.Controls.Add(this.checkBox42);
+            this.panel31.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel31.Location = new System.Drawing.Point(123, 0);
+            this.panel31.Name = "panel31";
+            this.panel31.Size = new System.Drawing.Size(184, 33);
+            this.panel31.TabIndex = 3408;
+            // 
+            // btnGetEyeDModelNames
+            // 
+            this.btnGetEyeDModelNames.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnGetEyeDModelNames.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnGetEyeDModelNames.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGetEyeDModelNames.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnGetEyeDModelNames.ForeColor = System.Drawing.Color.White;
+            this.btnGetEyeDModelNames.Location = new System.Drawing.Point(138, 0);
+            this.btnGetEyeDModelNames.Name = "btnGetEyeDModelNames";
+            this.btnGetEyeDModelNames.Size = new System.Drawing.Size(43, 29);
+            this.btnGetEyeDModelNames.TabIndex = 3418;
+            this.btnGetEyeDModelNames.Text = "Get";
+            this.btnGetEyeDModelNames.UseVisualStyleBackColor = false;
+            // 
+            // comboEyeDModelName
+            // 
+            this.comboEyeDModelName.Dock = System.Windows.Forms.DockStyle.Left;
+            this.comboEyeDModelName.FontWeight = MetroFramework.MetroComboBoxWeight.Light;
+            this.comboEyeDModelName.ForeColor = System.Drawing.Color.White;
+            this.comboEyeDModelName.FormattingEnabled = true;
+            this.comboEyeDModelName.ItemHeight = 23;
+            this.comboEyeDModelName.Location = new System.Drawing.Point(0, 0);
+            this.comboEyeDModelName.Name = "comboEyeDModelName";
+            this.comboEyeDModelName.Size = new System.Drawing.Size(137, 29);
+            this.comboEyeDModelName.Style = MetroFramework.MetroColorStyle.Orange;
+            this.comboEyeDModelName.TabIndex = 3417;
+            this.comboEyeDModelName.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.comboEyeDModelName.UseCustomForeColor = true;
+            this.comboEyeDModelName.UseSelectable = true;
+            // 
+            // checkBox41
+            // 
+            this.checkBox41.AutoSize = true;
+            this.checkBox41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox41.ForeColor = System.Drawing.Color.White;
+            this.checkBox41.Location = new System.Drawing.Point(11, 105);
+            this.checkBox41.Name = "checkBox41";
+            this.checkBox41.Size = new System.Drawing.Size(112, 20);
+            this.checkBox41.TabIndex = 1;
+            this.checkBox41.Text = "Use \'EYE-D\'";
+            this.checkBox41.UseVisualStyleBackColor = true;
+            // 
+            // checkBox42
+            // 
+            this.checkBox42.AutoSize = true;
+            this.checkBox42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox42.ForeColor = System.Drawing.Color.White;
+            this.checkBox42.Location = new System.Drawing.Point(3, 153);
+            this.checkBox42.Name = "checkBox42";
+            this.checkBox42.Size = new System.Drawing.Size(112, 20);
+            this.checkBox42.TabIndex = 0;
+            this.checkBox42.Text = "Use \'EYE-D\'";
+            this.checkBox42.UseVisualStyleBackColor = true;
+            // 
+            // checkBox43
+            // 
+            this.checkBox43.AutoSize = true;
+            this.checkBox43.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox43.ForeColor = System.Drawing.Color.White;
+            this.checkBox43.Location = new System.Drawing.Point(11, 105);
+            this.checkBox43.Name = "checkBox43";
+            this.checkBox43.Size = new System.Drawing.Size(112, 20);
+            this.checkBox43.TabIndex = 1;
+            this.checkBox43.Text = "Use \'EYE-D\'";
+            this.checkBox43.UseVisualStyleBackColor = true;
+            // 
+            // checkBox44
+            // 
+            this.checkBox44.AutoSize = true;
+            this.checkBox44.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox44.ForeColor = System.Drawing.Color.White;
+            this.checkBox44.Location = new System.Drawing.Point(3, 153);
+            this.checkBox44.Name = "checkBox44";
+            this.checkBox44.Size = new System.Drawing.Size(112, 20);
+            this.checkBox44.TabIndex = 0;
+            this.checkBox44.Text = "Use \'EYE-D\'";
+            this.checkBox44.UseVisualStyleBackColor = true;
+            // 
+            // tabPage27
+            // 
+            this.tabPage27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tabPage27.Controls.Add(this.lbColorMaxArea);
+            this.tabPage27.Controls.Add(this.lbColorMinArea);
+            this.tabPage27.Controls.Add(this.label94);
+            this.tabPage27.Controls.Add(this.label95);
+            this.tabPage27.Controls.Add(this.label96);
+            this.tabPage27.Controls.Add(this.panel43);
+            this.tabPage27.Controls.Add(this.tableLayoutPanel5);
+            this.tabPage27.Controls.Add(this.panel23);
+            this.tabPage27.Controls.Add(this.panel19);
+            this.tabPage27.Location = new System.Drawing.Point(91, 0);
+            this.tabPage27.Name = "tabPage27";
+            this.tabPage27.Size = new System.Drawing.Size(564, 512);
+            this.tabPage27.TabIndex = 4;
+            this.tabPage27.Text = "Color";
+            // 
+            // lbColorMaxArea
+            // 
+            this.lbColorMaxArea.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.lbColorMaxArea.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.lbColorMaxArea.Font = new System.Drawing.Font("Arial", 9F);
+            this.lbColorMaxArea.ForeColor = System.Drawing.Color.DimGray;
+            this.lbColorMaxArea.Location = new System.Drawing.Point(163, 319);
+            this.lbColorMaxArea.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.lbColorMaxArea.MinimumSize = new System.Drawing.Size(1, 16);
+            this.lbColorMaxArea.Name = "lbColorMaxArea";
+            this.lbColorMaxArea.Padding = new System.Windows.Forms.Padding(5);
+            this.lbColorMaxArea.RectColor = System.Drawing.Color.White;
+            this.lbColorMaxArea.ShowText = false;
+            this.lbColorMaxArea.Size = new System.Drawing.Size(110, 30);
+            this.lbColorMaxArea.Style = Sunny.UI.UIStyle.Custom;
+            this.lbColorMaxArea.TabIndex = 3552;
+            this.lbColorMaxArea.Text = "( 0.0 ~ 1.0 )";
+            this.lbColorMaxArea.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.lbColorMaxArea.Watermark = "";
+            // 
+            // lbColorMinArea
+            // 
+            this.lbColorMinArea.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.lbColorMinArea.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.lbColorMinArea.Font = new System.Drawing.Font("Arial", 9F);
+            this.lbColorMinArea.ForeColor = System.Drawing.Color.DimGray;
+            this.lbColorMinArea.Location = new System.Drawing.Point(163, 283);
+            this.lbColorMinArea.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.lbColorMinArea.MinimumSize = new System.Drawing.Size(1, 16);
+            this.lbColorMinArea.Name = "lbColorMinArea";
+            this.lbColorMinArea.Padding = new System.Windows.Forms.Padding(5);
+            this.lbColorMinArea.RectColor = System.Drawing.Color.White;
+            this.lbColorMinArea.ShowText = false;
+            this.lbColorMinArea.Size = new System.Drawing.Size(110, 30);
+            this.lbColorMinArea.Style = Sunny.UI.UIStyle.Custom;
+            this.lbColorMinArea.TabIndex = 3551;
+            this.lbColorMinArea.Text = "( 0.0 ~ 1.0 )";
+            this.lbColorMinArea.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.lbColorMinArea.Watermark = "";
+            // 
+            // label94
+            // 
+            this.label94.BackColor = System.Drawing.Color.Transparent;
+            this.label94.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label94.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label94.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label94.ForeColor = System.Drawing.Color.White;
+            this.label94.Location = new System.Drawing.Point(82, 281);
+            this.label94.Name = "label94";
+            this.label94.Size = new System.Drawing.Size(80, 35);
+            this.label94.TabIndex = 3549;
+            this.label94.Text = "Min";
+            this.label94.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label95
+            // 
+            this.label95.BackColor = System.Drawing.Color.Transparent;
+            this.label95.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label95.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label95.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label95.ForeColor = System.Drawing.Color.White;
+            this.label95.Location = new System.Drawing.Point(1, 281);
+            this.label95.Name = "label95";
+            this.label95.Size = new System.Drawing.Size(80, 72);
+            this.label95.TabIndex = 3548;
+            this.label95.Text = "AreaSize";
+            this.label95.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label96
+            // 
+            this.label96.BackColor = System.Drawing.Color.Transparent;
+            this.label96.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label96.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label96.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label96.ForeColor = System.Drawing.Color.White;
+            this.label96.Location = new System.Drawing.Point(82, 318);
+            this.label96.Name = "label96";
+            this.label96.Size = new System.Drawing.Size(80, 35);
+            this.label96.TabIndex = 3547;
+            this.label96.Text = "Max";
+            this.label96.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel43
+            // 
+            this.panel43.Controls.Add(this.lbThreshold_Color);
+            this.panel43.Controls.Add(this.trbThreshold_Color);
+            this.panel43.Controls.Add(this.label97);
+            this.panel43.Location = new System.Drawing.Point(0, 247);
+            this.panel43.Name = "panel43";
+            this.panel43.Size = new System.Drawing.Size(307, 35);
+            this.panel43.TabIndex = 3546;
+            // 
+            // lbThreshold_Color
+            // 
+            this.lbThreshold_Color.BackColor = System.Drawing.Color.Transparent;
+            this.lbThreshold_Color.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbThreshold_Color.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lbThreshold_Color.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbThreshold_Color.Font = new System.Drawing.Font("Arial", 10F);
+            this.lbThreshold_Color.ForeColor = System.Drawing.Color.White;
+            this.lbThreshold_Color.Location = new System.Drawing.Point(247, 0);
+            this.lbThreshold_Color.Name = "lbThreshold_Color";
+            this.lbThreshold_Color.Size = new System.Drawing.Size(60, 35);
+            this.lbThreshold_Color.TabIndex = 2723;
+            this.lbThreshold_Color.Text = "000";
+            this.lbThreshold_Color.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // trbThreshold_Color
+            // 
+            this.trbThreshold_Color.BackColor = System.Drawing.Color.Transparent;
+            this.trbThreshold_Color.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.trbThreshold_Color.Location = new System.Drawing.Point(75, 0);
+            this.trbThreshold_Color.Maximum = 254;
+            this.trbThreshold_Color.Minimum = 1;
+            this.trbThreshold_Color.Name = "trbThreshold_Color";
+            this.trbThreshold_Color.Size = new System.Drawing.Size(232, 35);
+            this.trbThreshold_Color.TabIndex = 2721;
+            this.trbThreshold_Color.Tag = "CAM1";
+            this.trbThreshold_Color.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // label97
+            // 
+            this.label97.BackColor = System.Drawing.Color.Transparent;
+            this.label97.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label97.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label97.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label97.Font = new System.Drawing.Font("Arial", 9F);
+            this.label97.ForeColor = System.Drawing.Color.White;
+            this.label97.Location = new System.Drawing.Point(0, 0);
+            this.label97.Name = "label97";
+            this.label97.Size = new System.Drawing.Size(75, 35);
+            this.label97.TabIndex = 2722;
+            this.label97.Text = "Threshold";
+            this.label97.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.11475F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 86.88525F));
+            this.tableLayoutPanel5.Controls.Add(this.label98, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.panel1, 1, 0);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 73);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(307, 174);
+            this.tableLayoutPanel5.TabIndex = 3543;
+            // 
+            // label98
+            // 
+            this.label98.BackColor = System.Drawing.Color.Transparent;
+            this.label98.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label98.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label98.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label98.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label98.ForeColor = System.Drawing.Color.White;
+            this.label98.Location = new System.Drawing.Point(3, 0);
+            this.label98.Name = "label98";
+            this.label98.Size = new System.Drawing.Size(34, 174);
+            this.label98.TabIndex = 2691;
+            this.label98.Text = "Color";
+            this.label98.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.tableLayoutPanel8);
+            this.panel1.Controls.Add(this.tableLayoutPanel6);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(43, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(261, 168);
+            this.panel1.TabIndex = 2692;
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 3;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.60209F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.3979F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
+            this.tableLayoutPanel8.Controls.Add(this.label99, 0, 0);
+            this.tableLayoutPanel8.Controls.Add(this.lbJobColor_Area, 1, 0);
+            this.tableLayoutPanel8.Controls.Add(this.btnJobColor_Insp, 2, 0);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 101);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 1;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(261, 67);
+            this.tableLayoutPanel8.TabIndex = 1;
+            // 
+            // label99
+            // 
+            this.label99.BackColor = System.Drawing.Color.Transparent;
+            this.label99.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label99.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label99.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label99.Font = new System.Drawing.Font("Arial", 9F);
+            this.label99.ForeColor = System.Drawing.Color.White;
+            this.label99.Location = new System.Drawing.Point(3, 0);
+            this.label99.Name = "label99";
+            this.label99.Size = new System.Drawing.Size(43, 67);
+            this.label99.TabIndex = 2717;
+            this.label99.Text = "Boundary";
+            this.label99.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbJobColor_Area
+            // 
+            this.lbJobColor_Area.BackColor = System.Drawing.Color.Transparent;
+            this.lbJobColor_Area.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbJobColor_Area.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbJobColor_Area.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbJobColor_Area.Font = new System.Drawing.Font("Arial", 9F);
+            this.lbJobColor_Area.ForeColor = System.Drawing.Color.White;
+            this.lbJobColor_Area.Location = new System.Drawing.Point(52, 0);
+            this.lbJobColor_Area.Name = "lbJobColor_Area";
+            this.lbJobColor_Area.Size = new System.Drawing.Size(82, 67);
+            this.lbJobColor_Area.TabIndex = 2719;
+            this.lbJobColor_Area.Text = "Area : 0 px";
+            this.lbJobColor_Area.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnJobColor_Insp
+            // 
+            this.btnJobColor_Insp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnJobColor_Insp.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnJobColor_Insp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnJobColor_Insp.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJobColor_Insp.ForeColor = System.Drawing.Color.White;
+            this.btnJobColor_Insp.Image = global::IntelligentFactory.Properties.Resources.InspectManual50_Normal;
+            this.btnJobColor_Insp.Location = new System.Drawing.Point(140, 3);
+            this.btnJobColor_Insp.Name = "btnJobColor_Insp";
+            this.btnJobColor_Insp.Size = new System.Drawing.Size(118, 61);
+            this.btnJobColor_Insp.TabIndex = 2718;
+            this.btnJobColor_Insp.Tag = "Bottom";
+            this.btnJobColor_Insp.Text = "INSP";
+            this.btnJobColor_Insp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnJobColor_Insp.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 2;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.5873F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 78.4127F));
+            this.tableLayoutPanel6.Controls.Add(this.label101, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 1, 0);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 1;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(261, 101);
+            this.tableLayoutPanel6.TabIndex = 2692;
+            // 
+            // label101
+            // 
+            this.label101.BackColor = System.Drawing.Color.Transparent;
+            this.label101.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label101.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label101.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label101.Font = new System.Drawing.Font("Arial", 9F);
+            this.label101.ForeColor = System.Drawing.Color.White;
+            this.label101.Location = new System.Drawing.Point(3, 0);
+            this.label101.Name = "label101";
+            this.label101.Size = new System.Drawing.Size(50, 101);
+            this.label101.TabIndex = 2693;
+            this.label101.Text = "Extract";
+            this.label101.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 2;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Controls.Add(this.btnJobColor_Roi, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.btnJobColor_AutoColor, 1, 0);
+            this.tableLayoutPanel7.Controls.Add(this.lbExtractedColor2, 1, 1);
+            this.tableLayoutPanel7.Controls.Add(this.lbExtractedColor, 0, 1);
+            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(59, 3);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 2;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(199, 95);
+            this.tableLayoutPanel7.TabIndex = 2694;
+            // 
+            // btnJobColor_Roi
+            // 
+            this.btnJobColor_Roi.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnJobColor_Roi.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnJobColor_Roi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnJobColor_Roi.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJobColor_Roi.ForeColor = System.Drawing.Color.White;
+            this.btnJobColor_Roi.Image = global::IntelligentFactory.Properties.Resources.Roi50_Normal;
+            this.btnJobColor_Roi.Location = new System.Drawing.Point(3, 3);
+            this.btnJobColor_Roi.Name = "btnJobColor_Roi";
+            this.btnJobColor_Roi.Size = new System.Drawing.Size(93, 41);
+            this.btnJobColor_Roi.TabIndex = 2683;
+            this.btnJobColor_Roi.Text = "ROI";
+            this.btnJobColor_Roi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnJobColor_Roi.UseVisualStyleBackColor = true;
+            // 
+            // btnJobColor_AutoColor
+            // 
+            this.btnJobColor_AutoColor.BackColor = System.Drawing.Color.Transparent;
+            this.btnJobColor_AutoColor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnJobColor_AutoColor.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnJobColor_AutoColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnJobColor_AutoColor.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnJobColor_AutoColor.ForeColor = System.Drawing.Color.White;
+            this.btnJobColor_AutoColor.Image = global::IntelligentFactory.Properties.Resources.AutoColor50_Normal;
+            this.btnJobColor_AutoColor.Location = new System.Drawing.Point(102, 3);
+            this.btnJobColor_AutoColor.Name = "btnJobColor_AutoColor";
+            this.btnJobColor_AutoColor.Size = new System.Drawing.Size(94, 41);
+            this.btnJobColor_AutoColor.TabIndex = 2729;
+            this.btnJobColor_AutoColor.Text = "Auto \r\nColor";
+            this.btnJobColor_AutoColor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnJobColor_AutoColor.UseVisualStyleBackColor = false;
+            // 
+            // lbExtractedColor2
+            // 
+            this.lbExtractedColor2.BackColor = System.Drawing.Color.Transparent;
+            this.lbExtractedColor2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbExtractedColor2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbExtractedColor2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbExtractedColor2.Font = new System.Drawing.Font("Arial", 9F);
+            this.lbExtractedColor2.ForeColor = System.Drawing.Color.White;
+            this.lbExtractedColor2.Location = new System.Drawing.Point(102, 47);
+            this.lbExtractedColor2.Name = "lbExtractedColor2";
+            this.lbExtractedColor2.Size = new System.Drawing.Size(94, 48);
+            this.lbExtractedColor2.TabIndex = 2730;
+            this.lbExtractedColor2.Text = "RGB";
+            this.lbExtractedColor2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbExtractedColor
+            // 
+            this.lbExtractedColor.BackColor = System.Drawing.Color.Transparent;
+            this.lbExtractedColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbExtractedColor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbExtractedColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbExtractedColor.Font = new System.Drawing.Font("Arial", 9F);
+            this.lbExtractedColor.ForeColor = System.Drawing.Color.White;
+            this.lbExtractedColor.Location = new System.Drawing.Point(3, 47);
+            this.lbExtractedColor.Name = "lbExtractedColor";
+            this.lbExtractedColor.Size = new System.Drawing.Size(93, 48);
+            this.lbExtractedColor.TabIndex = 2419;
+            this.lbExtractedColor.Text = "RGB";
+            this.lbExtractedColor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel23
+            // 
+            this.panel23.Controls.Add(this.cboColorAlg);
+            this.panel23.Controls.Add(this.label102);
+            this.panel23.Location = new System.Drawing.Point(0, 38);
+            this.panel23.Name = "panel23";
+            this.panel23.Size = new System.Drawing.Size(307, 35);
+            this.panel23.TabIndex = 3545;
+            // 
+            // cboColorAlg
+            // 
+            this.cboColorAlg.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cboColorAlg.FontWeight = MetroFramework.MetroComboBoxWeight.Light;
+            this.cboColorAlg.ForeColor = System.Drawing.Color.White;
+            this.cboColorAlg.FormattingEnabled = true;
+            this.cboColorAlg.ItemHeight = 23;
+            this.cboColorAlg.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4"});
+            this.cboColorAlg.Location = new System.Drawing.Point(73, 0);
+            this.cboColorAlg.Name = "cboColorAlg";
+            this.cboColorAlg.Size = new System.Drawing.Size(234, 29);
+            this.cboColorAlg.Style = MetroFramework.MetroColorStyle.Orange;
+            this.cboColorAlg.TabIndex = 3415;
+            this.cboColorAlg.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.cboColorAlg.UseCustomForeColor = true;
+            this.cboColorAlg.UseSelectable = true;
+            // 
+            // label102
+            // 
+            this.label102.BackColor = System.Drawing.Color.Transparent;
+            this.label102.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label102.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label102.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label102.Font = new System.Drawing.Font("Arial", 9F);
+            this.label102.ForeColor = System.Drawing.Color.White;
+            this.label102.Location = new System.Drawing.Point(0, 0);
+            this.label102.Name = "label102";
+            this.label102.Size = new System.Drawing.Size(73, 35);
+            this.label102.TabIndex = 2788;
+            this.label102.Text = "ColorAlg";
+            this.label102.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel19
+            // 
+            this.panel19.Controls.Add(this.cboColorCoordinate);
+            this.panel19.Controls.Add(this.label103);
+            this.panel19.Location = new System.Drawing.Point(0, 3);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(307, 35);
+            this.panel19.TabIndex = 3544;
+            // 
+            // cboColorCoordinate
+            // 
+            this.cboColorCoordinate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cboColorCoordinate.FontWeight = MetroFramework.MetroComboBoxWeight.Light;
+            this.cboColorCoordinate.ForeColor = System.Drawing.Color.White;
+            this.cboColorCoordinate.FormattingEnabled = true;
+            this.cboColorCoordinate.ItemHeight = 23;
+            this.cboColorCoordinate.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4"});
+            this.cboColorCoordinate.Location = new System.Drawing.Point(73, 0);
+            this.cboColorCoordinate.Name = "cboColorCoordinate";
+            this.cboColorCoordinate.Size = new System.Drawing.Size(234, 29);
+            this.cboColorCoordinate.Style = MetroFramework.MetroColorStyle.Orange;
+            this.cboColorCoordinate.TabIndex = 3414;
+            this.cboColorCoordinate.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.cboColorCoordinate.UseCustomForeColor = true;
+            this.cboColorCoordinate.UseSelectable = true;
+            // 
+            // label103
+            // 
+            this.label103.BackColor = System.Drawing.Color.Transparent;
+            this.label103.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label103.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label103.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label103.Font = new System.Drawing.Font("Arial", 9F);
+            this.label103.ForeColor = System.Drawing.Color.White;
+            this.label103.Location = new System.Drawing.Point(0, 0);
+            this.label103.Name = "label103";
+            this.label103.Size = new System.Drawing.Size(73, 35);
+            this.label103.TabIndex = 2788;
+            this.label103.Text = "Color\r\nCoordinate";
+            this.label103.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tabPage28
+            // 
+            this.tabPage28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tabPage28.Controls.Add(this.panel64);
+            this.tabPage28.Controls.Add(this.chkColorEx_SimpleMode);
+            this.tabPage28.Controls.Add(this.label167);
+            this.tabPage28.Controls.Add(this.btnJobColorEx_Roi);
+            this.tabPage28.Controls.Add(this.lblJobColorEx_ResultColor);
+            this.tabPage28.Controls.Add(this.btnJobColorEx_Get);
+            this.tabPage28.Controls.Add(this.label130);
+            this.tabPage28.Controls.Add(this.button4);
+            this.tabPage28.Controls.Add(this.comboCorrectColorEx);
+            this.tabPage28.Controls.Add(this.label132);
+            this.tabPage28.Controls.Add(this.uiSymbolButton67);
+            this.tabPage28.Controls.Add(this.label133);
+            this.tabPage28.Location = new System.Drawing.Point(91, 0);
+            this.tabPage28.Name = "tabPage28";
+            this.tabPage28.Size = new System.Drawing.Size(564, 512);
+            this.tabPage28.TabIndex = 5;
+            this.tabPage28.Text = "ColorEx";
+            // 
+            // panel64
+            // 
+            this.panel64.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel64.Controls.Add(this.txtColorEx_B);
+            this.panel64.Controls.Add(this.txtColorEx_G);
+            this.panel64.Controls.Add(this.txtColorEx_R);
+            this.panel64.Controls.Add(this.label168);
+            this.panel64.Controls.Add(this.radioColorEx_Range45);
+            this.panel64.Controls.Add(this.radioColorEx_Range30);
+            this.panel64.Controls.Add(this.radioColorEx_Range15);
+            this.panel64.Controls.Add(this.label171);
+            this.panel64.Controls.Add(this.label170);
+            this.panel64.Controls.Add(this.label169);
+            this.panel64.Location = new System.Drawing.Point(80, 60);
+            this.panel64.Name = "panel64";
+            this.panel64.Size = new System.Drawing.Size(199, 82);
+            this.panel64.TabIndex = 3557;
+            // 
+            // txtColorEx_B
+            // 
+            this.txtColorEx_B.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtColorEx_B.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.txtColorEx_B.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtColorEx_B.ForeColor = System.Drawing.Color.White;
+            this.txtColorEx_B.Location = new System.Drawing.Point(158, 5);
+            this.txtColorEx_B.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtColorEx_B.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtColorEx_B.Name = "txtColorEx_B";
+            this.txtColorEx_B.Padding = new System.Windows.Forms.Padding(5);
+            this.txtColorEx_B.RectColor = System.Drawing.Color.White;
+            this.txtColorEx_B.ShowText = false;
+            this.txtColorEx_B.Size = new System.Drawing.Size(29, 20);
+            this.txtColorEx_B.Style = Sunny.UI.UIStyle.Custom;
+            this.txtColorEx_B.TabIndex = 3552;
+            this.txtColorEx_B.Text = "0";
+            this.txtColorEx_B.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.txtColorEx_B.Type = Sunny.UI.UITextBox.UIEditType.Integer;
+            this.txtColorEx_B.Watermark = "W";
+            // 
+            // txtColorEx_G
+            // 
+            this.txtColorEx_G.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtColorEx_G.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.txtColorEx_G.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtColorEx_G.ForeColor = System.Drawing.Color.White;
+            this.txtColorEx_G.Location = new System.Drawing.Point(93, 5);
+            this.txtColorEx_G.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtColorEx_G.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtColorEx_G.Name = "txtColorEx_G";
+            this.txtColorEx_G.Padding = new System.Windows.Forms.Padding(5);
+            this.txtColorEx_G.RectColor = System.Drawing.Color.White;
+            this.txtColorEx_G.ShowText = false;
+            this.txtColorEx_G.Size = new System.Drawing.Size(29, 20);
+            this.txtColorEx_G.Style = Sunny.UI.UIStyle.Custom;
+            this.txtColorEx_G.TabIndex = 3550;
+            this.txtColorEx_G.Text = "0";
+            this.txtColorEx_G.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.txtColorEx_G.Type = Sunny.UI.UITextBox.UIEditType.Integer;
+            this.txtColorEx_G.Watermark = "W";
+            // 
+            // txtColorEx_R
+            // 
+            this.txtColorEx_R.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtColorEx_R.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.txtColorEx_R.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtColorEx_R.ForeColor = System.Drawing.Color.White;
+            this.txtColorEx_R.Location = new System.Drawing.Point(28, 5);
+            this.txtColorEx_R.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtColorEx_R.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtColorEx_R.Name = "txtColorEx_R";
+            this.txtColorEx_R.Padding = new System.Windows.Forms.Padding(5);
+            this.txtColorEx_R.RectColor = System.Drawing.Color.White;
+            this.txtColorEx_R.ShowText = false;
+            this.txtColorEx_R.Size = new System.Drawing.Size(29, 20);
+            this.txtColorEx_R.Style = Sunny.UI.UIStyle.Custom;
+            this.txtColorEx_R.TabIndex = 3548;
+            this.txtColorEx_R.Text = "0";
+            this.txtColorEx_R.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.txtColorEx_R.Type = Sunny.UI.UITextBox.UIEditType.Integer;
+            this.txtColorEx_R.Watermark = "W";
+            // 
+            // label168
+            // 
+            this.label168.BackColor = System.Drawing.Color.Transparent;
+            this.label168.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label168.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label168.Font = new System.Drawing.Font("Arial", 8F);
+            this.label168.ForeColor = System.Drawing.Color.White;
+            this.label168.Location = new System.Drawing.Point(31, 57);
+            this.label168.Name = "label168";
+            this.label168.Size = new System.Drawing.Size(134, 20);
+            this.label168.TabIndex = 3547;
+            this.label168.Text = "Diff Range (R,G,B)";
+            this.label168.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // radioColorEx_Range45
+            // 
+            this.radioColorEx_Range45.AutoSize = true;
+            this.radioColorEx_Range45.ForeColor = System.Drawing.Color.White;
+            this.radioColorEx_Range45.Location = new System.Drawing.Point(132, 32);
+            this.radioColorEx_Range45.Name = "radioColorEx_Range45";
+            this.radioColorEx_Range45.Size = new System.Drawing.Size(46, 20);
+            this.radioColorEx_Range45.TabIndex = 3546;
+            this.radioColorEx_Range45.Text = "±45";
+            this.radioColorEx_Range45.UseVisualStyleBackColor = true;
+            // 
+            // radioColorEx_Range30
+            // 
+            this.radioColorEx_Range30.AutoSize = true;
+            this.radioColorEx_Range30.Checked = true;
+            this.radioColorEx_Range30.ForeColor = System.Drawing.Color.White;
+            this.radioColorEx_Range30.Location = new System.Drawing.Point(78, 32);
+            this.radioColorEx_Range30.Name = "radioColorEx_Range30";
+            this.radioColorEx_Range30.Size = new System.Drawing.Size(46, 20);
+            this.radioColorEx_Range30.TabIndex = 3545;
+            this.radioColorEx_Range30.TabStop = true;
+            this.radioColorEx_Range30.Text = "±30";
+            this.radioColorEx_Range30.UseVisualStyleBackColor = true;
+            // 
+            // radioColorEx_Range15
+            // 
+            this.radioColorEx_Range15.AutoSize = true;
+            this.radioColorEx_Range15.ForeColor = System.Drawing.Color.White;
+            this.radioColorEx_Range15.Location = new System.Drawing.Point(21, 32);
+            this.radioColorEx_Range15.Name = "radioColorEx_Range15";
+            this.radioColorEx_Range15.Size = new System.Drawing.Size(46, 20);
+            this.radioColorEx_Range15.TabIndex = 3544;
+            this.radioColorEx_Range15.Text = "±15";
+            this.radioColorEx_Range15.UseVisualStyleBackColor = true;
+            // 
+            // label171
+            // 
+            this.label171.BackColor = System.Drawing.Color.Transparent;
+            this.label171.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label171.Font = new System.Drawing.Font("Arial", 8F);
+            this.label171.ForeColor = System.Drawing.Color.White;
+            this.label171.Location = new System.Drawing.Point(134, 5);
+            this.label171.Name = "label171";
+            this.label171.Size = new System.Drawing.Size(27, 20);
+            this.label171.TabIndex = 3553;
+            this.label171.Text = "B :";
+            this.label171.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label170
+            // 
+            this.label170.BackColor = System.Drawing.Color.Transparent;
+            this.label170.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label170.Font = new System.Drawing.Font("Arial", 8F);
+            this.label170.ForeColor = System.Drawing.Color.White;
+            this.label170.Location = new System.Drawing.Point(69, 5);
+            this.label170.Name = "label170";
+            this.label170.Size = new System.Drawing.Size(27, 20);
+            this.label170.TabIndex = 3551;
+            this.label170.Text = "G :";
+            this.label170.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label169
+            // 
+            this.label169.BackColor = System.Drawing.Color.Transparent;
+            this.label169.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label169.Font = new System.Drawing.Font("Arial", 8F);
+            this.label169.ForeColor = System.Drawing.Color.White;
+            this.label169.Location = new System.Drawing.Point(4, 5);
+            this.label169.Name = "label169";
+            this.label169.Size = new System.Drawing.Size(27, 20);
+            this.label169.TabIndex = 3549;
+            this.label169.Text = "R :";
+            this.label169.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // chkColorEx_SimpleMode
+            // 
+            this.chkColorEx_SimpleMode.AutoSize = true;
+            this.chkColorEx_SimpleMode.Font = new System.Drawing.Font("Arial", 8F);
+            this.chkColorEx_SimpleMode.ForeColor = System.Drawing.Color.White;
+            this.chkColorEx_SimpleMode.Location = new System.Drawing.Point(6, 63);
+            this.chkColorEx_SimpleMode.Name = "chkColorEx_SimpleMode";
+            this.chkColorEx_SimpleMode.Size = new System.Drawing.Size(15, 14);
+            this.chkColorEx_SimpleMode.TabIndex = 3556;
+            this.chkColorEx_SimpleMode.UseVisualStyleBackColor = true;
+            // 
+            // label167
+            // 
+            this.label167.BackColor = System.Drawing.Color.Transparent;
+            this.label167.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label167.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label167.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label167.ForeColor = System.Drawing.Color.White;
+            this.label167.Location = new System.Drawing.Point(2, 60);
+            this.label167.Name = "label167";
+            this.label167.Size = new System.Drawing.Size(77, 82);
+            this.label167.TabIndex = 3555;
+            this.label167.Text = "Simple Mode";
+            this.label167.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnJobColorEx_Roi
+            // 
+            this.btnJobColorEx_Roi.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJobColorEx_Roi.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobColorEx_Roi.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobColorEx_Roi.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobColorEx_Roi.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobColorEx_Roi.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobColorEx_Roi.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJobColorEx_Roi.Location = new System.Drawing.Point(70, 189);
+            this.btnJobColorEx_Roi.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnJobColorEx_Roi.Name = "btnJobColorEx_Roi";
+            this.btnJobColorEx_Roi.RectColor = System.Drawing.Color.White;
+            this.btnJobColorEx_Roi.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobColorEx_Roi.RectPressColor = System.Drawing.Color.White;
+            this.btnJobColorEx_Roi.RectSelectedColor = System.Drawing.Color.White;
+            this.btnJobColorEx_Roi.Size = new System.Drawing.Size(140, 42);
+            this.btnJobColorEx_Roi.Style = Sunny.UI.UIStyle.Custom;
+            this.btnJobColorEx_Roi.StyleCustomMode = true;
+            this.btnJobColorEx_Roi.Symbol = 362923;
+            this.btnJobColorEx_Roi.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.btnJobColorEx_Roi.SymbolSize = 16;
+            this.btnJobColorEx_Roi.TabIndex = 3554;
+            this.btnJobColorEx_Roi.Text = "Roi";
+            this.btnJobColorEx_Roi.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // lblJobColorEx_ResultColor
+            // 
+            this.lblJobColorEx_ResultColor.BackColor = System.Drawing.Color.Transparent;
+            this.lblJobColorEx_ResultColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblJobColorEx_ResultColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblJobColorEx_ResultColor.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblJobColorEx_ResultColor.ForeColor = System.Drawing.Color.White;
+            this.lblJobColorEx_ResultColor.Location = new System.Drawing.Point(80, 143);
+            this.lblJobColorEx_ResultColor.Name = "lblJobColorEx_ResultColor";
+            this.lblJobColorEx_ResultColor.Size = new System.Drawing.Size(155, 29);
+            this.lblJobColorEx_ResultColor.TabIndex = 3553;
+            this.lblJobColorEx_ResultColor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnJobColorEx_Get
+            // 
+            this.btnJobColorEx_Get.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobColorEx_Get.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnJobColorEx_Get.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnJobColorEx_Get.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnJobColorEx_Get.ForeColor = System.Drawing.Color.White;
+            this.btnJobColorEx_Get.Location = new System.Drawing.Point(236, 143);
+            this.btnJobColorEx_Get.Name = "btnJobColorEx_Get";
+            this.btnJobColorEx_Get.Size = new System.Drawing.Size(43, 29);
+            this.btnJobColorEx_Get.TabIndex = 3552;
+            this.btnJobColorEx_Get.Text = "Get";
+            this.btnJobColorEx_Get.UseVisualStyleBackColor = false;
+            // 
+            // label130
+            // 
+            this.label130.BackColor = System.Drawing.Color.Transparent;
+            this.label130.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label130.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label130.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label130.ForeColor = System.Drawing.Color.White;
+            this.label130.Location = new System.Drawing.Point(2, 143);
+            this.label130.Name = "label130";
+            this.label130.Size = new System.Drawing.Size(77, 29);
+            this.label130.TabIndex = 3551;
+            this.label130.Text = "Result\r\nColor";
+            this.label130.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Arial", 9F);
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(236, 30);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(43, 29);
+            this.button4.TabIndex = 3550;
+            this.button4.Text = "Get";
+            this.button4.UseVisualStyleBackColor = false;
+            // 
+            // comboCorrectColorEx
+            // 
+            this.comboCorrectColorEx.FontWeight = MetroFramework.MetroComboBoxWeight.Light;
+            this.comboCorrectColorEx.ForeColor = System.Drawing.Color.White;
+            this.comboCorrectColorEx.FormattingEnabled = true;
+            this.comboCorrectColorEx.ItemHeight = 23;
+            this.comboCorrectColorEx.Location = new System.Drawing.Point(80, 30);
+            this.comboCorrectColorEx.Name = "comboCorrectColorEx";
+            this.comboCorrectColorEx.Size = new System.Drawing.Size(155, 29);
+            this.comboCorrectColorEx.Style = MetroFramework.MetroColorStyle.Orange;
+            this.comboCorrectColorEx.TabIndex = 3549;
+            this.comboCorrectColorEx.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.comboCorrectColorEx.UseCustomForeColor = true;
+            this.comboCorrectColorEx.UseSelectable = true;
+            // 
+            // label132
+            // 
+            this.label132.BackColor = System.Drawing.Color.Transparent;
+            this.label132.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label132.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label132.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label132.ForeColor = System.Drawing.Color.White;
+            this.label132.Location = new System.Drawing.Point(2, 30);
+            this.label132.Name = "label132";
+            this.label132.Size = new System.Drawing.Size(77, 29);
+            this.label132.TabIndex = 3548;
+            this.label132.Text = "Correct\r\nColor";
+            this.label132.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // uiSymbolButton67
+            // 
+            this.uiSymbolButton67.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiSymbolButton67.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton67.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton67.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.uiSymbolButton67.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton67.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton67.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uiSymbolButton67.Location = new System.Drawing.Point(454, 3);
+            this.uiSymbolButton67.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiSymbolButton67.Name = "uiSymbolButton67";
+            this.uiSymbolButton67.RectColor = System.Drawing.Color.White;
+            this.uiSymbolButton67.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.uiSymbolButton67.RectPressColor = System.Drawing.Color.White;
+            this.uiSymbolButton67.RectSelectedColor = System.Drawing.Color.White;
+            this.uiSymbolButton67.Size = new System.Drawing.Size(100, 22);
+            this.uiSymbolButton67.Style = Sunny.UI.UIStyle.Custom;
+            this.uiSymbolButton67.StyleCustomMode = true;
+            this.uiSymbolButton67.Symbol = 61459;
+            this.uiSymbolButton67.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.uiSymbolButton67.SymbolSize = 20;
+            this.uiSymbolButton67.TabIndex = 3547;
+            this.uiSymbolButton67.Text = "Setting";
+            this.uiSymbolButton67.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // label133
+            // 
+            this.label133.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.label133.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label133.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label133.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label133.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label133.ForeColor = System.Drawing.Color.White;
+            this.label133.Location = new System.Drawing.Point(0, 0);
+            this.label133.Name = "label133";
+            this.label133.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label133.Size = new System.Drawing.Size(564, 27);
+            this.label133.TabIndex = 3546;
+            this.label133.Text = "     Color Extract";
+            this.label133.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tabPage29
+            // 
+            this.tabPage29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tabPage29.Controls.Add(this.tbIgnoreCount);
+            this.tabPage29.Controls.Add(this.tbCircleThickness);
+            this.tabPage29.Controls.Add(this.tbCircleContrast);
+            this.tabPage29.Controls.Add(this.tbCondensorRectRadio);
+            this.tabPage29.Controls.Add(this.tbCircleRectH);
+            this.tabPage29.Controls.Add(this.tbCircleRectW);
+            this.tabPage29.Controls.Add(this.btnJobCondensor_DistSetting);
+            this.tabPage29.Controls.Add(this.btnJobCondensor_DistInsp);
+            this.tabPage29.Controls.Add(this.chkCondensor_UseDist);
+            this.tabPage29.Controls.Add(this.label149);
+            this.tabPage29.Controls.Add(this.btnCondensorAutoRegion);
+            this.tabPage29.Controls.Add(this.label104);
+            this.tabPage29.Controls.Add(this.comboCondensorPolarity);
+            this.tabPage29.Controls.Add(this.label105);
+            this.tabPage29.Controls.Add(this.label108);
+            this.tabPage29.Controls.Add(this.label114);
+            this.tabPage29.Controls.Add(this.label115);
+            this.tabPage29.Controls.Add(this.btnJobCondensor_Inspection);
+            this.tabPage29.Controls.Add(this.label116);
+            this.tabPage29.Controls.Add(this.panel13);
+            this.tabPage29.Controls.Add(this.label119);
+            this.tabPage29.Controls.Add(this.label120);
+            this.tabPage29.Controls.Add(this.btnJobCondensor_Roi);
+            this.tabPage29.Controls.Add(this.uiSymbolButton68);
+            this.tabPage29.Location = new System.Drawing.Point(91, 0);
+            this.tabPage29.Name = "tabPage29";
+            this.tabPage29.Size = new System.Drawing.Size(564, 512);
+            this.tabPage29.TabIndex = 6;
+            this.tabPage29.Text = "Condensor";
+            // 
+            // tbIgnoreCount
+            // 
+            this.tbIgnoreCount.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbIgnoreCount.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tbIgnoreCount.Font = new System.Drawing.Font("Arial", 9F);
+            this.tbIgnoreCount.ForeColor = System.Drawing.Color.DimGray;
+            this.tbIgnoreCount.Location = new System.Drawing.Point(83, 253);
+            this.tbIgnoreCount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbIgnoreCount.MinimumSize = new System.Drawing.Size(1, 16);
+            this.tbIgnoreCount.Name = "tbIgnoreCount";
+            this.tbIgnoreCount.Padding = new System.Windows.Forms.Padding(5);
+            this.tbIgnoreCount.RectColor = System.Drawing.Color.White;
+            this.tbIgnoreCount.ShowText = false;
+            this.tbIgnoreCount.Size = new System.Drawing.Size(217, 30);
+            this.tbIgnoreCount.Style = Sunny.UI.UIStyle.Custom;
+            this.tbIgnoreCount.TabIndex = 3569;
+            this.tbIgnoreCount.Text = "( 10 ~ 200 )";
+            this.tbIgnoreCount.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.tbIgnoreCount.Watermark = "";
+            // 
+            // tbCircleThickness
+            // 
+            this.tbCircleThickness.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbCircleThickness.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tbCircleThickness.Font = new System.Drawing.Font("Arial", 9F);
+            this.tbCircleThickness.ForeColor = System.Drawing.Color.DimGray;
+            this.tbCircleThickness.Location = new System.Drawing.Point(83, 218);
+            this.tbCircleThickness.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbCircleThickness.MinimumSize = new System.Drawing.Size(1, 16);
+            this.tbCircleThickness.Name = "tbCircleThickness";
+            this.tbCircleThickness.Padding = new System.Windows.Forms.Padding(5);
+            this.tbCircleThickness.RectColor = System.Drawing.Color.White;
+            this.tbCircleThickness.ShowText = false;
+            this.tbCircleThickness.Size = new System.Drawing.Size(217, 30);
+            this.tbCircleThickness.Style = Sunny.UI.UIStyle.Custom;
+            this.tbCircleThickness.TabIndex = 3568;
+            this.tbCircleThickness.Text = "( 10 ~ 200 )";
+            this.tbCircleThickness.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.tbCircleThickness.Watermark = "";
+            // 
+            // tbCircleContrast
+            // 
+            this.tbCircleContrast.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbCircleContrast.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tbCircleContrast.Font = new System.Drawing.Font("Arial", 9F);
+            this.tbCircleContrast.ForeColor = System.Drawing.Color.DimGray;
+            this.tbCircleContrast.Location = new System.Drawing.Point(83, 182);
+            this.tbCircleContrast.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbCircleContrast.MinimumSize = new System.Drawing.Size(1, 16);
+            this.tbCircleContrast.Name = "tbCircleContrast";
+            this.tbCircleContrast.Padding = new System.Windows.Forms.Padding(5);
+            this.tbCircleContrast.RectColor = System.Drawing.Color.White;
+            this.tbCircleContrast.ShowText = false;
+            this.tbCircleContrast.Size = new System.Drawing.Size(217, 30);
+            this.tbCircleContrast.Style = Sunny.UI.UIStyle.Custom;
+            this.tbCircleContrast.TabIndex = 3567;
+            this.tbCircleContrast.Text = "( 10 ~ 200 )";
+            this.tbCircleContrast.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.tbCircleContrast.Watermark = "";
+            // 
+            // tbCondensorRectRadio
+            // 
+            this.tbCondensorRectRadio.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbCondensorRectRadio.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tbCondensorRectRadio.Font = new System.Drawing.Font("Arial", 9F);
+            this.tbCondensorRectRadio.ForeColor = System.Drawing.Color.DimGray;
+            this.tbCondensorRectRadio.Location = new System.Drawing.Point(83, 146);
+            this.tbCondensorRectRadio.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbCondensorRectRadio.MinimumSize = new System.Drawing.Size(1, 16);
+            this.tbCondensorRectRadio.Name = "tbCondensorRectRadio";
+            this.tbCondensorRectRadio.Padding = new System.Windows.Forms.Padding(5);
+            this.tbCondensorRectRadio.RectColor = System.Drawing.Color.White;
+            this.tbCondensorRectRadio.ShowText = false;
+            this.tbCondensorRectRadio.Size = new System.Drawing.Size(217, 30);
+            this.tbCondensorRectRadio.Style = Sunny.UI.UIStyle.Custom;
+            this.tbCondensorRectRadio.TabIndex = 3566;
+            this.tbCondensorRectRadio.Text = "( 10 ~ 200 )";
+            this.tbCondensorRectRadio.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.tbCondensorRectRadio.Watermark = "";
+            // 
+            // tbCircleRectH
+            // 
+            this.tbCircleRectH.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbCircleRectH.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tbCircleRectH.Font = new System.Drawing.Font("Arial", 9F);
+            this.tbCircleRectH.ForeColor = System.Drawing.Color.DimGray;
+            this.tbCircleRectH.Location = new System.Drawing.Point(83, 112);
+            this.tbCircleRectH.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbCircleRectH.MinimumSize = new System.Drawing.Size(1, 16);
+            this.tbCircleRectH.Name = "tbCircleRectH";
+            this.tbCircleRectH.Padding = new System.Windows.Forms.Padding(5);
+            this.tbCircleRectH.RectColor = System.Drawing.Color.White;
+            this.tbCircleRectH.ShowText = false;
+            this.tbCircleRectH.Size = new System.Drawing.Size(217, 30);
+            this.tbCircleRectH.Style = Sunny.UI.UIStyle.Custom;
+            this.tbCircleRectH.TabIndex = 3565;
+            this.tbCircleRectH.Text = "( 10 ~ 200 )";
+            this.tbCircleRectH.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.tbCircleRectH.Watermark = "";
+            // 
+            // tbCircleRectW
+            // 
+            this.tbCircleRectW.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbCircleRectW.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tbCircleRectW.Font = new System.Drawing.Font("Arial", 9F);
+            this.tbCircleRectW.ForeColor = System.Drawing.Color.DimGray;
+            this.tbCircleRectW.Location = new System.Drawing.Point(83, 74);
+            this.tbCircleRectW.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbCircleRectW.MinimumSize = new System.Drawing.Size(1, 16);
+            this.tbCircleRectW.Name = "tbCircleRectW";
+            this.tbCircleRectW.Padding = new System.Windows.Forms.Padding(5);
+            this.tbCircleRectW.RectColor = System.Drawing.Color.White;
+            this.tbCircleRectW.ShowText = false;
+            this.tbCircleRectW.Size = new System.Drawing.Size(217, 30);
+            this.tbCircleRectW.Style = Sunny.UI.UIStyle.Custom;
+            this.tbCircleRectW.TabIndex = 3564;
+            this.tbCircleRectW.Text = "( 10 ~ 200 )";
+            this.tbCircleRectW.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.tbCircleRectW.Watermark = "";
+            // 
+            // btnJobCondensor_DistSetting
+            // 
+            this.btnJobCondensor_DistSetting.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJobCondensor_DistSetting.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobCondensor_DistSetting.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobCondensor_DistSetting.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobCondensor_DistSetting.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobCondensor_DistSetting.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobCondensor_DistSetting.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJobCondensor_DistSetting.Location = new System.Drawing.Point(11, 473);
+            this.btnJobCondensor_DistSetting.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnJobCondensor_DistSetting.Name = "btnJobCondensor_DistSetting";
+            this.btnJobCondensor_DistSetting.RectColor = System.Drawing.Color.White;
+            this.btnJobCondensor_DistSetting.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobCondensor_DistSetting.RectPressColor = System.Drawing.Color.White;
+            this.btnJobCondensor_DistSetting.RectSelectedColor = System.Drawing.Color.White;
+            this.btnJobCondensor_DistSetting.Size = new System.Drawing.Size(140, 30);
+            this.btnJobCondensor_DistSetting.Style = Sunny.UI.UIStyle.Custom;
+            this.btnJobCondensor_DistSetting.StyleCustomMode = true;
+            this.btnJobCondensor_DistSetting.Symbol = 61459;
+            this.btnJobCondensor_DistSetting.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.btnJobCondensor_DistSetting.SymbolSize = 20;
+            this.btnJobCondensor_DistSetting.TabIndex = 3563;
+            this.btnJobCondensor_DistSetting.Text = "Setting";
+            this.btnJobCondensor_DistSetting.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // btnJobCondensor_DistInsp
+            // 
+            this.btnJobCondensor_DistInsp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJobCondensor_DistInsp.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobCondensor_DistInsp.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobCondensor_DistInsp.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobCondensor_DistInsp.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobCondensor_DistInsp.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobCondensor_DistInsp.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJobCondensor_DistInsp.Location = new System.Drawing.Point(157, 473);
+            this.btnJobCondensor_DistInsp.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnJobCondensor_DistInsp.Name = "btnJobCondensor_DistInsp";
+            this.btnJobCondensor_DistInsp.RectColor = System.Drawing.Color.White;
+            this.btnJobCondensor_DistInsp.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobCondensor_DistInsp.RectPressColor = System.Drawing.Color.White;
+            this.btnJobCondensor_DistInsp.RectSelectedColor = System.Drawing.Color.White;
+            this.btnJobCondensor_DistInsp.Size = new System.Drawing.Size(140, 30);
+            this.btnJobCondensor_DistInsp.Style = Sunny.UI.UIStyle.Custom;
+            this.btnJobCondensor_DistInsp.StyleCustomMode = true;
+            this.btnJobCondensor_DistInsp.Symbol = 61515;
+            this.btnJobCondensor_DistInsp.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.btnJobCondensor_DistInsp.SymbolSize = 20;
+            this.btnJobCondensor_DistInsp.TabIndex = 3562;
+            this.btnJobCondensor_DistInsp.Text = "Inspection";
+            this.btnJobCondensor_DistInsp.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // chkCondensor_UseDist
+            // 
+            this.chkCondensor_UseDist.AutoSize = true;
+            this.chkCondensor_UseDist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.chkCondensor_UseDist.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkCondensor_UseDist.ForeColor = System.Drawing.Color.White;
+            this.chkCondensor_UseDist.Location = new System.Drawing.Point(3, 448);
+            this.chkCondensor_UseDist.Name = "chkCondensor_UseDist";
+            this.chkCondensor_UseDist.Size = new System.Drawing.Size(15, 14);
+            this.chkCondensor_UseDist.TabIndex = 3561;
+            this.chkCondensor_UseDist.UseVisualStyleBackColor = false;
+            // 
+            // label149
+            // 
+            this.label149.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.label149.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label149.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label149.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label149.ForeColor = System.Drawing.Color.White;
+            this.label149.Location = new System.Drawing.Point(-1, 442);
+            this.label149.Name = "label149";
+            this.label149.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label149.Size = new System.Drawing.Size(308, 27);
+            this.label149.TabIndex = 3560;
+            this.label149.Text = "     Distance Measure From Fiducial Mark";
+            this.label149.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnCondensorAutoRegion
+            // 
+            this.btnCondensorAutoRegion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCondensorAutoRegion.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnCondensorAutoRegion.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnCondensorAutoRegion.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnCondensorAutoRegion.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnCondensorAutoRegion.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnCondensorAutoRegion.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCondensorAutoRegion.Location = new System.Drawing.Point(29, 384);
+            this.btnCondensorAutoRegion.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnCondensorAutoRegion.Name = "btnCondensorAutoRegion";
+            this.btnCondensorAutoRegion.RectColor = System.Drawing.Color.White;
+            this.btnCondensorAutoRegion.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnCondensorAutoRegion.RectPressColor = System.Drawing.Color.White;
+            this.btnCondensorAutoRegion.RectSelectedColor = System.Drawing.Color.White;
+            this.btnCondensorAutoRegion.Size = new System.Drawing.Size(248, 44);
+            this.btnCondensorAutoRegion.Style = Sunny.UI.UIStyle.Custom;
+            this.btnCondensorAutoRegion.StyleCustomMode = true;
+            this.btnCondensorAutoRegion.Symbol = 362923;
+            this.btnCondensorAutoRegion.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.btnCondensorAutoRegion.SymbolSize = 20;
+            this.btnCondensorAutoRegion.TabIndex = 3559;
+            this.btnCondensorAutoRegion.Text = "Recommand Region";
+            this.btnCondensorAutoRegion.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // label104
+            // 
+            this.label104.BackColor = System.Drawing.Color.Transparent;
+            this.label104.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label104.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label104.Font = new System.Drawing.Font("Arial", 8F);
+            this.label104.ForeColor = System.Drawing.Color.White;
+            this.label104.Location = new System.Drawing.Point(3, 141);
+            this.label104.Name = "label104";
+            this.label104.Size = new System.Drawing.Size(80, 35);
+            this.label104.TabIndex = 3558;
+            this.label104.Text = "RectDistance";
+            this.label104.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // comboCondensorPolarity
+            // 
+            this.comboCondensorPolarity.FontWeight = MetroFramework.MetroComboBoxWeight.Light;
+            this.comboCondensorPolarity.ForeColor = System.Drawing.Color.White;
+            this.comboCondensorPolarity.FormattingEnabled = true;
+            this.comboCondensorPolarity.ItemHeight = 23;
+            this.comboCondensorPolarity.Items.AddRange(new object[] {
+            "T",
+            "B",
+            "L",
+            "R"});
+            this.comboCondensorPolarity.Location = new System.Drawing.Point(84, 39);
+            this.comboCondensorPolarity.Name = "comboCondensorPolarity";
+            this.comboCondensorPolarity.Size = new System.Drawing.Size(220, 29);
+            this.comboCondensorPolarity.Style = MetroFramework.MetroColorStyle.Orange;
+            this.comboCondensorPolarity.TabIndex = 3557;
+            this.comboCondensorPolarity.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.comboCondensorPolarity.UseCustomForeColor = true;
+            this.comboCondensorPolarity.UseSelectable = true;
+            // 
+            // label105
+            // 
+            this.label105.BackColor = System.Drawing.Color.Transparent;
+            this.label105.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label105.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label105.Font = new System.Drawing.Font("Arial", 8F);
+            this.label105.ForeColor = System.Drawing.Color.White;
+            this.label105.Location = new System.Drawing.Point(3, 39);
+            this.label105.Name = "label105";
+            this.label105.Size = new System.Drawing.Size(80, 29);
+            this.label105.TabIndex = 3556;
+            this.label105.Text = "Polarity";
+            this.label105.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label108
+            // 
+            this.label108.BackColor = System.Drawing.Color.Transparent;
+            this.label108.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label108.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label108.Font = new System.Drawing.Font("Arial", 8F);
+            this.label108.ForeColor = System.Drawing.Color.White;
+            this.label108.Location = new System.Drawing.Point(3, 249);
+            this.label108.Name = "label108";
+            this.label108.Size = new System.Drawing.Size(80, 35);
+            this.label108.TabIndex = 3555;
+            this.label108.Text = "IgnoreCount";
+            this.label108.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label114
+            // 
+            this.label114.BackColor = System.Drawing.Color.Transparent;
+            this.label114.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label114.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label114.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label114.ForeColor = System.Drawing.Color.White;
+            this.label114.Location = new System.Drawing.Point(3, 213);
+            this.label114.Name = "label114";
+            this.label114.Size = new System.Drawing.Size(80, 35);
+            this.label114.TabIndex = 3554;
+            this.label114.Text = "Thickness";
+            this.label114.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label115
+            // 
+            this.label115.BackColor = System.Drawing.Color.Transparent;
+            this.label115.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label115.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label115.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label115.ForeColor = System.Drawing.Color.White;
+            this.label115.Location = new System.Drawing.Point(3, 177);
+            this.label115.Name = "label115";
+            this.label115.Size = new System.Drawing.Size(80, 35);
+            this.label115.TabIndex = 3553;
+            this.label115.Text = "Contrast";
+            this.label115.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnJobCondensor_Inspection
+            // 
+            this.btnJobCondensor_Inspection.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJobCondensor_Inspection.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobCondensor_Inspection.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobCondensor_Inspection.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobCondensor_Inspection.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobCondensor_Inspection.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobCondensor_Inspection.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJobCondensor_Inspection.Location = new System.Drawing.Point(17, 336);
+            this.btnJobCondensor_Inspection.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnJobCondensor_Inspection.Name = "btnJobCondensor_Inspection";
+            this.btnJobCondensor_Inspection.RectColor = System.Drawing.Color.White;
+            this.btnJobCondensor_Inspection.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobCondensor_Inspection.RectPressColor = System.Drawing.Color.White;
+            this.btnJobCondensor_Inspection.RectSelectedColor = System.Drawing.Color.White;
+            this.btnJobCondensor_Inspection.Size = new System.Drawing.Size(269, 42);
+            this.btnJobCondensor_Inspection.Style = Sunny.UI.UIStyle.Custom;
+            this.btnJobCondensor_Inspection.StyleCustomMode = true;
+            this.btnJobCondensor_Inspection.Symbol = 61515;
+            this.btnJobCondensor_Inspection.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.btnJobCondensor_Inspection.SymbolSize = 20;
+            this.btnJobCondensor_Inspection.TabIndex = 3552;
+            this.btnJobCondensor_Inspection.Text = "Inspection";
+            this.btnJobCondensor_Inspection.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // label116
+            // 
+            this.label116.BackColor = System.Drawing.Color.Transparent;
+            this.label116.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label116.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label116.Font = new System.Drawing.Font("Arial", 8F);
+            this.label116.ForeColor = System.Drawing.Color.White;
+            this.label116.Location = new System.Drawing.Point(3, 3);
+            this.label116.Name = "label116";
+            this.label116.Size = new System.Drawing.Size(80, 35);
+            this.label116.TabIndex = 3551;
+            this.label116.Text = "Type";
+            this.label116.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel13
+            // 
+            this.panel13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel13.Controls.Add(this.radioCondensorTB);
+            this.panel13.Controls.Add(this.radioCondensorLR);
+            this.panel13.Location = new System.Drawing.Point(84, 3);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(220, 35);
+            this.panel13.TabIndex = 3550;
+            // 
+            // radioCondensorTB
+            // 
+            this.radioCondensorTB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.radioCondensorTB.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.radioCondensorTB.ForeColor = System.Drawing.Color.White;
+            this.radioCondensorTB.Location = new System.Drawing.Point(98, 6);
+            this.radioCondensorTB.MinimumSize = new System.Drawing.Size(1, 1);
+            this.radioCondensorTB.Name = "radioCondensorTB";
+            this.radioCondensorTB.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
+            this.radioCondensorTB.RadioButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.radioCondensorTB.Size = new System.Drawing.Size(55, 21);
+            this.radioCondensorTB.Style = Sunny.UI.UIStyle.Custom;
+            this.radioCondensorTB.TabIndex = 3400;
+            this.radioCondensorTB.Text = "T-B";
+            // 
+            // radioCondensorLR
+            // 
+            this.radioCondensorLR.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.radioCondensorLR.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.radioCondensorLR.ForeColor = System.Drawing.Color.White;
+            this.radioCondensorLR.Location = new System.Drawing.Point(29, 6);
+            this.radioCondensorLR.MinimumSize = new System.Drawing.Size(1, 1);
+            this.radioCondensorLR.Name = "radioCondensorLR";
+            this.radioCondensorLR.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
+            this.radioCondensorLR.RadioButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.radioCondensorLR.Size = new System.Drawing.Size(55, 21);
+            this.radioCondensorLR.Style = Sunny.UI.UIStyle.Custom;
+            this.radioCondensorLR.TabIndex = 3399;
+            this.radioCondensorLR.Text = "L-R";
+            // 
+            // label119
+            // 
+            this.label119.BackColor = System.Drawing.Color.Transparent;
+            this.label119.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label119.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label119.Font = new System.Drawing.Font("Arial", 8F);
+            this.label119.ForeColor = System.Drawing.Color.White;
+            this.label119.Location = new System.Drawing.Point(3, 69);
+            this.label119.Name = "label119";
+            this.label119.Size = new System.Drawing.Size(80, 35);
+            this.label119.TabIndex = 3549;
+            this.label119.Text = "Region\r\nWidth";
+            this.label119.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label120
+            // 
+            this.label120.BackColor = System.Drawing.Color.Transparent;
+            this.label120.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label120.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label120.Font = new System.Drawing.Font("Arial", 8F);
+            this.label120.ForeColor = System.Drawing.Color.White;
+            this.label120.Location = new System.Drawing.Point(3, 105);
+            this.label120.Name = "label120";
+            this.label120.Size = new System.Drawing.Size(80, 35);
+            this.label120.TabIndex = 3548;
+            this.label120.Text = "Region\r\nHeight";
+            this.label120.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnJobCondensor_Roi
+            // 
+            this.btnJobCondensor_Roi.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJobCondensor_Roi.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobCondensor_Roi.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobCondensor_Roi.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobCondensor_Roi.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobCondensor_Roi.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobCondensor_Roi.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJobCondensor_Roi.Location = new System.Drawing.Point(17, 290);
+            this.btnJobCondensor_Roi.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnJobCondensor_Roi.Name = "btnJobCondensor_Roi";
+            this.btnJobCondensor_Roi.RectColor = System.Drawing.Color.White;
+            this.btnJobCondensor_Roi.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobCondensor_Roi.RectPressColor = System.Drawing.Color.White;
+            this.btnJobCondensor_Roi.RectSelectedColor = System.Drawing.Color.White;
+            this.btnJobCondensor_Roi.Size = new System.Drawing.Size(134, 44);
+            this.btnJobCondensor_Roi.Style = Sunny.UI.UIStyle.Custom;
+            this.btnJobCondensor_Roi.StyleCustomMode = true;
+            this.btnJobCondensor_Roi.Symbol = 362923;
+            this.btnJobCondensor_Roi.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.btnJobCondensor_Roi.SymbolSize = 20;
+            this.btnJobCondensor_Roi.TabIndex = 3546;
+            this.btnJobCondensor_Roi.Text = "Roi";
+            this.btnJobCondensor_Roi.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // uiSymbolButton68
+            // 
+            this.uiSymbolButton68.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiSymbolButton68.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton68.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton68.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.uiSymbolButton68.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton68.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton68.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uiSymbolButton68.Location = new System.Drawing.Point(152, 290);
+            this.uiSymbolButton68.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiSymbolButton68.Name = "uiSymbolButton68";
+            this.uiSymbolButton68.RectColor = System.Drawing.Color.White;
+            this.uiSymbolButton68.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.uiSymbolButton68.RectPressColor = System.Drawing.Color.White;
+            this.uiSymbolButton68.RectSelectedColor = System.Drawing.Color.White;
+            this.uiSymbolButton68.Size = new System.Drawing.Size(134, 44);
+            this.uiSymbolButton68.Style = Sunny.UI.UIStyle.Custom;
+            this.uiSymbolButton68.StyleCustomMode = true;
+            this.uiSymbolButton68.Symbol = 61442;
+            this.uiSymbolButton68.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.uiSymbolButton68.SymbolSize = 20;
+            this.uiSymbolButton68.TabIndex = 3547;
+            this.uiSymbolButton68.Text = "Find";
+            this.uiSymbolButton68.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // tabPage30
+            // 
+            this.tabPage30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tabPage30.Controls.Add(this.txtJobConnector_OKArea);
+            this.tabPage30.Controls.Add(this.label163);
+            this.tabPage30.Controls.Add(this.panel62);
+            this.tabPage30.Controls.Add(this.uiSymbolButton69);
+            this.tabPage30.Controls.Add(this.btnJobConnector_Projection);
+            this.tabPage30.Controls.Add(this.label162);
+            this.tabPage30.Controls.Add(this.txtJobConnector_AreaMax);
+            this.tabPage30.Controls.Add(this.txtJobConnector_AreaMin);
+            this.tabPage30.Controls.Add(this.label161);
+            this.tabPage30.Controls.Add(this.label155);
+            this.tabPage30.Controls.Add(this.txtJobConnector_BoxHeight);
+            this.tabPage30.Controls.Add(this.label160);
+            this.tabPage30.Controls.Add(this.txtJobConnector_BoxWidth);
+            this.tabPage30.Controls.Add(this.chkJobConnector_BinInv);
+            this.tabPage30.Controls.Add(this.label157);
+            this.tabPage30.Controls.Add(this.txtJobConnector_Threshold);
+            this.tabPage30.Controls.Add(this.label159);
+            this.tabPage30.Controls.Add(this.label158);
+            this.tabPage30.Controls.Add(this.checkBox60);
+            this.tabPage30.Controls.Add(this.uiSymbolButton70);
+            this.tabPage30.Controls.Add(this.label154);
+            this.tabPage30.Controls.Add(this.button1);
+            this.tabPage30.Controls.Add(this.button2);
+            this.tabPage30.Controls.Add(this.metroComboBox3);
+            this.tabPage30.Controls.Add(this.label152);
+            this.tabPage30.Controls.Add(this.label156);
+            this.tabPage30.Controls.Add(this.txtJobConnector_Score);
+            this.tabPage30.Controls.Add(this.label151);
+            this.tabPage30.Controls.Add(this.panel61);
+            this.tabPage30.Controls.Add(this.label153);
+            this.tabPage30.Controls.Add(this.panel58);
+            this.tabPage30.Controls.Add(this.btnJobConnector_Roi);
+            this.tabPage30.Controls.Add(this.btnJobConnector_Train);
+            this.tabPage30.Controls.Add(this.btnJobConnector_Find);
+            this.tabPage30.Controls.Add(this.label164);
+            this.tabPage30.Location = new System.Drawing.Point(91, 0);
+            this.tabPage30.Name = "tabPage30";
+            this.tabPage30.Size = new System.Drawing.Size(564, 512);
+            this.tabPage30.TabIndex = 7;
+            this.tabPage30.Text = "Connector";
+            // 
+            // txtJobConnector_OKArea
+            // 
+            this.txtJobConnector_OKArea.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtJobConnector_OKArea.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.txtJobConnector_OKArea.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.txtJobConnector_OKArea.ForeColor = System.Drawing.Color.White;
+            this.txtJobConnector_OKArea.Location = new System.Drawing.Point(210, 444);
+            this.txtJobConnector_OKArea.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtJobConnector_OKArea.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtJobConnector_OKArea.Name = "txtJobConnector_OKArea";
+            this.txtJobConnector_OKArea.Padding = new System.Windows.Forms.Padding(5);
+            this.txtJobConnector_OKArea.RectColor = System.Drawing.Color.White;
+            this.txtJobConnector_OKArea.ShowText = false;
+            this.txtJobConnector_OKArea.Size = new System.Drawing.Size(98, 34);
+            this.txtJobConnector_OKArea.Style = Sunny.UI.UIStyle.Custom;
+            this.txtJobConnector_OKArea.TabIndex = 3633;
+            this.txtJobConnector_OKArea.Text = "0";
+            this.txtJobConnector_OKArea.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.txtJobConnector_OKArea.Type = Sunny.UI.UITextBox.UIEditType.Integer;
+            this.txtJobConnector_OKArea.Watermark = "";
+            // 
+            // label163
+            // 
+            this.label163.BackColor = System.Drawing.Color.Transparent;
+            this.label163.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label163.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label163.Font = new System.Drawing.Font("Arial", 8F);
+            this.label163.ForeColor = System.Drawing.Color.White;
+            this.label163.Location = new System.Drawing.Point(3, 444);
+            this.label163.Name = "label163";
+            this.label163.Size = new System.Drawing.Size(80, 35);
+            this.label163.TabIndex = 3632;
+            this.label163.Text = "Area\r\n(OK Minimum)";
+            this.label163.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel62
+            // 
+            this.panel62.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel62.Controls.Add(this.radioJobConnector_AreaRB);
+            this.panel62.Controls.Add(this.radioJobConnector_AreaLT);
+            this.panel62.Location = new System.Drawing.Point(84, 444);
+            this.panel62.Name = "panel62";
+            this.panel62.Size = new System.Drawing.Size(111, 35);
+            this.panel62.TabIndex = 3631;
+            // 
+            // radioJobConnector_AreaRB
+            // 
+            this.radioJobConnector_AreaRB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.radioJobConnector_AreaRB.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.radioJobConnector_AreaRB.ForeColor = System.Drawing.Color.White;
+            this.radioJobConnector_AreaRB.Location = new System.Drawing.Point(54, 6);
+            this.radioJobConnector_AreaRB.MinimumSize = new System.Drawing.Size(1, 1);
+            this.radioJobConnector_AreaRB.Name = "radioJobConnector_AreaRB";
+            this.radioJobConnector_AreaRB.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
+            this.radioJobConnector_AreaRB.RadioButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.radioJobConnector_AreaRB.Size = new System.Drawing.Size(53, 21);
+            this.radioJobConnector_AreaRB.Style = Sunny.UI.UIStyle.Custom;
+            this.radioJobConnector_AreaRB.TabIndex = 3404;
+            this.radioJobConnector_AreaRB.Text = "R/B";
+            // 
+            // radioJobConnector_AreaLT
+            // 
+            this.radioJobConnector_AreaLT.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.radioJobConnector_AreaLT.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.radioJobConnector_AreaLT.ForeColor = System.Drawing.Color.White;
+            this.radioJobConnector_AreaLT.Location = new System.Drawing.Point(1, 6);
+            this.radioJobConnector_AreaLT.MinimumSize = new System.Drawing.Size(1, 1);
+            this.radioJobConnector_AreaLT.Name = "radioJobConnector_AreaLT";
+            this.radioJobConnector_AreaLT.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
+            this.radioJobConnector_AreaLT.RadioButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.radioJobConnector_AreaLT.Size = new System.Drawing.Size(53, 21);
+            this.radioJobConnector_AreaLT.Style = Sunny.UI.UIStyle.Custom;
+            this.radioJobConnector_AreaLT.TabIndex = 3403;
+            this.radioJobConnector_AreaLT.Text = "L/T";
+            // 
+            // uiSymbolButton69
+            // 
+            this.uiSymbolButton69.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiSymbolButton69.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton69.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton69.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.uiSymbolButton69.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton69.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton69.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uiSymbolButton69.Location = new System.Drawing.Point(6, 483);
+            this.uiSymbolButton69.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiSymbolButton69.Name = "uiSymbolButton69";
+            this.uiSymbolButton69.RectColor = System.Drawing.Color.White;
+            this.uiSymbolButton69.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.uiSymbolButton69.RectPressColor = System.Drawing.Color.White;
+            this.uiSymbolButton69.RectSelectedColor = System.Drawing.Color.White;
+            this.uiSymbolButton69.Size = new System.Drawing.Size(299, 24);
+            this.uiSymbolButton69.Style = Sunny.UI.UIStyle.Custom;
+            this.uiSymbolButton69.StyleCustomMode = true;
+            this.uiSymbolButton69.Symbol = 108;
+            this.uiSymbolButton69.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.uiSymbolButton69.SymbolSize = 20;
+            this.uiSymbolButton69.TabIndex = 3630;
+            this.uiSymbolButton69.Text = "Master";
+            this.uiSymbolButton69.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // btnJobConnector_Projection
+            // 
+            this.btnJobConnector_Projection.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJobConnector_Projection.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobConnector_Projection.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobConnector_Projection.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobConnector_Projection.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobConnector_Projection.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobConnector_Projection.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJobConnector_Projection.Location = new System.Drawing.Point(212, 132);
+            this.btnJobConnector_Projection.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnJobConnector_Projection.Name = "btnJobConnector_Projection";
+            this.btnJobConnector_Projection.RectColor = System.Drawing.Color.White;
+            this.btnJobConnector_Projection.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobConnector_Projection.RectPressColor = System.Drawing.Color.White;
+            this.btnJobConnector_Projection.RectSelectedColor = System.Drawing.Color.White;
+            this.btnJobConnector_Projection.Size = new System.Drawing.Size(96, 42);
+            this.btnJobConnector_Projection.Style = Sunny.UI.UIStyle.Custom;
+            this.btnJobConnector_Projection.StyleCustomMode = true;
+            this.btnJobConnector_Projection.Symbol = 61442;
+            this.btnJobConnector_Projection.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.btnJobConnector_Projection.SymbolSize = 20;
+            this.btnJobConnector_Projection.TabIndex = 3629;
+            this.btnJobConnector_Projection.Text = "Projection";
+            this.btnJobConnector_Projection.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // label162
+            // 
+            this.label162.BackColor = System.Drawing.Color.Transparent;
+            this.label162.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label162.Font = new System.Drawing.Font("Arial", 12F);
+            this.label162.ForeColor = System.Drawing.Color.White;
+            this.label162.Location = new System.Drawing.Point(184, 407);
+            this.label162.Name = "label162";
+            this.label162.Size = new System.Drawing.Size(23, 35);
+            this.label162.TabIndex = 3628;
+            this.label162.Text = "/";
+            this.label162.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtJobConnector_AreaMax
+            // 
+            this.txtJobConnector_AreaMax.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtJobConnector_AreaMax.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.txtJobConnector_AreaMax.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.txtJobConnector_AreaMax.ForeColor = System.Drawing.Color.White;
+            this.txtJobConnector_AreaMax.Location = new System.Drawing.Point(210, 408);
+            this.txtJobConnector_AreaMax.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtJobConnector_AreaMax.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtJobConnector_AreaMax.Name = "txtJobConnector_AreaMax";
+            this.txtJobConnector_AreaMax.Padding = new System.Windows.Forms.Padding(5);
+            this.txtJobConnector_AreaMax.RectColor = System.Drawing.Color.White;
+            this.txtJobConnector_AreaMax.ShowText = false;
+            this.txtJobConnector_AreaMax.Size = new System.Drawing.Size(98, 34);
+            this.txtJobConnector_AreaMax.Style = Sunny.UI.UIStyle.Custom;
+            this.txtJobConnector_AreaMax.TabIndex = 3627;
+            this.txtJobConnector_AreaMax.Text = "0";
+            this.txtJobConnector_AreaMax.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.txtJobConnector_AreaMax.Type = Sunny.UI.UITextBox.UIEditType.Integer;
+            this.txtJobConnector_AreaMax.Watermark = "";
+            // 
+            // txtJobConnector_AreaMin
+            // 
+            this.txtJobConnector_AreaMin.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtJobConnector_AreaMin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.txtJobConnector_AreaMin.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.txtJobConnector_AreaMin.ForeColor = System.Drawing.Color.White;
+            this.txtJobConnector_AreaMin.Location = new System.Drawing.Point(84, 408);
+            this.txtJobConnector_AreaMin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtJobConnector_AreaMin.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtJobConnector_AreaMin.Name = "txtJobConnector_AreaMin";
+            this.txtJobConnector_AreaMin.Padding = new System.Windows.Forms.Padding(5);
+            this.txtJobConnector_AreaMin.RectColor = System.Drawing.Color.White;
+            this.txtJobConnector_AreaMin.ShowText = false;
+            this.txtJobConnector_AreaMin.Size = new System.Drawing.Size(98, 34);
+            this.txtJobConnector_AreaMin.Style = Sunny.UI.UIStyle.Custom;
+            this.txtJobConnector_AreaMin.TabIndex = 3626;
+            this.txtJobConnector_AreaMin.Text = "0";
+            this.txtJobConnector_AreaMin.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.txtJobConnector_AreaMin.Type = Sunny.UI.UITextBox.UIEditType.Integer;
+            this.txtJobConnector_AreaMin.Watermark = "";
+            // 
+            // label161
+            // 
+            this.label161.BackColor = System.Drawing.Color.Transparent;
+            this.label161.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label161.Font = new System.Drawing.Font("Arial", 12F);
+            this.label161.ForeColor = System.Drawing.Color.White;
+            this.label161.Location = new System.Drawing.Point(184, 371);
+            this.label161.Name = "label161";
+            this.label161.Size = new System.Drawing.Size(23, 35);
+            this.label161.TabIndex = 3625;
+            this.label161.Text = "/";
+            this.label161.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label155
+            // 
+            this.label155.BackColor = System.Drawing.Color.Transparent;
+            this.label155.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label155.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label155.Font = new System.Drawing.Font("Arial", 8F);
+            this.label155.ForeColor = System.Drawing.Color.White;
+            this.label155.Location = new System.Drawing.Point(3, 408);
+            this.label155.Name = "label155";
+            this.label155.Size = new System.Drawing.Size(80, 35);
+            this.label155.TabIndex = 3624;
+            this.label155.Text = "Area\r\n(Min ~ Max)";
+            this.label155.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtJobConnector_BoxHeight
+            // 
+            this.txtJobConnector_BoxHeight.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtJobConnector_BoxHeight.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.txtJobConnector_BoxHeight.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.txtJobConnector_BoxHeight.ForeColor = System.Drawing.Color.White;
+            this.txtJobConnector_BoxHeight.Location = new System.Drawing.Point(210, 372);
+            this.txtJobConnector_BoxHeight.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtJobConnector_BoxHeight.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtJobConnector_BoxHeight.Name = "txtJobConnector_BoxHeight";
+            this.txtJobConnector_BoxHeight.Padding = new System.Windows.Forms.Padding(5);
+            this.txtJobConnector_BoxHeight.RectColor = System.Drawing.Color.White;
+            this.txtJobConnector_BoxHeight.ShowText = false;
+            this.txtJobConnector_BoxHeight.Size = new System.Drawing.Size(98, 34);
+            this.txtJobConnector_BoxHeight.Style = Sunny.UI.UIStyle.Custom;
+            this.txtJobConnector_BoxHeight.TabIndex = 3623;
+            this.txtJobConnector_BoxHeight.Text = "0";
+            this.txtJobConnector_BoxHeight.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.txtJobConnector_BoxHeight.Type = Sunny.UI.UITextBox.UIEditType.Integer;
+            this.txtJobConnector_BoxHeight.Watermark = "";
+            // 
+            // label160
+            // 
+            this.label160.BackColor = System.Drawing.Color.Transparent;
+            this.label160.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label160.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label160.Font = new System.Drawing.Font("Arial", 8F);
+            this.label160.ForeColor = System.Drawing.Color.White;
+            this.label160.Location = new System.Drawing.Point(3, 372);
+            this.label160.Name = "label160";
+            this.label160.Size = new System.Drawing.Size(80, 35);
+            this.label160.TabIndex = 3622;
+            this.label160.Text = "Projection\r\n(Width/Height)";
+            this.label160.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtJobConnector_BoxWidth
+            // 
+            this.txtJobConnector_BoxWidth.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtJobConnector_BoxWidth.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.txtJobConnector_BoxWidth.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.txtJobConnector_BoxWidth.ForeColor = System.Drawing.Color.White;
+            this.txtJobConnector_BoxWidth.Location = new System.Drawing.Point(84, 372);
+            this.txtJobConnector_BoxWidth.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtJobConnector_BoxWidth.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtJobConnector_BoxWidth.Name = "txtJobConnector_BoxWidth";
+            this.txtJobConnector_BoxWidth.Padding = new System.Windows.Forms.Padding(5);
+            this.txtJobConnector_BoxWidth.RectColor = System.Drawing.Color.White;
+            this.txtJobConnector_BoxWidth.ShowText = false;
+            this.txtJobConnector_BoxWidth.Size = new System.Drawing.Size(98, 34);
+            this.txtJobConnector_BoxWidth.Style = Sunny.UI.UIStyle.Custom;
+            this.txtJobConnector_BoxWidth.TabIndex = 3621;
+            this.txtJobConnector_BoxWidth.Text = "0";
+            this.txtJobConnector_BoxWidth.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.txtJobConnector_BoxWidth.Type = Sunny.UI.UITextBox.UIEditType.Integer;
+            this.txtJobConnector_BoxWidth.Watermark = "";
+            // 
+            // chkJobConnector_BinInv
+            // 
+            this.chkJobConnector_BinInv.AutoSize = true;
+            this.chkJobConnector_BinInv.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkJobConnector_BinInv.ForeColor = System.Drawing.Color.White;
+            this.chkJobConnector_BinInv.Location = new System.Drawing.Point(202, 344);
+            this.chkJobConnector_BinInv.Name = "chkJobConnector_BinInv";
+            this.chkJobConnector_BinInv.Size = new System.Drawing.Size(103, 19);
+            this.chkJobConnector_BinInv.TabIndex = 3620;
+            this.chkJobConnector_BinInv.Text = "Binary Inverter";
+            this.chkJobConnector_BinInv.UseVisualStyleBackColor = true;
+            // 
+            // label157
+            // 
+            this.label157.BackColor = System.Drawing.Color.Transparent;
+            this.label157.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label157.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label157.Font = new System.Drawing.Font("Arial", 8F);
+            this.label157.ForeColor = System.Drawing.Color.White;
+            this.label157.Location = new System.Drawing.Point(3, 336);
+            this.label157.Name = "label157";
+            this.label157.Size = new System.Drawing.Size(80, 35);
+            this.label157.TabIndex = 3619;
+            this.label157.Text = "Threshold";
+            this.label157.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtJobConnector_Threshold
+            // 
+            this.txtJobConnector_Threshold.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtJobConnector_Threshold.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.txtJobConnector_Threshold.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.txtJobConnector_Threshold.ForeColor = System.Drawing.Color.White;
+            this.txtJobConnector_Threshold.Location = new System.Drawing.Point(84, 336);
+            this.txtJobConnector_Threshold.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtJobConnector_Threshold.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtJobConnector_Threshold.Name = "txtJobConnector_Threshold";
+            this.txtJobConnector_Threshold.Padding = new System.Windows.Forms.Padding(5);
+            this.txtJobConnector_Threshold.RectColor = System.Drawing.Color.White;
+            this.txtJobConnector_Threshold.ShowText = false;
+            this.txtJobConnector_Threshold.Size = new System.Drawing.Size(113, 34);
+            this.txtJobConnector_Threshold.Style = Sunny.UI.UIStyle.Custom;
+            this.txtJobConnector_Threshold.TabIndex = 3618;
+            this.txtJobConnector_Threshold.Text = "0.00";
+            this.txtJobConnector_Threshold.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.txtJobConnector_Threshold.Type = Sunny.UI.UITextBox.UIEditType.Double;
+            this.txtJobConnector_Threshold.Watermark = "";
+            // 
+            // label159
+            // 
+            this.label159.BackColor = System.Drawing.Color.Transparent;
+            this.label159.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label159.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label159.Font = new System.Drawing.Font("Arial", 8F);
+            this.label159.ForeColor = System.Drawing.Color.White;
+            this.label159.Location = new System.Drawing.Point(84, 277);
+            this.label159.Name = "label159";
+            this.label159.Size = new System.Drawing.Size(52, 29);
+            this.label159.TabIndex = 3617;
+            this.label159.Text = "Measure";
+            this.label159.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label158
+            // 
+            this.label158.BackColor = System.Drawing.Color.Transparent;
+            this.label158.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label158.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label158.Font = new System.Drawing.Font("Arial", 8F);
+            this.label158.ForeColor = System.Drawing.Color.White;
+            this.label158.Location = new System.Drawing.Point(84, 247);
+            this.label158.Name = "label158";
+            this.label158.Size = new System.Drawing.Size(52, 29);
+            this.label158.TabIndex = 3616;
+            this.label158.Text = "Master";
+            this.label158.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // checkBox60
+            // 
+            this.checkBox60.AutoSize = true;
+            this.checkBox60.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.checkBox60.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox60.ForeColor = System.Drawing.Color.White;
+            this.checkBox60.Location = new System.Drawing.Point(9, 252);
+            this.checkBox60.Name = "checkBox60";
+            this.checkBox60.Size = new System.Drawing.Size(15, 14);
+            this.checkBox60.TabIndex = 3615;
+            this.checkBox60.UseVisualStyleBackColor = false;
+            // 
+            // uiSymbolButton70
+            // 
+            this.uiSymbolButton70.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiSymbolButton70.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton70.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton70.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.uiSymbolButton70.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton70.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.uiSymbolButton70.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uiSymbolButton70.Location = new System.Drawing.Point(84, 307);
+            this.uiSymbolButton70.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiSymbolButton70.Name = "uiSymbolButton70";
+            this.uiSymbolButton70.RectColor = System.Drawing.Color.White;
+            this.uiSymbolButton70.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.uiSymbolButton70.RectPressColor = System.Drawing.Color.White;
+            this.uiSymbolButton70.RectSelectedColor = System.Drawing.Color.White;
+            this.uiSymbolButton70.Size = new System.Drawing.Size(225, 28);
+            this.uiSymbolButton70.Style = Sunny.UI.UIStyle.Custom;
+            this.uiSymbolButton70.StyleCustomMode = true;
+            this.uiSymbolButton70.Symbol = 362923;
+            this.uiSymbolButton70.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.uiSymbolButton70.SymbolSize = 16;
+            this.uiSymbolButton70.TabIndex = 3614;
+            this.uiSymbolButton70.Text = "Roi";
+            this.uiSymbolButton70.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // label154
+            // 
+            this.label154.BackColor = System.Drawing.Color.Transparent;
+            this.label154.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label154.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label154.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label154.ForeColor = System.Drawing.Color.White;
+            this.label154.Location = new System.Drawing.Point(137, 277);
+            this.label154.Name = "label154";
+            this.label154.Size = new System.Drawing.Size(128, 29);
+            this.label154.TabIndex = 3613;
+            this.label154.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Arial", 9F);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(266, 277);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(43, 29);
+            this.button1.TabIndex = 3612;
+            this.button1.Text = "Get";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Arial", 9F);
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(266, 247);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(43, 29);
+            this.button2.TabIndex = 3611;
+            this.button2.Text = "Get";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // metroComboBox3
+            // 
+            this.metroComboBox3.FontWeight = MetroFramework.MetroComboBoxWeight.Light;
+            this.metroComboBox3.ForeColor = System.Drawing.Color.White;
+            this.metroComboBox3.FormattingEnabled = true;
+            this.metroComboBox3.ItemHeight = 23;
+            this.metroComboBox3.Location = new System.Drawing.Point(137, 247);
+            this.metroComboBox3.Name = "metroComboBox3";
+            this.metroComboBox3.Size = new System.Drawing.Size(128, 29);
+            this.metroComboBox3.Style = MetroFramework.MetroColorStyle.Orange;
+            this.metroComboBox3.TabIndex = 3610;
+            this.metroComboBox3.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroComboBox3.UseCustomForeColor = true;
+            this.metroComboBox3.UseSelectable = true;
+            // 
+            // label152
+            // 
+            this.label152.BackColor = System.Drawing.Color.Transparent;
+            this.label152.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label152.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label152.Font = new System.Drawing.Font("Arial", 8F);
+            this.label152.ForeColor = System.Drawing.Color.White;
+            this.label152.Location = new System.Drawing.Point(3, 247);
+            this.label152.Name = "label152";
+            this.label152.Size = new System.Drawing.Size(80, 88);
+            this.label152.TabIndex = 3609;
+            this.label152.Text = "Color";
+            this.label152.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label156
+            // 
+            this.label156.BackColor = System.Drawing.Color.Transparent;
+            this.label156.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label156.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label156.Font = new System.Drawing.Font("Arial", 8F);
+            this.label156.ForeColor = System.Drawing.Color.White;
+            this.label156.Location = new System.Drawing.Point(3, 211);
+            this.label156.Name = "label156";
+            this.label156.Size = new System.Drawing.Size(80, 35);
+            this.label156.TabIndex = 3608;
+            this.label156.Text = "Score Min\r\n(0.00 ~ 1.00)";
+            this.label156.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtJobConnector_Score
+            // 
+            this.txtJobConnector_Score.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtJobConnector_Score.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.txtJobConnector_Score.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.txtJobConnector_Score.ForeColor = System.Drawing.Color.White;
+            this.txtJobConnector_Score.Location = new System.Drawing.Point(84, 211);
+            this.txtJobConnector_Score.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtJobConnector_Score.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtJobConnector_Score.Name = "txtJobConnector_Score";
+            this.txtJobConnector_Score.Padding = new System.Windows.Forms.Padding(5);
+            this.txtJobConnector_Score.RectColor = System.Drawing.Color.White;
+            this.txtJobConnector_Score.ShowText = false;
+            this.txtJobConnector_Score.Size = new System.Drawing.Size(113, 35);
+            this.txtJobConnector_Score.Style = Sunny.UI.UIStyle.Custom;
+            this.txtJobConnector_Score.TabIndex = 3607;
+            this.txtJobConnector_Score.Text = "0.00";
+            this.txtJobConnector_Score.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.txtJobConnector_Score.Type = Sunny.UI.UITextBox.UIEditType.Double;
+            this.txtJobConnector_Score.Watermark = "";
+            // 
+            // label151
+            // 
+            this.label151.BackColor = System.Drawing.Color.Transparent;
+            this.label151.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label151.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label151.Font = new System.Drawing.Font("Arial", 8F);
+            this.label151.ForeColor = System.Drawing.Color.White;
+            this.label151.Location = new System.Drawing.Point(3, 175);
+            this.label151.Name = "label151";
+            this.label151.Size = new System.Drawing.Size(80, 35);
+            this.label151.TabIndex = 3606;
+            this.label151.Text = "Type";
+            this.label151.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel61
+            // 
+            this.panel61.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel61.Controls.Add(this.radioJobConnector_TB);
+            this.panel61.Controls.Add(this.radioJobConnector_LR);
+            this.panel61.Location = new System.Drawing.Point(84, 175);
+            this.panel61.Name = "panel61";
+            this.panel61.Size = new System.Drawing.Size(225, 35);
+            this.panel61.TabIndex = 3605;
+            // 
+            // radioJobConnector_TB
+            // 
+            this.radioJobConnector_TB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.radioJobConnector_TB.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.radioJobConnector_TB.ForeColor = System.Drawing.Color.White;
+            this.radioJobConnector_TB.Location = new System.Drawing.Point(114, 6);
+            this.radioJobConnector_TB.MinimumSize = new System.Drawing.Size(1, 1);
+            this.radioJobConnector_TB.Name = "radioJobConnector_TB";
+            this.radioJobConnector_TB.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
+            this.radioJobConnector_TB.RadioButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.radioJobConnector_TB.Size = new System.Drawing.Size(55, 21);
+            this.radioJobConnector_TB.Style = Sunny.UI.UIStyle.Custom;
+            this.radioJobConnector_TB.TabIndex = 3402;
+            this.radioJobConnector_TB.Text = "T-B";
+            // 
+            // radioJobConnector_LR
+            // 
+            this.radioJobConnector_LR.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.radioJobConnector_LR.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.radioJobConnector_LR.ForeColor = System.Drawing.Color.White;
+            this.radioJobConnector_LR.Location = new System.Drawing.Point(45, 6);
+            this.radioJobConnector_LR.MinimumSize = new System.Drawing.Size(1, 1);
+            this.radioJobConnector_LR.Name = "radioJobConnector_LR";
+            this.radioJobConnector_LR.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
+            this.radioJobConnector_LR.RadioButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.radioJobConnector_LR.Size = new System.Drawing.Size(55, 21);
+            this.radioJobConnector_LR.Style = Sunny.UI.UIStyle.Custom;
+            this.radioJobConnector_LR.TabIndex = 3401;
+            this.radioJobConnector_LR.Text = "L-R";
+            // 
+            // label153
+            // 
+            this.label153.BackColor = System.Drawing.Color.Transparent;
+            this.label153.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label153.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label153.Font = new System.Drawing.Font("Arial", 9F);
+            this.label153.ForeColor = System.Drawing.Color.White;
+            this.label153.Location = new System.Drawing.Point(198, 211);
+            this.label153.Name = "label153";
+            this.label153.Size = new System.Drawing.Size(111, 35);
+            this.label153.TabIndex = 3604;
+            this.label153.Text = "Count : 0";
+            this.label153.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel58
+            // 
+            this.panel58.Controls.Add(this.cogDisplay_Connector);
+            this.panel58.Controls.Add(this.label165);
+            this.panel58.Location = new System.Drawing.Point(3, 3);
+            this.panel58.Name = "panel58";
+            this.panel58.Size = new System.Drawing.Size(208, 171);
+            this.panel58.TabIndex = 3600;
+            // 
+            // cogDisplay_Connector
+            // 
+            this.cogDisplay_Connector.ColorMapLowerClipColor = System.Drawing.Color.Black;
+            this.cogDisplay_Connector.ColorMapLowerRoiLimit = 0D;
+            this.cogDisplay_Connector.ColorMapPredefined = Cognex.VisionPro.Display.CogDisplayColorMapPredefinedConstants.None;
+            this.cogDisplay_Connector.ColorMapUpperClipColor = System.Drawing.Color.Black;
+            this.cogDisplay_Connector.ColorMapUpperRoiLimit = 1D;
+            this.cogDisplay_Connector.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cogDisplay_Connector.DoubleTapZoomCycleLength = 2;
+            this.cogDisplay_Connector.DoubleTapZoomSensitivity = 2.5D;
+            this.cogDisplay_Connector.Location = new System.Drawing.Point(0, 25);
+            this.cogDisplay_Connector.Margin = new System.Windows.Forms.Padding(4);
+            this.cogDisplay_Connector.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
+            this.cogDisplay_Connector.MouseWheelSensitivity = 1D;
+            this.cogDisplay_Connector.Name = "cogDisplay_Connector";
+            this.cogDisplay_Connector.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("cogDisplay_Connector.OcxState")));
+            this.cogDisplay_Connector.Size = new System.Drawing.Size(208, 146);
+            this.cogDisplay_Connector.TabIndex = 3301;
+            // 
+            // label165
+            // 
+            this.label165.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(77)))), ((int)(((byte)(86)))));
+            this.label165.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label165.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label165.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.label165.ForeColor = System.Drawing.Color.White;
+            this.label165.Location = new System.Drawing.Point(0, 0);
+            this.label165.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label165.Name = "label165";
+            this.label165.Size = new System.Drawing.Size(208, 25);
+            this.label165.TabIndex = 3300;
+            this.label165.Text = "Pattern";
+            this.label165.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnJobConnector_Roi
+            // 
+            this.btnJobConnector_Roi.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJobConnector_Roi.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobConnector_Roi.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobConnector_Roi.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobConnector_Roi.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobConnector_Roi.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobConnector_Roi.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJobConnector_Roi.Location = new System.Drawing.Point(212, 3);
+            this.btnJobConnector_Roi.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnJobConnector_Roi.Name = "btnJobConnector_Roi";
+            this.btnJobConnector_Roi.RectColor = System.Drawing.Color.White;
+            this.btnJobConnector_Roi.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobConnector_Roi.RectPressColor = System.Drawing.Color.White;
+            this.btnJobConnector_Roi.RectSelectedColor = System.Drawing.Color.White;
+            this.btnJobConnector_Roi.Size = new System.Drawing.Size(96, 42);
+            this.btnJobConnector_Roi.Style = Sunny.UI.UIStyle.Custom;
+            this.btnJobConnector_Roi.StyleCustomMode = true;
+            this.btnJobConnector_Roi.Symbol = 362923;
+            this.btnJobConnector_Roi.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.btnJobConnector_Roi.SymbolSize = 20;
+            this.btnJobConnector_Roi.TabIndex = 3601;
+            this.btnJobConnector_Roi.Text = "Roi";
+            this.btnJobConnector_Roi.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // btnJobConnector_Train
+            // 
+            this.btnJobConnector_Train.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJobConnector_Train.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobConnector_Train.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobConnector_Train.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobConnector_Train.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobConnector_Train.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobConnector_Train.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJobConnector_Train.Location = new System.Drawing.Point(212, 46);
+            this.btnJobConnector_Train.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnJobConnector_Train.Name = "btnJobConnector_Train";
+            this.btnJobConnector_Train.RectColor = System.Drawing.Color.White;
+            this.btnJobConnector_Train.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobConnector_Train.RectPressColor = System.Drawing.Color.White;
+            this.btnJobConnector_Train.RectSelectedColor = System.Drawing.Color.White;
+            this.btnJobConnector_Train.Size = new System.Drawing.Size(96, 42);
+            this.btnJobConnector_Train.Style = Sunny.UI.UIStyle.Custom;
+            this.btnJobConnector_Train.StyleCustomMode = true;
+            this.btnJobConnector_Train.Symbol = 108;
+            this.btnJobConnector_Train.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.btnJobConnector_Train.SymbolSize = 20;
+            this.btnJobConnector_Train.TabIndex = 3602;
+            this.btnJobConnector_Train.Text = "Train";
+            this.btnJobConnector_Train.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // btnJobConnector_Find
+            // 
+            this.btnJobConnector_Find.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJobConnector_Find.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobConnector_Find.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobConnector_Find.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobConnector_Find.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobConnector_Find.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobConnector_Find.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJobConnector_Find.Location = new System.Drawing.Point(212, 89);
+            this.btnJobConnector_Find.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnJobConnector_Find.Name = "btnJobConnector_Find";
+            this.btnJobConnector_Find.RectColor = System.Drawing.Color.White;
+            this.btnJobConnector_Find.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobConnector_Find.RectPressColor = System.Drawing.Color.White;
+            this.btnJobConnector_Find.RectSelectedColor = System.Drawing.Color.White;
+            this.btnJobConnector_Find.Size = new System.Drawing.Size(96, 42);
+            this.btnJobConnector_Find.Style = Sunny.UI.UIStyle.Custom;
+            this.btnJobConnector_Find.StyleCustomMode = true;
+            this.btnJobConnector_Find.Symbol = 61442;
+            this.btnJobConnector_Find.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.btnJobConnector_Find.SymbolSize = 20;
+            this.btnJobConnector_Find.TabIndex = 3603;
+            this.btnJobConnector_Find.Text = "Find";
+            this.btnJobConnector_Find.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // label164
+            // 
+            this.label164.BackColor = System.Drawing.Color.Transparent;
+            this.label164.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label164.Font = new System.Drawing.Font("Arial", 12F);
+            this.label164.ForeColor = System.Drawing.Color.White;
+            this.label164.Location = new System.Drawing.Point(191, 445);
+            this.label164.Name = "label164";
+            this.label164.Size = new System.Drawing.Size(23, 35);
+            this.label164.TabIndex = 3634;
+            this.label164.Text = "<";
+            this.label164.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tabPage31
+            // 
+            this.tabPage31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.tabPage31.Controls.Add(this.panel63);
+            this.tabPage31.Controls.Add(this.chk_BlobPos_UseAlign);
+            this.tabPage31.Controls.Add(this.panel55);
+            this.tabPage31.Controls.Add(this.btnJobPin_Master);
+            this.tabPage31.Controls.Add(this.panel53);
+            this.tabPage31.Controls.Add(this.panel47);
+            this.tabPage31.Controls.Add(this.panel42);
+            this.tabPage31.Controls.Add(this.btnJobPin_Roi);
+            this.tabPage31.Controls.Add(this.btnJobPin_Find);
+            this.tabPage31.Controls.Add(this.panel59);
+            this.tabPage31.Location = new System.Drawing.Point(91, 0);
+            this.tabPage31.Name = "tabPage31";
+            this.tabPage31.Size = new System.Drawing.Size(564, 512);
+            this.tabPage31.TabIndex = 8;
+            this.tabPage31.Text = "Pin";
+            // 
+            // panel63
+            // 
+            this.panel63.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.panel63.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel63.Controls.Add(this.lblJobPin_MeasColor);
+            this.panel63.Controls.Add(this.lblJobPin_ShapeColor);
+            this.panel63.Controls.Add(this.chkJobPin_UseColorMatching);
+            this.panel63.Controls.Add(this.label166);
+            this.panel63.Location = new System.Drawing.Point(1, 260);
+            this.panel63.Name = "panel63";
+            this.panel63.Size = new System.Drawing.Size(306, 152);
+            this.panel63.TabIndex = 3531;
+            // 
+            // lblJobPin_MeasColor
+            // 
+            this.lblJobPin_MeasColor.BackColor = System.Drawing.Color.Transparent;
+            this.lblJobPin_MeasColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblJobPin_MeasColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblJobPin_MeasColor.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblJobPin_MeasColor.ForeColor = System.Drawing.Color.White;
+            this.lblJobPin_MeasColor.Location = new System.Drawing.Point(10, 95);
+            this.lblJobPin_MeasColor.Name = "lblJobPin_MeasColor";
+            this.lblJobPin_MeasColor.Size = new System.Drawing.Size(286, 48);
+            this.lblJobPin_MeasColor.TabIndex = 3523;
+            this.lblJobPin_MeasColor.Text = "-";
+            this.lblJobPin_MeasColor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblJobPin_ShapeColor
+            // 
+            this.lblJobPin_ShapeColor.BackColor = System.Drawing.Color.Transparent;
+            this.lblJobPin_ShapeColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblJobPin_ShapeColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblJobPin_ShapeColor.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblJobPin_ShapeColor.ForeColor = System.Drawing.Color.White;
+            this.lblJobPin_ShapeColor.Location = new System.Drawing.Point(10, 40);
+            this.lblJobPin_ShapeColor.Name = "lblJobPin_ShapeColor";
+            this.lblJobPin_ShapeColor.Size = new System.Drawing.Size(286, 48);
+            this.lblJobPin_ShapeColor.TabIndex = 3522;
+            this.lblJobPin_ShapeColor.Text = "-";
+            this.lblJobPin_ShapeColor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // chkJobPin_UseColorMatching
+            // 
+            this.chkJobPin_UseColorMatching.AutoSize = true;
+            this.chkJobPin_UseColorMatching.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.chkJobPin_UseColorMatching.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkJobPin_UseColorMatching.ForeColor = System.Drawing.Color.White;
+            this.chkJobPin_UseColorMatching.Location = new System.Drawing.Point(7, 7);
+            this.chkJobPin_UseColorMatching.Name = "chkJobPin_UseColorMatching";
+            this.chkJobPin_UseColorMatching.Size = new System.Drawing.Size(15, 14);
+            this.chkJobPin_UseColorMatching.TabIndex = 3521;
+            this.chkJobPin_UseColorMatching.UseVisualStyleBackColor = false;
+            // 
+            // label166
+            // 
+            this.label166.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.label166.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label166.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label166.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label166.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label166.ForeColor = System.Drawing.Color.White;
+            this.label166.Location = new System.Drawing.Point(0, 0);
+            this.label166.Name = "label166";
+            this.label166.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label166.Size = new System.Drawing.Size(304, 27);
+            this.label166.TabIndex = 3517;
+            this.label166.Text = "    Use Color Compare (Pin Shift CAse)";
+            this.label166.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // chk_BlobPos_UseAlign
+            // 
+            this.chk_BlobPos_UseAlign.AutoSize = true;
+            this.chk_BlobPos_UseAlign.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.chk_BlobPos_UseAlign.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_BlobPos_UseAlign.ForeColor = System.Drawing.Color.White;
+            this.chk_BlobPos_UseAlign.Location = new System.Drawing.Point(7, 155);
+            this.chk_BlobPos_UseAlign.Name = "chk_BlobPos_UseAlign";
+            this.chk_BlobPos_UseAlign.Size = new System.Drawing.Size(15, 14);
+            this.chk_BlobPos_UseAlign.TabIndex = 3530;
+            this.chk_BlobPos_UseAlign.UseVisualStyleBackColor = false;
+            this.chk_BlobPos_UseAlign.Visible = false;
+            // 
+            // panel55
+            // 
+            this.panel55.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.panel55.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel55.Controls.Add(this.label145);
+            this.panel55.Location = new System.Drawing.Point(1, 147);
+            this.panel55.Name = "panel55";
+            this.panel55.Size = new System.Drawing.Size(306, 112);
+            this.panel55.TabIndex = 3529;
+            this.panel55.Visible = false;
+            // 
+            // label145
+            // 
+            this.label145.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.label145.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label145.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label145.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label145.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label145.ForeColor = System.Drawing.Color.White;
+            this.label145.Location = new System.Drawing.Point(0, 0);
+            this.label145.Name = "label145";
+            this.label145.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label145.Size = new System.Drawing.Size(304, 27);
+            this.label145.TabIndex = 3517;
+            this.label145.Text = "    Use Alignment";
+            this.label145.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnJobPin_Master
+            // 
+            this.btnJobPin_Master.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJobPin_Master.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPin_Master.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPin_Master.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobPin_Master.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPin_Master.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPin_Master.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJobPin_Master.Location = new System.Drawing.Point(12, 465);
+            this.btnJobPin_Master.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnJobPin_Master.Name = "btnJobPin_Master";
+            this.btnJobPin_Master.RectColor = System.Drawing.Color.White;
+            this.btnJobPin_Master.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobPin_Master.RectPressColor = System.Drawing.Color.White;
+            this.btnJobPin_Master.RectSelectedColor = System.Drawing.Color.White;
+            this.btnJobPin_Master.Size = new System.Drawing.Size(286, 42);
+            this.btnJobPin_Master.Style = Sunny.UI.UIStyle.Custom;
+            this.btnJobPin_Master.StyleCustomMode = true;
+            this.btnJobPin_Master.Symbol = 108;
+            this.btnJobPin_Master.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.btnJobPin_Master.SymbolSize = 20;
+            this.btnJobPin_Master.TabIndex = 3528;
+            this.btnJobPin_Master.Text = "Master";
+            this.btnJobPin_Master.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // panel53
+            // 
+            this.panel53.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel53.Controls.Add(this.label144);
+            this.panel53.Controls.Add(this.panel54);
+            this.panel53.Controls.Add(this.checkBox53);
+            this.panel53.Controls.Add(this.checkBox54);
+            this.panel53.Location = new System.Drawing.Point(0, 111);
+            this.panel53.Name = "panel53";
+            this.panel53.Size = new System.Drawing.Size(307, 35);
+            this.panel53.TabIndex = 3527;
+            // 
+            // label144
+            // 
+            this.label144.BackColor = System.Drawing.Color.Transparent;
+            this.label144.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label144.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label144.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label144.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label144.ForeColor = System.Drawing.Color.White;
+            this.label144.Location = new System.Drawing.Point(0, 0);
+            this.label144.Name = "label144";
+            this.label144.Size = new System.Drawing.Size(97, 33);
+            this.label144.TabIndex = 3434;
+            this.label144.Text = "Threshold";
+            this.label144.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel54
+            // 
+            this.panel54.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel54.Controls.Add(this.chk_Pin_BinaryInv);
+            this.panel54.Controls.Add(this.nb_Pin_Threshold);
+            this.panel54.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel54.Location = new System.Drawing.Point(97, 0);
+            this.panel54.Name = "panel54";
+            this.panel54.Size = new System.Drawing.Size(208, 33);
+            this.panel54.TabIndex = 3408;
+            // 
+            // chk_Pin_BinaryInv
+            // 
+            this.chk_Pin_BinaryInv.AutoSize = true;
+            this.chk_Pin_BinaryInv.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_Pin_BinaryInv.ForeColor = System.Drawing.Color.White;
+            this.chk_Pin_BinaryInv.Location = new System.Drawing.Point(97, 7);
+            this.chk_Pin_BinaryInv.Name = "chk_Pin_BinaryInv";
+            this.chk_Pin_BinaryInv.Size = new System.Drawing.Size(103, 19);
+            this.chk_Pin_BinaryInv.TabIndex = 2772;
+            this.chk_Pin_BinaryInv.Text = "Binary Inverter";
+            this.chk_Pin_BinaryInv.UseVisualStyleBackColor = true;
+            // 
+            // nb_Pin_Threshold
+            // 
+            this.nb_Pin_Threshold.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.nb_Pin_Threshold.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.nb_Pin_Threshold.Font = new System.Drawing.Font("Arial", 15F);
+            this.nb_Pin_Threshold.ForeColor = System.Drawing.Color.White;
+            this.nb_Pin_Threshold.Location = new System.Drawing.Point(0, 0);
+            this.nb_Pin_Threshold.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.nb_Pin_Threshold.Name = "nb_Pin_Threshold";
+            this.nb_Pin_Threshold.Size = new System.Drawing.Size(90, 30);
+            this.nb_Pin_Threshold.TabIndex = 2771;
+            this.nb_Pin_Threshold.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nb_Pin_Threshold.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // checkBox53
+            // 
+            this.checkBox53.AutoSize = true;
+            this.checkBox53.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox53.ForeColor = System.Drawing.Color.White;
+            this.checkBox53.Location = new System.Drawing.Point(11, 105);
+            this.checkBox53.Name = "checkBox53";
+            this.checkBox53.Size = new System.Drawing.Size(112, 20);
+            this.checkBox53.TabIndex = 1;
+            this.checkBox53.Text = "Use \'EYE-D\'";
+            this.checkBox53.UseVisualStyleBackColor = true;
+            // 
+            // checkBox54
+            // 
+            this.checkBox54.AutoSize = true;
+            this.checkBox54.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox54.ForeColor = System.Drawing.Color.White;
+            this.checkBox54.Location = new System.Drawing.Point(3, 153);
+            this.checkBox54.Name = "checkBox54";
+            this.checkBox54.Size = new System.Drawing.Size(112, 20);
+            this.checkBox54.TabIndex = 0;
+            this.checkBox54.Text = "Use \'EYE-D\'";
+            this.checkBox54.UseVisualStyleBackColor = true;
+            // 
+            // panel47
+            // 
+            this.panel47.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel47.Controls.Add(this.label142);
+            this.panel47.Controls.Add(this.panel48);
+            this.panel47.Controls.Add(this.checkBox51);
+            this.panel47.Controls.Add(this.checkBox52);
+            this.panel47.Location = new System.Drawing.Point(0, 76);
+            this.panel47.Name = "panel47";
+            this.panel47.Size = new System.Drawing.Size(307, 35);
+            this.panel47.TabIndex = 3526;
+            // 
+            // label142
+            // 
+            this.label142.BackColor = System.Drawing.Color.Transparent;
+            this.label142.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label142.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label142.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label142.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label142.ForeColor = System.Drawing.Color.White;
+            this.label142.Location = new System.Drawing.Point(0, 0);
+            this.label142.Name = "label142";
+            this.label142.Size = new System.Drawing.Size(97, 33);
+            this.label142.TabIndex = 3434;
+            this.label142.Text = "Spec Roi\r\n(Width / Height)";
+            this.label142.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel48
+            // 
+            this.panel48.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel48.Controls.Add(this.nb_Pin_SpecRoi_Height);
+            this.panel48.Controls.Add(this.label143);
+            this.panel48.Controls.Add(this.nb_Pin_SpecRoi_Width);
+            this.panel48.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel48.Location = new System.Drawing.Point(97, 0);
+            this.panel48.Name = "panel48";
+            this.panel48.Size = new System.Drawing.Size(208, 33);
+            this.panel48.TabIndex = 3408;
+            // 
+            // nb_Pin_SpecRoi_Height
+            // 
+            this.nb_Pin_SpecRoi_Height.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.nb_Pin_SpecRoi_Height.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.nb_Pin_SpecRoi_Height.Dock = System.Windows.Forms.DockStyle.Right;
+            this.nb_Pin_SpecRoi_Height.Font = new System.Drawing.Font("Arial", 15F);
+            this.nb_Pin_SpecRoi_Height.ForeColor = System.Drawing.Color.White;
+            this.nb_Pin_SpecRoi_Height.Location = new System.Drawing.Point(116, 0);
+            this.nb_Pin_SpecRoi_Height.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.nb_Pin_SpecRoi_Height.Name = "nb_Pin_SpecRoi_Height";
+            this.nb_Pin_SpecRoi_Height.Size = new System.Drawing.Size(90, 30);
+            this.nb_Pin_SpecRoi_Height.TabIndex = 3427;
+            this.nb_Pin_SpecRoi_Height.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nb_Pin_SpecRoi_Height.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // label143
+            // 
+            this.label143.BackColor = System.Drawing.Color.Transparent;
+            this.label143.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label143.Font = new System.Drawing.Font("Arial", 12F);
+            this.label143.ForeColor = System.Drawing.Color.White;
+            this.label143.Location = new System.Drawing.Point(92, 1);
+            this.label143.Name = "label143";
+            this.label143.Size = new System.Drawing.Size(21, 29);
+            this.label143.TabIndex = 3426;
+            this.label143.Text = "/";
+            this.label143.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // nb_Pin_SpecRoi_Width
+            // 
+            this.nb_Pin_SpecRoi_Width.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.nb_Pin_SpecRoi_Width.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.nb_Pin_SpecRoi_Width.Font = new System.Drawing.Font("Arial", 15F);
+            this.nb_Pin_SpecRoi_Width.ForeColor = System.Drawing.Color.White;
+            this.nb_Pin_SpecRoi_Width.Location = new System.Drawing.Point(0, 0);
+            this.nb_Pin_SpecRoi_Width.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.nb_Pin_SpecRoi_Width.Name = "nb_Pin_SpecRoi_Width";
+            this.nb_Pin_SpecRoi_Width.Size = new System.Drawing.Size(90, 30);
+            this.nb_Pin_SpecRoi_Width.TabIndex = 2771;
+            this.nb_Pin_SpecRoi_Width.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nb_Pin_SpecRoi_Width.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // checkBox51
+            // 
+            this.checkBox51.AutoSize = true;
+            this.checkBox51.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox51.ForeColor = System.Drawing.Color.White;
+            this.checkBox51.Location = new System.Drawing.Point(11, 105);
+            this.checkBox51.Name = "checkBox51";
+            this.checkBox51.Size = new System.Drawing.Size(112, 20);
+            this.checkBox51.TabIndex = 1;
+            this.checkBox51.Text = "Use \'EYE-D\'";
+            this.checkBox51.UseVisualStyleBackColor = true;
+            // 
+            // checkBox52
+            // 
+            this.checkBox52.AutoSize = true;
+            this.checkBox52.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox52.ForeColor = System.Drawing.Color.White;
+            this.checkBox52.Location = new System.Drawing.Point(3, 153);
+            this.checkBox52.Name = "checkBox52";
+            this.checkBox52.Size = new System.Drawing.Size(112, 20);
+            this.checkBox52.TabIndex = 0;
+            this.checkBox52.Text = "Use \'EYE-D\'";
+            this.checkBox52.UseVisualStyleBackColor = true;
+            // 
+            // panel42
+            // 
+            this.panel42.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel42.Controls.Add(this.label139);
+            this.panel42.Controls.Add(this.panel44);
+            this.panel42.Controls.Add(this.checkBox49);
+            this.panel42.Controls.Add(this.checkBox50);
+            this.panel42.Location = new System.Drawing.Point(0, 41);
+            this.panel42.Name = "panel42";
+            this.panel42.Size = new System.Drawing.Size(307, 35);
+            this.panel42.TabIndex = 3525;
+            // 
+            // label139
+            // 
+            this.label139.BackColor = System.Drawing.Color.Transparent;
+            this.label139.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label139.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label139.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label139.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label139.ForeColor = System.Drawing.Color.White;
+            this.label139.Location = new System.Drawing.Point(0, 0);
+            this.label139.Name = "label139";
+            this.label139.Size = new System.Drawing.Size(97, 33);
+            this.label139.TabIndex = 3434;
+            this.label139.Text = "Area\r\n( Min ~ Max )";
+            this.label139.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel44
+            // 
+            this.panel44.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel44.Controls.Add(this.nb_Pin_AreaMax);
+            this.panel44.Controls.Add(this.label141);
+            this.panel44.Controls.Add(this.nb_Pin_AreaMin);
+            this.panel44.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel44.Location = new System.Drawing.Point(97, 0);
+            this.panel44.Name = "panel44";
+            this.panel44.Size = new System.Drawing.Size(208, 33);
+            this.panel44.TabIndex = 3408;
+            // 
+            // nb_Pin_AreaMax
+            // 
+            this.nb_Pin_AreaMax.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.nb_Pin_AreaMax.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.nb_Pin_AreaMax.Dock = System.Windows.Forms.DockStyle.Right;
+            this.nb_Pin_AreaMax.Font = new System.Drawing.Font("Arial", 15F);
+            this.nb_Pin_AreaMax.ForeColor = System.Drawing.Color.White;
+            this.nb_Pin_AreaMax.Location = new System.Drawing.Point(116, 0);
+            this.nb_Pin_AreaMax.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.nb_Pin_AreaMax.Name = "nb_Pin_AreaMax";
+            this.nb_Pin_AreaMax.Size = new System.Drawing.Size(90, 30);
+            this.nb_Pin_AreaMax.TabIndex = 3427;
+            this.nb_Pin_AreaMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nb_Pin_AreaMax.Value = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            // 
+            // label141
+            // 
+            this.label141.BackColor = System.Drawing.Color.Transparent;
+            this.label141.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label141.Font = new System.Drawing.Font("Arial", 12F);
+            this.label141.ForeColor = System.Drawing.Color.White;
+            this.label141.Location = new System.Drawing.Point(92, 1);
+            this.label141.Name = "label141";
+            this.label141.Size = new System.Drawing.Size(21, 29);
+            this.label141.TabIndex = 3426;
+            this.label141.Text = "~";
+            this.label141.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // nb_Pin_AreaMin
+            // 
+            this.nb_Pin_AreaMin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.nb_Pin_AreaMin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.nb_Pin_AreaMin.Font = new System.Drawing.Font("Arial", 15F);
+            this.nb_Pin_AreaMin.ForeColor = System.Drawing.Color.White;
+            this.nb_Pin_AreaMin.Location = new System.Drawing.Point(0, 0);
+            this.nb_Pin_AreaMin.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.nb_Pin_AreaMin.Name = "nb_Pin_AreaMin";
+            this.nb_Pin_AreaMin.Size = new System.Drawing.Size(90, 30);
+            this.nb_Pin_AreaMin.TabIndex = 2771;
+            this.nb_Pin_AreaMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nb_Pin_AreaMin.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // checkBox49
+            // 
+            this.checkBox49.AutoSize = true;
+            this.checkBox49.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox49.ForeColor = System.Drawing.Color.White;
+            this.checkBox49.Location = new System.Drawing.Point(11, 105);
+            this.checkBox49.Name = "checkBox49";
+            this.checkBox49.Size = new System.Drawing.Size(112, 20);
+            this.checkBox49.TabIndex = 1;
+            this.checkBox49.Text = "Use \'EYE-D\'";
+            this.checkBox49.UseVisualStyleBackColor = true;
+            // 
+            // checkBox50
+            // 
+            this.checkBox50.AutoSize = true;
+            this.checkBox50.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox50.ForeColor = System.Drawing.Color.White;
+            this.checkBox50.Location = new System.Drawing.Point(3, 153);
+            this.checkBox50.Name = "checkBox50";
+            this.checkBox50.Size = new System.Drawing.Size(112, 20);
+            this.checkBox50.TabIndex = 0;
+            this.checkBox50.Text = "Use \'EYE-D\'";
+            this.checkBox50.UseVisualStyleBackColor = true;
+            // 
+            // btnJobPin_Roi
+            // 
+            this.btnJobPin_Roi.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJobPin_Roi.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPin_Roi.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPin_Roi.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobPin_Roi.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPin_Roi.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPin_Roi.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJobPin_Roi.Location = new System.Drawing.Point(12, 418);
+            this.btnJobPin_Roi.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnJobPin_Roi.Name = "btnJobPin_Roi";
+            this.btnJobPin_Roi.RectColor = System.Drawing.Color.White;
+            this.btnJobPin_Roi.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobPin_Roi.RectPressColor = System.Drawing.Color.White;
+            this.btnJobPin_Roi.RectSelectedColor = System.Drawing.Color.White;
+            this.btnJobPin_Roi.Size = new System.Drawing.Size(140, 42);
+            this.btnJobPin_Roi.Style = Sunny.UI.UIStyle.Custom;
+            this.btnJobPin_Roi.StyleCustomMode = true;
+            this.btnJobPin_Roi.Symbol = 362923;
+            this.btnJobPin_Roi.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.btnJobPin_Roi.SymbolSize = 16;
+            this.btnJobPin_Roi.TabIndex = 3524;
+            this.btnJobPin_Roi.Text = "Roi";
+            this.btnJobPin_Roi.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // btnJobPin_Find
+            // 
+            this.btnJobPin_Find.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJobPin_Find.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPin_Find.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPin_Find.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobPin_Find.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPin_Find.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnJobPin_Find.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJobPin_Find.Location = new System.Drawing.Point(158, 418);
+            this.btnJobPin_Find.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnJobPin_Find.Name = "btnJobPin_Find";
+            this.btnJobPin_Find.RectColor = System.Drawing.Color.White;
+            this.btnJobPin_Find.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnJobPin_Find.RectPressColor = System.Drawing.Color.White;
+            this.btnJobPin_Find.RectSelectedColor = System.Drawing.Color.White;
+            this.btnJobPin_Find.Size = new System.Drawing.Size(140, 42);
+            this.btnJobPin_Find.Style = Sunny.UI.UIStyle.Custom;
+            this.btnJobPin_Find.StyleCustomMode = true;
+            this.btnJobPin_Find.Symbol = 61442;
+            this.btnJobPin_Find.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.btnJobPin_Find.SymbolSize = 20;
+            this.btnJobPin_Find.TabIndex = 3523;
+            this.btnJobPin_Find.Text = "Find";
+            this.btnJobPin_Find.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // panel59
+            // 
+            this.panel59.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel59.Controls.Add(this.label146);
+            this.panel59.Controls.Add(this.panel60);
+            this.panel59.Controls.Add(this.checkBox71);
+            this.panel59.Controls.Add(this.checkBox72);
+            this.panel59.Location = new System.Drawing.Point(0, 6);
+            this.panel59.Name = "panel59";
+            this.panel59.Size = new System.Drawing.Size(307, 35);
+            this.panel59.TabIndex = 3522;
+            // 
+            // label146
+            // 
+            this.label146.BackColor = System.Drawing.Color.Transparent;
+            this.label146.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label146.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label146.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label146.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label146.ForeColor = System.Drawing.Color.White;
+            this.label146.Location = new System.Drawing.Point(0, 0);
+            this.label146.Name = "label146";
+            this.label146.Size = new System.Drawing.Size(97, 33);
+            this.label146.TabIndex = 3434;
+            this.label146.Text = "OK Count";
+            this.label146.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel60
+            // 
+            this.panel60.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel60.Controls.Add(this.nb_Pin_OkCount);
+            this.panel60.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel60.Location = new System.Drawing.Point(97, 0);
+            this.panel60.Name = "panel60";
+            this.panel60.Size = new System.Drawing.Size(208, 33);
+            this.panel60.TabIndex = 3408;
+            // 
+            // nb_Pin_OkCount
+            // 
+            this.nb_Pin_OkCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.nb_Pin_OkCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.nb_Pin_OkCount.Font = new System.Drawing.Font("Arial", 15F);
+            this.nb_Pin_OkCount.ForeColor = System.Drawing.Color.White;
+            this.nb_Pin_OkCount.Location = new System.Drawing.Point(0, 0);
+            this.nb_Pin_OkCount.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.nb_Pin_OkCount.Name = "nb_Pin_OkCount";
+            this.nb_Pin_OkCount.Size = new System.Drawing.Size(206, 30);
+            this.nb_Pin_OkCount.TabIndex = 2771;
+            this.nb_Pin_OkCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nb_Pin_OkCount.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // checkBox71
+            // 
+            this.checkBox71.AutoSize = true;
+            this.checkBox71.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox71.ForeColor = System.Drawing.Color.White;
+            this.checkBox71.Location = new System.Drawing.Point(11, 105);
+            this.checkBox71.Name = "checkBox71";
+            this.checkBox71.Size = new System.Drawing.Size(112, 20);
+            this.checkBox71.TabIndex = 1;
+            this.checkBox71.Text = "Use \'EYE-D\'";
+            this.checkBox71.UseVisualStyleBackColor = true;
+            // 
+            // checkBox72
+            // 
+            this.checkBox72.AutoSize = true;
+            this.checkBox72.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox72.ForeColor = System.Drawing.Color.White;
+            this.checkBox72.Location = new System.Drawing.Point(3, 153);
+            this.checkBox72.Name = "checkBox72";
+            this.checkBox72.Size = new System.Drawing.Size(112, 20);
+            this.checkBox72.TabIndex = 0;
+            this.checkBox72.Text = "Use \'EYE-D\'";
+            this.checkBox72.UseVisualStyleBackColor = true;
+            // 
+            // label25
+            // 
+            this.label25.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label25.Font = new System.Drawing.Font("Arial", 12F);
+            this.label25.ForeColor = System.Drawing.Color.Black;
+            this.label25.Location = new System.Drawing.Point(271, 530);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(20, 75);
+            this.label25.TabIndex = 3679;
+            this.label25.Text = "→";
+            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // DgvLogicList
+            // 
+            this.DgvLogicList.AllowUserToAddRows = false;
+            this.DgvLogicList.AllowUserToDeleteRows = false;
+            this.DgvLogicList.AllowUserToResizeColumns = false;
+            this.DgvLogicList.AllowUserToResizeRows = false;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Yellow;
+            this.DgvLogicList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            this.DgvLogicList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.DgvLogicList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvLogicList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            this.DgvLogicList.ColumnHeadersHeight = 25;
+            this.DgvLogicList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.DgvLogicList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewCheckBoxColumn3,
+            this.dataGridViewTextBoxColumn8,
+            this.Column4});
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Yellow;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvLogicList.DefaultCellStyle = dataGridViewCellStyle13;
+            this.DgvLogicList.EnableHeadersVisualStyles = false;
+            this.DgvLogicList.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.DgvLogicList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.DgvLogicList.Location = new System.Drawing.Point(283, 361);
+            this.DgvLogicList.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.DgvLogicList.MultiSelect = false;
+            this.DgvLogicList.Name = "DgvLogicList";
+            this.DgvLogicList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.DgvLogicList.RowHeadersVisible = false;
+            this.DgvLogicList.RowHeadersWidth = 51;
+            this.DgvLogicList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.DgvLogicList.RowTemplate.Height = 23;
+            this.DgvLogicList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DgvLogicList.Size = new System.Drawing.Size(263, 390);
+            this.DgvLogicList.TabIndex = 3682;
+            this.DgvLogicList.SelectionChanged += new System.EventHandler(this.DgvLogicList_SelectionChanged);
             // 
             // uiSymbolButton63
             // 
@@ -6334,18 +11986,6 @@ namespace IntelligentFactory
             this.uiSymbolButton63.Tag = "ZoomIn";
             this.uiSymbolButton63.Text = "Load from Library";
             this.uiSymbolButton63.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            // 
-            // label25
-            // 
-            this.label25.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label25.Font = new System.Drawing.Font("Arial", 12F);
-            this.label25.ForeColor = System.Drawing.Color.Black;
-            this.label25.Location = new System.Drawing.Point(271, 530);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(20, 75);
-            this.label25.TabIndex = 3679;
-            this.label25.Text = "→";
-            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label24
             // 
@@ -6453,46 +12093,47 @@ namespace IntelligentFactory
             this.uiSymbolButton61.Text = "Del";
             this.uiSymbolButton61.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             // 
-            // uiSymbolButton62
+            // BtnLogicAdd
             // 
-            this.uiSymbolButton62.BackColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton62.CircleRectWidth = 0;
-            this.uiSymbolButton62.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiSymbolButton62.FillColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton62.FillColor2 = System.Drawing.Color.Transparent;
-            this.uiSymbolButton62.FillDisableColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton62.FillHoverColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton62.FillPressColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton62.FillSelectedColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton62.Font = new System.Drawing.Font("Arial", 8F);
-            this.uiSymbolButton62.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.uiSymbolButton62.ForeDisableColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton62.ForeHoverColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton62.ForePressColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton62.ForeSelectedColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton62.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiSymbolButton62.Location = new System.Drawing.Point(338, 332);
-            this.uiSymbolButton62.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.uiSymbolButton62.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiSymbolButton62.Name = "uiSymbolButton62";
-            this.uiSymbolButton62.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.uiSymbolButton62.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.uiSymbolButton62.RectDisableColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton62.RectHoverColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton62.RectPressColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton62.RectSelectedColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton62.Size = new System.Drawing.Size(55, 24);
-            this.uiSymbolButton62.Style = Sunny.UI.UIStyle.Custom;
-            this.uiSymbolButton62.StyleCustomMode = true;
-            this.uiSymbolButton62.Symbol = 61543;
-            this.uiSymbolButton62.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.uiSymbolButton62.SymbolHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
-            this.uiSymbolButton62.SymbolOffset = new System.Drawing.Point(-10, 0);
-            this.uiSymbolButton62.SymbolSize = 16;
-            this.uiSymbolButton62.TabIndex = 3674;
-            this.uiSymbolButton62.Tag = "ZoomIn";
-            this.uiSymbolButton62.Text = "Add";
-            this.uiSymbolButton62.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnLogicAdd.BackColor = System.Drawing.Color.Transparent;
+            this.BtnLogicAdd.CircleRectWidth = 0;
+            this.BtnLogicAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnLogicAdd.FillColor = System.Drawing.Color.Transparent;
+            this.BtnLogicAdd.FillColor2 = System.Drawing.Color.Transparent;
+            this.BtnLogicAdd.FillDisableColor = System.Drawing.Color.Transparent;
+            this.BtnLogicAdd.FillHoverColor = System.Drawing.Color.Transparent;
+            this.BtnLogicAdd.FillPressColor = System.Drawing.Color.Transparent;
+            this.BtnLogicAdd.FillSelectedColor = System.Drawing.Color.Transparent;
+            this.BtnLogicAdd.Font = new System.Drawing.Font("Arial", 8F);
+            this.BtnLogicAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.BtnLogicAdd.ForeDisableColor = System.Drawing.Color.Transparent;
+            this.BtnLogicAdd.ForeHoverColor = System.Drawing.Color.Transparent;
+            this.BtnLogicAdd.ForePressColor = System.Drawing.Color.Transparent;
+            this.BtnLogicAdd.ForeSelectedColor = System.Drawing.Color.Transparent;
+            this.BtnLogicAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnLogicAdd.Location = new System.Drawing.Point(338, 332);
+            this.BtnLogicAdd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.BtnLogicAdd.MinimumSize = new System.Drawing.Size(1, 1);
+            this.BtnLogicAdd.Name = "BtnLogicAdd";
+            this.BtnLogicAdd.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.BtnLogicAdd.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.BtnLogicAdd.RectDisableColor = System.Drawing.Color.Transparent;
+            this.BtnLogicAdd.RectHoverColor = System.Drawing.Color.Transparent;
+            this.BtnLogicAdd.RectPressColor = System.Drawing.Color.Transparent;
+            this.BtnLogicAdd.RectSelectedColor = System.Drawing.Color.Transparent;
+            this.BtnLogicAdd.Size = new System.Drawing.Size(55, 24);
+            this.BtnLogicAdd.Style = Sunny.UI.UIStyle.Custom;
+            this.BtnLogicAdd.StyleCustomMode = true;
+            this.BtnLogicAdd.Symbol = 61543;
+            this.BtnLogicAdd.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.BtnLogicAdd.SymbolHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
+            this.BtnLogicAdd.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.BtnLogicAdd.SymbolSize = 16;
+            this.BtnLogicAdd.TabIndex = 3674;
+            this.BtnLogicAdd.Tag = "ZoomIn";
+            this.BtnLogicAdd.Text = "Add";
+            this.BtnLogicAdd.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnLogicAdd.Click += new System.EventHandler(this.BtnLogicAdd_Click);
             // 
             // uiLine25
             // 
@@ -6776,28 +12417,29 @@ namespace IntelligentFactory
             this.uiComboBox2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiComboBox2.Watermark = "";
             // 
-            // uiSymbolButton39
+            // BtnSettingLogic
             // 
-            this.uiSymbolButton39.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiSymbolButton39.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.uiSymbolButton39.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.uiSymbolButton39.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.uiSymbolButton39.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.uiSymbolButton39.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.uiSymbolButton39.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uiSymbolButton39.Location = new System.Drawing.Point(501, 135);
-            this.uiSymbolButton39.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiSymbolButton39.Name = "uiSymbolButton39";
-            this.uiSymbolButton39.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.uiSymbolButton39.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.uiSymbolButton39.RectPressColor = System.Drawing.Color.White;
-            this.uiSymbolButton39.RectSelectedColor = System.Drawing.Color.White;
-            this.uiSymbolButton39.Size = new System.Drawing.Size(45, 53);
-            this.uiSymbolButton39.Style = Sunny.UI.UIStyle.Custom;
-            this.uiSymbolButton39.StyleCustomMode = true;
-            this.uiSymbolButton39.SymbolSize = 16;
-            this.uiSymbolButton39.TabIndex = 3658;
-            this.uiSymbolButton39.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnSettingLogic.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnSettingLogic.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.BtnSettingLogic.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.BtnSettingLogic.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.BtnSettingLogic.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.BtnSettingLogic.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.BtnSettingLogic.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSettingLogic.Location = new System.Drawing.Point(501, 135);
+            this.BtnSettingLogic.MinimumSize = new System.Drawing.Size(1, 1);
+            this.BtnSettingLogic.Name = "BtnSettingLogic";
+            this.BtnSettingLogic.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.BtnSettingLogic.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.BtnSettingLogic.RectPressColor = System.Drawing.Color.White;
+            this.BtnSettingLogic.RectSelectedColor = System.Drawing.Color.White;
+            this.BtnSettingLogic.Size = new System.Drawing.Size(45, 53);
+            this.BtnSettingLogic.Style = Sunny.UI.UIStyle.Custom;
+            this.BtnSettingLogic.StyleCustomMode = true;
+            this.BtnSettingLogic.SymbolSize = 16;
+            this.BtnSettingLogic.TabIndex = 3658;
+            this.BtnSettingLogic.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnSettingLogic.Click += new System.EventHandler(this.BtnSettingLogic_Click);
             // 
             // label18
             // 
@@ -6810,23 +12452,23 @@ namespace IntelligentFactory
             this.label18.Text = "Algorithm";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // uiTextBox10
+            // tbLogicName
             // 
-            this.uiTextBox10.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBox10.FillColor = System.Drawing.SystemColors.Control;
-            this.uiTextBox10.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uiTextBox10.ForeColor = System.Drawing.Color.Black;
-            this.uiTextBox10.Location = new System.Drawing.Point(374, 135);
-            this.uiTextBox10.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.uiTextBox10.MinimumSize = new System.Drawing.Size(1, 20);
-            this.uiTextBox10.Name = "uiTextBox10";
-            this.uiTextBox10.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.uiTextBox10.RectColor = System.Drawing.Color.DimGray;
-            this.uiTextBox10.ShowText = false;
-            this.uiTextBox10.Size = new System.Drawing.Size(125, 25);
-            this.uiTextBox10.TabIndex = 3655;
-            this.uiTextBox10.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiTextBox10.Watermark = "";
+            this.tbLogicName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbLogicName.FillColor = System.Drawing.SystemColors.Control;
+            this.tbLogicName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbLogicName.ForeColor = System.Drawing.Color.Black;
+            this.tbLogicName.Location = new System.Drawing.Point(374, 135);
+            this.tbLogicName.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.tbLogicName.MinimumSize = new System.Drawing.Size(1, 20);
+            this.tbLogicName.Name = "tbLogicName";
+            this.tbLogicName.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.tbLogicName.RectColor = System.Drawing.Color.DimGray;
+            this.tbLogicName.ShowText = false;
+            this.tbLogicName.Size = new System.Drawing.Size(125, 25);
+            this.tbLogicName.TabIndex = 3655;
+            this.tbLogicName.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tbLogicName.Watermark = "";
             // 
             // label19
             // 
@@ -7103,6 +12745,14 @@ namespace IntelligentFactory
             this.DgvJobList.MultiSelect = false;
             this.DgvJobList.Name = "DgvJobList";
             this.DgvJobList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvJobList.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.DgvJobList.RowHeadersVisible = false;
             this.DgvJobList.RowHeadersWidth = 51;
             this.DgvJobList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -7110,6 +12760,35 @@ namespace IntelligentFactory
             this.DgvJobList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvJobList.Size = new System.Drawing.Size(278, 751);
             this.DgvJobList.TabIndex = 3639;
+            this.DgvJobList.SelectionChanged += new System.EventHandler(this.DgvJobList_SelectionChanged);
+            // 
+            // No
+            // 
+            this.No.HeaderText = "Location No";
+            this.No.MinimumWidth = 6;
+            this.No.Name = "No";
+            this.No.ReadOnly = true;
+            this.No.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.No.Width = 75;
+            // 
+            // gridLibraryName
+            // 
+            this.gridLibraryName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.gridLibraryName.HeaderText = "Enabled";
+            this.gridLibraryName.MinimumWidth = 6;
+            this.gridLibraryName.Name = "gridLibraryName";
+            this.gridLibraryName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridLibraryName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.gridLibraryName.Width = 68;
+            // 
+            // gridLibraryEnabled
+            // 
+            this.gridLibraryEnabled.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.gridLibraryEnabled.HeaderText = "Part Code";
+            this.gridLibraryEnabled.MinimumWidth = 6;
+            this.gridLibraryEnabled.Name = "gridLibraryEnabled";
+            this.gridLibraryEnabled.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridLibraryEnabled.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // uiSymbolButton37
             // 
@@ -7152,28 +12831,38 @@ namespace IntelligentFactory
             this.uiSymbolButton37.Text = "Add";
             this.uiSymbolButton37.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             // 
-            // uiComboBox1
+            // cbAlgorithm
             // 
-            this.uiComboBox1.DataSource = null;
-            this.uiComboBox1.FillColor = System.Drawing.SystemColors.Control;
-            this.uiComboBox1.Font = new System.Drawing.Font("맑은 고딕", 8F, System.Drawing.FontStyle.Bold);
-            this.uiComboBox1.ForeColor = System.Drawing.Color.Black;
-            this.uiComboBox1.ItemFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.uiComboBox1.ItemForeColor = System.Drawing.Color.White;
-            this.uiComboBox1.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.uiComboBox1.ItemSelectBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.uiComboBox1.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.uiComboBox1.Location = new System.Drawing.Point(374, 163);
-            this.uiComboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiComboBox1.MinimumSize = new System.Drawing.Size(63, 0);
-            this.uiComboBox1.Name = "uiComboBox1";
-            this.uiComboBox1.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.uiComboBox1.RectColor = System.Drawing.Color.DimGray;
-            this.uiComboBox1.Size = new System.Drawing.Size(125, 25);
-            this.uiComboBox1.SymbolSize = 24;
-            this.uiComboBox1.TabIndex = 3659;
-            this.uiComboBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiComboBox1.Watermark = "";
+            this.cbAlgorithm.DataSource = null;
+            this.cbAlgorithm.FillColor = System.Drawing.SystemColors.Control;
+            this.cbAlgorithm.Font = new System.Drawing.Font("맑은 고딕", 8F, System.Drawing.FontStyle.Bold);
+            this.cbAlgorithm.ForeColor = System.Drawing.Color.Black;
+            this.cbAlgorithm.ItemFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.cbAlgorithm.ItemForeColor = System.Drawing.Color.White;
+            this.cbAlgorithm.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.cbAlgorithm.Items.AddRange(new object[] {
+            "Pattern",
+            "Blob",
+            "Distance",
+            "EYE-D",
+            "Color",
+            "ColorEx",
+            "Condensor",
+            "Connector",
+            "Pin"});
+            this.cbAlgorithm.ItemSelectBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.cbAlgorithm.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.cbAlgorithm.Location = new System.Drawing.Point(374, 163);
+            this.cbAlgorithm.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbAlgorithm.MinimumSize = new System.Drawing.Size(63, 0);
+            this.cbAlgorithm.Name = "cbAlgorithm";
+            this.cbAlgorithm.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
+            this.cbAlgorithm.RectColor = System.Drawing.Color.DimGray;
+            this.cbAlgorithm.Size = new System.Drawing.Size(125, 25);
+            this.cbAlgorithm.SymbolSize = 24;
+            this.cbAlgorithm.TabIndex = 3659;
+            this.cbAlgorithm.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cbAlgorithm.Watermark = "";
             // 
             // tabPage15
             // 
@@ -7225,35 +12914,35 @@ namespace IntelligentFactory
             this.uiDataGridView5.AllowUserToDeleteRows = false;
             this.uiDataGridView5.AllowUserToResizeColumns = false;
             this.uiDataGridView5.AllowUserToResizeRows = false;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.White;
-            this.uiDataGridView5.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.White;
+            this.uiDataGridView5.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle18;
             this.uiDataGridView5.BackgroundColor = System.Drawing.Color.Silver;
             this.uiDataGridView5.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.SlateGray;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.SlateGray;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.uiDataGridView5.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.SlateGray;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.SlateGray;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.uiDataGridView5.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.uiDataGridView5.ColumnHeadersHeight = 20;
             this.uiDataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.uiDataGridView5.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn13,
             this.dataGridViewTextBoxColumn14});
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.SlateGray;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.uiDataGridView5.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.SlateGray;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.uiDataGridView5.DefaultCellStyle = dataGridViewCellStyle20;
             this.uiDataGridView5.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.uiDataGridView5.EnableHeadersVisualStyles = false;
             this.uiDataGridView5.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
@@ -7263,22 +12952,22 @@ namespace IntelligentFactory
             this.uiDataGridView5.Name = "uiDataGridView5";
             this.uiDataGridView5.ReadOnly = true;
             this.uiDataGridView5.RectColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.uiDataGridView5.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.uiDataGridView5.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.uiDataGridView5.RowHeadersVisible = false;
             this.uiDataGridView5.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.White;
-            this.uiDataGridView5.RowsDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.White;
+            this.uiDataGridView5.RowsDefaultCellStyle = dataGridViewCellStyle22;
             this.uiDataGridView5.RowTemplate.Height = 25;
             this.uiDataGridView5.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.uiDataGridView5.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
@@ -7469,92 +13158,38 @@ namespace IntelligentFactory
             this.metroContextMenu1.Name = "metroContextMenu1";
             this.metroContextMenu1.Size = new System.Drawing.Size(61, 4);
             // 
-            // No
+            // TrvLogic
             // 
-            this.No.HeaderText = "Location No";
-            this.No.MinimumWidth = 6;
-            this.No.Name = "No";
-            this.No.ReadOnly = true;
-            this.No.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.No.Width = 75;
-            // 
-            // gridLibraryName
-            // 
-            this.gridLibraryName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.gridLibraryName.HeaderText = "Enabled";
-            this.gridLibraryName.MinimumWidth = 6;
-            this.gridLibraryName.Name = "gridLibraryName";
-            this.gridLibraryName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridLibraryName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.gridLibraryName.Width = 68;
-            // 
-            // gridLibraryEnabled
-            // 
-            this.gridLibraryEnabled.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.gridLibraryEnabled.HeaderText = "Part Code";
-            this.gridLibraryEnabled.MinimumWidth = 6;
-            this.gridLibraryEnabled.Name = "gridLibraryEnabled";
-            this.gridLibraryEnabled.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridLibraryEnabled.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AllowUserToResizeColumns = false;
-            this.dataGridView2.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Yellow;
-            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.dataGridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridView2.ColumnHeadersHeight = 25;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewCheckBoxColumn3,
-            this.dataGridViewTextBoxColumn8,
-            this.Column4});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Yellow;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridView2.EnableHeadersVisualStyles = false;
-            this.dataGridView2.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.dataGridView2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dataGridView2.Location = new System.Drawing.Point(283, 361);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.dataGridView2.MultiSelect = false;
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(263, 390);
-            this.dataGridView2.TabIndex = 3682;
+            this.TrvLogic.BackColor = System.Drawing.Color.DimGray;
+            this.TrvLogic.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.TrvLogic.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.TrvLogic.ForeColor = System.Drawing.Color.White;
+            this.TrvLogic.Location = new System.Drawing.Point(552, 8);
+            this.TrvLogic.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TrvLogic.MinimumSize = new System.Drawing.Size(1, 1);
+            this.TrvLogic.Name = "TrvLogic";
+            treeNode1.Name = "노드0";
+            treeNode1.Text = "asdf";
+            treeNode2.Checked = true;
+            treeNode2.Name = "PreImage";
+            treeNode2.Text = "ImageProcessing";
+            treeNode3.Name = "Core";
+            treeNode3.Text = "Algorithm";
+            this.TrvLogic.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode2,
+            treeNode3});
+            this.TrvLogic.ScrollBarStyleInherited = false;
+            this.TrvLogic.ShowText = false;
+            this.TrvLogic.Size = new System.Drawing.Size(655, 214);
+            this.TrvLogic.TabIndex = 3684;
+            this.TrvLogic.Text = "uiTreeView1";
+            this.TrvLogic.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.HeaderText = "No";
             this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
             this.dataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewTextBoxColumn7.Width = 25;
             // 
@@ -7653,6 +13288,7 @@ namespace IntelligentFactory
             this.uiGroupBox14.PerformLayout();
             this.uiGroupBox13.ResumeLayout(false);
             this.uiGroupBox12.ResumeLayout(false);
+            this.uiGroupBox12.PerformLayout();
             this.tabPage10.ResumeLayout(false);
             this.uiTabControl6.ResumeLayout(false);
             this.tabPage12.ResumeLayout(false);
@@ -7678,21 +13314,115 @@ namespace IntelligentFactory
             this.uiGroupBox10.ResumeLayout(false);
             this.uiGroupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView1)).EndInit();
-            this.tabPage18.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
+            this.uiTabControl4.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
-            this.tabPage7.ResumeLayout(false);
-            this.tabPage8.ResumeLayout(false);
-            this.tabPage9.ResumeLayout(false);
+            this.uiTabControlMenu1.ResumeLayout(false);
             this.tabPage11.ResumeLayout(false);
+            this.panel14.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cogDisplay_JobPattern)).EndInit();
+            this.tabPage18.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.CogDisplay_FinMatchingTemplateImg)).EndInit();
+            this.panel15.ResumeLayout(false);
             this.tabPage19.ResumeLayout(false);
-            this.tabPage20.ResumeLayout(false);
+            this.tabPage19.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericDistanceSamplingCount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericDistanceThickness)).EndInit();
+            this.tabPage26.ResumeLayout(false);
+            this.tabPage26.PerformLayout();
+            this.panel17.ResumeLayout(false);
+            this.panel17.PerformLayout();
+            this.panel56.ResumeLayout(false);
+            this.panel56.PerformLayout();
+            this.panel57.ResumeLayout(false);
+            this.panel57.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            this.panel40.ResumeLayout(false);
+            this.panel40.PerformLayout();
+            this.panel41.ResumeLayout(false);
+            this.panel41.PerformLayout();
+            this.panel35.ResumeLayout(false);
+            this.panel35.PerformLayout();
+            this.panel36.ResumeLayout(false);
+            this.panel36.PerformLayout();
+            this.panel32.ResumeLayout(false);
+            this.panel32.PerformLayout();
+            this.panel33.ResumeLayout(false);
+            this.panel33.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            this.panel28.ResumeLayout(false);
+            this.panel28.PerformLayout();
+            this.panel29.ResumeLayout(false);
+            this.panel29.PerformLayout();
+            this.panel24.ResumeLayout(false);
+            this.panel24.PerformLayout();
+            this.panel25.ResumeLayout(false);
+            this.panel25.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericEyeDOkCount)).EndInit();
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
+            this.panel20.ResumeLayout(false);
+            this.panel20.PerformLayout();
+            this.panel30.ResumeLayout(false);
+            this.panel30.PerformLayout();
+            this.panel31.ResumeLayout(false);
+            this.panel31.PerformLayout();
+            this.tabPage27.ResumeLayout(false);
+            this.panel43.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.tableLayoutPanel8.ResumeLayout(false);
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.panel23.ResumeLayout(false);
+            this.panel19.ResumeLayout(false);
+            this.tabPage28.ResumeLayout(false);
+            this.tabPage28.PerformLayout();
+            this.panel64.ResumeLayout(false);
+            this.panel64.PerformLayout();
+            this.tabPage29.ResumeLayout(false);
+            this.tabPage29.PerformLayout();
+            this.panel13.ResumeLayout(false);
+            this.tabPage30.ResumeLayout(false);
+            this.tabPage30.PerformLayout();
+            this.panel62.ResumeLayout(false);
+            this.panel61.ResumeLayout(false);
+            this.panel58.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cogDisplay_Connector)).EndInit();
+            this.tabPage31.ResumeLayout(false);
+            this.tabPage31.PerformLayout();
+            this.panel63.ResumeLayout(false);
+            this.panel63.PerformLayout();
+            this.panel55.ResumeLayout(false);
+            this.panel53.ResumeLayout(false);
+            this.panel53.PerformLayout();
+            this.panel54.ResumeLayout(false);
+            this.panel54.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nb_Pin_Threshold)).EndInit();
+            this.panel47.ResumeLayout(false);
+            this.panel47.PerformLayout();
+            this.panel48.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nb_Pin_SpecRoi_Height)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nb_Pin_SpecRoi_Width)).EndInit();
+            this.panel42.ResumeLayout(false);
+            this.panel42.PerformLayout();
+            this.panel44.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nb_Pin_AreaMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nb_Pin_AreaMin)).EndInit();
+            this.panel59.ResumeLayout(false);
+            this.panel59.PerformLayout();
+            this.panel60.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nb_Pin_OkCount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvLogicList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvJobList)).EndInit();
             this.tabPage15.ResumeLayout(false);
             this.uiTabControl7.ResumeLayout(false);
             this.tabPage16.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -7766,9 +13496,8 @@ namespace IntelligentFactory
         private Sunny.UI.UITabControl uiTabControl2;
         private TabPage tabPage3;
         private Sunny.UI.UIGroupBox uiGroupBox12;
-        private Sunny.UI.UISymbolButton uiSymbolButton9;
-        private Sunny.UI.UITextBox uiTextBox7;
-        private Sunny.UI.UITextBox uiTextBox8;
+        private Sunny.UI.UITextBox tbPixelSize;
+        private Sunny.UI.UITextBox tbMasterWidth;
         private Label label34;
         private Label label35;
         private TabPage tabPage10;
@@ -7776,11 +13505,11 @@ namespace IntelligentFactory
         private Sunny.UI.UITextBox uiTextBox41;
         private Label label67;
         private Sunny.UI.UILine uiLine17;
-        private Label label55;
-        private Label label39;
-        private Sunny.UI.UISymbolButton uiSymbolButton15;
-        private Sunny.UI.UISymbolButton uiSymbolButton16;
-        private Sunny.UI.UITextBox uiTextBox14;
+        private Label lbCurrentFocusValue;
+        private Label lbBestFocusValue;
+        private Sunny.UI.UISymbolButton btnIQStop;
+        private Sunny.UI.UISymbolButton btnIQStart;
+        private Sunny.UI.UITextBox tbMasterHeight;
         private Label label38;
         private Sunny.UI.UISymbolButton uiSymbolButton18;
         private Sunny.UI.UISymbolButton uiSymbolButton19;
@@ -7910,8 +13639,6 @@ namespace IntelligentFactory
         private Sunny.UI.UISymbolButton uiSymbolButton5;
         private Sunny.UI.UISymbolButton uiSymbolButton7;
         private Sunny.UI.UISymbolButton uiSymbolButton8;
-        private Sunny.UI.UITabControl uiTabControl3;
-        private TabPage tabPage4;
         private Sunny.UI.UISymbolButton uiSymbolButton56;
         private Sunny.UI.UISymbolButton uiSymbolButton46;
         private Sunny.UI.UISymbolButton uiSymbolButton45;
@@ -7941,24 +13668,49 @@ namespace IntelligentFactory
         private Sunny.UI.UISymbolButton uiSymbolButton58;
         private Sunny.UI.UIButton uiButton9;
         private Sunny.UI.UIComboBox uiComboBox2;
-        private Sunny.UI.UISymbolButton uiSymbolButton39;
+        private Sunny.UI.UISymbolButton BtnSettingLogic;
         private Label label18;
-        private Sunny.UI.UITextBox uiTextBox10;
+        private Sunny.UI.UITextBox tbLogicName;
         private Label label19;
-        private Sunny.UI.UIComboBox uiComboBox1;
+        private Sunny.UI.UIComboBox cbAlgorithm;
         private Sunny.UI.UILine uiLine25;
         private Sunny.UI.UISymbolButton uiSymbolButton59;
-        private TabPage tabPage5;
-        private TabPage tabPage6;
         private Sunny.UI.UISymbolButton uiSymbolButton63;
         private Label label25;
         private Label label24;
         private CheckBox checkBox8;
         private Sunny.UI.UISymbolButton uiSymbolButton60;
         private Sunny.UI.UISymbolButton uiSymbolButton61;
-        private Sunny.UI.UISymbolButton uiSymbolButton62;
+        private Sunny.UI.UISymbolButton BtnLogicAdd;
         private Label label7;
-        private Label label8;
+        private Label label89;
+        private Sunny.UI.UIComboBox CbTriggerMode;
+        private Sunny.UI.UISymbolButton uiSymbolButton28;
+        private MetroFramework.Controls.MetroContextMenu metroContextMenu1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewCheckBoxColumn Column2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private DataGridViewTextBoxColumn No;
+        private DataGridViewCheckBoxColumn gridLibraryName;
+        private DataGridViewTextBoxColumn gridLibraryEnabled;
+        public DataGridView DgvLogicList;
+        private Sunny.UI.UITabControl uiTabControl3;
+        private TabPage tabPage4;
+        private Label label90;
+        private Label label76;
+        private Cognex.VisionPro.Display.CogDisplay cogDisplay7;
+        private Cognex.VisionPro.Display.CogDisplay cogDisplay8;
+        private Cognex.VisionPro.Display.CogDisplay cogDisplay9;
+        private Cognex.VisionPro.Display.CogDisplay cogDisplay10;
+        private Cognex.VisionPro.Display.CogDisplay cogDisplay11;
+        private Sunny.UI.UIButton uiButton10;
+        private Sunny.UI.UIButton uiButton11;
+        private Sunny.UI.UIButton uiButton13;
+        private Sunny.UI.UIButton uiButton14;
+        private Sunny.UI.UIButton uiButton15;
+        private Label label32;
+        private Sunny.UI.UILine uiLine23;
         private Sunny.UI.UIGroupBox uiGroupBox2;
         private Label label29;
         private Label label30;
@@ -7969,6 +13721,7 @@ namespace IntelligentFactory
         private Sunny.UI.UITrackBar trackbarThresholdMin;
         private Sunny.UI.UIRadioButton uiRadioButton1;
         private Sunny.UI.UIRadioButton uiRadioButton2;
+        private Label label8;
         private Sunny.UI.UIGroupBox uiGroupBox10;
         private Sunny.UI.UISymbolButton btnChannelSplit;
         private Label label9;
@@ -7997,59 +13750,346 @@ namespace IntelligentFactory
         private Sunny.UI.UISymbolButton btnPreProcessRun_One;
         private Sunny.UI.UISymbolButton btnPreProcessDel;
         private Sunny.UI.UISymbolButton btnPreProcessAdd;
-        private Cognex.VisionPro.Display.CogDisplay cogDisplay7;
-        private Cognex.VisionPro.Display.CogDisplay cogDisplay8;
-        private Cognex.VisionPro.Display.CogDisplay cogDisplay9;
-        private Cognex.VisionPro.Display.CogDisplay cogDisplay10;
-        private Cognex.VisionPro.Display.CogDisplay cogDisplay11;
-        private Sunny.UI.UIButton uiButton10;
-        private Sunny.UI.UIButton uiButton11;
-        private Sunny.UI.UIButton uiButton13;
-        private Sunny.UI.UIButton uiButton14;
-        private Sunny.UI.UIButton uiButton15;
-        private Label label32;
-        private Sunny.UI.UILine uiLine23;
-        private Label label65;
-        private Label label69;
+        private TabPage tabPage5;
+        private Sunny.UI.UITabControl uiTabControl4;
         private TabPage tabPage7;
-        private Label label70;
         private TabPage tabPage8;
-        private Label label71;
         private TabPage tabPage9;
-        private Label label72;
+        private TabPage tabPage6;
+        private Sunny.UI.UITabControlMenu uiTabControlMenu1;
         private TabPage tabPage11;
-        private Label label73;
-        private Label label76;
+        private Sunny.UI.UITextBox tbJobPattern_AcceptScore;
+        private Sunny.UI.UITextBox tbJobPattern_MinScore;
+        private Sunny.UI.UITextBox tbPatternMasterCount;
+        private Label label137;
+        private Label lblDetectedPatternCount;
+        private Sunny.UI.UISymbolButton btnJobPatternDelete;
+        private MetroFramework.Controls.MetroComboBox comboJobPattern_PatternType;
+        private Label lblTrained;
+        private Label label100;
+        private Label label69;
+        private Sunny.UI.UISymbolButton uiSymbolButton12;
+        private Label label70;
+        private Label label71;
+        private Sunny.UI.UISymbolButton btnJobPattern_Roi;
+        private Sunny.UI.UISymbolButton btnJobPattern_Train;
+        private Sunny.UI.UISymbolButton btnJobPattern_Find;
+        private Label label110;
+        private Panel panel14;
+        internal Cognex.VisionPro.Display.CogDisplay cogDisplay_JobPattern;
+        private Label label65;
         private TabPage tabPage18;
-        private Label label77;
-        private Label label74;
-        private Label label78;
-        private Label label79;
-        private Label label75;
+        private Sunny.UI.UITextBox txt_PinMatchingScoreMin;
+        private Sunny.UI.UITextBox txtBlobThreshold;
+        private Sunny.UI.UITextBox tbAreaMax;
+        private Sunny.UI.UITextBox tbAreaMin;
+        private Button btnGetBlobPos;
+        private Sunny.UI.UISymbolButton btnJobBlob_Roi;
+        internal Cognex.VisionPro.Display.CogDisplay CogDisplay_FinMatchingTemplateImg;
+        private Sunny.UI.UISymbolButton uiSymbolButton29;
         private Label label83;
         private Label label82;
+        private Label label72;
+        private Label label73;
+        private Label label86;
+        private Sunny.UI.UISymbolButton uiSymbolButton32;
+        private Label label88;
+        private Panel panel15;
+        private Label label118;
+        private Sunny.UI.UISymbolButton uiSymbolButton33;
+        private Sunny.UI.UISymbolButton uiSymbolButton64;
+        private Sunny.UI.UISymbolButton uiSymbolButton65;
+        private Button btnJobBlobInsp;
+        private TabPage tabPage19;
+        private Sunny.UI.UITextBox tbYMaxValue;
+        private Sunny.UI.UITextBox tbYMinValue;
+        private Sunny.UI.UITextBox tbXMaxValue;
+        private Sunny.UI.UITextBox tbXMinValue;
+        private Sunny.UI.UITextBox tbAngleMaxValue;
+        private Sunny.UI.UITextBox tbAngleMinValue;
+        private Sunny.UI.UITextBox tbLineEdgeContrast;
+        private Sunny.UI.UISymbolButton btnDistanceDetail;
+        private NumericUpDown numericDistanceSamplingCount;
+        private NumericUpDown numericDistanceThickness;
+        private Label label74;
+        private Label label75;
+        private CheckBox cbYValue;
+        private CheckBox cbXValue;
+        private CheckBox cbAngle;
+        private Label label117;
+        private Label label111;
+        private Label label112;
+        private Label label113;
+        private Label label106;
+        private Label label107;
+        private Label label109;
+        private Label label77;
+        private Label label78;
+        private Label label79;
+        private Sunny.UI.UISymbolButton btnJobDistanceInsp;
+        private Sunny.UI.UISymbolButton btnJobDistance_Roi;
+        private Sunny.UI.UISymbolButton uiSymbolButton66;
+        private MetroFramework.Controls.MetroComboBox comboLineEdgePolarity;
         private Label label80;
+        private MetroFramework.Controls.MetroComboBox comboLineEdgeScorer;
         private Label label81;
         private Label label84;
-        private TabPage tabPage19;
-        private Label label86;
+        private TabPage tabPage26;
+        private Sunny.UI.UISymbolButton btnEyeD_ColorExInsp;
+        private Sunny.UI.UISymbolButton btnEyeD_ColorSetting;
+        private CheckBox chkEyeD_UseColor;
         private Label label85;
-        private TabPage tabPage20;
-        private Label label88;
+        private Sunny.UI.UISymbolButton btnEyeD_DistSetting;
+        private Sunny.UI.UISymbolButton btnJobEyeD_DistanceInsp;
+        private CheckBox chkEyeD_UseDist;
+        private Label label131;
         private Label label87;
-        private Label label89;
-        private Sunny.UI.UIComboBox CbTriggerMode;
-        private Sunny.UI.UISymbolButton uiSymbolButton28;
-        private Label label90;
-        private MetroFramework.Controls.MetroContextMenu metroContextMenu1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewCheckBoxColumn Column2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private DataGridViewTextBoxColumn No;
-        private DataGridViewCheckBoxColumn gridLibraryName;
-        private DataGridViewTextBoxColumn gridLibraryEnabled;
-        public DataGridView dataGridView2;
+        private Panel panel17;
+        private Panel panel56;
+        private CheckBox checkBox59;
+        private Label label147;
+        private Panel panel57;
+        private NumericUpDown numericUpDown1;
+        private Label label150;
+        private NumericUpDown numericUpDown2;
+        private CheckBox checkBox55;
+        private CheckBox checkBox56;
+        private CheckBox checkBox57;
+        private CheckBox checkBox58;
+        private CheckBox chkJobEyeD_UseSpecRegion;
+        private Label label148;
+        private Panel panel40;
+        private Label label91;
+        private Panel panel41;
+        private MetroFramework.Controls.MetroComboBox cbRotateImageAngle;
+        private CheckBox checkBox26;
+        private CheckBox checkBox27;
+        private CheckBox checkBox47;
+        private CheckBox checkBox48;
+        private Panel panel35;
+        private Label label92;
+        private Panel panel36;
+        private Sunny.UI.UITextBox txtEyeDMaxCount;
+        private CheckBox checkBox22;
+        private CheckBox checkBox23;
+        private CheckBox checkBox24;
+        private CheckBox checkBox25;
+        private Panel panel32;
+        private Label label93;
+        private Panel panel33;
+        private Label lblEyeDResult;
+        private CheckBox checkBox38;
+        private CheckBox checkBox39;
+        private CheckBox checkBox40;
+        private CheckBox checkBox45;
+        private Panel panel10;
+        private Label label129;
+        private Panel panel11;
+        private Sunny.UI.UITextBox txtEyeDCorrectAnswer;
+        private CheckBox checkBox9;
+        private CheckBox checkBox19;
+        private CheckBox checkBox20;
+        private CheckBox checkBox21;
+        private Panel panel28;
+        private Label label128;
+        private Panel panel29;
+        private Sunny.UI.UITextBox txtEyeDMinScore;
+        private CheckBox checkBox34;
+        private CheckBox checkBox35;
+        private CheckBox checkBox36;
+        private CheckBox checkBox37;
+        private Sunny.UI.UISymbolButton btnJobEyeD_Roi;
+        private Sunny.UI.UISymbolButton btnjobEyeDFind;
+        private Panel panel24;
+        private Label label126;
+        private Panel panel25;
+        private CheckBox checkBox28;
+        private CheckBox checkBox31;
+        private NumericUpDown numericEyeDOkCount;
+        private CheckBox checkBox32;
+        private CheckBox checkBox33;
+        private Panel panel18;
+        private Label label125;
+        private Panel panel20;
+        private MetroFramework.Controls.MetroComboBox comboEyeDInferType;
+        private CheckBox checkBox11;
+        private CheckBox checkBox16;
+        private CheckBox checkBox29;
+        private CheckBox checkBox30;
+        private Panel panel30;
+        private Label label127;
+        private Panel panel31;
+        private Button btnGetEyeDModelNames;
+        private MetroFramework.Controls.MetroComboBox comboEyeDModelName;
+        private CheckBox checkBox41;
+        private CheckBox checkBox42;
+        private CheckBox checkBox43;
+        private CheckBox checkBox44;
+        private TabPage tabPage27;
+        private Sunny.UI.UITextBox lbColorMaxArea;
+        private Sunny.UI.UITextBox lbColorMinArea;
+        private Label label94;
+        private Label label95;
+        private Label label96;
+        private Panel panel43;
+        private Label lbThreshold_Color;
+        private MetroFramework.Controls.MetroTrackBar trbThreshold_Color;
+        private Label label97;
+        private TableLayoutPanel tableLayoutPanel5;
+        private Label label98;
+        private Panel panel1;
+        private TableLayoutPanel tableLayoutPanel8;
+        private Label label99;
+        private Label lbJobColor_Area;
+        private Button btnJobColor_Insp;
+        private TableLayoutPanel tableLayoutPanel6;
+        private Label label101;
+        private TableLayoutPanel tableLayoutPanel7;
+        private Button btnJobColor_Roi;
+        private Button btnJobColor_AutoColor;
+        private Label lbExtractedColor2;
+        private Label lbExtractedColor;
+        private Panel panel23;
+        private MetroFramework.Controls.MetroComboBox cboColorAlg;
+        private Label label102;
+        private Panel panel19;
+        private MetroFramework.Controls.MetroComboBox cboColorCoordinate;
+        private Label label103;
+        private TabPage tabPage28;
+        private Panel panel64;
+        private Sunny.UI.UITextBox txtColorEx_B;
+        private Sunny.UI.UITextBox txtColorEx_G;
+        private Sunny.UI.UITextBox txtColorEx_R;
+        private Label label168;
+        private RadioButton radioColorEx_Range45;
+        private RadioButton radioColorEx_Range30;
+        private RadioButton radioColorEx_Range15;
+        private Label label171;
+        private Label label170;
+        private Label label169;
+        private CheckBox chkColorEx_SimpleMode;
+        private Label label167;
+        private Sunny.UI.UISymbolButton btnJobColorEx_Roi;
+        private Label lblJobColorEx_ResultColor;
+        private Button btnJobColorEx_Get;
+        private Label label130;
+        private Button button4;
+        private MetroFramework.Controls.MetroComboBox comboCorrectColorEx;
+        private Label label132;
+        private Sunny.UI.UISymbolButton uiSymbolButton67;
+        private Label label133;
+        private TabPage tabPage29;
+        private Sunny.UI.UITextBox tbIgnoreCount;
+        private Sunny.UI.UITextBox tbCircleThickness;
+        private Sunny.UI.UITextBox tbCircleContrast;
+        private Sunny.UI.UITextBox tbCondensorRectRadio;
+        private Sunny.UI.UITextBox tbCircleRectH;
+        private Sunny.UI.UITextBox tbCircleRectW;
+        private Sunny.UI.UISymbolButton btnJobCondensor_DistSetting;
+        private Sunny.UI.UISymbolButton btnJobCondensor_DistInsp;
+        private CheckBox chkCondensor_UseDist;
+        private Label label149;
+        private Sunny.UI.UISymbolButton btnCondensorAutoRegion;
+        private Label label104;
+        private MetroFramework.Controls.MetroComboBox comboCondensorPolarity;
+        private Label label105;
+        private Label label108;
+        private Label label114;
+        private Label label115;
+        private Sunny.UI.UISymbolButton btnJobCondensor_Inspection;
+        private Label label116;
+        private Panel panel13;
+        private Sunny.UI.UIRadioButton radioCondensorTB;
+        private Sunny.UI.UIRadioButton radioCondensorLR;
+        private Label label119;
+        private Label label120;
+        private Sunny.UI.UISymbolButton btnJobCondensor_Roi;
+        private Sunny.UI.UISymbolButton uiSymbolButton68;
+        private TabPage tabPage30;
+        private Sunny.UI.UITextBox txtJobConnector_OKArea;
+        private Label label163;
+        private Panel panel62;
+        private Sunny.UI.UIRadioButton radioJobConnector_AreaRB;
+        private Sunny.UI.UIRadioButton radioJobConnector_AreaLT;
+        private Sunny.UI.UISymbolButton uiSymbolButton69;
+        private Sunny.UI.UISymbolButton btnJobConnector_Projection;
+        private Label label162;
+        private Sunny.UI.UITextBox txtJobConnector_AreaMax;
+        private Sunny.UI.UITextBox txtJobConnector_AreaMin;
+        private Label label161;
+        private Label label155;
+        private Sunny.UI.UITextBox txtJobConnector_BoxHeight;
+        private Label label160;
+        private Sunny.UI.UITextBox txtJobConnector_BoxWidth;
+        private CheckBox chkJobConnector_BinInv;
+        private Label label157;
+        private Sunny.UI.UITextBox txtJobConnector_Threshold;
+        private Label label159;
+        private Label label158;
+        private CheckBox checkBox60;
+        private Sunny.UI.UISymbolButton uiSymbolButton70;
+        private Label label154;
+        private Button button1;
+        private Button button2;
+        private MetroFramework.Controls.MetroComboBox metroComboBox3;
+        private Label label152;
+        private Label label156;
+        private Sunny.UI.UITextBox txtJobConnector_Score;
+        private Label label151;
+        private Panel panel61;
+        private Sunny.UI.UIRadioButton radioJobConnector_TB;
+        private Sunny.UI.UIRadioButton radioJobConnector_LR;
+        private Label label153;
+        private Panel panel58;
+        internal Cognex.VisionPro.Display.CogDisplay cogDisplay_Connector;
+        private Label label165;
+        private Sunny.UI.UISymbolButton btnJobConnector_Roi;
+        private Sunny.UI.UISymbolButton btnJobConnector_Train;
+        private Sunny.UI.UISymbolButton btnJobConnector_Find;
+        private Label label164;
+        private TabPage tabPage31;
+        private Panel panel63;
+        private Label lblJobPin_MeasColor;
+        private Label lblJobPin_ShapeColor;
+        private CheckBox chkJobPin_UseColorMatching;
+        private Label label166;
+        private CheckBox chk_BlobPos_UseAlign;
+        private Panel panel55;
+        private Label label145;
+        private Sunny.UI.UISymbolButton btnJobPin_Master;
+        private Panel panel53;
+        private Label label144;
+        private Panel panel54;
+        private CheckBox chk_Pin_BinaryInv;
+        private NumericUpDown nb_Pin_Threshold;
+        private CheckBox checkBox53;
+        private CheckBox checkBox54;
+        private Panel panel47;
+        private Label label142;
+        private Panel panel48;
+        private NumericUpDown nb_Pin_SpecRoi_Height;
+        private Label label143;
+        private NumericUpDown nb_Pin_SpecRoi_Width;
+        private CheckBox checkBox51;
+        private CheckBox checkBox52;
+        private Panel panel42;
+        private Label label139;
+        private Panel panel44;
+        private NumericUpDown nb_Pin_AreaMax;
+        private Label label141;
+        private NumericUpDown nb_Pin_AreaMin;
+        private CheckBox checkBox49;
+        private CheckBox checkBox50;
+        private Sunny.UI.UISymbolButton btnJobPin_Roi;
+        private Sunny.UI.UISymbolButton btnJobPin_Find;
+        private Panel panel59;
+        private Label label146;
+        private Panel panel60;
+        private NumericUpDown nb_Pin_OkCount;
+        private CheckBox checkBox71;
+        private CheckBox checkBox72;
+        private CheckBox cbIQContinuous;
+        private Sunny.UI.UITreeView TrvLogic;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;

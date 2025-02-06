@@ -25,6 +25,12 @@ namespace IntelligentFactory
         [CategoryAttribute("Tool"), DescriptionAttribute(""), DisplayNameAttribute("Tool Path (Sub2)")]
         public string ToolSub2_Path { get; set; } = "";
 
+        [CategoryAttribute("Tool"), DescriptionAttribute(""), DisplayNameAttribute("Tool Path (Sub3)")]
+        public string ToolSub3_Path { get; set; } = "";
+
+        [CategoryAttribute("Tool"), DescriptionAttribute(""), DisplayNameAttribute("Tool Path (Sub4)")]
+        public string ToolSub4_Path { get; set; } = "";
+
         [Newtonsoft.Json.JsonIgnore]
         public CogPMAlignTool ToolMain { get; set; } = null;
 
@@ -33,6 +39,12 @@ namespace IntelligentFactory
 
         [Newtonsoft.Json.JsonIgnore]
         public CogPMAlignTool ToolSub2 { get; set; } = null;
+
+        [Newtonsoft.Json.JsonIgnore]
+        public CogPMAlignTool ToolSub3 { get; set; } = null;
+
+        [Newtonsoft.Json.JsonIgnore]
+        public CogPMAlignTool ToolSub4 { get; set; } = null;
 
         public override IF_VisionParamObject Clone()
         {
