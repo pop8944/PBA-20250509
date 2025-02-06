@@ -40,6 +40,10 @@ namespace IntelligentFactory
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("asdf");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("ImageProcessing", new System.Windows.Forms.TreeNode[] {
+            treeNode1});
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Algorithm");
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -57,10 +61,6 @@ namespace IntelligentFactory
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("asdf");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("ImageProcessing", new System.Windows.Forms.TreeNode[] {
-            treeNode1});
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Algorithm");
             this.timerStatus = new System.Windows.Forms.Timer(this.components);
             this.pnlCogDisplay = new System.Windows.Forms.Panel();
             this.DispMain = new Cognex.VisionPro.Display.CogDisplay();
@@ -268,6 +268,7 @@ namespace IntelligentFactory
             this.label68 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage14 = new System.Windows.Forms.TabPage();
+            this.TrvLogic = new Sunny.UI.UITreeView();
             this.label7 = new System.Windows.Forms.Label();
             this.uiTabControl3 = new Sunny.UI.UITabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -409,96 +410,6 @@ namespace IntelligentFactory
             this.label81 = new System.Windows.Forms.Label();
             this.label84 = new System.Windows.Forms.Label();
             this.tabPage26 = new System.Windows.Forms.TabPage();
-            this.btnEyeD_ColorExInsp = new Sunny.UI.UISymbolButton();
-            this.btnEyeD_ColorSetting = new Sunny.UI.UISymbolButton();
-            this.chkEyeD_UseColor = new System.Windows.Forms.CheckBox();
-            this.label85 = new System.Windows.Forms.Label();
-            this.btnEyeD_DistSetting = new Sunny.UI.UISymbolButton();
-            this.btnJobEyeD_DistanceInsp = new Sunny.UI.UISymbolButton();
-            this.chkEyeD_UseDist = new System.Windows.Forms.CheckBox();
-            this.label131 = new System.Windows.Forms.Label();
-            this.label87 = new System.Windows.Forms.Label();
-            this.panel17 = new System.Windows.Forms.Panel();
-            this.panel56 = new System.Windows.Forms.Panel();
-            this.checkBox59 = new System.Windows.Forms.CheckBox();
-            this.label147 = new System.Windows.Forms.Label();
-            this.panel57 = new System.Windows.Forms.Panel();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label150 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.checkBox55 = new System.Windows.Forms.CheckBox();
-            this.checkBox56 = new System.Windows.Forms.CheckBox();
-            this.checkBox57 = new System.Windows.Forms.CheckBox();
-            this.checkBox58 = new System.Windows.Forms.CheckBox();
-            this.chkJobEyeD_UseSpecRegion = new System.Windows.Forms.CheckBox();
-            this.label148 = new System.Windows.Forms.Label();
-            this.panel40 = new System.Windows.Forms.Panel();
-            this.label91 = new System.Windows.Forms.Label();
-            this.panel41 = new System.Windows.Forms.Panel();
-            this.cbRotateImageAngle = new MetroFramework.Controls.MetroComboBox();
-            this.checkBox26 = new System.Windows.Forms.CheckBox();
-            this.checkBox27 = new System.Windows.Forms.CheckBox();
-            this.checkBox47 = new System.Windows.Forms.CheckBox();
-            this.checkBox48 = new System.Windows.Forms.CheckBox();
-            this.panel35 = new System.Windows.Forms.Panel();
-            this.label92 = new System.Windows.Forms.Label();
-            this.panel36 = new System.Windows.Forms.Panel();
-            this.txtEyeDMaxCount = new Sunny.UI.UITextBox();
-            this.checkBox22 = new System.Windows.Forms.CheckBox();
-            this.checkBox23 = new System.Windows.Forms.CheckBox();
-            this.checkBox24 = new System.Windows.Forms.CheckBox();
-            this.checkBox25 = new System.Windows.Forms.CheckBox();
-            this.panel32 = new System.Windows.Forms.Panel();
-            this.label93 = new System.Windows.Forms.Label();
-            this.panel33 = new System.Windows.Forms.Panel();
-            this.lblEyeDResult = new System.Windows.Forms.Label();
-            this.checkBox38 = new System.Windows.Forms.CheckBox();
-            this.checkBox39 = new System.Windows.Forms.CheckBox();
-            this.checkBox40 = new System.Windows.Forms.CheckBox();
-            this.checkBox45 = new System.Windows.Forms.CheckBox();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.label129 = new System.Windows.Forms.Label();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.txtEyeDCorrectAnswer = new Sunny.UI.UITextBox();
-            this.checkBox9 = new System.Windows.Forms.CheckBox();
-            this.checkBox19 = new System.Windows.Forms.CheckBox();
-            this.checkBox20 = new System.Windows.Forms.CheckBox();
-            this.checkBox21 = new System.Windows.Forms.CheckBox();
-            this.panel28 = new System.Windows.Forms.Panel();
-            this.label128 = new System.Windows.Forms.Label();
-            this.panel29 = new System.Windows.Forms.Panel();
-            this.txtEyeDMinScore = new Sunny.UI.UITextBox();
-            this.checkBox34 = new System.Windows.Forms.CheckBox();
-            this.checkBox35 = new System.Windows.Forms.CheckBox();
-            this.checkBox36 = new System.Windows.Forms.CheckBox();
-            this.checkBox37 = new System.Windows.Forms.CheckBox();
-            this.btnJobEyeD_Roi = new Sunny.UI.UISymbolButton();
-            this.btnjobEyeDFind = new Sunny.UI.UISymbolButton();
-            this.panel24 = new System.Windows.Forms.Panel();
-            this.label126 = new System.Windows.Forms.Label();
-            this.panel25 = new System.Windows.Forms.Panel();
-            this.checkBox28 = new System.Windows.Forms.CheckBox();
-            this.checkBox31 = new System.Windows.Forms.CheckBox();
-            this.numericEyeDOkCount = new System.Windows.Forms.NumericUpDown();
-            this.checkBox32 = new System.Windows.Forms.CheckBox();
-            this.checkBox33 = new System.Windows.Forms.CheckBox();
-            this.panel18 = new System.Windows.Forms.Panel();
-            this.label125 = new System.Windows.Forms.Label();
-            this.panel20 = new System.Windows.Forms.Panel();
-            this.comboEyeDInferType = new MetroFramework.Controls.MetroComboBox();
-            this.checkBox11 = new System.Windows.Forms.CheckBox();
-            this.checkBox16 = new System.Windows.Forms.CheckBox();
-            this.checkBox29 = new System.Windows.Forms.CheckBox();
-            this.checkBox30 = new System.Windows.Forms.CheckBox();
-            this.panel30 = new System.Windows.Forms.Panel();
-            this.label127 = new System.Windows.Forms.Label();
-            this.panel31 = new System.Windows.Forms.Panel();
-            this.btnGetEyeDModelNames = new System.Windows.Forms.Button();
-            this.comboEyeDModelName = new MetroFramework.Controls.MetroComboBox();
-            this.checkBox41 = new System.Windows.Forms.CheckBox();
-            this.checkBox42 = new System.Windows.Forms.CheckBox();
-            this.checkBox43 = new System.Windows.Forms.CheckBox();
-            this.checkBox44 = new System.Windows.Forms.CheckBox();
             this.tabPage27 = new System.Windows.Forms.TabPage();
             this.lbColorMaxArea = new Sunny.UI.UITextBox();
             this.lbColorMinArea = new Sunny.UI.UITextBox();
@@ -664,6 +575,10 @@ namespace IntelligentFactory
             this.checkBox72 = new System.Windows.Forms.CheckBox();
             this.label25 = new System.Windows.Forms.Label();
             this.DgvLogicList = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uiSymbolButton63 = new Sunny.UI.UISymbolButton();
             this.label24 = new System.Windows.Forms.Label();
             this.checkBox8 = new System.Windows.Forms.CheckBox();
@@ -718,11 +633,21 @@ namespace IntelligentFactory
             this.uiSymbolButton7 = new Sunny.UI.UISymbolButton();
             this.uiSymbolButton8 = new Sunny.UI.UISymbolButton();
             this.metroContextMenu1 = new MetroFramework.Controls.MetroContextMenu(this.components);
-            this.TrvLogic = new Sunny.UI.UITreeView();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label39 = new System.Windows.Forms.Label();
+            this.TbOnnxPath = new Sunny.UI.UITextBox();
+            this.BtnOpenOnnx = new Sunny.UI.UISymbolButton();
+            this.label55 = new System.Windows.Forms.Label();
+            this.TbThresholdEYED = new Sunny.UI.UITextBox();
+            this.label85 = new System.Windows.Forms.Label();
+            this.CbRotateImageEYED = new Sunny.UI.UIComboBox();
+            this.BtnRoiEYED = new Sunny.UI.UISymbolButton();
+            this.BtnFindEYED = new Sunny.UI.UISymbolButton();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.ChkSpecRegionEYED = new System.Windows.Forms.CheckBox();
+            this.label87 = new System.Windows.Forms.Label();
+            this.LblResultEYED = new System.Windows.Forms.Label();
             this.pnlCogDisplay.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DispMain)).BeginInit();
             this.uiPanel3.SuspendLayout();
@@ -776,28 +701,6 @@ namespace IntelligentFactory
             ((System.ComponentModel.ISupportInitialize)(this.numericDistanceSamplingCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericDistanceThickness)).BeginInit();
             this.tabPage26.SuspendLayout();
-            this.panel17.SuspendLayout();
-            this.panel56.SuspendLayout();
-            this.panel57.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            this.panel40.SuspendLayout();
-            this.panel41.SuspendLayout();
-            this.panel35.SuspendLayout();
-            this.panel36.SuspendLayout();
-            this.panel32.SuspendLayout();
-            this.panel33.SuspendLayout();
-            this.panel10.SuspendLayout();
-            this.panel11.SuspendLayout();
-            this.panel28.SuspendLayout();
-            this.panel29.SuspendLayout();
-            this.panel24.SuspendLayout();
-            this.panel25.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericEyeDOkCount)).BeginInit();
-            this.panel18.SuspendLayout();
-            this.panel20.SuspendLayout();
-            this.panel30.SuspendLayout();
-            this.panel31.SuspendLayout();
             this.tabPage27.SuspendLayout();
             this.panel43.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -839,6 +742,9 @@ namespace IntelligentFactory
             this.uiTabControl7.SuspendLayout();
             this.tabPage16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView5)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // timerStatus
@@ -5359,6 +5265,33 @@ namespace IntelligentFactory
             this.tabPage14.Text = "03. JOB";
             this.tabPage14.UseVisualStyleBackColor = true;
             // 
+            // TrvLogic
+            // 
+            this.TrvLogic.BackColor = System.Drawing.Color.DimGray;
+            this.TrvLogic.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.TrvLogic.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.TrvLogic.ForeColor = System.Drawing.Color.White;
+            this.TrvLogic.Location = new System.Drawing.Point(552, 8);
+            this.TrvLogic.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TrvLogic.MinimumSize = new System.Drawing.Size(1, 1);
+            this.TrvLogic.Name = "TrvLogic";
+            treeNode1.Name = "노드0";
+            treeNode1.Text = "asdf";
+            treeNode2.Checked = true;
+            treeNode2.Name = "PreImage";
+            treeNode2.Text = "ImageProcessing";
+            treeNode3.Name = "Core";
+            treeNode3.Text = "Algorithm";
+            this.TrvLogic.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode2,
+            treeNode3});
+            this.TrvLogic.ScrollBarStyleInherited = false;
+            this.TrvLogic.ShowText = false;
+            this.TrvLogic.Size = new System.Drawing.Size(655, 214);
+            this.TrvLogic.TabIndex = 3684;
+            this.TrvLogic.Text = "uiTreeView1";
+            this.TrvLogic.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label7
             // 
             this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -6334,7 +6267,7 @@ namespace IntelligentFactory
             this.tabPage5.Controls.Add(this.uiTabControl4);
             this.tabPage5.Location = new System.Drawing.Point(0, 40);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(658, 510);
+            this.tabPage5.Size = new System.Drawing.Size(200, 60);
             this.tabPage5.TabIndex = 3;
             this.tabPage5.Text = "Pre";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -6376,7 +6309,7 @@ namespace IntelligentFactory
             // 
             this.tabPage8.Location = new System.Drawing.Point(0, 40);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(656, 451);
+            this.tabPage8.Size = new System.Drawing.Size(200, 60);
             this.tabPage8.TabIndex = 1;
             this.tabPage8.Text = "Morphology";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -6385,7 +6318,7 @@ namespace IntelligentFactory
             // 
             this.tabPage9.Location = new System.Drawing.Point(0, 40);
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Size = new System.Drawing.Size(656, 451);
+            this.tabPage9.Size = new System.Drawing.Size(200, 60);
             this.tabPage9.TabIndex = 2;
             this.tabPage9.Text = "Convolution";
             this.tabPage9.UseVisualStyleBackColor = true;
@@ -7863,1333 +7796,12 @@ namespace IntelligentFactory
             // tabPage26
             // 
             this.tabPage26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.tabPage26.Controls.Add(this.btnEyeD_ColorExInsp);
-            this.tabPage26.Controls.Add(this.btnEyeD_ColorSetting);
-            this.tabPage26.Controls.Add(this.chkEyeD_UseColor);
-            this.tabPage26.Controls.Add(this.label85);
-            this.tabPage26.Controls.Add(this.btnEyeD_DistSetting);
-            this.tabPage26.Controls.Add(this.btnJobEyeD_DistanceInsp);
-            this.tabPage26.Controls.Add(this.chkEyeD_UseDist);
-            this.tabPage26.Controls.Add(this.label131);
-            this.tabPage26.Controls.Add(this.label87);
-            this.tabPage26.Controls.Add(this.panel17);
+            this.tabPage26.Controls.Add(this.panel2);
             this.tabPage26.Location = new System.Drawing.Point(91, 0);
             this.tabPage26.Name = "tabPage26";
             this.tabPage26.Size = new System.Drawing.Size(564, 512);
             this.tabPage26.TabIndex = 3;
             this.tabPage26.Text = "EYE-D";
-            // 
-            // btnEyeD_ColorExInsp
-            // 
-            this.btnEyeD_ColorExInsp.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEyeD_ColorExInsp.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnEyeD_ColorExInsp.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnEyeD_ColorExInsp.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.btnEyeD_ColorExInsp.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnEyeD_ColorExInsp.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnEyeD_ColorExInsp.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEyeD_ColorExInsp.Location = new System.Drawing.Point(159, 475);
-            this.btnEyeD_ColorExInsp.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnEyeD_ColorExInsp.Name = "btnEyeD_ColorExInsp";
-            this.btnEyeD_ColorExInsp.RectColor = System.Drawing.Color.White;
-            this.btnEyeD_ColorExInsp.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.btnEyeD_ColorExInsp.RectPressColor = System.Drawing.Color.White;
-            this.btnEyeD_ColorExInsp.RectSelectedColor = System.Drawing.Color.White;
-            this.btnEyeD_ColorExInsp.Size = new System.Drawing.Size(140, 30);
-            this.btnEyeD_ColorExInsp.Style = Sunny.UI.UIStyle.Custom;
-            this.btnEyeD_ColorExInsp.StyleCustomMode = true;
-            this.btnEyeD_ColorExInsp.Symbol = 61515;
-            this.btnEyeD_ColorExInsp.SymbolOffset = new System.Drawing.Point(-10, 0);
-            this.btnEyeD_ColorExInsp.SymbolSize = 20;
-            this.btnEyeD_ColorExInsp.TabIndex = 3536;
-            this.btnEyeD_ColorExInsp.Text = "Inspection";
-            this.btnEyeD_ColorExInsp.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            // 
-            // btnEyeD_ColorSetting
-            // 
-            this.btnEyeD_ColorSetting.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEyeD_ColorSetting.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnEyeD_ColorSetting.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnEyeD_ColorSetting.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.btnEyeD_ColorSetting.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnEyeD_ColorSetting.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnEyeD_ColorSetting.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEyeD_ColorSetting.Location = new System.Drawing.Point(13, 475);
-            this.btnEyeD_ColorSetting.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnEyeD_ColorSetting.Name = "btnEyeD_ColorSetting";
-            this.btnEyeD_ColorSetting.RectColor = System.Drawing.Color.White;
-            this.btnEyeD_ColorSetting.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.btnEyeD_ColorSetting.RectPressColor = System.Drawing.Color.White;
-            this.btnEyeD_ColorSetting.RectSelectedColor = System.Drawing.Color.White;
-            this.btnEyeD_ColorSetting.Size = new System.Drawing.Size(140, 30);
-            this.btnEyeD_ColorSetting.Style = Sunny.UI.UIStyle.Custom;
-            this.btnEyeD_ColorSetting.StyleCustomMode = true;
-            this.btnEyeD_ColorSetting.Symbol = 61459;
-            this.btnEyeD_ColorSetting.SymbolOffset = new System.Drawing.Point(-10, 0);
-            this.btnEyeD_ColorSetting.SymbolSize = 20;
-            this.btnEyeD_ColorSetting.TabIndex = 3535;
-            this.btnEyeD_ColorSetting.Text = "Setting";
-            this.btnEyeD_ColorSetting.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            // 
-            // chkEyeD_UseColor
-            // 
-            this.chkEyeD_UseColor.AutoSize = true;
-            this.chkEyeD_UseColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.chkEyeD_UseColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkEyeD_UseColor.ForeColor = System.Drawing.Color.White;
-            this.chkEyeD_UseColor.Location = new System.Drawing.Point(5, 456);
-            this.chkEyeD_UseColor.Name = "chkEyeD_UseColor";
-            this.chkEyeD_UseColor.Size = new System.Drawing.Size(15, 14);
-            this.chkEyeD_UseColor.TabIndex = 3534;
-            this.chkEyeD_UseColor.UseVisualStyleBackColor = false;
-            // 
-            // label85
-            // 
-            this.label85.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.label85.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label85.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label85.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label85.ForeColor = System.Drawing.Color.White;
-            this.label85.Location = new System.Drawing.Point(1, 451);
-            this.label85.Name = "label85";
-            this.label85.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label85.Size = new System.Drawing.Size(308, 21);
-            this.label85.TabIndex = 3533;
-            this.label85.Text = "     Color Extract";
-            this.label85.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnEyeD_DistSetting
-            // 
-            this.btnEyeD_DistSetting.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEyeD_DistSetting.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnEyeD_DistSetting.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnEyeD_DistSetting.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.btnEyeD_DistSetting.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnEyeD_DistSetting.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnEyeD_DistSetting.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEyeD_DistSetting.Location = new System.Drawing.Point(13, 418);
-            this.btnEyeD_DistSetting.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnEyeD_DistSetting.Name = "btnEyeD_DistSetting";
-            this.btnEyeD_DistSetting.RectColor = System.Drawing.Color.White;
-            this.btnEyeD_DistSetting.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.btnEyeD_DistSetting.RectPressColor = System.Drawing.Color.White;
-            this.btnEyeD_DistSetting.RectSelectedColor = System.Drawing.Color.White;
-            this.btnEyeD_DistSetting.Size = new System.Drawing.Size(140, 30);
-            this.btnEyeD_DistSetting.Style = Sunny.UI.UIStyle.Custom;
-            this.btnEyeD_DistSetting.StyleCustomMode = true;
-            this.btnEyeD_DistSetting.Symbol = 61459;
-            this.btnEyeD_DistSetting.SymbolOffset = new System.Drawing.Point(-10, 0);
-            this.btnEyeD_DistSetting.SymbolSize = 20;
-            this.btnEyeD_DistSetting.TabIndex = 3532;
-            this.btnEyeD_DistSetting.Text = "Setting";
-            this.btnEyeD_DistSetting.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            // 
-            // btnJobEyeD_DistanceInsp
-            // 
-            this.btnJobEyeD_DistanceInsp.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnJobEyeD_DistanceInsp.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnJobEyeD_DistanceInsp.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnJobEyeD_DistanceInsp.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.btnJobEyeD_DistanceInsp.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnJobEyeD_DistanceInsp.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnJobEyeD_DistanceInsp.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnJobEyeD_DistanceInsp.Location = new System.Drawing.Point(159, 418);
-            this.btnJobEyeD_DistanceInsp.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnJobEyeD_DistanceInsp.Name = "btnJobEyeD_DistanceInsp";
-            this.btnJobEyeD_DistanceInsp.RectColor = System.Drawing.Color.White;
-            this.btnJobEyeD_DistanceInsp.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.btnJobEyeD_DistanceInsp.RectPressColor = System.Drawing.Color.White;
-            this.btnJobEyeD_DistanceInsp.RectSelectedColor = System.Drawing.Color.White;
-            this.btnJobEyeD_DistanceInsp.Size = new System.Drawing.Size(140, 30);
-            this.btnJobEyeD_DistanceInsp.Style = Sunny.UI.UIStyle.Custom;
-            this.btnJobEyeD_DistanceInsp.StyleCustomMode = true;
-            this.btnJobEyeD_DistanceInsp.Symbol = 61515;
-            this.btnJobEyeD_DistanceInsp.SymbolOffset = new System.Drawing.Point(-10, 0);
-            this.btnJobEyeD_DistanceInsp.SymbolSize = 20;
-            this.btnJobEyeD_DistanceInsp.TabIndex = 3531;
-            this.btnJobEyeD_DistanceInsp.Text = "Inspection";
-            this.btnJobEyeD_DistanceInsp.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            // 
-            // chkEyeD_UseDist
-            // 
-            this.chkEyeD_UseDist.AutoSize = true;
-            this.chkEyeD_UseDist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.chkEyeD_UseDist.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkEyeD_UseDist.ForeColor = System.Drawing.Color.White;
-            this.chkEyeD_UseDist.Location = new System.Drawing.Point(5, 398);
-            this.chkEyeD_UseDist.Name = "chkEyeD_UseDist";
-            this.chkEyeD_UseDist.Size = new System.Drawing.Size(15, 14);
-            this.chkEyeD_UseDist.TabIndex = 3530;
-            this.chkEyeD_UseDist.UseVisualStyleBackColor = false;
-            // 
-            // label131
-            // 
-            this.label131.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.label131.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label131.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label131.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label131.ForeColor = System.Drawing.Color.White;
-            this.label131.Location = new System.Drawing.Point(1, 395);
-            this.label131.Name = "label131";
-            this.label131.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label131.Size = new System.Drawing.Size(308, 21);
-            this.label131.TabIndex = 3529;
-            this.label131.Text = "     Distance Measure From Fiducial Mark";
-            this.label131.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label87
-            // 
-            this.label87.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.label87.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label87.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label87.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label87.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label87.ForeColor = System.Drawing.Color.White;
-            this.label87.Location = new System.Drawing.Point(0, 0);
-            this.label87.Name = "label87";
-            this.label87.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label87.Size = new System.Drawing.Size(564, 27);
-            this.label87.TabIndex = 3527;
-            this.label87.Text = "ex) Relay, Coil, Via ...";
-            this.label87.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // panel17
-            // 
-            this.panel17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel17.Controls.Add(this.panel56);
-            this.panel17.Controls.Add(this.chkJobEyeD_UseSpecRegion);
-            this.panel17.Controls.Add(this.label148);
-            this.panel17.Controls.Add(this.panel40);
-            this.panel17.Controls.Add(this.panel35);
-            this.panel17.Controls.Add(this.panel32);
-            this.panel17.Controls.Add(this.panel10);
-            this.panel17.Controls.Add(this.panel28);
-            this.panel17.Controls.Add(this.btnJobEyeD_Roi);
-            this.panel17.Controls.Add(this.btnjobEyeDFind);
-            this.panel17.Controls.Add(this.panel24);
-            this.panel17.Controls.Add(this.panel18);
-            this.panel17.Controls.Add(this.panel30);
-            this.panel17.Location = new System.Drawing.Point(-1, 26);
-            this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(311, 368);
-            this.panel17.TabIndex = 3528;
-            // 
-            // panel56
-            // 
-            this.panel56.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel56.Controls.Add(this.checkBox59);
-            this.panel56.Controls.Add(this.label147);
-            this.panel56.Controls.Add(this.panel57);
-            this.panel56.Controls.Add(this.checkBox57);
-            this.panel56.Controls.Add(this.checkBox58);
-            this.panel56.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel56.Location = new System.Drawing.Point(0, 267);
-            this.panel56.Name = "panel56";
-            this.panel56.Size = new System.Drawing.Size(309, 35);
-            this.panel56.TabIndex = 3522;
-            // 
-            // checkBox59
-            // 
-            this.checkBox59.AutoSize = true;
-            this.checkBox59.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.checkBox59.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox59.ForeColor = System.Drawing.Color.White;
-            this.checkBox59.Location = new System.Drawing.Point(4, 8);
-            this.checkBox59.Name = "checkBox59";
-            this.checkBox59.Size = new System.Drawing.Size(15, 14);
-            this.checkBox59.TabIndex = 3522;
-            this.checkBox59.UseVisualStyleBackColor = false;
-            // 
-            // label147
-            // 
-            this.label147.BackColor = System.Drawing.Color.Transparent;
-            this.label147.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label147.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label147.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label147.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label147.ForeColor = System.Drawing.Color.White;
-            this.label147.Location = new System.Drawing.Point(0, 0);
-            this.label147.Name = "label147";
-            this.label147.Size = new System.Drawing.Size(123, 33);
-            this.label147.TabIndex = 3434;
-            this.label147.Text = "Spec Width\r\n(Min ~ Max)";
-            this.label147.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel57
-            // 
-            this.panel57.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel57.Controls.Add(this.numericUpDown1);
-            this.panel57.Controls.Add(this.label150);
-            this.panel57.Controls.Add(this.numericUpDown2);
-            this.panel57.Controls.Add(this.checkBox55);
-            this.panel57.Controls.Add(this.checkBox56);
-            this.panel57.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel57.Location = new System.Drawing.Point(123, 0);
-            this.panel57.Name = "panel57";
-            this.panel57.Size = new System.Drawing.Size(184, 33);
-            this.panel57.TabIndex = 3408;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numericUpDown1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.numericUpDown1.Font = new System.Drawing.Font("Arial", 15F);
-            this.numericUpDown1.ForeColor = System.Drawing.Color.White;
-            this.numericUpDown1.Location = new System.Drawing.Point(92, 0);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(90, 30);
-            this.numericUpDown1.TabIndex = 3430;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            // 
-            // label150
-            // 
-            this.label150.BackColor = System.Drawing.Color.Transparent;
-            this.label150.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label150.Font = new System.Drawing.Font("Arial", 12F);
-            this.label150.ForeColor = System.Drawing.Color.White;
-            this.label150.Location = new System.Drawing.Point(92, 1);
-            this.label150.Name = "label150";
-            this.label150.Size = new System.Drawing.Size(21, 29);
-            this.label150.TabIndex = 3429;
-            this.label150.Text = "~";
-            this.label150.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.numericUpDown2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numericUpDown2.Font = new System.Drawing.Font("Arial", 15F);
-            this.numericUpDown2.ForeColor = System.Drawing.Color.White;
-            this.numericUpDown2.Location = new System.Drawing.Point(0, 0);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(90, 30);
-            this.numericUpDown2.TabIndex = 3428;
-            this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown2.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            // 
-            // checkBox55
-            // 
-            this.checkBox55.AutoSize = true;
-            this.checkBox55.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox55.ForeColor = System.Drawing.Color.White;
-            this.checkBox55.Location = new System.Drawing.Point(11, 105);
-            this.checkBox55.Name = "checkBox55";
-            this.checkBox55.Size = new System.Drawing.Size(112, 20);
-            this.checkBox55.TabIndex = 1;
-            this.checkBox55.Text = "Use \'EYE-D\'";
-            this.checkBox55.UseVisualStyleBackColor = true;
-            // 
-            // checkBox56
-            // 
-            this.checkBox56.AutoSize = true;
-            this.checkBox56.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox56.ForeColor = System.Drawing.Color.White;
-            this.checkBox56.Location = new System.Drawing.Point(3, 153);
-            this.checkBox56.Name = "checkBox56";
-            this.checkBox56.Size = new System.Drawing.Size(112, 20);
-            this.checkBox56.TabIndex = 0;
-            this.checkBox56.Text = "Use \'EYE-D\'";
-            this.checkBox56.UseVisualStyleBackColor = true;
-            // 
-            // checkBox57
-            // 
-            this.checkBox57.AutoSize = true;
-            this.checkBox57.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox57.ForeColor = System.Drawing.Color.White;
-            this.checkBox57.Location = new System.Drawing.Point(11, 105);
-            this.checkBox57.Name = "checkBox57";
-            this.checkBox57.Size = new System.Drawing.Size(112, 20);
-            this.checkBox57.TabIndex = 1;
-            this.checkBox57.Text = "Use \'EYE-D\'";
-            this.checkBox57.UseVisualStyleBackColor = true;
-            // 
-            // checkBox58
-            // 
-            this.checkBox58.AutoSize = true;
-            this.checkBox58.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox58.ForeColor = System.Drawing.Color.White;
-            this.checkBox58.Location = new System.Drawing.Point(3, 153);
-            this.checkBox58.Name = "checkBox58";
-            this.checkBox58.Size = new System.Drawing.Size(112, 20);
-            this.checkBox58.TabIndex = 0;
-            this.checkBox58.Text = "Use \'EYE-D\'";
-            this.checkBox58.UseVisualStyleBackColor = true;
-            // 
-            // chkJobEyeD_UseSpecRegion
-            // 
-            this.chkJobEyeD_UseSpecRegion.AutoSize = true;
-            this.chkJobEyeD_UseSpecRegion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.chkJobEyeD_UseSpecRegion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkJobEyeD_UseSpecRegion.ForeColor = System.Drawing.Color.White;
-            this.chkJobEyeD_UseSpecRegion.Location = new System.Drawing.Point(5, 346);
-            this.chkJobEyeD_UseSpecRegion.Name = "chkJobEyeD_UseSpecRegion";
-            this.chkJobEyeD_UseSpecRegion.Size = new System.Drawing.Size(15, 14);
-            this.chkJobEyeD_UseSpecRegion.TabIndex = 3521;
-            this.chkJobEyeD_UseSpecRegion.UseVisualStyleBackColor = false;
-            // 
-            // label148
-            // 
-            this.label148.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.label148.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label148.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label148.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label148.ForeColor = System.Drawing.Color.Orange;
-            this.label148.Location = new System.Drawing.Point(0, 343);
-            this.label148.Name = "label148";
-            this.label148.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label148.Size = new System.Drawing.Size(308, 21);
-            this.label148.TabIndex = 3520;
-            this.label148.Text = "     Use Spec Region (Color : Orange)";
-            this.label148.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // panel40
-            // 
-            this.panel40.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel40.Controls.Add(this.label91);
-            this.panel40.Controls.Add(this.panel41);
-            this.panel40.Controls.Add(this.checkBox47);
-            this.panel40.Controls.Add(this.checkBox48);
-            this.panel40.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel40.Location = new System.Drawing.Point(0, 232);
-            this.panel40.Name = "panel40";
-            this.panel40.Size = new System.Drawing.Size(309, 35);
-            this.panel40.TabIndex = 3492;
-            // 
-            // label91
-            // 
-            this.label91.BackColor = System.Drawing.Color.Transparent;
-            this.label91.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label91.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label91.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label91.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label91.ForeColor = System.Drawing.Color.White;
-            this.label91.Location = new System.Drawing.Point(0, 0);
-            this.label91.Name = "label91";
-            this.label91.Size = new System.Drawing.Size(123, 33);
-            this.label91.TabIndex = 3434;
-            this.label91.Text = "RotateImage";
-            this.label91.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel41
-            // 
-            this.panel41.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel41.Controls.Add(this.cbRotateImageAngle);
-            this.panel41.Controls.Add(this.checkBox26);
-            this.panel41.Controls.Add(this.checkBox27);
-            this.panel41.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel41.Location = new System.Drawing.Point(123, 0);
-            this.panel41.Name = "panel41";
-            this.panel41.Size = new System.Drawing.Size(184, 33);
-            this.panel41.TabIndex = 3408;
-            // 
-            // cbRotateImageAngle
-            // 
-            this.cbRotateImageAngle.Dock = System.Windows.Forms.DockStyle.Left;
-            this.cbRotateImageAngle.FontWeight = MetroFramework.MetroComboBoxWeight.Light;
-            this.cbRotateImageAngle.ForeColor = System.Drawing.Color.White;
-            this.cbRotateImageAngle.FormattingEnabled = true;
-            this.cbRotateImageAngle.ItemHeight = 23;
-            this.cbRotateImageAngle.Items.AddRange(new object[] {
-            "0",
-            "90",
-            "180",
-            "270"});
-            this.cbRotateImageAngle.Location = new System.Drawing.Point(0, 0);
-            this.cbRotateImageAngle.Name = "cbRotateImageAngle";
-            this.cbRotateImageAngle.Size = new System.Drawing.Size(137, 29);
-            this.cbRotateImageAngle.Style = MetroFramework.MetroColorStyle.Orange;
-            this.cbRotateImageAngle.TabIndex = 3418;
-            this.cbRotateImageAngle.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.cbRotateImageAngle.UseCustomForeColor = true;
-            this.cbRotateImageAngle.UseSelectable = true;
-            // 
-            // checkBox26
-            // 
-            this.checkBox26.AutoSize = true;
-            this.checkBox26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox26.ForeColor = System.Drawing.Color.White;
-            this.checkBox26.Location = new System.Drawing.Point(11, 105);
-            this.checkBox26.Name = "checkBox26";
-            this.checkBox26.Size = new System.Drawing.Size(112, 20);
-            this.checkBox26.TabIndex = 1;
-            this.checkBox26.Text = "Use \'EYE-D\'";
-            this.checkBox26.UseVisualStyleBackColor = true;
-            // 
-            // checkBox27
-            // 
-            this.checkBox27.AutoSize = true;
-            this.checkBox27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox27.ForeColor = System.Drawing.Color.White;
-            this.checkBox27.Location = new System.Drawing.Point(3, 153);
-            this.checkBox27.Name = "checkBox27";
-            this.checkBox27.Size = new System.Drawing.Size(112, 20);
-            this.checkBox27.TabIndex = 0;
-            this.checkBox27.Text = "Use \'EYE-D\'";
-            this.checkBox27.UseVisualStyleBackColor = true;
-            // 
-            // checkBox47
-            // 
-            this.checkBox47.AutoSize = true;
-            this.checkBox47.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox47.ForeColor = System.Drawing.Color.White;
-            this.checkBox47.Location = new System.Drawing.Point(11, 105);
-            this.checkBox47.Name = "checkBox47";
-            this.checkBox47.Size = new System.Drawing.Size(112, 20);
-            this.checkBox47.TabIndex = 1;
-            this.checkBox47.Text = "Use \'EYE-D\'";
-            this.checkBox47.UseVisualStyleBackColor = true;
-            // 
-            // checkBox48
-            // 
-            this.checkBox48.AutoSize = true;
-            this.checkBox48.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox48.ForeColor = System.Drawing.Color.White;
-            this.checkBox48.Location = new System.Drawing.Point(3, 153);
-            this.checkBox48.Name = "checkBox48";
-            this.checkBox48.Size = new System.Drawing.Size(112, 20);
-            this.checkBox48.TabIndex = 0;
-            this.checkBox48.Text = "Use \'EYE-D\'";
-            this.checkBox48.UseVisualStyleBackColor = true;
-            // 
-            // panel35
-            // 
-            this.panel35.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel35.Controls.Add(this.label92);
-            this.panel35.Controls.Add(this.panel36);
-            this.panel35.Controls.Add(this.checkBox24);
-            this.panel35.Controls.Add(this.checkBox25);
-            this.panel35.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel35.Location = new System.Drawing.Point(0, 196);
-            this.panel35.Name = "panel35";
-            this.panel35.Size = new System.Drawing.Size(309, 36);
-            this.panel35.TabIndex = 3491;
-            // 
-            // label92
-            // 
-            this.label92.BackColor = System.Drawing.Color.Transparent;
-            this.label92.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label92.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label92.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label92.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label92.ForeColor = System.Drawing.Color.White;
-            this.label92.Location = new System.Drawing.Point(0, 0);
-            this.label92.Name = "label92";
-            this.label92.Size = new System.Drawing.Size(123, 34);
-            this.label92.TabIndex = 3434;
-            this.label92.Text = "Max Count";
-            this.label92.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel36
-            // 
-            this.panel36.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel36.Controls.Add(this.txtEyeDMaxCount);
-            this.panel36.Controls.Add(this.checkBox22);
-            this.panel36.Controls.Add(this.checkBox23);
-            this.panel36.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel36.Location = new System.Drawing.Point(123, 0);
-            this.panel36.Name = "panel36";
-            this.panel36.Size = new System.Drawing.Size(184, 34);
-            this.panel36.TabIndex = 3408;
-            // 
-            // txtEyeDMaxCount
-            // 
-            this.txtEyeDMaxCount.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtEyeDMaxCount.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.txtEyeDMaxCount.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            this.txtEyeDMaxCount.ForeColor = System.Drawing.Color.White;
-            this.txtEyeDMaxCount.Location = new System.Drawing.Point(1, 1);
-            this.txtEyeDMaxCount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtEyeDMaxCount.MinimumSize = new System.Drawing.Size(1, 16);
-            this.txtEyeDMaxCount.Name = "txtEyeDMaxCount";
-            this.txtEyeDMaxCount.Padding = new System.Windows.Forms.Padding(5);
-            this.txtEyeDMaxCount.RectColor = System.Drawing.Color.White;
-            this.txtEyeDMaxCount.ShowText = false;
-            this.txtEyeDMaxCount.Size = new System.Drawing.Size(136, 30);
-            this.txtEyeDMaxCount.Style = Sunny.UI.UIStyle.Custom;
-            this.txtEyeDMaxCount.TabIndex = 3443;
-            this.txtEyeDMaxCount.Text = "0";
-            this.txtEyeDMaxCount.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.txtEyeDMaxCount.Type = Sunny.UI.UITextBox.UIEditType.Integer;
-            this.txtEyeDMaxCount.Watermark = "";
-            // 
-            // checkBox22
-            // 
-            this.checkBox22.AutoSize = true;
-            this.checkBox22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox22.ForeColor = System.Drawing.Color.White;
-            this.checkBox22.Location = new System.Drawing.Point(11, 105);
-            this.checkBox22.Name = "checkBox22";
-            this.checkBox22.Size = new System.Drawing.Size(112, 20);
-            this.checkBox22.TabIndex = 1;
-            this.checkBox22.Text = "Use \'EYE-D\'";
-            this.checkBox22.UseVisualStyleBackColor = true;
-            // 
-            // checkBox23
-            // 
-            this.checkBox23.AutoSize = true;
-            this.checkBox23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox23.ForeColor = System.Drawing.Color.White;
-            this.checkBox23.Location = new System.Drawing.Point(3, 153);
-            this.checkBox23.Name = "checkBox23";
-            this.checkBox23.Size = new System.Drawing.Size(112, 20);
-            this.checkBox23.TabIndex = 0;
-            this.checkBox23.Text = "Use \'EYE-D\'";
-            this.checkBox23.UseVisualStyleBackColor = true;
-            // 
-            // checkBox24
-            // 
-            this.checkBox24.AutoSize = true;
-            this.checkBox24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox24.ForeColor = System.Drawing.Color.White;
-            this.checkBox24.Location = new System.Drawing.Point(11, 105);
-            this.checkBox24.Name = "checkBox24";
-            this.checkBox24.Size = new System.Drawing.Size(112, 20);
-            this.checkBox24.TabIndex = 1;
-            this.checkBox24.Text = "Use \'EYE-D\'";
-            this.checkBox24.UseVisualStyleBackColor = true;
-            // 
-            // checkBox25
-            // 
-            this.checkBox25.AutoSize = true;
-            this.checkBox25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox25.ForeColor = System.Drawing.Color.White;
-            this.checkBox25.Location = new System.Drawing.Point(3, 153);
-            this.checkBox25.Name = "checkBox25";
-            this.checkBox25.Size = new System.Drawing.Size(112, 20);
-            this.checkBox25.TabIndex = 0;
-            this.checkBox25.Text = "Use \'EYE-D\'";
-            this.checkBox25.UseVisualStyleBackColor = true;
-            // 
-            // panel32
-            // 
-            this.panel32.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel32.Controls.Add(this.label93);
-            this.panel32.Controls.Add(this.panel33);
-            this.panel32.Controls.Add(this.checkBox40);
-            this.panel32.Controls.Add(this.checkBox45);
-            this.panel32.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel32.Location = new System.Drawing.Point(0, 176);
-            this.panel32.Name = "panel32";
-            this.panel32.Size = new System.Drawing.Size(309, 20);
-            this.panel32.TabIndex = 3490;
-            // 
-            // label93
-            // 
-            this.label93.BackColor = System.Drawing.Color.Transparent;
-            this.label93.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label93.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label93.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label93.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label93.ForeColor = System.Drawing.Color.White;
-            this.label93.Location = new System.Drawing.Point(0, 0);
-            this.label93.Name = "label93";
-            this.label93.Size = new System.Drawing.Size(123, 18);
-            this.label93.TabIndex = 3434;
-            this.label93.Text = "Result";
-            this.label93.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel33
-            // 
-            this.panel33.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel33.Controls.Add(this.lblEyeDResult);
-            this.panel33.Controls.Add(this.checkBox38);
-            this.panel33.Controls.Add(this.checkBox39);
-            this.panel33.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel33.Location = new System.Drawing.Point(123, 0);
-            this.panel33.Name = "panel33";
-            this.panel33.Size = new System.Drawing.Size(184, 18);
-            this.panel33.TabIndex = 3408;
-            // 
-            // lblEyeDResult
-            // 
-            this.lblEyeDResult.BackColor = System.Drawing.Color.Transparent;
-            this.lblEyeDResult.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblEyeDResult.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblEyeDResult.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblEyeDResult.Font = new System.Drawing.Font("Arial", 8F);
-            this.lblEyeDResult.ForeColor = System.Drawing.Color.White;
-            this.lblEyeDResult.Location = new System.Drawing.Point(0, 0);
-            this.lblEyeDResult.Name = "lblEyeDResult";
-            this.lblEyeDResult.Size = new System.Drawing.Size(182, 16);
-            this.lblEyeDResult.TabIndex = 3435;
-            this.lblEyeDResult.Text = "Result";
-            this.lblEyeDResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // checkBox38
-            // 
-            this.checkBox38.AutoSize = true;
-            this.checkBox38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox38.ForeColor = System.Drawing.Color.White;
-            this.checkBox38.Location = new System.Drawing.Point(11, 105);
-            this.checkBox38.Name = "checkBox38";
-            this.checkBox38.Size = new System.Drawing.Size(112, 20);
-            this.checkBox38.TabIndex = 1;
-            this.checkBox38.Text = "Use \'EYE-D\'";
-            this.checkBox38.UseVisualStyleBackColor = true;
-            // 
-            // checkBox39
-            // 
-            this.checkBox39.AutoSize = true;
-            this.checkBox39.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox39.ForeColor = System.Drawing.Color.White;
-            this.checkBox39.Location = new System.Drawing.Point(3, 153);
-            this.checkBox39.Name = "checkBox39";
-            this.checkBox39.Size = new System.Drawing.Size(112, 20);
-            this.checkBox39.TabIndex = 0;
-            this.checkBox39.Text = "Use \'EYE-D\'";
-            this.checkBox39.UseVisualStyleBackColor = true;
-            // 
-            // checkBox40
-            // 
-            this.checkBox40.AutoSize = true;
-            this.checkBox40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox40.ForeColor = System.Drawing.Color.White;
-            this.checkBox40.Location = new System.Drawing.Point(11, 105);
-            this.checkBox40.Name = "checkBox40";
-            this.checkBox40.Size = new System.Drawing.Size(112, 20);
-            this.checkBox40.TabIndex = 1;
-            this.checkBox40.Text = "Use \'EYE-D\'";
-            this.checkBox40.UseVisualStyleBackColor = true;
-            // 
-            // checkBox45
-            // 
-            this.checkBox45.AutoSize = true;
-            this.checkBox45.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox45.ForeColor = System.Drawing.Color.White;
-            this.checkBox45.Location = new System.Drawing.Point(3, 153);
-            this.checkBox45.Name = "checkBox45";
-            this.checkBox45.Size = new System.Drawing.Size(112, 20);
-            this.checkBox45.TabIndex = 0;
-            this.checkBox45.Text = "Use \'EYE-D\'";
-            this.checkBox45.UseVisualStyleBackColor = true;
-            // 
-            // panel10
-            // 
-            this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel10.Controls.Add(this.label129);
-            this.panel10.Controls.Add(this.panel11);
-            this.panel10.Controls.Add(this.checkBox20);
-            this.panel10.Controls.Add(this.checkBox21);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel10.Location = new System.Drawing.Point(0, 141);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(309, 35);
-            this.panel10.TabIndex = 3489;
-            // 
-            // label129
-            // 
-            this.label129.BackColor = System.Drawing.Color.Transparent;
-            this.label129.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label129.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label129.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label129.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label129.ForeColor = System.Drawing.Color.White;
-            this.label129.Location = new System.Drawing.Point(0, 0);
-            this.label129.Name = "label129";
-            this.label129.Size = new System.Drawing.Size(123, 33);
-            this.label129.TabIndex = 3435;
-            this.label129.Text = "Correct\r\nAnswer";
-            this.label129.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel11
-            // 
-            this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel11.Controls.Add(this.txtEyeDCorrectAnswer);
-            this.panel11.Controls.Add(this.checkBox9);
-            this.panel11.Controls.Add(this.checkBox19);
-            this.panel11.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel11.Location = new System.Drawing.Point(123, 0);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(184, 33);
-            this.panel11.TabIndex = 3409;
-            // 
-            // txtEyeDCorrectAnswer
-            // 
-            this.txtEyeDCorrectAnswer.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtEyeDCorrectAnswer.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.txtEyeDCorrectAnswer.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            this.txtEyeDCorrectAnswer.ForeColor = System.Drawing.Color.White;
-            this.txtEyeDCorrectAnswer.Location = new System.Drawing.Point(1, 1);
-            this.txtEyeDCorrectAnswer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtEyeDCorrectAnswer.MinimumSize = new System.Drawing.Size(1, 16);
-            this.txtEyeDCorrectAnswer.Name = "txtEyeDCorrectAnswer";
-            this.txtEyeDCorrectAnswer.Padding = new System.Windows.Forms.Padding(5);
-            this.txtEyeDCorrectAnswer.RectColor = System.Drawing.Color.White;
-            this.txtEyeDCorrectAnswer.ShowText = false;
-            this.txtEyeDCorrectAnswer.Size = new System.Drawing.Size(136, 30);
-            this.txtEyeDCorrectAnswer.Style = Sunny.UI.UIStyle.Custom;
-            this.txtEyeDCorrectAnswer.TabIndex = 3443;
-            this.txtEyeDCorrectAnswer.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.txtEyeDCorrectAnswer.Watermark = "";
-            // 
-            // checkBox9
-            // 
-            this.checkBox9.AutoSize = true;
-            this.checkBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox9.ForeColor = System.Drawing.Color.White;
-            this.checkBox9.Location = new System.Drawing.Point(11, 105);
-            this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(112, 20);
-            this.checkBox9.TabIndex = 1;
-            this.checkBox9.Text = "Use \'EYE-D\'";
-            this.checkBox9.UseVisualStyleBackColor = true;
-            // 
-            // checkBox19
-            // 
-            this.checkBox19.AutoSize = true;
-            this.checkBox19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox19.ForeColor = System.Drawing.Color.White;
-            this.checkBox19.Location = new System.Drawing.Point(3, 153);
-            this.checkBox19.Name = "checkBox19";
-            this.checkBox19.Size = new System.Drawing.Size(112, 20);
-            this.checkBox19.TabIndex = 0;
-            this.checkBox19.Text = "Use \'EYE-D\'";
-            this.checkBox19.UseVisualStyleBackColor = true;
-            // 
-            // checkBox20
-            // 
-            this.checkBox20.AutoSize = true;
-            this.checkBox20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox20.ForeColor = System.Drawing.Color.White;
-            this.checkBox20.Location = new System.Drawing.Point(11, 105);
-            this.checkBox20.Name = "checkBox20";
-            this.checkBox20.Size = new System.Drawing.Size(112, 20);
-            this.checkBox20.TabIndex = 1;
-            this.checkBox20.Text = "Use \'EYE-D\'";
-            this.checkBox20.UseVisualStyleBackColor = true;
-            // 
-            // checkBox21
-            // 
-            this.checkBox21.AutoSize = true;
-            this.checkBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox21.ForeColor = System.Drawing.Color.White;
-            this.checkBox21.Location = new System.Drawing.Point(3, 153);
-            this.checkBox21.Name = "checkBox21";
-            this.checkBox21.Size = new System.Drawing.Size(112, 20);
-            this.checkBox21.TabIndex = 0;
-            this.checkBox21.Text = "Use \'EYE-D\'";
-            this.checkBox21.UseVisualStyleBackColor = true;
-            // 
-            // panel28
-            // 
-            this.panel28.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel28.Controls.Add(this.label128);
-            this.panel28.Controls.Add(this.panel29);
-            this.panel28.Controls.Add(this.checkBox36);
-            this.panel28.Controls.Add(this.checkBox37);
-            this.panel28.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel28.Location = new System.Drawing.Point(0, 106);
-            this.panel28.Name = "panel28";
-            this.panel28.Size = new System.Drawing.Size(309, 35);
-            this.panel28.TabIndex = 3419;
-            // 
-            // label128
-            // 
-            this.label128.BackColor = System.Drawing.Color.Transparent;
-            this.label128.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label128.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label128.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label128.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label128.ForeColor = System.Drawing.Color.White;
-            this.label128.Location = new System.Drawing.Point(0, 0);
-            this.label128.Name = "label128";
-            this.label128.Size = new System.Drawing.Size(123, 33);
-            this.label128.TabIndex = 3434;
-            this.label128.Text = "Score (OK) Minimum";
-            this.label128.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel29
-            // 
-            this.panel29.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel29.Controls.Add(this.txtEyeDMinScore);
-            this.panel29.Controls.Add(this.checkBox34);
-            this.panel29.Controls.Add(this.checkBox35);
-            this.panel29.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel29.Location = new System.Drawing.Point(123, 0);
-            this.panel29.Name = "panel29";
-            this.panel29.Size = new System.Drawing.Size(184, 33);
-            this.panel29.TabIndex = 3408;
-            // 
-            // txtEyeDMinScore
-            // 
-            this.txtEyeDMinScore.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtEyeDMinScore.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.txtEyeDMinScore.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            this.txtEyeDMinScore.ForeColor = System.Drawing.Color.White;
-            this.txtEyeDMinScore.Location = new System.Drawing.Point(1, 1);
-            this.txtEyeDMinScore.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtEyeDMinScore.MinimumSize = new System.Drawing.Size(1, 16);
-            this.txtEyeDMinScore.Name = "txtEyeDMinScore";
-            this.txtEyeDMinScore.Padding = new System.Windows.Forms.Padding(5);
-            this.txtEyeDMinScore.RectColor = System.Drawing.Color.White;
-            this.txtEyeDMinScore.ShowText = false;
-            this.txtEyeDMinScore.Size = new System.Drawing.Size(136, 30);
-            this.txtEyeDMinScore.Style = Sunny.UI.UIStyle.Custom;
-            this.txtEyeDMinScore.TabIndex = 3443;
-            this.txtEyeDMinScore.Text = "0.00";
-            this.txtEyeDMinScore.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.txtEyeDMinScore.Type = Sunny.UI.UITextBox.UIEditType.Double;
-            this.txtEyeDMinScore.Watermark = "";
-            // 
-            // checkBox34
-            // 
-            this.checkBox34.AutoSize = true;
-            this.checkBox34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox34.ForeColor = System.Drawing.Color.White;
-            this.checkBox34.Location = new System.Drawing.Point(11, 105);
-            this.checkBox34.Name = "checkBox34";
-            this.checkBox34.Size = new System.Drawing.Size(112, 20);
-            this.checkBox34.TabIndex = 1;
-            this.checkBox34.Text = "Use \'EYE-D\'";
-            this.checkBox34.UseVisualStyleBackColor = true;
-            // 
-            // checkBox35
-            // 
-            this.checkBox35.AutoSize = true;
-            this.checkBox35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox35.ForeColor = System.Drawing.Color.White;
-            this.checkBox35.Location = new System.Drawing.Point(3, 153);
-            this.checkBox35.Name = "checkBox35";
-            this.checkBox35.Size = new System.Drawing.Size(112, 20);
-            this.checkBox35.TabIndex = 0;
-            this.checkBox35.Text = "Use \'EYE-D\'";
-            this.checkBox35.UseVisualStyleBackColor = true;
-            // 
-            // checkBox36
-            // 
-            this.checkBox36.AutoSize = true;
-            this.checkBox36.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox36.ForeColor = System.Drawing.Color.White;
-            this.checkBox36.Location = new System.Drawing.Point(11, 105);
-            this.checkBox36.Name = "checkBox36";
-            this.checkBox36.Size = new System.Drawing.Size(112, 20);
-            this.checkBox36.TabIndex = 1;
-            this.checkBox36.Text = "Use \'EYE-D\'";
-            this.checkBox36.UseVisualStyleBackColor = true;
-            // 
-            // checkBox37
-            // 
-            this.checkBox37.AutoSize = true;
-            this.checkBox37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox37.ForeColor = System.Drawing.Color.White;
-            this.checkBox37.Location = new System.Drawing.Point(3, 153);
-            this.checkBox37.Name = "checkBox37";
-            this.checkBox37.Size = new System.Drawing.Size(112, 20);
-            this.checkBox37.TabIndex = 0;
-            this.checkBox37.Text = "Use \'EYE-D\'";
-            this.checkBox37.UseVisualStyleBackColor = true;
-            // 
-            // btnJobEyeD_Roi
-            // 
-            this.btnJobEyeD_Roi.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnJobEyeD_Roi.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnJobEyeD_Roi.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnJobEyeD_Roi.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.btnJobEyeD_Roi.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnJobEyeD_Roi.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnJobEyeD_Roi.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnJobEyeD_Roi.Location = new System.Drawing.Point(12, 305);
-            this.btnJobEyeD_Roi.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnJobEyeD_Roi.Name = "btnJobEyeD_Roi";
-            this.btnJobEyeD_Roi.RectColor = System.Drawing.Color.White;
-            this.btnJobEyeD_Roi.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.btnJobEyeD_Roi.RectPressColor = System.Drawing.Color.White;
-            this.btnJobEyeD_Roi.RectSelectedColor = System.Drawing.Color.White;
-            this.btnJobEyeD_Roi.Size = new System.Drawing.Size(140, 35);
-            this.btnJobEyeD_Roi.Style = Sunny.UI.UIStyle.Custom;
-            this.btnJobEyeD_Roi.StyleCustomMode = true;
-            this.btnJobEyeD_Roi.Symbol = 362923;
-            this.btnJobEyeD_Roi.SymbolOffset = new System.Drawing.Point(-10, 0);
-            this.btnJobEyeD_Roi.SymbolSize = 16;
-            this.btnJobEyeD_Roi.TabIndex = 3487;
-            this.btnJobEyeD_Roi.Text = "Roi";
-            this.btnJobEyeD_Roi.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            // 
-            // btnjobEyeDFind
-            // 
-            this.btnjobEyeDFind.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnjobEyeDFind.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnjobEyeDFind.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnjobEyeDFind.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.btnjobEyeDFind.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnjobEyeDFind.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnjobEyeDFind.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnjobEyeDFind.Location = new System.Drawing.Point(158, 305);
-            this.btnjobEyeDFind.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnjobEyeDFind.Name = "btnjobEyeDFind";
-            this.btnjobEyeDFind.RectColor = System.Drawing.Color.White;
-            this.btnjobEyeDFind.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.btnjobEyeDFind.RectPressColor = System.Drawing.Color.White;
-            this.btnjobEyeDFind.RectSelectedColor = System.Drawing.Color.White;
-            this.btnjobEyeDFind.Size = new System.Drawing.Size(140, 35);
-            this.btnjobEyeDFind.Style = Sunny.UI.UIStyle.Custom;
-            this.btnjobEyeDFind.StyleCustomMode = true;
-            this.btnjobEyeDFind.Symbol = 61442;
-            this.btnjobEyeDFind.SymbolOffset = new System.Drawing.Point(-10, 0);
-            this.btnjobEyeDFind.SymbolSize = 20;
-            this.btnjobEyeDFind.TabIndex = 3486;
-            this.btnjobEyeDFind.Text = "Find";
-            this.btnjobEyeDFind.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            // 
-            // panel24
-            // 
-            this.panel24.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel24.Controls.Add(this.label126);
-            this.panel24.Controls.Add(this.panel25);
-            this.panel24.Controls.Add(this.checkBox32);
-            this.panel24.Controls.Add(this.checkBox33);
-            this.panel24.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel24.Location = new System.Drawing.Point(0, 70);
-            this.panel24.Name = "panel24";
-            this.panel24.Size = new System.Drawing.Size(309, 36);
-            this.panel24.TabIndex = 3418;
-            // 
-            // label126
-            // 
-            this.label126.BackColor = System.Drawing.Color.Transparent;
-            this.label126.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label126.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label126.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label126.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label126.ForeColor = System.Drawing.Color.White;
-            this.label126.Location = new System.Drawing.Point(0, 0);
-            this.label126.Name = "label126";
-            this.label126.Size = new System.Drawing.Size(123, 34);
-            this.label126.TabIndex = 3434;
-            this.label126.Text = "OK Count";
-            this.label126.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel25
-            // 
-            this.panel25.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel25.Controls.Add(this.checkBox28);
-            this.panel25.Controls.Add(this.checkBox31);
-            this.panel25.Controls.Add(this.numericEyeDOkCount);
-            this.panel25.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel25.Location = new System.Drawing.Point(123, 0);
-            this.panel25.Name = "panel25";
-            this.panel25.Size = new System.Drawing.Size(184, 34);
-            this.panel25.TabIndex = 3408;
-            // 
-            // checkBox28
-            // 
-            this.checkBox28.AutoSize = true;
-            this.checkBox28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox28.ForeColor = System.Drawing.Color.White;
-            this.checkBox28.Location = new System.Drawing.Point(11, 105);
-            this.checkBox28.Name = "checkBox28";
-            this.checkBox28.Size = new System.Drawing.Size(112, 20);
-            this.checkBox28.TabIndex = 1;
-            this.checkBox28.Text = "Use \'EYE-D\'";
-            this.checkBox28.UseVisualStyleBackColor = true;
-            // 
-            // checkBox31
-            // 
-            this.checkBox31.AutoSize = true;
-            this.checkBox31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox31.ForeColor = System.Drawing.Color.White;
-            this.checkBox31.Location = new System.Drawing.Point(3, 153);
-            this.checkBox31.Name = "checkBox31";
-            this.checkBox31.Size = new System.Drawing.Size(112, 20);
-            this.checkBox31.TabIndex = 0;
-            this.checkBox31.Text = "Use \'EYE-D\'";
-            this.checkBox31.UseVisualStyleBackColor = true;
-            // 
-            // numericEyeDOkCount
-            // 
-            this.numericEyeDOkCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.numericEyeDOkCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numericEyeDOkCount.Font = new System.Drawing.Font("Arial", 14F);
-            this.numericEyeDOkCount.ForeColor = System.Drawing.Color.White;
-            this.numericEyeDOkCount.Location = new System.Drawing.Point(1, 2);
-            this.numericEyeDOkCount.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.numericEyeDOkCount.Name = "numericEyeDOkCount";
-            this.numericEyeDOkCount.Size = new System.Drawing.Size(136, 29);
-            this.numericEyeDOkCount.TabIndex = 2771;
-            this.numericEyeDOkCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericEyeDOkCount.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // checkBox32
-            // 
-            this.checkBox32.AutoSize = true;
-            this.checkBox32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox32.ForeColor = System.Drawing.Color.White;
-            this.checkBox32.Location = new System.Drawing.Point(11, 105);
-            this.checkBox32.Name = "checkBox32";
-            this.checkBox32.Size = new System.Drawing.Size(112, 20);
-            this.checkBox32.TabIndex = 1;
-            this.checkBox32.Text = "Use \'EYE-D\'";
-            this.checkBox32.UseVisualStyleBackColor = true;
-            // 
-            // checkBox33
-            // 
-            this.checkBox33.AutoSize = true;
-            this.checkBox33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox33.ForeColor = System.Drawing.Color.White;
-            this.checkBox33.Location = new System.Drawing.Point(3, 153);
-            this.checkBox33.Name = "checkBox33";
-            this.checkBox33.Size = new System.Drawing.Size(112, 20);
-            this.checkBox33.TabIndex = 0;
-            this.checkBox33.Text = "Use \'EYE-D\'";
-            this.checkBox33.UseVisualStyleBackColor = true;
-            // 
-            // panel18
-            // 
-            this.panel18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel18.Controls.Add(this.label125);
-            this.panel18.Controls.Add(this.panel20);
-            this.panel18.Controls.Add(this.checkBox29);
-            this.panel18.Controls.Add(this.checkBox30);
-            this.panel18.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel18.Location = new System.Drawing.Point(0, 35);
-            this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(309, 35);
-            this.panel18.TabIndex = 3417;
-            // 
-            // label125
-            // 
-            this.label125.BackColor = System.Drawing.Color.Transparent;
-            this.label125.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label125.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label125.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label125.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label125.ForeColor = System.Drawing.Color.White;
-            this.label125.Location = new System.Drawing.Point(0, 0);
-            this.label125.Name = "label125";
-            this.label125.Size = new System.Drawing.Size(123, 33);
-            this.label125.TabIndex = 3434;
-            this.label125.Text = "Infer Type";
-            this.label125.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel20
-            // 
-            this.panel20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel20.Controls.Add(this.comboEyeDInferType);
-            this.panel20.Controls.Add(this.checkBox11);
-            this.panel20.Controls.Add(this.checkBox16);
-            this.panel20.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel20.Location = new System.Drawing.Point(123, 0);
-            this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(184, 33);
-            this.panel20.TabIndex = 3408;
-            // 
-            // comboEyeDInferType
-            // 
-            this.comboEyeDInferType.Dock = System.Windows.Forms.DockStyle.Left;
-            this.comboEyeDInferType.FontWeight = MetroFramework.MetroComboBoxWeight.Light;
-            this.comboEyeDInferType.ForeColor = System.Drawing.Color.White;
-            this.comboEyeDInferType.FormattingEnabled = true;
-            this.comboEyeDInferType.ItemHeight = 23;
-            this.comboEyeDInferType.Items.AddRange(new object[] {
-            "DET",
-            "SEG",
-            "CLS",
-            "OBB",
-            "SAM",
-            "OCR"});
-            this.comboEyeDInferType.Location = new System.Drawing.Point(0, 0);
-            this.comboEyeDInferType.Name = "comboEyeDInferType";
-            this.comboEyeDInferType.Size = new System.Drawing.Size(137, 29);
-            this.comboEyeDInferType.Style = MetroFramework.MetroColorStyle.Orange;
-            this.comboEyeDInferType.TabIndex = 3418;
-            this.comboEyeDInferType.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.comboEyeDInferType.UseCustomForeColor = true;
-            this.comboEyeDInferType.UseSelectable = true;
-            // 
-            // checkBox11
-            // 
-            this.checkBox11.AutoSize = true;
-            this.checkBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox11.ForeColor = System.Drawing.Color.White;
-            this.checkBox11.Location = new System.Drawing.Point(11, 105);
-            this.checkBox11.Name = "checkBox11";
-            this.checkBox11.Size = new System.Drawing.Size(112, 20);
-            this.checkBox11.TabIndex = 1;
-            this.checkBox11.Text = "Use \'EYE-D\'";
-            this.checkBox11.UseVisualStyleBackColor = true;
-            // 
-            // checkBox16
-            // 
-            this.checkBox16.AutoSize = true;
-            this.checkBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox16.ForeColor = System.Drawing.Color.White;
-            this.checkBox16.Location = new System.Drawing.Point(3, 153);
-            this.checkBox16.Name = "checkBox16";
-            this.checkBox16.Size = new System.Drawing.Size(112, 20);
-            this.checkBox16.TabIndex = 0;
-            this.checkBox16.Text = "Use \'EYE-D\'";
-            this.checkBox16.UseVisualStyleBackColor = true;
-            // 
-            // checkBox29
-            // 
-            this.checkBox29.AutoSize = true;
-            this.checkBox29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox29.ForeColor = System.Drawing.Color.White;
-            this.checkBox29.Location = new System.Drawing.Point(11, 105);
-            this.checkBox29.Name = "checkBox29";
-            this.checkBox29.Size = new System.Drawing.Size(112, 20);
-            this.checkBox29.TabIndex = 1;
-            this.checkBox29.Text = "Use \'EYE-D\'";
-            this.checkBox29.UseVisualStyleBackColor = true;
-            // 
-            // checkBox30
-            // 
-            this.checkBox30.AutoSize = true;
-            this.checkBox30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox30.ForeColor = System.Drawing.Color.White;
-            this.checkBox30.Location = new System.Drawing.Point(3, 153);
-            this.checkBox30.Name = "checkBox30";
-            this.checkBox30.Size = new System.Drawing.Size(112, 20);
-            this.checkBox30.TabIndex = 0;
-            this.checkBox30.Text = "Use \'EYE-D\'";
-            this.checkBox30.UseVisualStyleBackColor = true;
-            // 
-            // panel30
-            // 
-            this.panel30.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel30.Controls.Add(this.label127);
-            this.panel30.Controls.Add(this.panel31);
-            this.panel30.Controls.Add(this.checkBox43);
-            this.panel30.Controls.Add(this.checkBox44);
-            this.panel30.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel30.Location = new System.Drawing.Point(0, 0);
-            this.panel30.Name = "panel30";
-            this.panel30.Size = new System.Drawing.Size(309, 35);
-            this.panel30.TabIndex = 3409;
-            // 
-            // label127
-            // 
-            this.label127.BackColor = System.Drawing.Color.Transparent;
-            this.label127.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label127.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label127.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label127.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label127.ForeColor = System.Drawing.Color.White;
-            this.label127.Location = new System.Drawing.Point(0, 0);
-            this.label127.Name = "label127";
-            this.label127.Size = new System.Drawing.Size(123, 33);
-            this.label127.TabIndex = 3433;
-            this.label127.Text = "Model Name";
-            this.label127.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel31
-            // 
-            this.panel31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel31.Controls.Add(this.btnGetEyeDModelNames);
-            this.panel31.Controls.Add(this.comboEyeDModelName);
-            this.panel31.Controls.Add(this.checkBox41);
-            this.panel31.Controls.Add(this.checkBox42);
-            this.panel31.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel31.Location = new System.Drawing.Point(123, 0);
-            this.panel31.Name = "panel31";
-            this.panel31.Size = new System.Drawing.Size(184, 33);
-            this.panel31.TabIndex = 3408;
-            // 
-            // btnGetEyeDModelNames
-            // 
-            this.btnGetEyeDModelNames.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnGetEyeDModelNames.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnGetEyeDModelNames.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGetEyeDModelNames.Font = new System.Drawing.Font("Arial", 9F);
-            this.btnGetEyeDModelNames.ForeColor = System.Drawing.Color.White;
-            this.btnGetEyeDModelNames.Location = new System.Drawing.Point(138, 0);
-            this.btnGetEyeDModelNames.Name = "btnGetEyeDModelNames";
-            this.btnGetEyeDModelNames.Size = new System.Drawing.Size(43, 29);
-            this.btnGetEyeDModelNames.TabIndex = 3418;
-            this.btnGetEyeDModelNames.Text = "Get";
-            this.btnGetEyeDModelNames.UseVisualStyleBackColor = false;
-            // 
-            // comboEyeDModelName
-            // 
-            this.comboEyeDModelName.Dock = System.Windows.Forms.DockStyle.Left;
-            this.comboEyeDModelName.FontWeight = MetroFramework.MetroComboBoxWeight.Light;
-            this.comboEyeDModelName.ForeColor = System.Drawing.Color.White;
-            this.comboEyeDModelName.FormattingEnabled = true;
-            this.comboEyeDModelName.ItemHeight = 23;
-            this.comboEyeDModelName.Location = new System.Drawing.Point(0, 0);
-            this.comboEyeDModelName.Name = "comboEyeDModelName";
-            this.comboEyeDModelName.Size = new System.Drawing.Size(137, 29);
-            this.comboEyeDModelName.Style = MetroFramework.MetroColorStyle.Orange;
-            this.comboEyeDModelName.TabIndex = 3417;
-            this.comboEyeDModelName.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.comboEyeDModelName.UseCustomForeColor = true;
-            this.comboEyeDModelName.UseSelectable = true;
-            // 
-            // checkBox41
-            // 
-            this.checkBox41.AutoSize = true;
-            this.checkBox41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox41.ForeColor = System.Drawing.Color.White;
-            this.checkBox41.Location = new System.Drawing.Point(11, 105);
-            this.checkBox41.Name = "checkBox41";
-            this.checkBox41.Size = new System.Drawing.Size(112, 20);
-            this.checkBox41.TabIndex = 1;
-            this.checkBox41.Text = "Use \'EYE-D\'";
-            this.checkBox41.UseVisualStyleBackColor = true;
-            // 
-            // checkBox42
-            // 
-            this.checkBox42.AutoSize = true;
-            this.checkBox42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox42.ForeColor = System.Drawing.Color.White;
-            this.checkBox42.Location = new System.Drawing.Point(3, 153);
-            this.checkBox42.Name = "checkBox42";
-            this.checkBox42.Size = new System.Drawing.Size(112, 20);
-            this.checkBox42.TabIndex = 0;
-            this.checkBox42.Text = "Use \'EYE-D\'";
-            this.checkBox42.UseVisualStyleBackColor = true;
-            // 
-            // checkBox43
-            // 
-            this.checkBox43.AutoSize = true;
-            this.checkBox43.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox43.ForeColor = System.Drawing.Color.White;
-            this.checkBox43.Location = new System.Drawing.Point(11, 105);
-            this.checkBox43.Name = "checkBox43";
-            this.checkBox43.Size = new System.Drawing.Size(112, 20);
-            this.checkBox43.TabIndex = 1;
-            this.checkBox43.Text = "Use \'EYE-D\'";
-            this.checkBox43.UseVisualStyleBackColor = true;
-            // 
-            // checkBox44
-            // 
-            this.checkBox44.AutoSize = true;
-            this.checkBox44.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox44.ForeColor = System.Drawing.Color.White;
-            this.checkBox44.Location = new System.Drawing.Point(3, 153);
-            this.checkBox44.Name = "checkBox44";
-            this.checkBox44.Size = new System.Drawing.Size(112, 20);
-            this.checkBox44.TabIndex = 0;
-            this.checkBox44.Text = "Use \'EYE-D\'";
-            this.checkBox44.UseVisualStyleBackColor = true;
             // 
             // tabPage27
             // 
@@ -11946,6 +10558,41 @@ namespace IntelligentFactory
             this.DgvLogicList.TabIndex = 3682;
             this.DgvLogicList.SelectionChanged += new System.EventHandler(this.DgvLogicList_SelectionChanged);
             // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "No";
+            this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn7.Width = 25;
+            // 
+            // dataGridViewCheckBoxColumn3
+            // 
+            this.dataGridViewCheckBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewCheckBoxColumn3.HeaderText = "Enabled";
+            this.dataGridViewCheckBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewCheckBoxColumn3.Name = "dataGridViewCheckBoxColumn3";
+            this.dataGridViewCheckBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCheckBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewCheckBoxColumn3.Width = 68;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn8.FillWeight = 50F;
+            this.dataGridViewTextBoxColumn8.HeaderText = "LogicName";
+            this.dataGridViewTextBoxColumn8.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column4
+            // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column4.FillWeight = 50F;
+            this.Column4.HeaderText = "Algorithm";
+            this.Column4.Name = "Column4";
+            // 
             // uiSymbolButton63
             // 
             this.uiSymbolButton63.BackColor = System.Drawing.Color.Transparent;
@@ -13158,67 +11805,286 @@ namespace IntelligentFactory
             this.metroContextMenu1.Name = "metroContextMenu1";
             this.metroContextMenu1.Size = new System.Drawing.Size(61, 4);
             // 
-            // TrvLogic
+            // panel2
             // 
-            this.TrvLogic.BackColor = System.Drawing.Color.DimGray;
-            this.TrvLogic.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.TrvLogic.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.TrvLogic.ForeColor = System.Drawing.Color.White;
-            this.TrvLogic.Location = new System.Drawing.Point(552, 8);
-            this.TrvLogic.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.TrvLogic.MinimumSize = new System.Drawing.Size(1, 1);
-            this.TrvLogic.Name = "TrvLogic";
-            treeNode1.Name = "노드0";
-            treeNode1.Text = "asdf";
-            treeNode2.Checked = true;
-            treeNode2.Name = "PreImage";
-            treeNode2.Text = "ImageProcessing";
-            treeNode3.Name = "Core";
-            treeNode3.Text = "Algorithm";
-            this.TrvLogic.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2,
-            treeNode3});
-            this.TrvLogic.ScrollBarStyleInherited = false;
-            this.TrvLogic.ShowText = false;
-            this.TrvLogic.Size = new System.Drawing.Size(655, 214);
-            this.TrvLogic.TabIndex = 3684;
-            this.TrvLogic.Text = "uiTreeView1";
-            this.TrvLogic.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panel2.Controls.Add(this.tableLayoutPanel1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(564, 512);
+            this.panel2.TabIndex = 0;
             // 
-            // dataGridViewTextBoxColumn7
+            // tableLayoutPanel1
             // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "No";
-            this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn7.Width = 25;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel1.Controls.Add(this.label87, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label85, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.TbThresholdEYED, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label55, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label39, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.TbOnnxPath, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BtnOpenOnnx, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.CbRotateImageEYED, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.LblResultEYED, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.BtnFindEYED, 2, 5);
+            this.tableLayoutPanel1.Controls.Add(this.BtnRoiEYED, 1, 5);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 7;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(564, 512);
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // dataGridViewCheckBoxColumn3
+            // label39
             // 
-            this.dataGridViewCheckBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewCheckBoxColumn3.HeaderText = "Enabled";
-            this.dataGridViewCheckBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewCheckBoxColumn3.Name = "dataGridViewCheckBoxColumn3";
-            this.dataGridViewCheckBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewCheckBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewCheckBoxColumn3.Width = 68;
+            this.label39.AutoSize = true;
+            this.label39.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label39.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label39.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.label39.ForeColor = System.Drawing.Color.White;
+            this.label39.Location = new System.Drawing.Point(0, 5);
+            this.label39.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(187, 35);
+            this.label39.TabIndex = 0;
+            this.label39.Text = "Model Path";
+            this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dataGridViewTextBoxColumn8
+            // TbOnnxPath
             // 
-            this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn8.FillWeight = 50F;
-            this.dataGridViewTextBoxColumn8.HeaderText = "LogicName";
-            this.dataGridViewTextBoxColumn8.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.TbOnnxPath.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TbOnnxPath.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TbOnnxPath.FillColor = System.Drawing.Color.Black;
+            this.TbOnnxPath.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
+            this.TbOnnxPath.ForeColor = System.Drawing.Color.White;
+            this.TbOnnxPath.Location = new System.Drawing.Point(189, 5);
+            this.TbOnnxPath.Margin = new System.Windows.Forms.Padding(2, 5, 2, 5);
+            this.TbOnnxPath.MinimumSize = new System.Drawing.Size(1, 16);
+            this.TbOnnxPath.Name = "TbOnnxPath";
+            this.TbOnnxPath.Padding = new System.Windows.Forms.Padding(5);
+            this.TbOnnxPath.RectColor = System.Drawing.Color.White;
+            this.TbOnnxPath.ShowText = false;
+            this.TbOnnxPath.Size = new System.Drawing.Size(184, 35);
+            this.TbOnnxPath.TabIndex = 1;
+            this.TbOnnxPath.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.TbOnnxPath.Watermark = "";
             // 
-            // Column4
+            // BtnOpenOnnx
             // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column4.FillWeight = 50F;
-            this.Column4.HeaderText = "Algorithm";
-            this.Column4.Name = "Column4";
+            this.BtnOpenOnnx.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnOpenOnnx.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnOpenOnnx.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.BtnOpenOnnx.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.BtnOpenOnnx.Location = new System.Drawing.Point(375, 5);
+            this.BtnOpenOnnx.Margin = new System.Windows.Forms.Padding(0, 5, 2, 5);
+            this.BtnOpenOnnx.MinimumSize = new System.Drawing.Size(1, 1);
+            this.BtnOpenOnnx.Name = "BtnOpenOnnx";
+            this.BtnOpenOnnx.RectColor = System.Drawing.Color.White;
+            this.BtnOpenOnnx.Size = new System.Drawing.Size(187, 35);
+            this.BtnOpenOnnx.Symbol = 61717;
+            this.BtnOpenOnnx.TabIndex = 2;
+            this.BtnOpenOnnx.TipsFont = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label55.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label55.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.label55.ForeColor = System.Drawing.Color.White;
+            this.label55.Location = new System.Drawing.Point(0, 50);
+            this.label55.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(187, 35);
+            this.label55.TabIndex = 3;
+            this.label55.Text = "Threshold";
+            this.label55.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // TbThresholdEYED
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.TbThresholdEYED, 2);
+            this.TbThresholdEYED.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TbThresholdEYED.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TbThresholdEYED.FillColor = System.Drawing.Color.Black;
+            this.TbThresholdEYED.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
+            this.TbThresholdEYED.ForeColor = System.Drawing.Color.White;
+            this.TbThresholdEYED.Location = new System.Drawing.Point(189, 50);
+            this.TbThresholdEYED.Margin = new System.Windows.Forms.Padding(2, 5, 2, 5);
+            this.TbThresholdEYED.MinimumSize = new System.Drawing.Size(1, 16);
+            this.TbThresholdEYED.Name = "TbThresholdEYED";
+            this.TbThresholdEYED.Padding = new System.Windows.Forms.Padding(5);
+            this.TbThresholdEYED.RectColor = System.Drawing.Color.White;
+            this.TbThresholdEYED.ShowText = false;
+            this.TbThresholdEYED.Size = new System.Drawing.Size(373, 35);
+            this.TbThresholdEYED.TabIndex = 4;
+            this.TbThresholdEYED.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.TbThresholdEYED.Watermark = "";
+            // 
+            // label85
+            // 
+            this.label85.AutoSize = true;
+            this.label85.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label85.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label85.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.label85.ForeColor = System.Drawing.Color.White;
+            this.label85.Location = new System.Drawing.Point(0, 95);
+            this.label85.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(187, 35);
+            this.label85.TabIndex = 5;
+            this.label85.Text = "Rotate Image";
+            this.label85.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // CbRotateImageEYED
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.CbRotateImageEYED, 2);
+            this.CbRotateImageEYED.DataSource = null;
+            this.CbRotateImageEYED.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CbRotateImageEYED.FillColor = System.Drawing.Color.Black;
+            this.CbRotateImageEYED.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
+            this.CbRotateImageEYED.ForeColor = System.Drawing.Color.White;
+            this.CbRotateImageEYED.ItemFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.CbRotateImageEYED.ItemForeColor = System.Drawing.Color.White;
+            this.CbRotateImageEYED.ItemHoverColor = System.Drawing.Color.Gray;
+            this.CbRotateImageEYED.ItemRectColor = System.Drawing.Color.White;
+            this.CbRotateImageEYED.ItemSelectBackColor = System.Drawing.Color.Gray;
+            this.CbRotateImageEYED.ItemSelectForeColor = System.Drawing.Color.White;
+            this.CbRotateImageEYED.Location = new System.Drawing.Point(189, 95);
+            this.CbRotateImageEYED.Margin = new System.Windows.Forms.Padding(2, 5, 2, 5);
+            this.CbRotateImageEYED.MinimumSize = new System.Drawing.Size(63, 0);
+            this.CbRotateImageEYED.Name = "CbRotateImageEYED";
+            this.CbRotateImageEYED.Padding = new System.Windows.Forms.Padding(5, 0, 30, 2);
+            this.CbRotateImageEYED.RectColor = System.Drawing.Color.White;
+            this.CbRotateImageEYED.Size = new System.Drawing.Size(373, 35);
+            this.CbRotateImageEYED.SymbolSize = 24;
+            this.CbRotateImageEYED.TabIndex = 6;
+            this.CbRotateImageEYED.Text = "0";
+            this.CbRotateImageEYED.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CbRotateImageEYED.Watermark = "";
+            // 
+            // BtnRoiEYED
+            // 
+            this.BtnRoiEYED.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnRoiEYED.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnRoiEYED.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.BtnRoiEYED.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.BtnRoiEYED.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.BtnRoiEYED.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.BtnRoiEYED.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.BtnRoiEYED.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnRoiEYED.Location = new System.Drawing.Point(190, 228);
+            this.BtnRoiEYED.MinimumSize = new System.Drawing.Size(1, 1);
+            this.BtnRoiEYED.Name = "BtnRoiEYED";
+            this.BtnRoiEYED.RectColor = System.Drawing.Color.White;
+            this.BtnRoiEYED.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.BtnRoiEYED.RectPressColor = System.Drawing.Color.White;
+            this.BtnRoiEYED.RectSelectedColor = System.Drawing.Color.White;
+            this.BtnRoiEYED.Size = new System.Drawing.Size(182, 39);
+            this.BtnRoiEYED.Style = Sunny.UI.UIStyle.Custom;
+            this.BtnRoiEYED.StyleCustomMode = true;
+            this.BtnRoiEYED.Symbol = 362923;
+            this.BtnRoiEYED.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.BtnRoiEYED.SymbolSize = 20;
+            this.BtnRoiEYED.TabIndex = 3542;
+            this.BtnRoiEYED.Text = "Roi";
+            this.BtnRoiEYED.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // BtnFindEYED
+            // 
+            this.BtnFindEYED.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnFindEYED.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnFindEYED.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.BtnFindEYED.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.BtnFindEYED.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.BtnFindEYED.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.BtnFindEYED.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.BtnFindEYED.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnFindEYED.Location = new System.Drawing.Point(378, 228);
+            this.BtnFindEYED.MinimumSize = new System.Drawing.Size(1, 1);
+            this.BtnFindEYED.Name = "BtnFindEYED";
+            this.BtnFindEYED.RectColor = System.Drawing.Color.White;
+            this.BtnFindEYED.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.BtnFindEYED.RectPressColor = System.Drawing.Color.White;
+            this.BtnFindEYED.RectSelectedColor = System.Drawing.Color.White;
+            this.BtnFindEYED.Size = new System.Drawing.Size(183, 39);
+            this.BtnFindEYED.Style = Sunny.UI.UIStyle.Custom;
+            this.BtnFindEYED.StyleCustomMode = true;
+            this.BtnFindEYED.Symbol = 61442;
+            this.BtnFindEYED.SymbolOffset = new System.Drawing.Point(-10, 0);
+            this.BtnFindEYED.SymbolSize = 20;
+            this.BtnFindEYED.TabIndex = 3544;
+            this.BtnFindEYED.Text = "Find";
+            this.BtnFindEYED.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tableLayoutPanel1.SetColumnSpan(this.panel3, 3);
+            this.panel3.Controls.Add(this.ChkSpecRegionEYED);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 136);
+            this.panel3.Margin = new System.Windows.Forms.Padding(0, 1, 2, 1);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(562, 43);
+            this.panel3.TabIndex = 3545;
+            // 
+            // ChkSpecRegionEYED
+            // 
+            this.ChkSpecRegionEYED.AutoSize = true;
+            this.ChkSpecRegionEYED.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ChkSpecRegionEYED.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.ChkSpecRegionEYED.ForeColor = System.Drawing.Color.White;
+            this.ChkSpecRegionEYED.Location = new System.Drawing.Point(0, 0);
+            this.ChkSpecRegionEYED.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.ChkSpecRegionEYED.Name = "ChkSpecRegionEYED";
+            this.ChkSpecRegionEYED.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.ChkSpecRegionEYED.Size = new System.Drawing.Size(558, 39);
+            this.ChkSpecRegionEYED.TabIndex = 0;
+            this.ChkSpecRegionEYED.Text = "     Use Spec Region (Color : Orange)";
+            this.ChkSpecRegionEYED.UseVisualStyleBackColor = true;
+            // 
+            // label87
+            // 
+            this.label87.AutoSize = true;
+            this.label87.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label87.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label87.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.label87.ForeColor = System.Drawing.Color.White;
+            this.label87.Location = new System.Drawing.Point(0, 185);
+            this.label87.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.label87.Name = "label87";
+            this.label87.Size = new System.Drawing.Size(187, 35);
+            this.label87.TabIndex = 3546;
+            this.label87.Text = "Result";
+            this.label87.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // LblResultEYED
+            // 
+            this.LblResultEYED.AutoSize = true;
+            this.LblResultEYED.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tableLayoutPanel1.SetColumnSpan(this.LblResultEYED, 2);
+            this.LblResultEYED.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LblResultEYED.ForeColor = System.Drawing.Color.White;
+            this.LblResultEYED.Location = new System.Drawing.Point(189, 185);
+            this.LblResultEYED.Margin = new System.Windows.Forms.Padding(2, 5, 2, 5);
+            this.LblResultEYED.Name = "LblResultEYED";
+            this.LblResultEYED.Size = new System.Drawing.Size(373, 35);
+            this.LblResultEYED.TabIndex = 3546;
+            this.LblResultEYED.Text = "-";
+            this.LblResultEYED.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form_MenuVision
             // 
@@ -13329,48 +12195,6 @@ namespace IntelligentFactory
             ((System.ComponentModel.ISupportInitialize)(this.numericDistanceSamplingCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericDistanceThickness)).EndInit();
             this.tabPage26.ResumeLayout(false);
-            this.tabPage26.PerformLayout();
-            this.panel17.ResumeLayout(false);
-            this.panel17.PerformLayout();
-            this.panel56.ResumeLayout(false);
-            this.panel56.PerformLayout();
-            this.panel57.ResumeLayout(false);
-            this.panel57.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            this.panel40.ResumeLayout(false);
-            this.panel40.PerformLayout();
-            this.panel41.ResumeLayout(false);
-            this.panel41.PerformLayout();
-            this.panel35.ResumeLayout(false);
-            this.panel35.PerformLayout();
-            this.panel36.ResumeLayout(false);
-            this.panel36.PerformLayout();
-            this.panel32.ResumeLayout(false);
-            this.panel32.PerformLayout();
-            this.panel33.ResumeLayout(false);
-            this.panel33.PerformLayout();
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
-            this.panel11.ResumeLayout(false);
-            this.panel11.PerformLayout();
-            this.panel28.ResumeLayout(false);
-            this.panel28.PerformLayout();
-            this.panel29.ResumeLayout(false);
-            this.panel29.PerformLayout();
-            this.panel24.ResumeLayout(false);
-            this.panel24.PerformLayout();
-            this.panel25.ResumeLayout(false);
-            this.panel25.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericEyeDOkCount)).EndInit();
-            this.panel18.ResumeLayout(false);
-            this.panel18.PerformLayout();
-            this.panel20.ResumeLayout(false);
-            this.panel20.PerformLayout();
-            this.panel30.ResumeLayout(false);
-            this.panel30.PerformLayout();
-            this.panel31.ResumeLayout(false);
-            this.panel31.PerformLayout();
             this.tabPage27.ResumeLayout(false);
             this.panel43.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
@@ -13423,6 +12247,11 @@ namespace IntelligentFactory
             this.uiTabControl7.ResumeLayout(false);
             this.tabPage16.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView5)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -13834,97 +12663,6 @@ namespace IntelligentFactory
         private MetroFramework.Controls.MetroComboBox comboLineEdgeScorer;
         private Label label81;
         private Label label84;
-        private TabPage tabPage26;
-        private Sunny.UI.UISymbolButton btnEyeD_ColorExInsp;
-        private Sunny.UI.UISymbolButton btnEyeD_ColorSetting;
-        private CheckBox chkEyeD_UseColor;
-        private Label label85;
-        private Sunny.UI.UISymbolButton btnEyeD_DistSetting;
-        private Sunny.UI.UISymbolButton btnJobEyeD_DistanceInsp;
-        private CheckBox chkEyeD_UseDist;
-        private Label label131;
-        private Label label87;
-        private Panel panel17;
-        private Panel panel56;
-        private CheckBox checkBox59;
-        private Label label147;
-        private Panel panel57;
-        private NumericUpDown numericUpDown1;
-        private Label label150;
-        private NumericUpDown numericUpDown2;
-        private CheckBox checkBox55;
-        private CheckBox checkBox56;
-        private CheckBox checkBox57;
-        private CheckBox checkBox58;
-        private CheckBox chkJobEyeD_UseSpecRegion;
-        private Label label148;
-        private Panel panel40;
-        private Label label91;
-        private Panel panel41;
-        private MetroFramework.Controls.MetroComboBox cbRotateImageAngle;
-        private CheckBox checkBox26;
-        private CheckBox checkBox27;
-        private CheckBox checkBox47;
-        private CheckBox checkBox48;
-        private Panel panel35;
-        private Label label92;
-        private Panel panel36;
-        private Sunny.UI.UITextBox txtEyeDMaxCount;
-        private CheckBox checkBox22;
-        private CheckBox checkBox23;
-        private CheckBox checkBox24;
-        private CheckBox checkBox25;
-        private Panel panel32;
-        private Label label93;
-        private Panel panel33;
-        private Label lblEyeDResult;
-        private CheckBox checkBox38;
-        private CheckBox checkBox39;
-        private CheckBox checkBox40;
-        private CheckBox checkBox45;
-        private Panel panel10;
-        private Label label129;
-        private Panel panel11;
-        private Sunny.UI.UITextBox txtEyeDCorrectAnswer;
-        private CheckBox checkBox9;
-        private CheckBox checkBox19;
-        private CheckBox checkBox20;
-        private CheckBox checkBox21;
-        private Panel panel28;
-        private Label label128;
-        private Panel panel29;
-        private Sunny.UI.UITextBox txtEyeDMinScore;
-        private CheckBox checkBox34;
-        private CheckBox checkBox35;
-        private CheckBox checkBox36;
-        private CheckBox checkBox37;
-        private Sunny.UI.UISymbolButton btnJobEyeD_Roi;
-        private Sunny.UI.UISymbolButton btnjobEyeDFind;
-        private Panel panel24;
-        private Label label126;
-        private Panel panel25;
-        private CheckBox checkBox28;
-        private CheckBox checkBox31;
-        private NumericUpDown numericEyeDOkCount;
-        private CheckBox checkBox32;
-        private CheckBox checkBox33;
-        private Panel panel18;
-        private Label label125;
-        private Panel panel20;
-        private MetroFramework.Controls.MetroComboBox comboEyeDInferType;
-        private CheckBox checkBox11;
-        private CheckBox checkBox16;
-        private CheckBox checkBox29;
-        private CheckBox checkBox30;
-        private Panel panel30;
-        private Label label127;
-        private Panel panel31;
-        private Button btnGetEyeDModelNames;
-        private MetroFramework.Controls.MetroComboBox comboEyeDModelName;
-        private CheckBox checkBox41;
-        private CheckBox checkBox42;
-        private CheckBox checkBox43;
-        private CheckBox checkBox44;
         private TabPage tabPage27;
         private Sunny.UI.UITextBox lbColorMaxArea;
         private Sunny.UI.UITextBox lbColorMinArea;
@@ -14094,5 +12832,21 @@ namespace IntelligentFactory
         private DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private DataGridViewTextBoxColumn Column4;
+        private TabPage tabPage26;
+        private Panel panel2;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Label label39;
+        private Sunny.UI.UITextBox TbOnnxPath;
+        private Sunny.UI.UISymbolButton BtnOpenOnnx;
+        private Sunny.UI.UITextBox TbThresholdEYED;
+        private Label label55;
+        private Label label85;
+        private Sunny.UI.UISymbolButton BtnFindEYED;
+        private Sunny.UI.UIComboBox CbRotateImageEYED;
+        private Sunny.UI.UISymbolButton BtnRoiEYED;
+        private Panel panel3;
+        private CheckBox ChkSpecRegionEYED;
+        private Label label87;
+        private Label LblResultEYED;
     }
 }

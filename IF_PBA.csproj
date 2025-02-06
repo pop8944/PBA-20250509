@@ -1505,6 +1505,12 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="IF_Onnx\IFOnnxRuntime.csproj">
+      <Project>{dcde8422-3b7f-46d4-b62d-af1f243dc056}</Project>
+      <Name>IFOnnxRuntime</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
