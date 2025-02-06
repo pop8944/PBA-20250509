@@ -749,6 +749,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="0. VISION\Manager\IF_VisionLogicInfo.cs" />
+    <Compile Include="0. VISION\Parameter\IF_VisionParam_EYED.cs" />
     <Compile Include="0. VISION\Parameter\Processor_Manager.cs" />
     <Compile Include="0. VISION\Parameter\IF_VisionParam_Blob.cs" />
     <Compile Include="0. VISION\Parameter\IF_VisionParam_ColorEx.cs" />
