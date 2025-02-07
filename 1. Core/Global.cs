@@ -1,4 +1,5 @@
 ﻿using Cognex.VisionPro;
+using IFOnnxRuntime;
 using OpenCvSharp;
 using System;
 using System.Collections.Generic;
@@ -140,7 +141,7 @@ namespace IntelligentFactory
 
         private bool isPass = false;
         public bool isOnGrab = false;
-
+        public EYED eyeD = null;
         public void SetPass(bool pass)
         {
             isPass = pass;
@@ -336,6 +337,7 @@ namespace IntelligentFactory
             m_DriverD.DriverUse = Util.GetDriverCheck("D");
             m_DriverE.DriverUse = Util.GetDriverCheck("E");
 
+            eyeD = new EYED();
             CognexLicense_Check();
         }
 

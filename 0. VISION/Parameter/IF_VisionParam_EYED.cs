@@ -13,10 +13,10 @@ namespace IntelligentFactory._0._VISION.Parameter
         public double Threshold { get; set; } = 0.0;
 
         [CategoryAttribute("Specification"), DescriptionAttribute(""), DisplayNameAttribute("Rotate Degree Value")]
-        public List<int> RotateDgree { get; set; } = new List<int>{ 0, 90, 180, 270 };
+        public int RotateDgree { get; set; } = 0;
 
         [CategoryAttribute("Specification"), DescriptionAttribute(""), DisplayNameAttribute("Use Spec Region")]
-        public bool UseSpecRegion { get; set; }
+        public bool UseSpecRegion { get; set; } = false;
         public override IF_VisionParamObject Clone()
         {
             // 직렬화 시 실제 타입 정보를 포함시키기 위해 TypeNameHandling을 설정

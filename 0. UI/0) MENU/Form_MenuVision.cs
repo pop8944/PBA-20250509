@@ -29,6 +29,10 @@ using log4net.Core;
 using Cognex.VisionPro.PMAlign;
 using System.Windows.Navigation;
 using static Sunny.UI.IdentityCard;
+using IFOnnxRuntime;
+using IFOnnxRuntime.Models;
+using log4net.Util;
+using IntelligentFactory._0._VISION.Parameter;
 
 
 namespace IntelligentFactory
@@ -194,6 +198,8 @@ namespace IntelligentFactory
                 {
                     gainList[i].Text = Global.System.Recipe.GrabManager.Nodes[i].Gain.ToString();
                 }
+
+                CbRotateImageEYED.DataSource = new List<int> { 0, 90, 180, 270 };
             }
             catch (Exception ex)
             {
@@ -1831,7 +1837,6 @@ namespace IntelligentFactory
                 else if (cbAlgorithm.SelectedIndex == 7) { LogicAlgorithm = "Connector"; }
                 else if (cbAlgorithm.SelectedIndex == 8) { LogicAlgorithm = "Pin"; }
                 LogicName = tbLogicName.Text;
-                IF_VisionParamObject Logic = new IF_VisionParam_Matching();
                 foreach (IF_VisionLogicInfo info in Global.System.Recipe.LibraryManager.Library[m_nSelectedArrayIndex])
                 {
                     if (idx == m_SelectedLogics)
@@ -1901,6 +1906,59 @@ namespace IntelligentFactory
                 CLogger.Exception(MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name, ex);
 
                 IF_Util.ShowMessageBox("Error", $"[FAILED] {MethodBase.GetCurrentMethod().ReflectedType.Name}==>{MethodBase.GetCurrentMethod().Name}   Execption ==> {ex.Message}");
+            }
+        }
+
+        private void BtnOpenOnnx_Click(object sender, EventArgs e)
+        {
+            //string logicName = DgvLogicList.SelectedRows[0].Cells[2].Value.ToString();
+
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "Image Load";
+            ofd.Filter = "Image File (*.png, *.jpg, *.gif, *.bmp) | *.png; *.jpg; *.gif; *.bmp; | 모든 파일 (*.*) | *.*";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                TbOnnxPath.Text = ofd.FileName;
+                //OnnxInfo onnxInfo = new OnnxInfo()
+                //{
+                //    Device = "CPU",
+                //    NmsThreshold = 0.5F,
+                //    OnnxName = logicName,
+                //    OnnxPath = ofd.FileName
+                //    // IF_VisionParam_EYED에 OnnxInfo를 넣을지 고민해야 됨.
+                //};
+                //Global.eyeD.AddModel(onnxInfo);
+            }
+        }
+
+        private void BtnApplyCore_Click(object sender, EventArgs e)
+        {
+            string newLogic = TabMenuLogic.SelectedTab.Text;
+            string logicName = DgvLogicList.SelectedRows[0].Cells[2].Value.ToString();
+            string algorithm = DgvLogicList.SelectedRows[0].Cells[3].Value.ToString();
+
+            //EYED에서 다른거로 바꿀 때 Global.eyeD.RemoveModel 메서드를 반드시 호출해야 함.
+            if (algorithm == "EYED")
+            {
+                if (Global.eyeD.Models.ContainsKey(logicName)) Global.eyeD.RemoveModel(logicName);
+            }
+            IF_VisionLogicInfo logicInfo = Global.System.Recipe.LibraryManager.Library[m_nSelectedArrayIndex].Where(v => v.LocationNo == DgvJobList.SelectedRows[0].Cells[0].Value.ToString()).ToList()[0];
+            int selectedLogicIndex = (int)DgvLogicList.SelectedRows[0].Cells[0].Value - 1;
+            switch (newLogic)
+            {
+                case "EYE-D":
+                    logicInfo.Logics[selectedLogicIndex] = null;
+                    // TODO : new할 때 기존의 IF_VisionParam_Object의 값을 이어받을 수 있어야 함.
+                    logicInfo.Logics[selectedLogicIndex] = new IF_VisionParam_EYED()
+                    {
+                        ModelPath = TbOnnxPath.Text,
+                        Threshold = double.Parse(TbThresholdEYED.Text),
+                        RotateDgree = (int)CbRotateImageEYED.SelectedItem,
+                    };
+                    break;
+                default:
+                    break;
             }
         }
 
