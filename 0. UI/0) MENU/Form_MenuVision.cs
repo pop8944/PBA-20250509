@@ -33,6 +33,7 @@ using IFOnnxRuntime;
 using IFOnnxRuntime.Models;
 using log4net.Util;
 using IntelligentFactory._0._VISION.Parameter;
+using Vila.Extensions;
 
 
 namespace IntelligentFactory
@@ -1945,19 +1946,26 @@ namespace IntelligentFactory
             }
             IF_VisionLogicInfo logicInfo = Global.System.Recipe.LibraryManager.Library[m_nSelectedArrayIndex].Where(v => v.LocationNo == DgvJobList.SelectedRows[0].Cells[0].Value.ToString()).ToList()[0];
             int selectedLogicIndex = (int)DgvLogicList.SelectedRows[0].Cells[0].Value - 1;
+
+            // "새 logic에 deserialize해서 넣어줘야 부모클래스의 Property를 받아올 수 있음."
+            string json = JsonSerializer.Serialize(logicInfo.Logics[selectedLogicIndex]);
+            logicInfo.Logics[selectedLogicIndex] = null;
             switch (newLogic)
             {
                 case "EYE-D":
-                    logicInfo.Logics[selectedLogicIndex] = null;
-                    // TODO : new할 때 기존의 IF_VisionParam_Object의 값을 이어받을 수 있어야 함.
-                    logicInfo.Logics[selectedLogicIndex] = new IF_VisionParam_EYED()
-                    {
-                        ModelPath = TbOnnxPath.Text,
-                        Threshold = double.Parse(TbThresholdEYED.Text),
-                        RotateDgree = (int)CbRotateImageEYED.SelectedItem,
-                    };
+
+                    IF_VisionParam_EYED newAlgoEYED = JsonSerializer.Deserialize<IF_VisionParam_EYED>(json);
+                    newAlgoEYED.ModelPath = TbOnnxPath.Text;
+                    newAlgoEYED.Threshold = double.Parse(TbThresholdEYED.Text);
+                    newAlgoEYED.RotateDgree = (int)CbRotateImageEYED.SelectedItem;
+                    newAlgoEYED.UseSpecRegion = false;
+                    
+                    logicInfo.Logics[selectedLogicIndex] = newAlgoEYED;
                     break;
-                default:
+                case "Pattern":
+                    IF_VisionParam_Matching newAlgoPattern = JsonSerializer.Deserialize< IF_VisionParam_Matching>(json);
+                    logicInfo.Logics[selectedLogicIndex] = newAlgoPattern;
+                    // TODO : UI의 값과 property가 어떻게 연결되는지 몰라서 아직 작성 안 함.(다른 알고리즘도 마찬가지)
                     break;
             }
         }
