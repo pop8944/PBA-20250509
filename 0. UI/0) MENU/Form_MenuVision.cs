@@ -71,8 +71,9 @@ namespace IntelligentFactory
         public IF_VisionLogicInfo m_LogicInfo = null;
         public IF_VisionParam_Matching m_Matching = null;
         
-        public int m_SelectedLogics = 0;
+        public int m_SelectedLogicIndex = 0;
         public string m_SelectedLocationNo = "";
+        public string m_SelectedPartCode = "";
 
         public int m_SelectedLogic = 0;
         public string m_SelectedLogicName = "";
@@ -1612,8 +1613,8 @@ namespace IntelligentFactory
                 //    foreach (KeyValuePair<string, IF_VisionLogicInfo> infoKvp in library)
                 //    {
                 //        string locationNo = infoKvp.Key;
-                //        IF_VisionLogicInfo info = infoKvp.Value;
-                //        DgvGerberInfo.Rows.Add(new object[] { locationNo, info.PartCode, info.Enabled, $"X: {info.PosX.ToString()}, Y: {info.PosY.ToString()}"});
+                //        IF_VisionLogicInfo part = infoKvp.Value;
+                //        DgvGerberInfo.Rows.Add(new object[] { locationNo, part.PartCode, part.Enabled, $"X: {part.PosX.ToString()}, Y: {part.PosY.ToString()}"});
                 //    }
                 //}
                 if (ofd.ShowDialog() == DialogResult.OK)
@@ -1651,8 +1652,8 @@ namespace IntelligentFactory
             //foreach(KeyValuePair<string, IF_VisionLogicInfo> infoKvp in Global.System.Recipe.LibraryManager.Library[1])
             //{
             //    string locationNo = infoKvp.Key;
-            //    IF_VisionLogicInfo info = infoKvp.Value;
-            //    DgvJobList.Rows.Add(new object[] {locationNo, info.Enabled, info.PartCode});
+            //    IF_VisionLogicInfo part = infoKvp.Value;
+            //    DgvJobList.Rows.Add(new object[] {locationNo, part.Enabled, part.PartCode});
             //}
             //Global.System.Recipe.LibraryManager = Global.System.Recipe.LoadedGerber;
         }
@@ -1664,9 +1665,9 @@ namespace IntelligentFactory
             CogGraphicInteractiveCollection cg = new CogGraphicInteractiveCollection();
             //foreach (KeyValuePair<string, IF_VisionLogicInfo> infoKvp in Global.System.Recipe.LoadedGerber.Library[1])
             //{
-            //    IF_VisionLogicInfo info = infoKvp.Value;
-            //    if (!info.Enabled) continue;
-            //    Rectangle tempRect = new Rectangle(info.PosX - 100/2, info.PosY - 100 / 2, 100, 100);
+            //    IF_VisionLogicInfo part = infoKvp.Value;
+            //    if (!part.Enabled) continue;
+            //    Rectangle tempRect = new Rectangle(part.PosX - 100/2, part.PosY - 100 / 2, 100, 100);
             //    CogRectangle rect = CConverter.RectToCogRect(tempRect);
             //    cg.Add(rect);
             //}
@@ -1686,9 +1687,11 @@ namespace IntelligentFactory
             {
                 if (DgvJobList.SelectedRows.Count > 0)
                 {
-                    m_SelectedLogics = DgvJobList.SelectedRows[0].Index;
-                    m_SelectedLocationNo = DgvJobList[0, m_SelectedLogics].Value.ToString();
-
+                    m_SelectedLogicIndex = DgvJobList.SelectedRows[0].Index;
+                    m_SelectedLocationNo = DgvJobList[0, m_SelectedLogicIndex].Value.ToString();
+                    m_SelectedPartCode = DgvJobList[2, m_SelectedLogicIndex].Value.ToString();
+                    TbLocationNo.Text = m_SelectedLocationNo.ToString();
+                    TbPartName.Text = m_SelectedPartCode.ToString();    
                     DgvLogicList.Rows.Clear();
                     int idx = 0;
                     foreach (IF_VisionLogicInfo info in Global.System.Recipe.LibraryManager.Library[m_nSelectedArrayIndex])
@@ -1720,6 +1723,10 @@ namespace IntelligentFactory
                 if (DgvLogicList.SelectedRows.Count > 0)
                 {
                     m_SelectedLogic = DgvLogicList.SelectedRows[0].Index;
+                    string logicName = DgvLogicList[2, m_SelectedLogic].Value.ToString();
+                    string algorithm = DgvLogicList[3, m_SelectedLogic].Value.ToString();
+                    tbLogicName.Text = logicName;
+                    cbAlgorithm.SelectedItem = algorithm;
                     string locationNo = m_SelectedLocationNo;
 
                     TrvLogic.Nodes.Clear();
@@ -1840,7 +1847,7 @@ namespace IntelligentFactory
                 LogicName = tbLogicName.Text;
                 foreach (IF_VisionLogicInfo info in Global.System.Recipe.LibraryManager.Library[m_nSelectedArrayIndex])
                 {
-                    if (idx == m_SelectedLogics)
+                    if (idx == m_SelectedLogicIndex)
                     {
                         DgvLogicList.Rows[m_SelectedLogic].Cells[2].Value = LogicName;
                         DgvLogicList.Rows[m_SelectedLogic].Cells[3].Value = LogicAlgorithm;
@@ -1890,7 +1897,7 @@ namespace IntelligentFactory
                 IF_VisionParamObject Logic = new IF_VisionParam_Matching();
                 foreach (IF_VisionLogicInfo info in Global.System.Recipe.LibraryManager.Library[m_nSelectedArrayIndex])
                 {
-                    if (idx == m_SelectedLogics)
+                    if (idx == m_SelectedLogicIndex)
                     {
                         int LastRawindex = info.Logics.Count;
                         Logic.Enabled = LogicEnable;
@@ -1935,6 +1942,7 @@ namespace IntelligentFactory
 
         private void BtnApplyCore_Click(object sender, EventArgs e)
         {
+            if (DgvLogicList.SelectedRows.Count == 0) return;
             string newLogic = TabMenuLogic.SelectedTab.Text;
             string logicName = DgvLogicList.SelectedRows[0].Cells[2].Value.ToString();
             string algorithm = DgvLogicList.SelectedRows[0].Cells[3].Value.ToString();
@@ -1953,19 +1961,24 @@ namespace IntelligentFactory
             switch (newLogic)
             {
                 case "EYE-D":
-
                     IF_VisionParam_EYED newAlgoEYED = JsonSerializer.Deserialize<IF_VisionParam_EYED>(json);
                     newAlgoEYED.ModelPath = TbOnnxPath.Text;
                     newAlgoEYED.Threshold = double.Parse(TbThresholdEYED.Text);
                     newAlgoEYED.RotateDgree = (int)CbRotateImageEYED.SelectedItem;
                     newAlgoEYED.UseSpecRegion = false;
+                    newAlgoEYED.Type = "EYE-D";
                     
                     logicInfo.Logics[selectedLogicIndex] = newAlgoEYED;
                     break;
+
                 case "Pattern":
                     IF_VisionParam_Matching newAlgoPattern = JsonSerializer.Deserialize< IF_VisionParam_Matching>(json);
-                    logicInfo.Logics[selectedLogicIndex] = newAlgoPattern;
                     // TODO : UI의 값과 property가 어떻게 연결되는지 몰라서 아직 작성 안 함.(다른 알고리즘도 마찬가지)
+                    newAlgoPattern.MinimumScore_forFind = double.Parse(tbJobPattern_AcceptScore.Text);
+                    newAlgoPattern.MinimumScore_forJudge = double.Parse(tbJobPattern_MinScore.Text);
+                    newAlgoPattern.Type = "Pattern";
+
+                    logicInfo.Logics[selectedLogicIndex] = newAlgoPattern;
                     break;
             }
         }
@@ -2073,37 +2086,56 @@ namespace IntelligentFactory
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //Global.Setting.Save(Global.Setting.RecipeName);
+            //Equipment Save
             ApplyIQ_HW();
             Global.System.Recipe.GrabManager.SaveConfig();
             Global.System.Recipe.LibraryManager.Save("TEST");
-            foreach (IF_VisionLogicInfo info in Global.System.Recipe.LibraryManager.Library[m_nSelectedArrayIndex])
+            foreach (IF_VisionLogicInfo part in Global.System.Recipe.LibraryManager.Library[m_nSelectedArrayIndex])
             {
-                if (info.Logics.Count > 0)
+                if (part.Logics.Count > 0)
                 {
-                    for (int i = 0; i < info.Logics.Count; i++)
+                    for (int i = 0; i < part.Logics.Count; i++)
                     {
-                        if (info.Logics[i].Name == Name)
+                        // 이거 Name뭔가 이상함.
+                        //if (part.Logics[i].Name == Name)
+                        //{
+                        switch (part.Logics[i].Type)
                         {
-                            switch (info.Logics[i].Type)
-                            {
-                                case "Pattern":
+                            case "Pattern":
+                                {
+                                    foreach (IF_VisionParam_Matching matchinginfo in part.Logics.OfType<IF_VisionParam_Matching>())
                                     {
-                                        foreach (IF_VisionParam_Matching matchinginfo in info.Logics.OfType<IF_VisionParam_Matching>())
-                                        {
-                                             CCognexUtil.SaveCogTool(matchinginfo.ToolMain_Path, matchinginfo.ToolMain);
-                                             CCognexUtil.SaveCogTool(matchinginfo.ToolSub1_Path, matchinginfo.ToolSub1);
-                                             CCognexUtil.SaveCogTool(matchinginfo.ToolSub2_Path, matchinginfo.ToolSub2);
-                                             CCognexUtil.SaveCogTool(matchinginfo.ToolSub3_Path, matchinginfo.ToolSub3);
-                                             CCognexUtil.SaveCogTool(matchinginfo.ToolSub4_Path, matchinginfo.ToolSub4);
-                                        }
-
-                                        break;
+                                            CCognexUtil.SaveCogTool(matchinginfo.ToolMain_Path, matchinginfo.ToolMain);
+                                            CCognexUtil.SaveCogTool(matchinginfo.ToolSub1_Path, matchinginfo.ToolSub1);
+                                            CCognexUtil.SaveCogTool(matchinginfo.ToolSub2_Path, matchinginfo.ToolSub2);
+                                            CCognexUtil.SaveCogTool(matchinginfo.ToolSub3_Path, matchinginfo.ToolSub3);
+                                            CCognexUtil.SaveCogTool(matchinginfo.ToolSub4_Path, matchinginfo.ToolSub4);
                                     }
 
-                            }
-
+                                    break;
+                                }
+                            case "EYE-D":
+                                
+                                break;
                         }
+
+                            //switch (part.Logics[i])
+                            //{
+                            //    case IF_VisionParam_Matching matchingInfo:
+                            //        foreach (IF_VisionParam_Matching matchinginfo in part.Logics.OfType<IF_VisionParam_Matching>())
+                            //        {
+                            //            CCognexUtil.SaveCogTool(matchinginfo.ToolMain_Path, matchinginfo.ToolMain);
+                            //            CCognexUtil.SaveCogTool(matchinginfo.ToolSub1_Path, matchinginfo.ToolSub1);
+                            //            CCognexUtil.SaveCogTool(matchinginfo.ToolSub2_Path, matchinginfo.ToolSub2);
+                            //            CCognexUtil.SaveCogTool(matchinginfo.ToolSub3_Path, matchinginfo.ToolSub3);
+                            //            CCognexUtil.SaveCogTool(matchinginfo.ToolSub4_Path, matchinginfo.ToolSub4);
+                            //        }
+                            //        break;
+                            //    default:
+                            //        break;
+                            //}
+                            
+                        //}
                     }
                 }
             }
