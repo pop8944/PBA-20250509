@@ -159,7 +159,7 @@ namespace IntelligentFactory
                         Global.Instance.System.Recipe.CODE = strName;
                         Global.Instance.System.Recipe.SaveConfig();
                         RecipeCheck_Cnt = 3;
-                        Global.Instance.System.Recipe.SettingJob();
+                        //Global.Instance.System.Recipe.SettingJob();
                         RecipeCheck_Cnt = 6;
                         Set_Invoke_Form(Global.Instance.FrmVision);
                         //IGlobal.Instance.FrmVision.InitJobs();

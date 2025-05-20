@@ -1,12 +1,14 @@
-﻿namespace IntelligentFactory
+﻿using System.Collections.Generic;
+
+namespace IntelligentFactory
 {
     internal class Json_Library_Enabled
     {
-        public string Name { get; set; }
-        public string Enabled { get; set; }
+        public string LocationNo { get; set; }
+        public string PartEnabled { get; set; }
+
+        public List<string> LogicName { get; set; }
+        public List<string> LogicEnabled { get; set; }
     }
-    internal class Json_Enabled_Count
-    {
-        public string Count { get; set; }
-    }
+   
 }

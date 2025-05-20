@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Windows.Forms;
 using System.Threading.Tasks;
 using System.Windows.Markup;
 
@@ -325,30 +328,96 @@ namespace IntelligentFactory
         //    }
         //}
 
-        // 생산 카운트 저장...
-        public void CountSave_Log(IData data)
+        // NG Count 모델 별 저장 - JYH
+        public void NG_Count_Save(string LogicInfo, string sNGCount, string LibraryName)
         {
-            //string strPbaCode = Global.Instance.System.Recipe.CODE.Replace("\r", "").Replace("\n", "");
-            //string strPbaModel = $"{Global.Instance.System.Recipe.Name}_{strPbaCode}";
-            string strPbaModel = $"{Global.Instance.System.Recipe.Name}";
-            string path  = $"{Global.m_ImageFileRoot}\\{DateTime.Now.Year}\\{DateTime.Now.Month.ToString("D2")}\\{DateTime.Now.Day.ToString("D2")}_Auto\\Count_Log\\{strPbaModel}";
-            if (!Directory.Exists(path))
+            string sPath = $"{Application.StartupPath}\\RECIPE\\{LibraryName}";
+            if (!Directory.Exists(sPath)) Directory.CreateDirectory(sPath);
+            string filePaht = Path.Combine(sPath, "\\NG_Count.ini");
+            if (!File.Exists(filePaht)) File.Create(filePaht);
+                
+            WriteValue("LogicInfo", LogicInfo, sNGCount, filePaht);
+        }
+        // NG Count 모델 별 로드 - JYH
+        public void NG_Count_Load(string LibraryName)
+        {
+            string sPath = $"{Application.StartupPath}\\RECIPE\\{LibraryName}\\NG_Count.ini";
+            string currentSection = "";
+            int iNum = 0;
+            if (File.Exists(sPath))
             {
-                Directory.CreateDirectory(path);
+                foreach (string rawLine in File.ReadLines(sPath))
+                {
+                    string line = rawLine.Trim();
+
+                    if (string.IsNullOrWhiteSpace(line) || line.StartsWith(";") || line.StartsWith("#"))
+                        continue;
+
+                    if (line.StartsWith("[") && line.EndsWith("]"))
+                    {
+                        currentSection = line.Substring(1, line.Length - 2);
+                        continue;
+                    }
+
+                    if (line.Contains("="))
+                    {
+                        string[] keyValue = line.Split(new[] { '=' }, 2);
+                        string key = keyValue[0].Trim();
+                        string value = keyValue[1].Trim();
+
+                        string[] keyParts = key.Split(',');
+
+                        string part1 = keyParts.Length > 0 ? keyParts[0] : "";
+                        string part2 = keyParts.Length > 1 ? keyParts[1] : "";
+                        string part3 = keyParts.Length > 2 ? keyParts[2] : "";
+
+                        IData.sNGArray[iNum] = part1;
+                        IData.sNGLocationNo[iNum] = part2;
+                        IData.sNGLogicName[iNum] = part3;
+                        IData.sNGCount[iNum] = value;
+                        iNum++;
+                    }
+                }
+                IData.bNGCountLoad = true;
+
+            }
+        }
+        // NG Count 삭제 메소드 생성 - JYH
+        public void NG_Count_Delete(string keyToDelete, string LibraryName)
+        {
+            string sPath = $"{Application.StartupPath}\\RECIPE\\{LibraryName}\\NG_Count.ini";
+            string sectionToEdit = "LogicInfo";
+            List<string> lines = File.ReadAllLines(sPath).ToList();
+
+            List<string> output = new List<string>();
+
+            string currentSection = "";
+            foreach (string rawLine in lines)
+            {
+                string line = rawLine.Trim();
+
+                // 섹션 감지
+                if (line.StartsWith("[") && line.EndsWith("]"))
+                {
+                    currentSection = line.Substring(1, line.Length - 2);
+                    output.Add(rawLine);
+                    continue;
+                }
+
+                if (currentSection == sectionToEdit)
+                {
+                    if (line.StartsWith(keyToDelete + "="))
+                    {
+                        continue;
+                    }
+                }
+
+                output.Add(rawLine);
             }
 
-            string file_paht = Path.Combine(path, "Count.ini");
-            if (!File.Exists(file_paht))
-                using (File.Create(file_paht))
-                {
-                }
-            WriteValue("COUNT", "OK_Daily", data.CountOK.ToString(), file_paht);
-            WriteValue("COUNT", "NG_Daily", data.CountNG_F.ToString(), file_paht);
-            WriteValue("COUNT", "YIELD_Daily", data.yield, file_paht);
-            WriteValue("COUNT", "OK_MONTHLY", data.CountOK_M.ToString(), file_paht);
-            WriteValue("COUNT", "NG_MONTHLY", data.CountNG_M.ToString(), file_paht);
-            WriteValue("COUNT", "YIELD_MONTHLY", data.CountYield_M, file_paht);
+            File.WriteAllLines(sPath, output);
         }
+
         public void CountSave(IData data)
         {
             string path = $"{Global.m_MainPJTRoot}\\";
@@ -359,17 +428,18 @@ namespace IntelligentFactory
 
             string file_paht = Path.Combine(path, "Count.ini");
             if (!File.Exists(file_paht)) File.Create(file_paht);
-            double dYield = (double)(Global.Instance.Data.CountOK_M / ((double)Global.Instance.Data.CountOK_M + (double)Global.Instance.Data.CountNG_M)) * 100;
-            
+            double dYield = (double)(Global.Instance.Data.CurrentOK / ((double)Global.Instance.Data.CurrentOK + (double)Global.Instance.Data.CurrentNG)) * 100;
+            if ((data.CurrentOK + data.CurrentNG) != 0)
+                data.CurrentYield = ((double)(data.CurrentOK / (data.CurrentOK + data.CurrentNG))).ToString();
+            else
+                data.CurrentYield = "0";
             WriteValue("COUNT", "OK", data.CountOK.ToString(), file_paht);
             WriteValue("COUNT", "NG_T", data.CountNG_T.ToString(), file_paht);
             WriteValue("COUNT", "NG_F", data.CountNG_F.ToString(), file_paht);
-            WriteValue("COUNT", "YIELD", data.yield, file_paht);
-            WriteValue("COUNT", "COUNT_OK_MONTHLY", data.CountOK_M.ToString(), file_paht);
-            WriteValue("COUNT", "COUNT_NG_MONTHLY", data.CountNG_M.ToString(), file_paht);
-            WriteValue("COUNT", "COUNT_YIELD_MONTHLY", data.CountYield_M, file_paht);
-            WriteValue("COUNT", "LAST_RESET_DAILY", data.Last_Reset_D, file_paht);
-            WriteValue("COUNT", "LAST_RESET_MONTHLY", data.Last_Reset_M, file_paht);
+            WriteValue("COUNT", "YIELD", data.yield.ToString(), file_paht);
+            WriteValue("COUNT", "CURRENT_OK", data.CurrentOK.ToString(), file_paht);
+            WriteValue("COUNT", "CURRENT_NG", data.CurrentNG.ToString(), file_paht);
+            WriteValue("COUNT", "CURRENT_YIELD", dYield.ToString(), file_paht);
         }
         public void CountLoad()
         {
@@ -418,58 +488,40 @@ namespace IntelligentFactory
                 {
                     Global.Instance.Data.yield = strtmp;
                 }
-                strtmp = ReadValue("COUNT", "COUNT_OK_MONTHLY", path);
+                strtmp = ReadValue("COUNT", "CURRENT_OK", path);
                 if (strtmp == null || strtmp == "")
                 {
-                    Global.Instance.Data.CountOK_M = 0;
+                    Global.Instance.Data.CurrentOK = 0;
                 }
                 else
                 {
-                    Global.Instance.Data.CountOK_M = int.Parse(strtmp);
+                    Global.Instance.Data.CurrentOK = int.Parse(strtmp);
                 }
-                strtmp = ReadValue("COUNT", "COUNT_NG_MONTHLY", path);
+                strtmp = ReadValue("COUNT", "CURRENT_NG", path);
                 if (strtmp == null || strtmp == "")
                 {
-                    Global.Instance.Data.CountNG_M = 0;
+                    Global.Instance.Data.CurrentNG = 0;
                 }
                 else
                 {
-                    Global.Instance.Data.CountNG_M = int.Parse(strtmp);
+                    Global.Instance.Data.CurrentNG = int.Parse(strtmp);
                 }
-                strtmp = ReadValue("COUNT", "COUNT_YIELD_MONTHLY", path);
+                strtmp = ReadValue("COUNT", "CURRENT_YIELD", path);
                 if (strtmp == null || strtmp == "")
                 {
-                    Global.Instance.Data.CountYield_M = "0";
+                    Global.Instance.Data.CurrentYield = "0";
                 }
                 else
                 {
-                    Global.Instance.Data.CountYield_M = strtmp;
-                }
-                strtmp = ReadValue("COUNT", "LAST_RESET_DAILY", path);
-                if (strtmp == null || strtmp == "")
-                {
-                    Global.Instance.Data.Last_Reset_D = "0";
-                }
-                else
-                {
-                    Global.Instance.Data.Last_Reset_D = strtmp;
-                }
-                strtmp = ReadValue("COUNT", "LAST_RESET_MONTHLY", path);
-                if (strtmp == null || strtmp == "")
-                {
-                    Global.Instance.Data.Last_Reset_M = "0";
-                }
-                else
-                {
-                    Global.Instance.Data.Last_Reset_M = strtmp;
+                    Global.Instance.Data.CurrentYield = strtmp;
                 }
             }
             else
             {
                 File.Create(path).Close();
             }
-            bLoad = true;
         }
+
 
         //public bool IMAGESAVETYPE_SAVE()
         //{

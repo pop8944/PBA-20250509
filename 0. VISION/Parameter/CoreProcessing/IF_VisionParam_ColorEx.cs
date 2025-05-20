@@ -19,9 +19,23 @@ namespace IntelligentFactory
         [CategoryAttribute("Specification"), DescriptionAttribute(""), DisplayNameAttribute("Master (B)")]
         public int MasterB { get; set; } = 30;
 
-        [CategoryAttribute("Specification"), DescriptionAttribute(""), DisplayNameAttribute("Range")]
-        public int Range { get; set; } = 30;
+        [CategoryAttribute("Specification"), DescriptionAttribute(""), DisplayNameAttribute("Range Min (R)")]
+        public int RangeMinR { get; set; } = 25;
 
+        [CategoryAttribute("Specification"), DescriptionAttribute(""), DisplayNameAttribute("Range Max (R)")]
+        public int RangeMaxR { get; set; } = 25;
+
+        [CategoryAttribute("Specification"), DescriptionAttribute(""), DisplayNameAttribute("Range Min (G)")]
+        public int RangeMinG { get; set; } = 25;
+
+        [CategoryAttribute("Specification"), DescriptionAttribute(""), DisplayNameAttribute("Range Max (G)")]
+        public int RangeMaxG { get; set; } = 25;
+
+        [CategoryAttribute("Specification"), DescriptionAttribute(""), DisplayNameAttribute("Range Min (B)")]
+        public int RangeMinB { get; set; } = 25;
+
+        [CategoryAttribute("Specification"), DescriptionAttribute(""), DisplayNameAttribute("Range Max (B)")]
+        public int RangeMaxB { get; set; } = 25;
         public override IF_VisionParamObject Clone()
         {
             // 직렬화 시 실제 타입 정보를 포함시키기 위해 TypeNameHandling을 설정

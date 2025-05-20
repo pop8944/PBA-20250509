@@ -6,9 +6,18 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Windows.Forms;
+using Vila.Extensions;
+using IFOnnxRuntime;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using FrameworkOnnxTest;
+using IFOnnxRuntime.Models;
+using IntelligentFactory.Properties;
 
 namespace IntelligentFactory
 {
@@ -49,11 +58,18 @@ namespace IntelligentFactory
         public CInspJobs JobManager_Array4/* = new CInspJobs()*/;
 
         public Library_Fiducial FiducialLibrary { get; set; } = new Library_Fiducial();
-        public LibraryManager LibraryManager { get; set; } = new LibraryManager("DEFAULT");
+        public LibraryManager LibraryManager { get; set; } = new LibraryManager();
+
+        public MasterLibraryManager MasterPartLibrary { get; set; } = new MasterLibraryManager();
+
+        public MasterLibraryManager MasterLibrary { get; set; } = new MasterLibraryManager();
+
         public LibraryManager LoadedGerber { get; set; }
 
         public CInspJobs[] JobManager = new CInspJobs[4];
         public CGrabManager GrabManager { get; set; } = new CGrabManager();
+
+        public CNGCount LibraryNGCount { get; set; } = new CNGCount();
         #region PARAMETER
 
 
@@ -101,187 +117,684 @@ namespace IntelligentFactory
         #endregion PARAMETER
 
         // 현재 레시피에 저장되어있는 어레이 카운터값 가져오기
-        public int ArrayCount = 2;
+        public int ArrayCount = 1;
+        
 
 
         public void LoadTools()
         {
             LoadConfig();
+            GrabManager = GrabManager.LoadConfig();
+            Global.Instance.eyeD = Global.Instance.FrmPopup_EYED.IfOnnxRuntimeControl.EyeD = Load_EYEDRecipe();
             // 메인 풀보드 패칭하는 어레이값 가져오기..
-            SettingJob();
+            //SettingJob();
+            Global.Instance.System.Recipe.Load_LibraryManager(Global.Instance.System.Recipe.Name);
+            CLogger.Add(LOG.NORMAL, $"[CRecipe]LoadLibrary");
+            Global.Instance.System.Recipe.Load_Fiducial(Global.Instance.System.Recipe.CODE);
+            CLogger.Add(LOG.NORMAL, $"[CRecipe]LoadFiducial");
+            Global.Instance.Setting.Load(Global.Instance.System.Recipe.CODE);
+            CLogger.Add(LOG.NORMAL, $"[Setting]LoadQRSetting");
+            Global.Instance.System.Recipe.LoadCogTools(Global.Instance.System.Recipe.Name);
+            CLogger.Add(LOG.NORMAL, $"[CRecipe]LoadCogTools");
+            Global.Instance.System.Recipe.Load_MasterLibraryManager("Part");
+            CLogger.Add(LOG.NORMAL, $"[CRecipe]LoadMasterPartLibrary");
+            Global.Instance.System.Recipe.LoadMasterCogTools("Part", Global.Instance.System.Recipe.MasterPartLibrary);
+            CLogger.Add(LOG.NORMAL, $"[CRecipe]LoadMasterPartCogTools");
+            Global.Instance.System.Recipe.Load_MasterLibraryManager("Library");
+            CLogger.Add(LOG.NORMAL, $"[CRecipe]LoadMasterLibrary");
+            Global.Instance.System.Recipe.LoadMasterCogTools("Library", Global.Instance.System.Recipe.MasterLibrary);
+            CLogger.Add(LOG.NORMAL, $"[CRecipe]LoadMasterLibraryCogTools");
+
         }
 
-        public void SettingJob()
+        public void Load_Fiducial(string libraryCode)
         {
-            bool ret = false;
-
-            // Json 파일의 데이터를 우선 읽고나서...트레인 이미지 로드하기...
-            string strFolderPath = $"{Global.m_MainPJTRoot}\\PBA_LIBRARY\\{CODE}";
-            string str_EnabledFolderPath = $"{Global.m_MainPJTRoot}\\RECIPE\\{Name}\\PBA_LIBRARY\\{CODE}";
-
             try
             {
-                //FiducialLibrary = FiducialLibrary.Load(CODE, FIducialLibrary_Number);
+                FiducialLibrary = FiducialLibrary.Load(libraryCode);
             }
             catch (Exception ex)
             {
 
             }
+        }
+        public void Save_Fiducial()
+        {
             try
             {
-                // 해당 레시피 폴더가 없어졌을 경우...캐치로 빠지도록함...
-                string[] directories = Directory.GetDirectories(strFolderPath);
+                FiducialLibrary.Save(CODE);
+            }
+            catch
+            {
+            }
+        }
+        public void Load_LibraryManager(string libraryName)
+        {
+            try
+            {
 
-                // 신규 레시피 폴더가 있는지 확인...없으면 구 레시피로 동작..
-                for (int i = 0; i < directories.Length; i++)
+                LibraryManager = LibraryManager.Load(libraryName);
+                for (int i = 0; i < LibraryManager.Library.Count; i++)
                 {
-                    // 해당되는 이름이 있는지 확인..
-                    if (directories[i].Contains("Array"))
-                    {
-                        // 파일 이름 검색...
-                        string[] files = Directory.GetFiles(directories[i]);
-
-                        // json파일이 있는지 확인...
-                        if (files.Length > 0)
-                        {
-                            for (int j = 0; j < files.Length; j++)
-                            {
-                                // Json파일이 있는지 검색...
-                                if (files[j].Contains(".json"))
-                                {
-                                    ret = true;
-                                    break;
-                                }
-                            }
-                        }
-
-                        break;
-                    }
+                    Enabled_JsonLoad(i);
+                    EnabledJsonFile_Save(i);
                 }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        public void Load_MasterLibraryManager(string masterPath, string libraryName)
+        {
+            try
+            {
 
-                if (ret)
+                if(masterPath == "Part") MasterPartLibrary = MasterPartLibrary.Load(masterPath, libraryName);
+                else MasterLibrary = MasterLibrary.Load(masterPath,libraryName);
+
+                for (int i = 0; i < LibraryManager.Library.Count; i++)
                 {
-                    GrabManager = GrabManager.LoadConfig();
-                    GrabManager.SaveConfig();
-
-                    //                    PBALIBRARY_LoadTools(CODE, true);
-
-                    if (JobManager_Array1 == null) JobManager_Array1 = new CInspJobs();
-                    if (JobManager_Array2 == null) JobManager_Array2 = new CInspJobs();
-                    if (JobManager_Array3 == null) JobManager_Array3 = new CInspJobs();
-                    if (JobManager_Array4 == null) JobManager_Array4 = new CInspJobs();
-
-                    JobManager = new CInspJobs[4] { JobManager_Array1, JobManager_Array2, JobManager_Array3, JobManager_Array4 };
-
-                    bool[] ret_value = new bool[ArrayCount];
-
-                    for (int array = 0; array < ArrayCount; array++)
+                    Enabled_JsonLoad(i);
+                    EnabledJsonFile_Save(i);
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        public void Load_NGCount(string modelName)
+        {
+            try
+            {
+                LibraryNGCount = LibraryNGCount.Load(modelName);
+            }
+            catch(Exception ex)
+            { 
+            }
+        }
+        public void Save_LibraryManager(string libraryName)
+        {
+            try
+            {
+                LibraryManager.Save(libraryName);
+                for (int i = 0; i < LibraryManager.Library.Count; i++)
+                {
+                    EnabledJsonFile_Save(i);
+                }
+            }
+            catch(Exception ex)
+            { 
+            }
+        }
+        public void Load_MasterLibraryManager(string masterPath)
+        {
+            try
+            {
+                if (masterPath == "Part") MasterPartLibrary = MasterPartLibrary.Load(masterPath, CODE);
+                else MasterLibrary = MasterLibrary.Load(masterPath, CODE);
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        public void SaveCogTools(string libraryName)
+        {
+            string basePath = $"{Application.StartupPath}\\RECIPE\\{libraryName}\\CogTools\\";
+            for (int i = 1; i <= LibraryManager.Library.Count; i++)
+            {
+                int iLocationNo = 0;
+                string library_Path = Path.Combine(basePath, i.ToString());
+                foreach (IF_VisionLogicInfo part in LibraryManager.Library[i])
+                {
+                    string LocationNo_Path = Path.Combine(library_Path, part.LocationNo);
+                    if (part.Logics.Count > 0)
                     {
-                        JsonLoad(array, strFolderPath);
-                        ret_value[array] = Enabled_JsonLoad(array, str_EnabledFolderPath);
-
-                        // 이네이블 제이슨 파일이 없을 경우...아래 기존 파일 읽기..
-                        if (!ret_value[array])
+                        for (int j = 0; j < part.Logics.Count; j++)
                         {
-                            // Enabled 파일이 없을 경우...
-                            // 해당 파일이 별도 없을 경우...기존 xml읽어서 뿌려줘야함...
-                            EnableXML_LoadConfig();
-                            // Enabled저장
-                            // 읽어온 이네이블 값을 갱신해줘야함...
-                            for (int j = 0; j < Global.Instance.System.Recipe.JobManager[array].Jobs.Count; j++)
+                            string Logic_Path = Path.Combine(LocationNo_Path, part.Logics[j].Name);
+                            if (part.Logics[j].Type == "Pattern" || part.Logics[j].Type == "Condensor")
+                            { if (!Directory.Exists(Logic_Path)) Directory.CreateDirectory(Logic_Path); }
+                            switch (part.Logics[j].Type)
                             {
-                                // 동일한 이름의 레시피 목록에 이네이블 갱신해줌..
-                                if (m_List_Enable_Name.Contains(Global.Instance.System.Recipe.JobManager[array].Jobs[j].Name))
+                                case "Pattern":
+                                    {
+                                        IF_VisionParam_Matching matchinginfo = part.Logics[j] as IF_VisionParam_Matching;
+                                        for (int k = 0; k < matchinginfo.PMAlignTools.Length; k++)
+                                        {
+                                            CCognexUtil.SaveCogTool($"{Logic_Path}\\Pattern{k}.vpp", matchinginfo.PMAlignTools[k]);
+                                        }
+
+                                        break;
+                                    }
+                                case "Condensor":
+                                    IF_VisionParam_Condensor condensorinfo = part.Logics[j] as IF_VisionParam_Condensor;
+                                    CCognexUtil.SaveCogTool($"{Logic_Path}\\Find_Circle.vpp", condensorinfo.Find_Circle);
+                                    break;
+                            }
+                        }
+                        //if (part.LocationNo == IData.sLocationNo[iLocationNo])  // Cognex 툴 저장할 때 해당 모델의 Job, Logic 저장 - JYH
+                        //{
+                        //    Global.Instance.FileManager.Save_LocationNo(iLocationNo, IData.sLocationNo[iLocationNo], libraryName);
+
+                        //    for (int LogicIdx = 0; LogicIdx < IData.sLogicName.GetLength(1); LogicIdx++)
+                        //    {
+                        //        if (IData.sLogicName[iLocationNo, LogicIdx] != null)
+                        //        {
+                        //            Global.Instance.FileManager.Save_LogicName(iLocationNo, LogicIdx, IData.sLocationNo[iLocationNo], IData.sLogicName[iLocationNo, LogicIdx], libraryName);
+                        //        }
+                        //    }
+                        //}
+                    }
+                    iLocationNo++;
+
+                }
+            }
+
+        }
+        public void SaveCogTool(string libraryName,int arrayIndex, string locationNo)
+        {
+            string basePath = $"{Application.StartupPath}\\RECIPE\\{libraryName}\\CogTools\\";
+            string library_Path = Path.Combine(basePath, arrayIndex.ToString());
+            foreach (IF_VisionLogicInfo part in LibraryManager.Library[arrayIndex])
+            {
+                if (locationNo == part.LocationNo)
+                {
+                    string LocationNo_Path = Path.Combine(library_Path, part.LocationNo);
+                    if (Directory.Exists(LocationNo_Path)) Directory.Delete(LocationNo_Path, true);
+                    if (part.Logics.Count > 0)
+                    {
+                        for (int j = 0; j < part.Logics.Count; j++)
+                        {
+                            string Logic_Path = Path.Combine(LocationNo_Path, part.Logics[j].Name);
+                            if (part.Logics[j].Type == "Pattern" || part.Logics[j].Type == "Condensor")
+                            {
+                                if (!Directory.Exists(Logic_Path)) Directory.CreateDirectory(Logic_Path);
+                            }
+                            switch (part.Logics[j].Type)
+                            {
+                                case "Pattern":
+                                    {
+                                        IF_VisionParam_Matching matchinginfo = part.Logics[j] as IF_VisionParam_Matching;
+                                        for (int k = 0; k < matchinginfo.PMAlignTools.Length; k++)
+                                        {
+                                            CCognexUtil.SaveCogTool($"{Logic_Path}\\Pattern{k}.vpp", matchinginfo.PMAlignTools[k]);
+                                        }
+
+                                        break;
+                                    }
+                                case "Condensor":
+                                    IF_VisionParam_Condensor condensorinfo = part.Logics[j] as IF_VisionParam_Condensor;
+                                    CCognexUtil.SaveCogTool($"{Logic_Path}\\Find_Circle.vpp", condensorinfo.Find_Circle);
+                                    break;
+                            }
+                        }
+                    }
+                    break;
+                }
+                   
+            }
+        }
+
+        public void SaveMasterCogTools(string masterpath, MasterLibraryManager library, int arrayIdx, IF_VisionLogicInfo upDateInfo)
+        {
+            string basePath = $"{Application.StartupPath}\\LIBRARY\\MASTER_LIBRARY\\{CODE}\\{masterpath}\\CogTools\\";
+            string library_Path = Path.Combine(basePath, arrayIdx.ToString());
+            bool bPartSave = true;
+            if (masterpath == "Part") bPartSave = true;
+            else bPartSave = false;
+
+            foreach (IF_VisionLogicInfo part in library.Library[arrayIdx])
+            {
+                string Part_Path = "";
+                string replaceName = upDateInfo.PartCode.Replace(":", "_");
+                Part_Path = Path.Combine(library_Path, replaceName);
+               
+                if (bPartSave)
+                {
+                    if (upDateInfo.PartCode == part.PartCode)
+                    {
+                                      
+                        if (Directory.Exists(Part_Path)) Directory.Delete(Part_Path, true);
+
+                        if (upDateInfo.Logics.Count > 0)
+                        {
+                            for (int j = 0; j < upDateInfo.Logics.Count; j++)
+                            {
+                                string Logic_Path = Path.Combine(Part_Path, upDateInfo.Logics[j].Name);
+                                if (upDateInfo.Logics[j].Type == "Pattern" || upDateInfo.Logics[j].Type == "Condensor")
                                 {
-                                    Global.Instance.System.Recipe.JobManager[array].Jobs[j].Enabled = true;
+                                    if (!Directory.Exists(Logic_Path)) Directory.CreateDirectory(Logic_Path);
                                 }
-                                else
+                                switch (upDateInfo.Logics[j].Type)
                                 {
-                                    Global.Instance.System.Recipe.JobManager[array].Jobs[j].Enabled = false;
+                                    case "Pattern":
+                                        {
+                                            IF_VisionParam_Matching matchinginfo = upDateInfo.Logics[j] as IF_VisionParam_Matching;
+                                            for (int k = 0; k < matchinginfo.PMAlignTools.Length; k++)
+                                            {
+                                                CCognexUtil.SaveCogTool($"{Logic_Path}\\Pattern{k}.vpp", matchinginfo.PMAlignTools[k]);
+                                            }
+
+                                            break;
+                                        }
+                                    case "Condensor":
+                                        IF_VisionParam_Condensor condensorinfo = upDateInfo.Logics[j] as IF_VisionParam_Condensor;
+                                        CCognexUtil.SaveCogTool($"{Logic_Path}\\Find_Circle.vpp", condensorinfo.Find_Circle);
+                                        break;
                                 }
                             }
-
-                            EnabledJsonFile_Save(str_EnabledFolderPath, array);
                         }
+                        break;
                     }
                 }
                 else
                 {
-                    PBALIBRARY_LoadTools(CODE, true);
-
-                    if (JobManager_Array1 == null) JobManager_Array1 = new CInspJobs();
-                    if (JobManager_Array2 == null) JobManager_Array2 = new CInspJobs();
-                    if (JobManager_Array3 == null) JobManager_Array3 = new CInspJobs();
-                    if (JobManager_Array4 == null) JobManager_Array4 = new CInspJobs();
-
-                    // 해당 파일이 별도 없을 경우...기존 xml읽어서 뿌려줘야함...
-                    EnableXML_LoadConfig();
-
-                    // 데이터 자동으로 저장...처리
-                    if (!Directory.Exists(strFolderPath)) Directory.CreateDirectory(strFolderPath);
-
-                    for (int i = 0; i < ArrayCount; i++)
+                    string LocationNo_Path = Path.Combine(Part_Path, part.LocationNo);
+                    if (upDateInfo.LocationNo == part.LocationNo)
                     {
-                        JsonFile_Save(i, strFolderPath);
-                    }
-
-                    // Enabled저장
-
-                    // xml에서 읽어오는 ArrayCount를 기준으로 처리..
-                    for (int array = 0; array < ArrayCount; array++)
-                    {
-                        // 읽어온 이네이블 값을 갱신해줘야함...
-                        for (int i = 0; i < Global.Instance.System.Recipe.JobManager[array].Jobs.Count; i++)
+                        if (Directory.Exists(LocationNo_Path)) Directory.Delete(LocationNo_Path, true);
+                        if (upDateInfo.Logics.Count > 0) 
                         {
-                            // 동일한 이름의 레시피 목록에 이네이블 갱신해줌..
-                            if (m_List_Enable_Name.Contains(Global.Instance.System.Recipe.JobManager[array].Jobs[i].Name))
+                            for (int j = 0; j < upDateInfo.Logics.Count; j++)
                             {
-                                Global.Instance.System.Recipe.JobManager[array].Jobs[i].Enabled = true;
-                            }
-                            else
-                            {
-                                Global.Instance.System.Recipe.JobManager[array].Jobs[i].Enabled = false;
+                                string Logic_Path = Path.Combine(LocationNo_Path, upDateInfo.Logics[j].Name);
+                                if (upDateInfo.Logics[j].Type == "Pattern" || upDateInfo.Logics[j].Type == "Condensor")
+                                {
+                                    if (!Directory.Exists(Logic_Path)) Directory.CreateDirectory(Logic_Path);
+                                }
+                                switch (upDateInfo.Logics[j].Type)
+                                {
+                                    case "Pattern":
+                                        {
+                                            IF_VisionParam_Matching matchinginfo = upDateInfo.Logics[j] as IF_VisionParam_Matching;
+                                            for (int k = 0; k < matchinginfo.PMAlignTools.Length; k++)
+                                            {
+                                                CCognexUtil.SaveCogTool($"{Logic_Path}\\Pattern{k}.vpp", matchinginfo.PMAlignTools[k]);
+                                            }
+
+                                            break;
+                                        }
+                                    case "Condensor":
+                                        IF_VisionParam_Condensor condensorinfo = upDateInfo.Logics[j] as IF_VisionParam_Condensor;
+                                        CCognexUtil.SaveCogTool($"{Logic_Path}\\Find_Circle.vpp", condensorinfo.Find_Circle);
+                                        break;
+                                }
                             }
                         }
-
-                        EnabledJsonFile_Save(str_EnabledFolderPath, array);
+                        break;
                     }
                 }
-
-                for (int i = 0; i < JobManager.Length; i++)
-                {
-                    for (int j = 0; j < JobManager[i].Jobs.Count; j++)
-                    {
-                        if (JobManager[i].Jobs[j].Parameter == null) JobManager[i].Jobs[j].Parameter = new JobParameter();
-                        JobManager[i].Jobs[j].Parameter = JobManager[i].Jobs[j].Parameter.Load(CODE, i, JobManager[i].Jobs[j].Name);
-
-
-                        if (JobManager[i].Jobs[j].Type.Contains("Condensor"))
-                        {
-                            string path = $"{Global.m_MainPJTRoot}\\PBA_LIBRARY\\{CODE}\\Array_{i}\\{JobManager[i].Jobs[j].Name}_FindCircle.vpp";
-                            CCognexUtil.LoadCogTool(path, JobManager[i].Jobs[j].Find_Circle);
-                        }
-
-                        if (JobManager[i].Jobs[j].Type.Contains("Distance"))
-                        {
-                            string path = $"{Global.m_MainPJTRoot}\\PBA_LIBRARY\\{CODE}\\Array_{i}\\{JobManager[i].Jobs[j].Name}_FindLine.vpp";
-                            CCognexUtil.LoadCogTool(path, JobManager[i].Jobs[j].Find_Line);
-                        }
-                    }
-                }
-
-                Task_TrainImage = Task.Run(() =>
-                {
-                    SetTrainImage(strFolderPath);
-                });
-            }
-            catch
-            {
-                // 해당되는 라이브러리 폴더가 없을 경우 로그 기록...
-                string str = $"PBA_LIBRARY Recipe No File Error : Model => {Name}, PBA Library => {CODE}";
-                CLogger.Add(LOG.EXCEPTION, str);
+                //if(Directory.Exists(LocationNo_Path)) Directory.Delete(LocationNo_Path);
+                
             }
         }
+        public void LoadCogTools(string libraryName)
+        {
+            IF_VisionLogicInfo loadLogics = null;
+            List<IF_VisionLogicInfo> loadJob = null;
+            int Idx = 0;
+            string basePath = $"{Application.StartupPath}\\RECIPE\\{libraryName}\\CogTools\\";
+            for (int i = 1; i <= LibraryManager.Library.Count; i++)
+            {
+                string library_Path = Path.Combine(basePath, i.ToString());
+                foreach (IF_VisionLogicInfo part in LibraryManager.Library[i])
+                {
+                    loadLogics = part;
+                    string LocationNo_Path = Path.Combine(library_Path, part.LocationNo);
+                    if (part.Logics.Count > 0)
+                    {
+                        for (int j = 0; j < part.Logics.Count; j++)
+                        {
+                            string Logic_Path = Path.Combine(LocationNo_Path, part.Logics[j].Name);
+                        
+                            switch (part.Logics[j].Type)
+                            {
+                                case "Pattern":
+                                    {
+                                        IF_VisionParam_Matching matchinginfo = loadLogics.Logics[j] as IF_VisionParam_Matching;
+                                        for (int k = 0; k < matchinginfo.PMAlignTools.Length; k++)
+                                        {
+                                            matchinginfo.PMAlignTools[k] = CCognexUtil.LoadCogTool_PMAlign($"{Logic_Path}\\Pattern{k}.vpp");
+                                           
+                                        }
+                                        loadLogics.Logics[j] = matchinginfo;
+                                        break;
+                                    }
+                                case "Condensor":
+                                    IF_VisionParam_Condensor condensorinfo = loadLogics.Logics[j] as IF_VisionParam_Condensor;
+                                    CCognexUtil.LoadCogTool($"{Logic_Path}\\Find_Circle.vpp", condensorinfo.Find_Circle);
+                                    loadLogics.Logics[j] = condensorinfo;
+                                    break;
+                            }
+                        }
+                    }
+                    if (LibraryManager.Library.TryGetValue(i, out var logicList))
+                    {
+                        var updatedList = new List<IF_VisionLogicInfo>(logicList); // 기존 리스트 복사
+                        int targetIndex = updatedList.FindIndex(l => l.LocationNo == loadLogics.LocationNo);
+                         
+                        if (targetIndex != -1)
+                        {
+                            updatedList[targetIndex] = loadLogics; // 기존 값 업데이트
+                            LibraryManager.Library.TryUpdate(i, updatedList, logicList); // 원본 리스트와 비교 후 업데이트
+                        }
+                    };
+                    Idx++;
+                }
+            }
+
+        }
+        public void LoadMasterCogTools(string masterpath, MasterLibraryManager library)
+        {
+            IF_VisionLogicInfo loadLogics = null;
+            List<IF_VisionLogicInfo> loadJob = null;
+            int Idx = 0;
+            string basePath = $"{Application.StartupPath}\\LIBRARY\\MASTER_LIBRARY\\{CODE}\\{masterpath}\\CogTools\\";
+            for (int i = 1; i <= library.Library.Count; i++)
+            {
+                if (library.Library.ContainsKey(i) == false) i++; 
+                string library_Path = Path.Combine(basePath, i.ToString());
+                foreach (IF_VisionLogicInfo part in library.Library[i])
+                {
+                    loadLogics = part;
+                    string part_Path = "";
+                    string cog_Path = "";
+                    string replaceName = part.PartCode.Replace(":", "_");
+                    part_Path = Path.Combine(library_Path, replaceName);
+                    if (masterpath == "Part")
+                    {
+                        cog_Path = part_Path;
+                    }
+                    else
+                    {
+                        cog_Path = Path.Combine(part_Path, part.LocationNo);
+                    } 
+                    if (part.Logics.Count > 0)
+                    {
+                        for (int j = 0; j < part.Logics.Count; j++)
+                        {
+                            string Logic_Path = Path.Combine(cog_Path, part.Logics[j].Name);
+                            switch (part.Logics[j].Type)
+                            {
+                                case "Pattern":
+                                    {
+                                        IF_VisionParam_Matching matchinginfo = loadLogics.Logics[j] as IF_VisionParam_Matching;
+                                        for (int k = 0; k < matchinginfo.PMAlignTools.Length; k++)
+                                        {
+                                            matchinginfo.PMAlignTools[k] = CCognexUtil.LoadCogTool_PMAlign($"{Logic_Path}\\Pattern{k}.vpp");
+
+                                        }
+                                        loadLogics.Logics[j] = matchinginfo;
+                                        break;
+                                    }
+                                case "Condensor":
+                                    IF_VisionParam_Condensor condensorinfo = loadLogics.Logics[j] as IF_VisionParam_Condensor;
+                                    CCognexUtil.LoadCogTool($"{Logic_Path}\\Find_Circle.vpp", condensorinfo.Find_Circle);
+                                    loadLogics.Logics[j] = condensorinfo;
+                                    break;
+                            }
+                        }
+                    }
+                    
+                    if (library.Library.TryGetValue(i, out var logicList))
+                    {
+                        var updatedList = new List<IF_VisionLogicInfo>(logicList); // 기존 리스트 복사
+                        int targetIndex = 0;
+                        if (masterpath == "Part") 
+                        {
+                            targetIndex = updatedList.FindIndex(l => l.PartCode == loadLogics.PartCode);
+                        }
+                        else
+                        {
+                            var ddd = updatedList.FindAll(l => l.LocationNo == loadLogics.LocationNo);
+                            var ttt = ddd.Find(l => l.PartCode == loadLogics.PartCode);
+                            targetIndex = updatedList.IndexOf(ttt);
+                        }
+                        if (targetIndex != -1)
+                        {
+                            updatedList[targetIndex] = loadLogics; // 기존 값 업데이트
+                            library.Library.TryUpdate(i, updatedList, logicList); // 원본 리스트와 비교 후 업데이트
+                        }
+
+                    };
+                    Idx++;
+                }
+            }
+
+        }
+        public EYED Load_EYEDRecipe()
+        {
+            string path = $"{Application.StartupPath}\\LIBRARY\\EYED_Recipe.json";
+            EYED loadModels = null;
+
+            if (File.Exists(path))
+            {
+                string test = File.ReadAllText(path);
+                loadModels = JsonConvert.DeserializeObject<EYED>(File.ReadAllText(path), new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.All,
+                    Formatting = Newtonsoft.Json.Formatting.Indented
+                });
+
+
+                if (loadModels != null)
+                    return loadModels;
+            }
+
+            //tempEyeD.AddModel()
+            loadModels = new EYED();
+            Save_EYEDRecipe();
+
+
+            return loadModels;
+        }
+        public void Save_EYEDRecipe()
+        {
+            string path = $"{Application.StartupPath}\\LIBRARY\\EYED_Recipe.json";
+            string forderpath = $"{Application.StartupPath}\\LIBRARY";
+            try
+            {
+                string jsonString = JsonConvert.SerializeObject(Global.Instance.eyeD, new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.All,
+                    Formatting = Newtonsoft.Json.Formatting.Indented
+                });
+
+                if (!Directory.Exists(forderpath)) Directory.CreateDirectory(forderpath);
+
+                if (File.Exists(path))
+                {
+                    //이전값과 비교하여 바뀐 부분 로깅
+                    string prevRecipe = File.ReadAllText(path);
+
+                    JObject previousObject = JObject.Parse(prevRecipe);
+                    JObject currentObject = JObject.Parse(jsonString);
+
+                    var result = JToken.DeepEquals(previousObject, currentObject);
+                }
+
+                File.WriteAllText(path, jsonString);
+            }
+            catch (JsonException ex)
+            {
+                CLogger.Exception(MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name, ex);
+            }
+            catch (Exception ex)
+            {
+                CLogger.Exception(MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name, ex);
+            }
+        }
+        //public void SettingJob()
+        //{
+        //    bool ret = false;
+
+        //    // Json 파일의 데이터를 우선 읽고나서...트레인 이미지 로드하기...
+        //    string strFolderPath = $"{Global.m_MainPJTRoot}\\PBA_LIBRARY\\{CODE}";
+        //    string str_EnabledFolderPath = $"{Global.m_MainPJTRoot}\\RECIPE\\{Name}\\PBA_LIBRARY\\{CODE}";
+
+        //    try
+        //    {
+        //        FiducialLibrary = FiducialLibrary.Load(FIducialLibrary_Number);
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //    }
+        //    try
+        //    {
+        //        // 해당 레시피 폴더가 없어졌을 경우...캐치로 빠지도록함...
+        //        string[] directories = Directory.GetDirectories(strFolderPath);
+
+        //        // 신규 레시피 폴더가 있는지 확인...없으면 구 레시피로 동작..
+        //        for (int i = 0; i < directories.Length; i++)
+        //        {
+        //            // 해당되는 이름이 있는지 확인..
+        //            if (directories[i].Contains("Array"))
+        //            {
+        //                // 파일 이름 검색...
+        //                string[] files = Directory.GetFiles(directories[i]);
+
+        //                // json파일이 있는지 확인...
+        //                if (files.Length > 0)
+        //                {
+        //                    for (int j = 0; j < files.Length; j++)
+        //                    {
+        //                        // Json파일이 있는지 검색...
+        //                        if (files[j].Contains(".json"))
+        //                        {
+        //                            ret = true;
+        //                            break;
+        //                        }
+        //                    }
+        //                }
+
+        //                break;
+        //            }
+        //        }
+
+        //        if (ret)
+        //        {
+        //            GrabManager = GrabManager.LoadConfig();
+        //            GrabManager.SaveConfig();
+
+        //            //                    PBALIBRARY_LoadTools(CODE, true);
+
+        //            if (JobManager_Array1 == null) JobManager_Array1 = new CInspJobs();
+        //            if (JobManager_Array2 == null) JobManager_Array2 = new CInspJobs();
+        //            if (JobManager_Array3 == null) JobManager_Array3 = new CInspJobs();
+        //            if (JobManager_Array4 == null) JobManager_Array4 = new CInspJobs();
+
+        //            JobManager = new CInspJobs[4] { JobManager_Array1, JobManager_Array2, JobManager_Array3, JobManager_Array4 };
+
+        //            bool[] ret_value = new bool[ArrayCount];
+
+        //            for (int array = 0; array < ArrayCount; array++)
+        //            {
+        //                JsonLoad(array, strFolderPath);
+        //                //ret_value[array] = Enabled_JsonLoad(array, str_EnabledFolderPath);
+
+        //                // 이네이블 제이슨 파일이 없을 경우...아래 기존 파일 읽기..
+        //                if (!ret_value[array])
+        //                {
+        //                    // Enabled 파일이 없을 경우...
+        //                    // 해당 파일이 별도 없을 경우...기존 xml읽어서 뿌려줘야함...
+        //                    EnableXML_LoadConfig();
+        //                    // Enabled저장
+        //                    // 읽어온 이네이블 값을 갱신해줘야함...
+        //                    for (int j = 0; j < Global.Instance.System.Recipe.JobManager[array].Jobs.Count; j++)
+        //                    {
+        //                        // 동일한 이름의 레시피 목록에 이네이블 갱신해줌..
+        //                        if (m_List_Enable_Name.Contains(Global.Instance.System.Recipe.JobManager[array].Jobs[j].Name))
+        //                        {
+        //                            Global.Instance.System.Recipe.JobManager[array].Jobs[j].Enabled = true;
+        //                        }
+        //                        else
+        //                        {
+        //                            Global.Instance.System.Recipe.JobManager[array].Jobs[j].Enabled = false;
+        //                        }
+        //                    }
+
+        //                    EnabledJsonFile_Save(str_EnabledFolderPath, array);
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
+        //            PBALIBRARY_LoadTools(CODE, true);
+
+        //            if (JobManager_Array1 == null) JobManager_Array1 = new CInspJobs();
+        //            if (JobManager_Array2 == null) JobManager_Array2 = new CInspJobs();
+        //            if (JobManager_Array3 == null) JobManager_Array3 = new CInspJobs();
+        //            if (JobManager_Array4 == null) JobManager_Array4 = new CInspJobs();
+
+        //            // 해당 파일이 별도 없을 경우...기존 xml읽어서 뿌려줘야함...
+        //            EnableXML_LoadConfig();
+
+        //            // 데이터 자동으로 저장...처리
+        //            if (!Directory.Exists(strFolderPath)) Directory.CreateDirectory(strFolderPath);
+
+        //            for (int i = 0; i < ArrayCount; i++)
+        //            {
+        //                JsonFile_Save(i, strFolderPath);
+        //            }
+
+        //            // Enabled저장
+
+        //            // xml에서 읽어오는 ArrayCount를 기준으로 처리..
+        //            for (int array = 0; array < ArrayCount; array++)
+        //            {
+        //                // 읽어온 이네이블 값을 갱신해줘야함...
+        //                for (int i = 0; i < Global.Instance.System.Recipe.JobManager[array].Jobs.Count; i++)
+        //                {
+        //                    // 동일한 이름의 레시피 목록에 이네이블 갱신해줌..
+        //                    if (m_List_Enable_Name.Contains(Global.Instance.System.Recipe.JobManager[array].Jobs[i].Name))
+        //                    {
+        //                        Global.Instance.System.Recipe.JobManager[array].Jobs[i].Enabled = true;
+        //                    }
+        //                    else
+        //                    {
+        //                        Global.Instance.System.Recipe.JobManager[array].Jobs[i].Enabled = false;
+        //                    }
+        //                }
+
+        //                EnabledJsonFile_Save(str_EnabledFolderPath, array);
+        //            }
+        //        }
+
+        //        for (int i = 0; i < JobManager.Length; i++)
+        //        {
+        //            for (int j = 0; j < JobManager[i].Jobs.Count; j++)
+        //            {
+        //                if (JobManager[i].Jobs[j].Parameter == null) JobManager[i].Jobs[j].Parameter = new JobParameter();
+        //                JobManager[i].Jobs[j].Parameter = JobManager[i].Jobs[j].Parameter.Load(CODE, i, JobManager[i].Jobs[j].Name);
+
+
+        //                if (JobManager[i].Jobs[j].Type.Contains("Condensor"))
+        //                {
+        //                    string path = $"{Global.m_MainPJTRoot}\\PBA_LIBRARY\\{CODE}\\Array_{i}\\{JobManager[i].Jobs[j].Name}_FindCircle.vpp";
+        //                    CCognexUtil.LoadCogTool(path, JobManager[i].Jobs[j].Find_Circle);
+        //                }
+
+        //                if (JobManager[i].Jobs[j].Type.Contains("Distance"))
+        //                {
+        //                    string path = $"{Global.m_MainPJTRoot}\\PBA_LIBRARY\\{CODE}\\Array_{i}\\{JobManager[i].Jobs[j].Name}_FindLine.vpp";
+        //                    CCognexUtil.LoadCogTool(path, JobManager[i].Jobs[j].Find_Line);
+        //                }
+        //            }
+        //        }
+
+        //        Task_TrainImage = Task.Run(() =>
+        //        {
+        //            SetTrainImage(strFolderPath);
+        //        });
+        //    }
+        //    catch
+        //    {
+        //        // 해당되는 라이브러리 폴더가 없을 경우 로그 기록...
+        //        string str = $"PBA_LIBRARY Recipe No File Error : Model => {Name}, PBA Library => {CODE}";
+        //        CLogger.Add(LOG.EXCEPTION, str);
+        //    }
+        //}
 
         public bool bol_ChkTrainImage;
         public Task Task_TrainImage;
@@ -588,9 +1101,9 @@ namespace IntelligentFactory
             }
         }
 
-        public bool Enabled_JsonLoad(int Arrayindex, string path)
+        public void Enabled_JsonLoad(int Arrayindex)
         {
-            bool nRet = false;
+            string path = $"{Global.m_MainPJTRoot}\\LIBRARY\\MODELS\\{Name}\\{CODE}";
 
             if (Directory.Exists(path))
             {
@@ -604,36 +1117,66 @@ namespace IntelligentFactory
 
                     foreach (var l in L)
                     {
-                        CJob newJob = new CJob();
-                        newJob.Enabled = bool.Parse(l.Enabled);
-                        newJob.Name = l.Name;
+                        IF_VisionLogicInfo newJob = new IF_VisionLogicInfo();
+                        newJob.Enabled = bool.Parse(l.PartEnabled);
+                        newJob.LocationNo = l.LocationNo;
 
-                        for (int i = 0; i < Global.Instance.System.Recipe.JobManager[Arrayindex].Jobs.Count; i++)
+                       
+                        foreach (IF_VisionLogicInfo info in Global.Instance.System.Recipe.LibraryManager.Library[Arrayindex + 1])
                         {
-                            // 동일한 이름의 레시피 목록에 이네이블 갱신해줌..
-                            if (Global.Instance.System.Recipe.JobManager[Arrayindex].Jobs[i].Name == newJob.Name)
+                            if (info.LocationNo == newJob.LocationNo)
                             {
-                                Global.Instance.System.Recipe.JobManager[Arrayindex].Jobs[i].Enabled = newJob.Enabled;
-
+                                info.Enabled = newJob.Enabled;
+                                
+                                for (int j = 0; j < info.LogicCount; j++)
+                                {
+                                    if (info.Logics[j].Name == newJob.Logics[j].Name)
+                                    {
+                                        info.Logics[j].Enabled = newJob.Logics[j].Enabled;
+                                    }
+                                }
                                 break;
                             }
                         }
+                      
                     }
 
-                    nRet = true;
                 }
-                string strJsonCount = Path.Combine(path, $"Array{Arrayindex}_Enabled_Count.json");
-                if (File.Exists(strJsonCount))
-                {
-                    string jsonContent = System.IO.File.ReadAllText(strJsonCount);
-                    Json_Enabled_Count C = Newtonsoft.Json.JsonConvert.DeserializeObject<Json_Enabled_Count>(jsonContent);
-                    nRet = true;
-                }
-
             }
-            return nRet;
         }
+        public void EnabledJsonFile_Save(int ArrayIndex)
+        {
+            string path = $"{Global.m_MainPJTRoot}\\LIBRARY\\MODELS\\{Name}\\{CODE}";
 
+            List<Json_Library_Enabled> L_Library = new List<Json_Library_Enabled>();
+            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+            foreach (IF_VisionLogicInfo info in Global.Instance.System.Recipe.LibraryManager.Library[ArrayIndex + 1])
+            {
+                List<string> logicName = new List<string>();
+                List<string> logicEnabled = new List<string>();
+
+                for (int i = 0; i < info.Logics.Count; i++)
+                {
+                    logicName.Add(info.Logics[i].Name);
+                    logicEnabled.Add(info.Logics[i].Enabled.ToString());
+                }
+
+                L_Library.Add(new Json_Library_Enabled()
+                {
+
+                    LocationNo = info.LocationNo,
+                    PartEnabled = info.Enabled.ToString(),
+                    LogicName = logicName,
+                    LogicEnabled = logicEnabled,
+
+                });
+            }
+
+            string strLibraryJsonFileName = Path.Combine(path, $"Array{ArrayIndex}_Enabled.json");
+            string str_Library = Newtonsoft.Json.JsonConvert.SerializeObject(L_Library, Newtonsoft.Json.Formatting.Indented);
+            System.IO.File.WriteAllText(strLibraryJsonFileName, str_Library);
+
+        }
         public void JsonLoad(int Arrayindex, string path)
         {
             try
@@ -1491,107 +2034,84 @@ namespace IntelligentFactory
 
         public static int RecipeSaving_CheckCnt = 0;
         public static bool RecipeSaving_Flg = false;
-        public void RecipeSave()
-        {
-            // Enabled저장 최우선 순위로 변경
+        //public void RecipeSave()
+        //{
+        //    // Enabled저장 최우선 순위로 변경
 
-            RecipeEnabledSave();
-            // xml 내용 저장..
-            // 파라메터 내용 저장...
-            SaveConfig();
-            try
-            {
-                FiducialLibrary.Save(CODE, FIducialLibrary_Number);
-            }
-            catch
-            {
+        //    RecipeEnabledSave();
+        //    // xml 내용 저장..
+        //    // 파라메터 내용 저장...
+        //    SaveConfig();
+        //    try
+        //    {
+        //        FiducialLibrary.Save(FIducialLibrary_Number);
+        //    }
+        //    catch
+        //    {
 
-            }
+        //    }
 
-            string strFolderPath = $"{Global.m_MainPJTRoot}\\PBA_LIBRARY\\{CODE}";
+        //    string strFolderPath = $"{Global.m_MainPJTRoot}\\PBA_LIBRARY\\{CODE}";
 
-            if (!Directory.Exists(strFolderPath)) Directory.CreateDirectory(strFolderPath);
-
-
-
-            for (int i = 0; i < ArrayCount; i++)
-            {
-                RecipeSaving_CheckCnt++;
-                JsonFile_Save(i, strFolderPath);
-
-                for (int jobIdx = 0; jobIdx < JobManager[i].Jobs.Count; jobIdx++)
-                {
-                    try
-                    {
-                        JobManager[i].Jobs[jobIdx].Parameter.Save(CODE, i, JobManager[i].Jobs[jobIdx].Name);
-                        JobManager[i].Jobs[jobIdx].HasChanged = false;
-                    }
-                    catch (Exception ex)
-                    {
-
-                    }
-
-                    try
-                    {
-                        if (JobManager[i].Jobs[jobIdx].Type.Contains("Condensor"))
-                        {
-                            string path = $"{Global.m_MainPJTRoot}\\PBA_LIBRARY\\{CODE}\\Array_{i}\\{JobManager[i].Jobs[jobIdx].Name}_FindCircle.vpp";
-                            CCognexUtil.SaveCogTool(path, JobManager[i].Jobs[jobIdx].Find_Circle);
-                        }
-
-                        if (JobManager[i].Jobs[jobIdx].Type.Contains("Distance"))
-                        {
-                            string path = $"{Global.m_MainPJTRoot}\\PBA_LIBRARY\\{CODE}\\Array_{i}\\{JobManager[i].Jobs[jobIdx].Name}_FindLine.vpp";
-                            CCognexUtil.SaveCogTool(path, JobManager[i].Jobs[jobIdx].Find_Line);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-                    }
-                }
-            }
+        //    if (!Directory.Exists(strFolderPath)) Directory.CreateDirectory(strFolderPath);
 
 
-        }
+
+        //    for (int i = 0; i < ArrayCount; i++)
+        //    {
+        //        RecipeSaving_CheckCnt++;
+        //        JsonFile_Save(i, strFolderPath);
+
+        //        for (int jobIdx = 0; jobIdx < JobManager[i].Jobs.Count; jobIdx++)
+        //        {
+        //            try
+        //            {
+        //                JobManager[i].Jobs[jobIdx].Parameter.Save(CODE, i, JobManager[i].Jobs[jobIdx].Name);
+        //                JobManager[i].Jobs[jobIdx].HasChanged = false;
+        //            }
+        //            catch (Exception ex)
+        //            {
+
+        //            }
+
+        //            try
+        //            {
+        //                //if (JobManager[i].Jobs[jobIdx].Type.Contains("Condensor"))
+        //                //{
+        //                //    string path = $"{Global.m_MainPJTRoot}\\PBA_LIBRARY\\{CODE}\\Array_{i}\\{JobManager[i].Jobs[jobIdx].Name}_FindCircle.vpp";
+        //                //    CCognexUtil.SaveCogTool(path, JobManager[i].Jobs[jobIdx].Find_Circle);
+        //                //}
+
+        //                //if (JobManager[i].Jobs[jobIdx].Type.Contains("Distance"))
+        //                //{
+        //                //    string path = $"{Global.m_MainPJTRoot}\\PBA_LIBRARY\\{CODE}\\Array_{i}\\{JobManager[i].Jobs[jobIdx].Name}_FindLine.vpp";
+        //                //    CCognexUtil.SaveCogTool(path, JobManager[i].Jobs[jobIdx].Find_Line);
+        //                //}
+        //            }
+        //            catch (Exception ex)
+        //            {
+
+        //            }
+        //        }
+        //    }
+
+
+        //}
 
         // 별도 이네이블값 저장해주기..
-        public void RecipeEnabledSave()
-        {
-            string strFolderPath = $"{Global.m_MainPJTRoot}\\RECIPE\\{Name}\\PBA_LIBRARY\\{CODE}";
+        //public void RecipeEnabledSave()
+        //{
+        //    string strFolderPath = $"{Global.m_MainPJTRoot}\\RECIPE\\{Name}\\PBA_LIBRARY\\{CODE}";
 
-            if (!Directory.Exists(strFolderPath)) Directory.CreateDirectory(strFolderPath);
+        //    if (!Directory.Exists(strFolderPath)) Directory.CreateDirectory(strFolderPath);
 
-            for (int i = 0; i < ArrayCount; i++)
-            {
-                EnabledJsonFile_Save(strFolderPath, i);
-            }
-        }
+        //    for (int i = 0; i < ArrayCount; i++)
+        //    {
+        //        EnabledJsonFile_Save(strFolderPath, i);
+        //    }
+        //}
 
-        public void EnabledJsonFile_Save(string strFolderpath, int ArrayIndex)
-        {
-            List<Json_Library_Enabled> L_Library = new List<Json_Library_Enabled>();
-            Json_Enabled_Count _Enabled_Count = new Json_Enabled_Count();
-            // 어레이 인덱스별로 폴더 생성...
-            if (!Directory.Exists(strFolderpath)) Directory.CreateDirectory(strFolderpath);
-
-            for (int i = 0; i < Global.Instance.System.Recipe.JobManager[ArrayIndex].Jobs.Count; i++)
-            {
-                L_Library.Add(new Json_Library_Enabled()
-                {
-                    Enabled = Global.Instance.System.Recipe.JobManager[ArrayIndex].Jobs[i].Enabled.ToString(),
-                    Name = Global.Instance.System.Recipe.JobManager[ArrayIndex].Jobs[i].Name.ToString(),
-                });
-            }
-
-            string strLibraryJsonFileName = Path.Combine(strFolderpath, $"Array{ArrayIndex}_Enabled.json");
-            string strLibraryJsonCount = Path.Combine(strFolderpath, $"Array{ArrayIndex}_Enabled_Count.json");
-            string str_Enabled_Count = Newtonsoft.Json.JsonConvert.SerializeObject(_Enabled_Count, Newtonsoft.Json.Formatting.Indented);
-            System.IO.File.WriteAllText(strLibraryJsonCount, str_Enabled_Count);
-            string str_Library = Newtonsoft.Json.JsonConvert.SerializeObject(L_Library, Newtonsoft.Json.Formatting.Indented);
-            System.IO.File.WriteAllText(strLibraryJsonFileName, str_Library);
-
-        }
+       
 
         public bool InitDirectory(string strRecipeName)
         {
@@ -1704,7 +2224,6 @@ namespace IntelligentFactory
                     {
                         switch (xmlReader.Name)
                         {
-                            case "FIducialLibrary_Number": if (xmlReader.Read()) FIducialLibrary_Number = xmlReader.Value; break;
                             case "PbaCode": if (xmlReader.Read()) CODE = xmlReader.Value; break;
                             case "QRBufferNo": if (xmlReader.Read()) QRBufferNo = int.Parse(xmlReader.Value); break;
                             case "ArrayCount": if (xmlReader.Read()) ArrayCount = int.Parse(xmlReader.Value); break;
@@ -1822,8 +2341,6 @@ namespace IntelligentFactory
                 xmlWriter.WriteElementString("PbaCode", CODE.ToString());
                 xmlWriter.WriteElementString("QRBufferNo", QRBufferNo.ToString());
                 xmlWriter.WriteElementString("ArrayCount", ArrayCount.ToString());
-                xmlWriter.WriteElementString("FIducialLibrary_Number", FIducialLibrary_Number.ToString());
-
 
                 xmlWriter.WriteEndElement();
 

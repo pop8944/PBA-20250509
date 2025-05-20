@@ -14,7 +14,8 @@ using OpenCvSharp;
 using OpenVinoSharp.Extensions.result;
 using IFOnnxRuntime.DTOs;
 using IFOnnxRuntime.Models;
-
+using Sunny.UI;
+using System.IO;
 namespace IFOnnxRuntime
 {
     public partial class Form1 : Form
@@ -86,6 +87,14 @@ namespace IFOnnxRuntime
                 }
             }
             PbResult.Image = resultImage;
+        }
+
+        private void BtnSaveRecipe_Click(object sender, EventArgs e)
+        {
+            string jsonString = System.Text.Json.JsonSerializer.Serialize(eyeD.Models[0]);
+            //eyeD.Models[].OnnxInfomation
+            File.WriteAllText("C:\\aaaaa\\test.json", jsonString);
+            //string dd = ifOnnxRuntimeControl1.TbName.Text;
         }
     }
 }

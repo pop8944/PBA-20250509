@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Reflection;
 using System.Threading;
 
@@ -35,6 +35,7 @@ namespace IntelligentFactory
                 }
 
                 Global.Instance.FileManager.CountLoad();
+                Global.Instance.System.Recipe.Load_NGCount(Global.Instance.System.Recipe.Name);
                 Global.Instance.System.Authorization = DEFINE.AUTHORIZATION.MASTER;
                 Global.Instance.OnEnd_Progress();
 

@@ -20,6 +20,7 @@ namespace IFOnnxRuntime
         private SessionOptions options;
         private OnnxMetaData metaData;
         private float nmsThreshold;
+        private string onnxName;
         #endregion
 
         #region Properties
@@ -27,14 +28,19 @@ namespace IFOnnxRuntime
         protected InferenceSession Session { get => session; set => session = value; }
         public OnnxMetaData MetaData { get => metaData; set => metaData = value; }
         public float NmsThreshold { get => nmsThreshold; protected set => nmsThreshold = value; }
+        public string Device { get => device; set => device = value; }
+        public string OnnxName { get => onnxName; set => onnxName = value; }
+
+        //public OnnxInfo OnnxInfomation { get => onnxInfomation; set => onnxInfomation = value; }
         #endregion
 
         #region Constructors
-        protected V8Base(string onnx, string device, float nmsThreshold)
+        protected V8Base(string onnx, string device, float nmsThreshold, string onnxName)
         {
             this.nmsThreshold = nmsThreshold;
             onnxModel = onnx;
             this.device = device;
+            this.onnxName = onnxName;
             InitSession();
             Dictionary<string, string> customMetaData = session.ModelMetadata.CustomMetadataMap;
             Dictionary<int, string> metaClasses = new Dictionary<int, string> { };
@@ -74,7 +80,6 @@ namespace IFOnnxRuntime
             }
             else if (device == "GPU.0")
             {
-
                 options = new SessionOptions
                 {
                     LogSeverityLevel = OrtLoggingLevel.ORT_LOGGING_LEVEL_INFO

@@ -65,7 +65,7 @@ namespace IntelligentFactory
                              -1F, 5F, -1F,
                               0F,-1F,  0F };
 
-                            Kernel = new Mat(3, 3, MatType.CV_32F, kernelData);
+                            //Kernel = new Mat(3, 3, MatType.CV_32F, kernelData);
                             Cv2.Filter2D(ImageSrc, ImageResult, ImageSrc.Type(), Kernel, new OpenCvSharp.Point());
                             break;
 
@@ -154,7 +154,7 @@ namespace IntelligentFactory
                              -1F, 5F, -1F,
                               0F,-1F,  0F };
 
-                            Kernel = new Mat(3, 3, MatType.CV_32F, kernelData);
+                            //Kernel = new Mat(3, 3, MatType.CV_32F, kernelData);
                             Cv2.Filter2D(ImageSrc, ImageResult, ImageSrc.Type(), Kernel, new OpenCvSharp.Point());
                             break;
 

@@ -1,4 +1,5 @@
-﻿using OpenCvSharp;
+﻿using IFOnnxRuntime.Models;
+using OpenCvSharp;
 using OpenVinoSharp.Extensions.result;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace IFOnnxRuntime
         #endregion
 
         #region Constructors
-        public SegModel(string onnx, string device, float nmsThreshold) : base(onnx, device, nmsThreshold)
+        public SegModel(string onnxModel, string device, float nmsThreshold, string onnxName) : base(onnxModel, device, nmsThreshold, onnxName)
         {
 
         }

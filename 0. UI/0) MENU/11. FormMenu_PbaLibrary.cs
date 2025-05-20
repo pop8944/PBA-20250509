@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -41,7 +42,7 @@ namespace IntelligentFactory
 
             List<string> listRecipe = new List<string>();
 
-            string strpath = $"{Global.m_MainPJTRoot}\\PBA_LIBRARY";
+            string strpath = $"{Global.m_MainPJTRoot}\\LIBRARY\\PBA_LIBRARY";
             DirectoryInfo di = new DirectoryInfo(strpath);
             if (di.Exists)
             {
@@ -62,6 +63,7 @@ namespace IntelligentFactory
                 cbLibrary_Add_Reference.Items.Add(strName);
                 DataCollection.Add(strName);
             }
+            //cbLibrary_Add_Reference.Items.Add("None");
 
             cbLibrary_Add_Reference.Text = "-";
         }
@@ -75,7 +77,7 @@ namespace IntelligentFactory
                 List<string> list = new List<string>();
 
                 // 경로 변경...
-                string path = $"{Global.m_MainPJTRoot}\\PBA_LIBRARY";
+                string path = $"{Global.m_MainPJTRoot}\\LIBRARY\\PBA_LIBRARY";
 
                 DirectoryInfo di = new DirectoryInfo(path);
 
@@ -151,8 +153,15 @@ namespace IntelligentFactory
                     {
                         Global.Instance.System.Recipe.CODE = strName;
                         Global.Instance.System.Recipe.SaveConfig();
-                        Global.Instance.System.Recipe.SettingJob();
-                        //IGlobal.Instance.FrmVision.InitJobs();
+                        Global.Instance.System.Recipe.LoadTools();
+                        //Global.Instance.Setting.Load(Global.Instance.System.Recipe.CODE);
+                        //Global.Instance.System.Recipe.Load_Fiducial(Global.Instance.System.Recipe.CODE);
+                        Global.Instance.FrmVision.SetFiducialInfo();
+                        //Global.Instance.System.Recipe.Load_MasterLibraryManager("Part", Global.Instance.System.Recipe.CODE);
+                        //Global.Instance.System.Recipe.LoadMasterCogTools("Part", Global.Instance.System.Recipe.MasterPartLibrary);
+                        //Global.Instance.System.Recipe.Load_MasterLibraryManager("Library", Global.Instance.System.Recipe.CODE);
+                        //Global.Instance.System.Recipe.LoadMasterCogTools("Library", Global.Instance.System.Recipe.MasterLibrary);
+
                         Set_Invoke_Form(Global.Instance.FrmVision);
                         // 크로스쓰레드 방지를 위한 인보크 델레게이트 처리..
                         Invoke_Util.Set_Invoke_Label(lbCurr, Global.Instance.System.Recipe.CODE);
@@ -200,12 +209,15 @@ namespace IntelligentFactory
                     return;
                 }
 
-                string strPath = $"{Global.m_MainPJTRoot}\\RECIPE\\{Global.Instance.System.Recipe.Name}\\PBA_LIBRARY\\{strName}";
+                string strPath = $"{Global.m_MainPJTRoot}\\LIBRARY\\PBA_LIBRARY\\{strName}";
+                string strMasterPath = $"{Global.m_MainPJTRoot}\\LIBRARY\\MASTER_LIBRARY\\{strName}";
 
                 if (IF_Util.ShowMessageBox("PBA LIBRARY", string.Format("Do you want to Delete the Library ==> [{0}]?", strName)))
                 {
                     DirectoryInfo di = new DirectoryInfo(strPath);
                     di.Delete(true);
+                    DirectoryInfo diMaster = new DirectoryInfo(strMasterPath);
+                    diMaster.Delete(true);
                     InitList();
 
                     CLogger.Add(LOG.NORMAL, "[OK] {0}==>{1}", MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name);
@@ -236,16 +248,43 @@ namespace IntelligentFactory
                     {
                         if (strName != "")
                         {
-                            string strFolderPath = $"{Global.m_MainPJTRoot}\\PBA_LIBRARY\\{strName}";
+                            string strFolderPath = $"{Global.m_MainPJTRoot}\\LIBRARY\\PBA_LIBRARY\\{strName}";
+                            string strFolderMasterPath = $"{Global.m_MainPJTRoot}\\LIBRARY\\MASTER_LIBRARY\\{strName}";
 
                             Global.Instance.System.Recipe.CODE = strName;
                             Global.Instance.System.Recipe.SaveConfig();
                             Directory.CreateDirectory(strFolderPath);
+                            Directory.CreateDirectory(strFolderMasterPath);
 
                             //2024.03.11 : 송현수
                             //Global.Instance.System.Recipe.JsonFile_Save(1, strFolderPath, true);
                             //Global.Instance.FrmVision.InitJobs();
                             InitList();
+                            Global.Instance.OnStart_Porgess();
+                            Global.Notice = "PBA LIBRARY LOADING...";
+                            // 레시피 데이터 가져올때 task로 가동하여서 별도 정지된 현상 없애기위함..
+                            // 백그라운드의 별도 TASK쓰레드 형태로 가동되므로 폼을 건드릴때는 반드시 인보크 처리 필요함..
+                            Task.Run(() =>
+                            {
+                                Global.Instance.System.Recipe.CODE = strName;
+                                Global.Instance.System.Recipe.SaveConfig();
+                                Global.Instance.System.Recipe.LoadTools();
+                                //Global.Instance.Setting.Load(Global.Instance.System.Recipe.CODE);
+                                //Global.Instance.System.Recipe.Load_Fiducial(Global.Instance.System.Recipe.CODE);
+                                Global.Instance.FrmVision.SetFiducialInfo();
+                                //Global.Instance.System.Recipe.Load_MasterLibraryManager("Part", Global.Instance.System.Recipe.CODE);
+                                //Global.Instance.System.Recipe.LoadMasterCogTools("Part", Global.Instance.System.Recipe.MasterPartLibrary);
+                                //Global.Instance.System.Recipe.Load_MasterLibraryManager("Library", Global.Instance.System.Recipe.CODE);
+                                //Global.Instance.System.Recipe.LoadMasterCogTools("Library", Global.Instance.System.Recipe.MasterLibrary);
+
+                                Set_Invoke_Form(Global.Instance.FrmVision);
+                                // 크로스쓰레드 방지를 위한 인보크 델레게이트 처리..
+                                Invoke_Util.Set_Invoke_Label(lbCurr, Global.Instance.System.Recipe.CODE);
+                                //lbCurr.Text = IGlobal.Instance.System.Recipe.CODE;
+                                Global.Instance.OnEnd_Progress();
+
+                                CLogger.Add(LOG.NORMAL, "[OK] {0}==>{1}", MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name);
+                            });
                         }
                         else
                         {
@@ -256,14 +295,22 @@ namespace IntelligentFactory
                     {
                         if (strName != "")
                         {
-                            string strRefPath = $"{Global.m_MainPJTRoot}\\PBA_LIBRARY\\{strRefLibrary}";
-                            string strNewPath = $"{Global.m_MainPJTRoot}\\PBA_LIBRARY\\{strName}";
+                            string strRefPath = $"{Global.m_MainPJTRoot}\\LIBRARY\\PBA_LIBRARY\\{strRefLibrary}";
+                            string strNewPath = $"{Global.m_MainPJTRoot}\\LIBRARY\\PBA_LIBRARY\\{strName}";
+                            string strRefMasterPath = $"{Global.m_MainPJTRoot}\\LIBRARY\\MASTER_LIBRARY\\{strRefLibrary}";
+                            string strNewMasterPath = $"{Global.m_MainPJTRoot}\\LIBRARY\\MASTER_LIBRARY\\{strName}";
 
                             DirectoryInfo existingDir = new DirectoryInfo(strRefPath);
                             DirectoryInfo copyDir = new DirectoryInfo(strNewPath);
                             copyDir.Create();
 
                             IF_Util.SynchFolder(existingDir, copyDir);
+
+                            DirectoryInfo existingMasterDir = new DirectoryInfo(strRefMasterPath);
+                            DirectoryInfo copyMasterDir = new DirectoryInfo(strNewMasterPath);
+                            copyMasterDir.Create();
+
+                            IF_Util.SynchFolder(existingMasterDir, copyMasterDir);
 
                             Global.Instance.System.Recipe.CODE = strName;
                             Global.Instance.System.Recipe.SaveConfig();

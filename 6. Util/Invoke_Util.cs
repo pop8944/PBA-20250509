@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace IntelligentFactory
 {
@@ -14,7 +15,7 @@ namespace IntelligentFactory
         delegate void SetFrom_Callback(Form _form);
         delegate void SetPanel_Callback(Panel _pnl, Form _frm);
         delegate void SetFromShow_Callback(Form _frm);
-
+        delegate void SetDataGridViewInvoke_Callback(DataGridView _datagridview, List<object[]> _obj_Value);
         public static void Set_Invoke_FromShow(Form _frm)
         {
             if (_frm.InvokeRequired)
@@ -149,6 +150,23 @@ namespace IntelligentFactory
             else
             {
                 _control.Text = _txt;
+            }
+        }
+
+        public static void Set_Invoke_DataGridView(DataGridView _control, List<object[]> _values)
+        {
+            if (_control.InvokeRequired)
+            {
+                SetDataGridViewInvoke_Callback _invoke = new SetDataGridViewInvoke_Callback(Set_Invoke_DataGridView);
+                _control.Invoke(_invoke, new object[] { _control, _values });
+            }
+            else
+            {
+                _control.Rows.Clear();
+                foreach (var row in _values)
+                {
+                    _control.Rows.Add(row);
+                }
             }
         }
     }

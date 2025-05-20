@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -53,7 +54,7 @@ namespace IntelligentFactory
 
             pnlTitle.BackColor = DEFINE.COLOR_ORANGE;
             lblTitle.BackColor = DEFINE.COLOR_ORANGE;
-            lblMode.BackColor = DEFINE.COLOR_ORANGE;
+            lblMode.BackColor = Color.Orange;
             Global.Instance.SetRMS = new Setting_RMS();
             Global.Instance.SetRMS.dicBUFFER_ID_Done = new Dictionary<int, string>();
 
@@ -200,13 +201,12 @@ namespace IntelligentFactory
         {
             try
             {
-                string strBuildMode = "";
 
                 EnableMenu(true);
 
                 this.Location = new System.Drawing.Point(0, 0);
 
-                // comboCountry.DataSource = Enum.GetValues(typeof(Setting_Enviroment.COUNTRY));
+                //comboCountry.DataSource = Enum.GetValues(typeof(Setting_Enviroment.COUNTRY));
                 comboCountry.SelectedIndex = (int)Global.Setting.Enviroment.Country;
 
 
@@ -268,7 +268,12 @@ namespace IntelligentFactory
             //btnMenuVisionTeaching.BackColor = DEFINE.COLOR_NAVY;
 
             Global.SelectedMenu = btn.Text;
-
+            btnMenu_Main.Selected = false;
+            btnMenu_Model.Selected = false;
+            btnMenu_Vision.Selected = false;
+            btnMenu_Device.Selected = false;
+            btnMenu_RMS.Selected = false;
+            btnMenu_Setting.Selected = false;
             switch (btn.Text)
             {
                 case "메인":
@@ -279,17 +284,27 @@ namespace IntelligentFactory
 
                     if (Global.Instance.FrmVision != null && Global.Instance.FrmVision.Visible) Global.Instance.FrmVision.Hide();
                     Global.Instance.FrmSub.Show();
+                    btnMenu_Main.Selected = true;
+
                     break;
                 case "MODEL":
                     {
-                        if (Global.Instance.FrmRecipe == null || !Global.Instance.FrmRecipe.Created)
-                        {
-                            Global.Instance.FrmRecipe = new FormMenuRecipe();
-                        }
+                        if (Global.SeqVision.SeqIndex == "IDLE")
+                        { 
+                            if (Global.Instance.FrmRecipe == null || !Global.Instance.FrmRecipe.Created)
+                            {
+                                Global.Instance.FrmRecipe = new FormMenuRecipe();
+                            }
 
-                        Global.Instance.FrmRecipe.BringToFront();
-                        Global.Instance.FrmRecipe.Owner = this;
-                        Global.Instance.FrmRecipe.Show();
+                            Global.Instance.FrmRecipe.BringToFront();
+                            Global.Instance.FrmRecipe.Owner = this;
+                            Global.Instance.FrmRecipe.Show();
+                            btnMenu_Model.Selected = true;
+                        }
+                        else
+                        {
+                            IF_Util.ShowMessageBox("SAVE", $"[FAILED] Inspection Process : {Global.SeqVision.SeqIndex}, Please save again after the Inspection is Complete");
+                        }
                     }
                     break;
                 case "비전":
@@ -311,6 +326,7 @@ namespace IntelligentFactory
                             Global.Instance.FrmVision.Show();
                         }
                     }
+                    btnMenu_Vision.Selected = true;
                     break;
                 case "RMS":
                     {
@@ -327,6 +343,7 @@ namespace IntelligentFactory
                         Global.Instance.FrmViewer.BringToFront();
                         Global.Instance.FrmViewer.Owner = this;
                         Global.Instance.FrmViewer.Show();
+                        btnMenu_RMS.Selected = true;
 
                     }
                     break;
@@ -343,6 +360,7 @@ namespace IntelligentFactory
                         Global.Instance.FrmIO.BringToFront();
                         Global.Instance.FrmIO.Owner = this;
                         Global.Instance.FrmIO.Show();
+                        btnMenu_Device.Selected = true;
                     }
                     break;
                 case "TEACHING":
@@ -363,7 +381,7 @@ namespace IntelligentFactory
                     break;
 
                 case "설정":
-                case "SETTINGS":
+                case "SETTING":
                     {
                         if (Global.Instance.FrmSetting == null || !Global.Instance.FrmSetting.Created)
                         {
@@ -373,6 +391,7 @@ namespace IntelligentFactory
                         Global.Instance.FrmSetting.BringToFront();
                         Global.Instance.FrmSetting.Owner = this;
                         Global.Instance.FrmSetting.Show();
+                        btnMenu_Setting.Selected = true;
                     }
                     break;
                 case "EXIT":
@@ -417,6 +436,15 @@ namespace IntelligentFactory
                 {
                     btnAuthorization.SymbolColor = btnAuthorization.ForeColor = DEFINE.COLOR_RED;
                     btnAuthorization.Text = "MASTER";
+                }
+                if (IData.sResetTime != null)   // 설정한 시간이 되면 당일 OK, NG 초기화 - JYH
+                {
+                    DateTime time = DateTime.Parse(IData.sResetTime, CultureInfo.CreateSpecificCulture("ko-KR")); // CultureInfo 사용할 때 using System.Globalization; 요망 - JYH
+
+                    if (DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") == time.ToString("yyyy-MM-dd hh:mm:ss tt"))
+                    {
+                        Global.Instance.Data.ResetTotalCount();
+                    }
                 }
             }
             catch (Exception ex)
@@ -467,18 +495,18 @@ namespace IntelligentFactory
                 }
             }
 
-            // License Key In 상태 체크
-            // Cognex License가 없을때...인터락 메세지 표시..
-
-
+          
             // ARC 연결 상태 표시
 
             statusMES.On = ARC_Control.IsRun;
-            statusEyeD.On = (Global.Device.EyeD != null && Global.Device.EyeD.IsOpen);
             statusCamera.On = (Global.Instance.Device.Cameras != null && Global.Instance.Device.Cameras.Count > 0 && Global.Instance.Device.Cameras[0] != null && Global.Device.Cameras[0].IsOpen);
             statusLightController.On = (Global.Instance.Device.LightController != null && Global.Device.LightController.IsOpen);
             statusIO.On = (Global.Instance.Device.DIO_BD != null && Global.Device.DIO_BD.IsOpen);
             statusBuffer.On = (Global.Instance.Device.NGBUFFER != null && Global.Device.NGBUFFER.IsOpen);
+            if (Global.Instance.Device.NGBUFFER != null)
+            {
+                lblBuffer.Text = $"NG BUFF {Global.Device.NGBUFFER.CycleTime}ms";
+            }
         }
 
         #endregion TIMER / THREAD
@@ -584,7 +612,6 @@ namespace IntelligentFactory
                 {
                     CLogger.Add(LOG.NORMAL, "S/W Close");
                     Global.Instance.Data.SaveConfig();
-                    Global.FileManager.CountSave(Global.Data);
                     Global.Close();
                     //Global.Instance.Data.SaveConfig();
                     this.Close();
@@ -611,7 +638,7 @@ namespace IntelligentFactory
             }
         }
 
-        private void btnAutoStart_Click(object sender, EventArgs e)
+        private void OnClick_Auto(object sender, EventArgs e)
         {
             bool deviceCam_Success = true;
             if (Global.Device.Cameras.Count == 0)
@@ -629,25 +656,15 @@ namespace IntelligentFactory
                 IF_Util.ShowMessageBox("Device Init", "Please wait the connection of camera", FormPopUp_MessageBox.MESSAGEBOX_TYPE.NOMAL);
                 return;
             }
-#if !TEST
-            if (Global.Instance.System.Recipe.Task_TrainImage != null)
-            {
-                if (Global.Instance.System.Recipe.Task_TrainImage.Status == TaskStatus.Running)
-                {
-                    IF_Util.ShowMessageBox("Auto Inspec", $"Setting the Train image.{Environment.NewLine}Please wait a moment!!", FormPopUp_MessageBox.MESSAGEBOX_TYPE.NOMAL);
-                    return;
-                }
-            }
 
-
-            if (!Global.Instance.Device.DIO_BD.IsOpen)
-            {
-                IF_Util.ShowMessageBox("Auto Inspec", "DIO Board Not Connect..DIO Board Check Please!!", FormPopUp_MessageBox.MESSAGEBOX_TYPE.NOMAL);
-                return;
-            }
-#endif
             try
             {
+                string autoType = "";
+                if (sender is UIButton)
+                {
+                    autoType = (sender as UIButton).Text.ToString().ToUpper();
+
+                }
                 if (Global.Instance.SeqVision != null)
                 {
                     Global.Instance.SeqVision.SetStepEx("IDLE");
@@ -662,40 +679,47 @@ namespace IntelligentFactory
                     return;
                 }
 
-                if (Global.System.Recipe.FiducialLibrary.Fiducial2.ImageTemplate == null || Global.System.Recipe.FiducialLibrary.Fiducial2.ImageTemplate.Width == 0)
                 {
                     IF_Util.ShowMessageBox("Error", "Have to set Fiducial (R) First");
                     return;
                 }
-                if (Global.System.Mode != CSystem.MODE.AUTO)
+                switch (autoType)
                 {
-                    if (IF_Util.ShowMessageBox("Auto Run", "Auto Inspection Start?", FormPopUp_MessageBox.MESSAGEBOX_TYPE.OKCANCEL))
-                    {
-                        Global.Data.StopReason = "NORMAL";
-                        Global.Device.Cameras[0].Live(false);
+                    case "START":
+                        if (Global.System.Mode != CSystem.MODE.AUTO)
+                        {
+                            if (IF_Util.ShowMessageBox("Auto Run", "Auto Inspection Start?", FormPopUp_MessageBox.MESSAGEBOX_TYPE.OKCANCEL))
+                            {
+                                Global.Data.StopReason = "NORMAL";
+                                Global.Device.Cameras[0].Live(false);
 
-                        btnAutoStart.Enabled = true;
-                        btnAutoStart.FillColor = Color.Green;
+                                btnAutoStart.Enabled = true;
+                                btnAutoStart.FillColor = Color.Green;
 
-                        Global.System.Mode = CSystem.MODE.AUTO;
+                                Global.System.Mode = CSystem.MODE.AUTO;
 
-                        pnlTitle.BackColor = Color.Green;
-                        lblTitle.BackColor = Color.Green;
-                    }
-                }
-                else
-                {
-                    if (IF_Util.ShowMessageBox("Mode Chnage", "Auto Inspection Stop?", FormPopUp_MessageBox.MESSAGEBOX_TYPE.OKCANCEL))
-                    {
-                        Global.Data.StopReason = "STOP BY BUTTON";
-                        btnAutoStart.Enabled = true;
-                        btnAutoStart.FillColor = Color.Orange;
-                        Global.System.Mode = CSystem.MODE.READY;
+                                pnlTitle.BackColor = Color.Green;
+                                lblTitle.BackColor = Color.Green;
+                            }
+                        }
+                        break;
+                    case "STOP":
+                        if (IF_Util.ShowMessageBox("Mode Chnage", "Auto Inspection Stop?", FormPopUp_MessageBox.MESSAGEBOX_TYPE.OKCANCEL))
+                        {
+                            Global.Data.StopReason = "STOP BY BUTTON";
+                            btnAutoStart.Enabled = true;
+                            btnAutoStart.FillColor = Color.Orange;
+                            Global.System.Mode = CSystem.MODE.READY;
 
-                        pnlTitle.BackColor = DEFINE.COLOR_ORANGE;
-                        lblTitle.BackColor = DEFINE.COLOR_ORANGE;
-                        lblMode.BackColor = DEFINE.COLOR_ORANGE;
-                    }
+                            pnlTitle.BackColor = DEFINE.COLOR_ORANGE;
+                            lblTitle.BackColor = DEFINE.COLOR_ORANGE;
+                            lblMode.BackColor = Color.Orange;
+                        }
+                        break;
+                    case "PAUSE":
+                        break;
+                    case "RESET":
+                        break;
                 }
             }
             catch (Exception ex)
@@ -722,13 +746,17 @@ namespace IntelligentFactory
         {
             try
             {
-                if (IF_Util.ShowMessageBox("TOTAL COUNT RESET", "Reset the total count Daily?", FormPopUp_MessageBox.MESSAGEBOX_TYPE.OKCANCEL))
+                if (IF_Util.ShowMessageBox("TOTAL COUNT RESET", "Reset the total count?", FormPopUp_MessageBox.MESSAGEBOX_TYPE.OKCANCEL))
                 {
-                    Global.FileManager.CountSave_Log(Global.Data);
                     Global.Instance.Data.ResetTotalCount();
 
-                    lbCountTOTAL.Text = (Global.Instance.Data.CountOK + Global.Instance.Data.CountNG_F).ToString();
+                    Global.Instance.MetaData.NGCount = 0;
+                    Global.Instance.MetaData.OKCount = 0;
+                    Global.Instance.MetaData.TotalCount = 0;
+
+                    lbCountTOTAL.Text = (Global.Instance.Data.CountOK + Global.Instance.Data.CountNG_T + Global.Instance.Data.CountNG_F).ToString();
                     lbCountOK.Text = Global.Instance.Data.CountOK.ToString();
+                    lbCountNG_T.Text = Global.Instance.Data.CountNG_T.ToString();
                     lbCountNG_F.Text = Global.Instance.Data.CountNG_F.ToString();
 
                     CLogger.Add(LOG.NORMAL, "[OK] {0}==>{1}", MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name);
@@ -740,66 +768,44 @@ namespace IntelligentFactory
                 CLogger.Exception(MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name, ex);
             }
         }
-
         private void OnChangeCount()
         {
             try
             {
-                String daily_Reset = DateTime.Now.ToString("yyyyMMdd:HH");
-                String daily_Time = DateTime.Now.Hour.ToString();
-                String Monthly_Reset = DateTime.Now.ToString("yyyyMM");
+                double dYield1 = 0;
                 lbCountOK.Text = Global.Instance.Data.CountOK.ToString();
                 lbCountNG_F.Text = Global.Instance.Data.CountNG_F.ToString();
-                lbCountTOTAL.Text = (Global.Instance.Data.CountOK + Global.Instance.Data.CountNG_F).ToString();
+                lbCountNG_T.Text = Global.Instance.Data.CountNG_T.ToString();
+                lbCountTOTAL.Text = (Global.Instance.Data.CountOK + Global.Instance.Data.CountNG_T + Global.Instance.Data.CountNG_F).ToString();
+                if (Global.Instance.MetaData != null)
+                {
+                    lbCurrentNG.Text = Global.Instance.MetaData.NGCount.ToString();
+                    lbCurrentOK.Text = Global.Instance.MetaData.OKCount.ToString();
+                    lbCurrentTotal.Text = Global.Instance.MetaData.TotalCount.ToString();
+                    if (Global.Instance.MetaData.TotalCount > 0)
+                    {
 
-                lbOK_M.Text = Global.Instance.Data.CountOK_M.ToString();
-                lbNG_M.Text = Global.Instance.Data.CountNG_M.ToString();
-                lbTotal_M.Text = (Global.Instance.Data.CountOK_M + Global.Instance.Data.CountNG_M).ToString(); 
+                    }
+                    dYield1 = (double)(Global.Instance.MetaData.OKCount / (double)Global.Instance.MetaData.TotalCount) * 100;
+                }
+
+                lbCurrentYield.Text = dYield1.ToString("F2") + "%";
 
                 if (Global.Instance.Data.CountNG_F == 0)
                 {
                     lbCountYield.Text = "100.00 %";
-                    Global.Instance.Data.yield = "100";
                 }
                 else
                 {
-                    double dYield1 = ((double)(Global.Instance.Data.CountOK) / (double)(Global.Instance.Data.CountOK +  Global.Instance.Data.CountNG_F) * 100.0D);
-                    lbCountYield.Text = dYield1.ToString("F2") + " %";
-                    Global.Instance.Data.yield = dYield1.ToString("F2");
-                }
-                if (Global.Instance.Data.CountNG_M == 0)
-                {
-                    lbYield_M.Text = "100.00 %";
-                    Global.Instance.Data.CountYield_M = "100";
-                }
-                else
-                {
-                    double dYield = ((double)(Global.Instance.Data.CountOK_M) / (double)(Global.Instance.Data.CountOK_M +  Global.Instance.Data.CountNG_M) * 100.0D);
-                    lbYield_M.Text = dYield.ToString("F2") + " %";
-                    Global.Instance.Data.CountYield_M = dYield.ToString("F2");
-                }
-                if (Global.Instance.Mode.Count_Reset_D == int.Parse(daily_Time) && Global.Instance.Data.Last_Reset_D != daily_Reset && Global.FileManager.bLoad == true)
-                {
-                    Global.FileManager.CountSave_Log(Global.Data);
-                    Global.Instance.Data.Last_Reset_D = daily_Reset;
-                    Global.Instance.Data.ResetTotalCount();
-
-                    lbCountTOTAL.Text = (Global.Instance.Data.CountOK + Global.Instance.Data.CountNG_F).ToString();
-                    lbCountOK.Text = Global.Instance.Data.CountOK.ToString();
-                    lbCountNG_F.Text = Global.Instance.Data.CountNG_F.ToString();
-                }
-                if (Global.Instance.Mode.Count_Reset_M == int.Parse(daily_Time) && Global.Instance.Data.Last_Reset_M != Monthly_Reset && Global.FileManager.bLoad == true)
-                {
-                    Global.FileManager.CountSave_Log(Global.Data);
-
-                    Global.Instance.Data.Last_Reset_M = Monthly_Reset;
-                    Global.Instance.Data.ResetTotalCount_M();
-
-                    lbTotal_M.Text = (Global.Instance.Data.CountOK_M + Global.Instance.Data.CountNG_M).ToString();
-                    lbOK_M.Text = Global.Instance.Data.CountOK_M.ToString();
-                    lbNG_M.Text = Global.Instance.Data.CountNG_M.ToString();
+                    double dYield = ((double)(Global.Instance.Data.CountOK + Global.Instance.Data.CountNG_T) / (double)(Global.Instance.Data.CountOK + Global.Instance.Data.CountNG_T + Global.Instance.Data.CountNG_F) * 100.0D);
+                    lbCountYield.Text = dYield.ToString("F2") + " %";
+                    Global.Instance.Data.yield = dYield.ToString("F2");
                 }
 
+                double dNGtrue = (double.Parse(lbCountNG_T.Text) / double.Parse(lbCountTOTAL.Text)) * 100.0D;
+                lbNGtruePer.Text = dNGtrue.ToString("F2") + "%";
+                double dNGFalse = (double.Parse(lbCountNG_F.Text) / double.Parse(lbCountTOTAL.Text)) * 100.0D;
+                lbNGfalsePER.Text = dNGFalse.ToString("F2") + "%";
             }
             catch (Exception ex)
             {
@@ -807,6 +813,8 @@ namespace IntelligentFactory
             }
 
         }
+
+      
 
         private void timerStatus_Tick(object sender, EventArgs e)
         {
@@ -833,7 +841,10 @@ namespace IntelligentFactory
                 if (lblMode.Text != "READY")
                 {
                     lblStatusMode.Text = lblMode.Text = "READY";
-                    lblMode.BackColor = Color.DimGray;
+                    lblMode.BackColor = Color.Orange;
+                    btnAutoStart.Enabled = true;
+                    btnAutoStart.FillColor = Color.Orange;
+                    lblTitle.BackColor = DEFINE.COLOR_ORANGE;
                 }
             }
             else if (Global.System.Mode == CSystem.MODE.ALARM)
@@ -937,31 +948,20 @@ namespace IntelligentFactory
 
         }
 
-        private void btnCountReset_M_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (IF_Util.ShowMessageBox("TOTAL COUNT RESET", "Reset the total count Monthly?", FormPopUp_MessageBox.MESSAGEBOX_TYPE.OKCANCEL))
-                {
-                    Global.FileManager.CountSave_Log(Global.Data);
-                    Global.Instance.Data.ResetTotalCount_M();
-
-                    lbTotal_M.Text = (Global.Instance.Data.CountOK_M + Global.Instance.Data.CountNG_M).ToString();
-                    lbOK_M.Text = Global.Instance.Data.CountOK_M.ToString();
-                    lbNG_M.Text = Global.Instance.Data.CountNG_M.ToString();
-                    CLogger.Add(LOG.NORMAL, "[OK] {0}==>{1}", MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name);
-
-                }
-            }
-            catch (Exception ex)
-            {
-                CLogger.Exception(MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name, ex);
-            }
-        }
-
         private void btnLogView_Click(object sender, EventArgs e)
         {
             pnlLogViewer.Visible = !pnlLogViewer.Visible;
+        }
+
+        private void btnOper_Reset_Click(object sender, EventArgs e)
+        {
+            CAlarm.Clear();
+            Global.System.Mode = CSystem.MODE.READY;
+        }
+
+        private void BtnInsp_Click(object sender, EventArgs e)
+        {
+            Global.SeqVision.ManualInsp = CSeqVision.ManualType.GRAB_INSP;
         }
     }
 }

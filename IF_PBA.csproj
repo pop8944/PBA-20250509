@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\OpenCvSharp4.runtime.win.4.10.0.20241108\build\net48\OpenCvSharp4.runtime.win.props" Condition="Exists('packages\OpenCvSharp4.runtime.win.4.10.0.20241108\build\net48\OpenCvSharp4.runtime.win.props')" />
   <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
-  <Import Project="packages\OpenCvSharp4.runtime.win.4.3.0.20200421\build\net\OpenCvSharp4.runtime.win.props" Condition="Exists('packages\OpenCvSharp4.runtime.win.4.3.0.20200421\build\net\OpenCvSharp4.runtime.win.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -49,7 +49,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Prefer32Bit>true</Prefer32Bit>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -91,12 +91,15 @@
     <DefineConstants>TRACE;DEBUG;TEST</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <OutputPath>C:\PBA_EXEPATH_TEST\</OutputPath>
     <Optimize>false</Optimize>
+    <WarningLevel>1</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PreferNativeArm64>true</PreferNativeArm64>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>C:\PBA_EXEPATH_TEST\</OutputPath>
@@ -436,20 +439,17 @@
       <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="OpenCvSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
-      <HintPath>packages\OpenCvSharp4.4.3.0.20200421\lib\net461\OpenCvSharp.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="OpenCvSharp.Blob, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
-      <HintPath>packages\OpenCvSharp4.4.3.0.20200421\lib\net461\OpenCvSharp.Blob.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>packages\OpenCvSharp4.4.10.0.20241108\lib\net48\OpenCvSharp.dll</HintPath>
     </Reference>
     <Reference Include="OpenCvSharp.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
-      <HintPath>packages\OpenCvSharp4.4.3.0.20200421\lib\net461\OpenCvSharp.Extensions.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>packages\OpenCvSharp4.Extensions.4.10.0.20241108\lib\net48\OpenCvSharp.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="OpenCvSharp.UserInterface">
       <HintPath>Dll\OpenCvSharp.UserInterface.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="OpenCvSharp.WpfExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\OpenCvSharp4.WpfExtensions.4.10.0.20241108\lib\net48\OpenCvSharp.WpfExtensions.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -673,11 +673,17 @@
     <Compile Include="0. UI\0%29 MENU\99.FormMenu_ARC_Tester.Designer.cs">
       <DependentUpon>99.FormMenu_ARC_Tester.cs</DependentUpon>
     </Compile>
-    <Compile Include="0. UI\0%29 MENU\Form_MenuVision.cs">
+    <Compile Include="0. UI\0%29 MENU\01. Form_MenuVision.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="0. UI\0%29 MENU\Form_MenuVision.Designer.cs">
-      <DependentUpon>Form_MenuVision.cs</DependentUpon>
+    <Compile Include="0. UI\0%29 MENU\01. Form_MenuVision.Designer.cs">
+      <DependentUpon>01. Form_MenuVision.cs</DependentUpon>
+    </Compile>
+    <Compile Include="0. UI\1%29 POPUP\FormPopUp_EYEDuserControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="0. UI\1%29 POPUP\FormPopUp_EYEDuserControl.Designer.cs">
+      <DependentUpon>FormPopUp_EYEDuserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="0. UI\1%29 POPUP\FormPopUp_ImageView2.cs">
       <SubType>Form</SubType>
@@ -748,16 +754,43 @@
     <Compile Include="0. UI\1%29 POPUP\IFNotify.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="0. VISION\Algorithm\CoreProcessor.cs" />
+    <Compile Include="0. VISION\Algorithm\LogicResultData.cs" />
+    <Compile Include="0. VISION\Algorithm\LogicResultDraw.cs" />
+    <Compile Include="0. VISION\Algorithm\PreProcessor.cs" />
+    <Compile Include="0. VISION\LibraryManager\MasterLibraryManager.cs" />
     <Compile Include="0. VISION\Manager\IF_VisionLogicInfo.cs" />
-    <Compile Include="0. VISION\Parameter\IF_VisionParam_EYED.cs" />
+    <Compile Include="0. VISION\Parameter\CoreProcessing\IF_VisionParam_CColor.cs" />
+    <Compile Include="0. VISION\Parameter\CoreProcessing\IF_VisionParam_Condensor.cs" />
+    <Compile Include="0. VISION\Parameter\CoreProcessing\IF_VisionParam_EYED.cs" />
+    <Compile Include="0. VISION\Parameter\CoreProcessing\IF_VisionParam_Pin.cs" />
+    <Compile Include="0. VISION\Parameter\preprocessing\IF_VisionParam_Affine.cs" />
+    <Compile Include="0. VISION\Parameter\preprocessing\IF_VisionParam_Bilateral.cs" />
+    <Compile Include="0. VISION\Parameter\preprocessing\IF_VisionParam_Binarization.cs" />
+    <Compile Include="0. VISION\Parameter\preprocessing\IF_VisionParam_CannyFilter.cs" />
+    <Compile Include="0. VISION\Parameter\preprocessing\IF_VisionParam_Color.cs" />
+    <Compile Include="0. VISION\Parameter\preprocessing\IF_VisionParam_DFT.cs" />
+    <Compile Include="0. VISION\Parameter\preprocessing\IF_VisionParam_Equalization.cs" />
+    <Compile Include="0. VISION\Parameter\preprocessing\IF_VisionParam_ExtractColorChannel.cs" />
+    <Compile Include="0. VISION\Parameter\preprocessing\IF_VisionParam_GammaCorrection.cs" />
+    <Compile Include="0. VISION\Parameter\preprocessing\IF_VisionParam_GaussianBlur.cs" />
+    <Compile Include="0. VISION\Parameter\preprocessing\IF_VisionParam_LaplacialFilter.cs" />
+    <Compile Include="0. VISION\Parameter\preprocessing\IF_VisionParam_MedianBlur.cs" />
+    <Compile Include="0. VISION\Parameter\preprocessing\IF_VisionParam_Morphology.cs" />
+    <Compile Include="0. VISION\Parameter\preprocessing\IF_VisionParam_Perspective.cs" />
+    <Compile Include="0. VISION\Parameter\preprocessing\IF_VisionParam_Resizing.cs" />
+    <Compile Include="0. VISION\Parameter\preprocessing\IF_VisionParam_SobelFilter.cs" />
+    <Compile Include="0. VISION\Parameter\preprocessing_Parameter\ImageProcessingMethod.cs" />
+    <Compile Include="0. VISION\Parameter\preprocessing_Parameter\IPreprocessing.cs" />
     <Compile Include="0. VISION\Parameter\Processor_Manager.cs" />
-    <Compile Include="0. VISION\Parameter\IF_VisionParam_Blob.cs" />
-    <Compile Include="0. VISION\Parameter\IF_VisionParam_ColorEx.cs" />
-    <Compile Include="0. VISION\Parameter\IF_VisionParam_FindLine.cs" />
-    <Compile Include="0. VISION\Parameter\IF_VisionParam_Matching.cs" />
+    <Compile Include="0. VISION\Parameter\CoreProcessing\IF_VisionParam_Blob.cs" />
+    <Compile Include="0. VISION\Parameter\CoreProcessing\IF_VisionParam_ColorEx.cs" />
+    <Compile Include="0. VISION\Parameter\CoreProcessing\IF_VisionParam_FindLine.cs" />
+    <Compile Include="0. VISION\Parameter\CoreProcessing\IF_VisionParam_Matching.cs" />
     <Compile Include="0. VISION\LibraryManager\LibraryManager.cs" />
     <Compile Include="0. VISION\Gerber\PBA_GerberHelper.cs" />
     <Compile Include="0. VISION\Gerber\PBA_GerberInfo.cs" />
+    <Compile Include="1. Core\CInspector.cs" />
     <Compile Include="1. Core\CSetting.cs" />
     <Compile Include="1. Core\Json_Fiducial.cs" />
     <Compile Include="1. Core\json_Fin.cs" />
@@ -777,6 +810,7 @@
     <Compile Include="2. Common\2%29 Logger\RichTextBoxEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="2. Common\CNGCount.cs" />
     <Compile Include="2. Common\Json_Part.cs" />
     <Compile Include="0. UI\99%29 Library\RJControls\Design\ButtonDesign.cs" />
     <Compile Include="0. UI\99%29 Library\RJControls\Design\ControlStyle.cs" />
@@ -923,6 +957,7 @@
     <Compile Include="3. Device\TcpIp.cs" />
     <Compile Include="3. Device\TCP\ARC_Control.cs" />
     <Compile Include="4. Sequence\CSeqBase.cs" />
+    <Compile Include="4. Sequence\CSeqResult.cs" />
     <Compile Include="4. Sequence\SeqCommParser.cs" />
     <Compile Include="4. Sequence\CSeqImageSave.cs" />
     <Compile Include="4. Sequence\CSeqInitialize.cs" />
@@ -971,6 +1006,7 @@
     <Compile Include="9. Excel\InteropExcel.cs" />
     <Compile Include="Cognex\CCogTool_Caliper.cs" />
     <Compile Include="Cognex\CCogTool_ColorMatch.cs" />
+    <Compile Include="Cognex\CCogTool_DataMatrix.cs" />
     <Compile Include="Cognex\CCogTool_Equalize.cs" />
     <Compile Include="1. Core\CVisionTools.cs" />
     <Compile Include="2. Common\CAccessDB.cs" />
@@ -1094,6 +1130,7 @@
     <Content Include="TextFile1.txt" />
     <EmbeddedResource Include="0. UI\0%29 MENU\00. FormMenu_Sub.resx">
       <DependentUpon>00. FormMenu_Sub.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="0. UI\0%29 MENU\02. FormSettings_ColorList.resx">
       <DependentUpon>02. FormSettings_ColorList.cs</DependentUpon>
@@ -1131,8 +1168,11 @@
     <EmbeddedResource Include="0. UI\0%29 MENU\99.FormMenu_ARC_Tester.resx">
       <DependentUpon>99.FormMenu_ARC_Tester.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="0. UI\0%29 MENU\Form_MenuVision.resx">
-      <DependentUpon>Form_MenuVision.cs</DependentUpon>
+    <EmbeddedResource Include="0. UI\0%29 MENU\01. Form_MenuVision.resx">
+      <DependentUpon>01. Form_MenuVision.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="0. UI\1%29 POPUP\FormPopUp_EYEDuserControl.resx">
+      <DependentUpon>FormPopUp_EYEDuserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="0. UI\1%29 POPUP\FormPopUp_ImageView2.resx">
       <DependentUpon>FormPopUp_ImageView2.cs</DependentUpon>
@@ -1459,7 +1499,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="0. UI\0%29 REF\" />
-    <Folder Include="0. VISION\Algorithm\" />
     <Folder Include="4. Sequence\VISION\" />
     <Folder Include="7. Setting\02. Recipe\Vision Logics\" />
     <Folder Include="99. Log\" />
@@ -1517,11 +1556,11 @@
     <PropertyGroup>
       <ErrorText>이 프로젝트는 이 컴퓨터에 없는 NuGet 패키지를 참조합니다. 해당 패키지를 다운로드하려면 NuGet 패키지 복원을 사용하십시오. 자세한 내용은 http://go.microsoft.com/fwlink/?LinkID=322105를 참조하십시오. 누락된 파일은 {0}입니다.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\OpenCvSharp4.runtime.win.4.3.0.20200421\build\net\OpenCvSharp4.runtime.win.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\OpenCvSharp4.runtime.win.4.3.0.20200421\build\net\OpenCvSharp4.runtime.win.props'))" />
     <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
     <Error Condition="!Exists('packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
     <Error Condition="!Exists('packages\Microsoft.VisualStudio.Setup.Configuration.Interop.3.2.2146\build\Microsoft.VisualStudio.Setup.Configuration.Interop.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.VisualStudio.Setup.Configuration.Interop.3.2.2146\build\Microsoft.VisualStudio.Setup.Configuration.Interop.targets'))" />
+    <Error Condition="!Exists('packages\OpenCvSharp4.runtime.win.4.10.0.20241108\build\net48\OpenCvSharp4.runtime.win.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\OpenCvSharp4.runtime.win.4.10.0.20241108\build\net48\OpenCvSharp4.runtime.win.props'))" />
   </Target>
   <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <Import Project="packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />

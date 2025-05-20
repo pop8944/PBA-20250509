@@ -33,7 +33,7 @@ namespace IntelligentFactory
         }
         public MetaData LoadFromCSV()
         {
-            string filePath = $"D:\\Recent.csv";
+            string filePath = $"{Global.m_MainPJTRoot}\\Recent.csv";
             try
             {
                 if (!File.Exists(filePath))
@@ -60,7 +60,7 @@ namespace IntelligentFactory
         }
         public void SaveToCSV()
         {
-            string filePath = $"D:\\Recent.csv";
+            string filePath = $"{Global.m_MainPJTRoot}\\Recent.csv";
             try
             {
                 // 不管文件是否存在，都设置append为false，这样每次都会覆盖原有文件

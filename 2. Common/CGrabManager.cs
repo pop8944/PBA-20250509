@@ -15,7 +15,8 @@ namespace IntelligentFactory
 
         public CGrabManager LoadConfig()
         {
-            string strpath = $"{Global.m_MainPJTRoot}\\PBA_LIBRARY\\{Global.Instance.System.Recipe.CODE}";
+            string strpath = $"{Global.m_MainPJTRoot}\\CONFIG";
+            //string strpath = $"{Global.m_MainPJTRoot}\\LIBRARY\\PBA_LIBRARY\\{Global.Instance.System.Recipe.CODE}";
             string strFilePath = Path.Combine(strpath, "Grab.xml");
             CGrabManager newData = new CGrabManager();
 
@@ -34,7 +35,8 @@ namespace IntelligentFactory
 
         public void SaveConfig()
         {
-            string _path = $"{Global.m_MainPJTRoot}\\PBA_LIBRARY\\{Global.Instance.System.Recipe.CODE}";
+            string _path = $"{Global.m_MainPJTRoot}\\CONFIG";
+            //string _path = $"{Global.m_MainPJTRoot}\\LIBRARY\\PBA_LIBRARY\\{Global.Instance.System.Recipe.CODE}";
             if (!Directory.Exists(_path)) Directory.CreateDirectory(_path);
             string strFilePath = Path.Combine(_path, "Grab.xml");
 

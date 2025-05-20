@@ -2,12 +2,16 @@
 using Cognex.VisionPro.Display;
 using Cognex.VisionPro.PMAlign;
 using OpenCvSharp;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Vila.Extensions;
 using static IntelligentFactory.CVisionTools;
@@ -22,24 +26,53 @@ namespace IntelligentFactory
 
         private LogViewer logViewList = new LogViewer();
         private Dictionary<int, string> dicBUFFER_ID_Main = new Dictionary<int, string>();
-
+        private bool bAlarmTrigger = false; // 10개 이상일 시 판단하는 변수 - JYH
+        private int nSelectedGrid = 0;
         public FormMenu_Sub()
         {
             InitializeComponent();
-
-            pnLog.Controls.Add(logViewList);
-            logViewList.SetColumnImageWidth(pnLog.Width);
-
         }
 
         private void FormMenu_Sub_Load(object sender, EventArgs e)
         {
-            Display = new CogDisplay[4] { cogDisplay_Array1, cogDisplay_Array2, cogDisplay_Array3, cogDisplay_Array4 };
+            Display = new CogDisplay[] { cogDisplay_Array1, cogDisplay_Array2, cogDisplay_Array3, cogDisplay_Array4, cogDisplay_Array5, cogDisplay_Array6, cogDisplay_Array7, cogDisplay_Array8, cogDisplay_Array9, cogDisplay_Array10, cogDisplay_Array11, cogDisplay_Array12 };
             dicBUFFER_ID_Main = new Setting_RMS().dicBUFFER_ID_Done;
             InitUI();
             InitEvent();
+            tmNGCount.Start();  // - NG 카운트 확인 시작 - JYH
+            CoreProcessor.resultEvent += MainResultHandler;
         }
-
+        private void MainResultHandler(object sender, LogicResultData data)
+        {
+            try
+            {
+                switch (data.Key)
+                {
+                    case CoreKey.Pattern:
+                        break;
+                    case CoreKey.Blob:
+                        break;
+                    case CoreKey.Distance:
+                        break;
+                    case CoreKey.Color:
+                        break;
+                    case CoreKey.ColorEx:
+                        break;
+                    case CoreKey.EYED:
+                        break;
+                    case CoreKey.Condensor:
+                        break;
+                    case CoreKey.Connector:
+                        break;
+                    case CoreKey.Pin:
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                CLogger.Exception(MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name, ex);
+            }
+        }
         private void InitUI() // P/A Compens
         {
             try
@@ -91,19 +124,6 @@ namespace IntelligentFactory
                             string result = Global.Instance.Data.ArrayResults[i] ? "OK" : "NG";
                             string qrCode = Global.Instance.Data.Array_QrCodes[i].GetQR();
 
-                            //2024.04.02 송현수
-                            //if (CVisionTools.QR_Reading_Error)
-                            //{
-                            //    desc = "QR Reading Error!! QR Check Please!";
-                            //}
-                            //else
-                            //{ 
-                            //    if (qrCode == "")
-                            //    {
-                            //        desc = "No Inspec!! Vision Setting Check!!";
-                            //    }
-                            //}
-
                             if (result == "NG")
                                 result = $"{result} : {Global.Instance.Data.Result_NG_Count[i].ToString()}";
 
@@ -149,58 +169,43 @@ namespace IntelligentFactory
             }
 
         }
-        // 보드 수량은 최대 4개...
+
         public void Init_CogDisplayVisible()
         {
             try
             {
                 
                     pnlArray1.Location = new System.Drawing.Point(1, 1);
-                    pnlArray2.Location = new System.Drawing.Point(724, 1);
+                    pnlArray2.Location = new System.Drawing.Point(767, 1);
                     pnlArray3.Location = new System.Drawing.Point(1, 445);
                     pnlArray4.Location = new System.Drawing.Point(724, 445);
                
-                    //pnlArray1.Location = new System.Drawing.Point(724, 1);
-                    //pnlArray2.Location = new System.Drawing.Point(1, 1);
-                    //pnlArray3.Location = new System.Drawing.Point(724, 445);
-                    //pnlArray4.Location = new System.Drawing.Point(1, 445);
-               
-
-                // 보드 카운트 수량에 따라...표시..
                 if (Global.Instance.System.Recipe.ArrayCount == 1)
                 {
                     pnlArray1.Visible = true;
-                    pnlArray1.Size = new System.Drawing.Size(1448, 889);
-                    pnlArray2.Visible = false;
-                    pnlArray3.Visible = false;
-                    pnlArray4.Visible = false;
-                }
-                else if (Global.Instance.System.Recipe.ArrayCount == 2)
-                {
-                    pnlArray1.Visible = true;
-                    pnlArray1.Size = new System.Drawing.Size(723, 889);
+                    pnlArray1.Size = new System.Drawing.Size(474, 280);
                     pnlArray2.Visible = true;
-                    pnlArray2.Size = new System.Drawing.Size(723, 889);
-                    pnlArray3.Visible = false;
-                    pnlArray4.Visible = false;
-                }
-                else if (Global.Instance.System.Recipe.ArrayCount == 3)
-                {
-                    pnlArray1.Visible = true;
-                    pnlArray1.Size = new System.Drawing.Size(723, 444);
-                    pnlArray2.Visible = true;
-                    pnlArray2.Size = new System.Drawing.Size(723, 444);
+                    pnlArray2.Size = new System.Drawing.Size(474, 280);
                     pnlArray3.Visible = true;
-                    pnlArray4.Visible = false;
-                }
-                else
-                {
-                    pnlArray1.Visible = true;
-                    pnlArray1.Size = new System.Drawing.Size(723, 444);
-                    pnlArray2.Visible = true;
-                    pnlArray2.Size = new System.Drawing.Size(723, 444);
-                    pnlArray3.Visible = true;
+                    pnlArray3.Size = new System.Drawing.Size(474, 280);
                     pnlArray4.Visible = true;
+                    pnlArray4.Size = new System.Drawing.Size(474, 280);
+                    pnlArray5.Visible = true;
+                    pnlArray5.Size = new System.Drawing.Size(474, 280);
+                    pnlArray6.Visible = true;
+                    pnlArray6.Size = new System.Drawing.Size(474, 280);
+                    pnlArray7.Visible = true;
+                    pnlArray7.Size = new System.Drawing.Size(474, 280);
+                    pnlArray8.Visible = true;
+                    pnlArray8.Size = new System.Drawing.Size(474, 280);
+                    pnlArray9.Visible = true;
+                    pnlArray9.Size = new System.Drawing.Size(474, 280);
+                    pnlArray10.Visible = true;
+                    pnlArray10.Size = new System.Drawing.Size(474, 280);
+                    pnlArray11.Visible = true;
+                    pnlArray11.Size = new System.Drawing.Size(474, 280);
+                    pnlArray12.Visible = true;
+                    pnlArray12.Size = new System.Drawing.Size(474, 280);
                 }
             }
             catch (Exception ex)
@@ -209,9 +214,6 @@ namespace IntelligentFactory
             }
 
         }
-
-
-        // 수정된 io클래스의 형태에 맞춰서 io 디스플레이..
         private void timerIO_Tick(object sender, EventArgs e)
         {
             if (Global.Instance.Device == null) return;
@@ -223,13 +225,6 @@ namespace IntelligentFactory
             IF_Util.UpdateLabelOnOff(lbOutputResultOK, CDIO_BIT.RESULT_OK);
             IF_Util.UpdateLabelOnOff(lbOutputResultNG, CDIO_BIT.RESULT_NG);
 
-            if (Global.Device.NGBUFFER != null && Global.Device.NGBUFFER.IsOpen)
-            {
-                if (Global.Device.NGBUFFER.DEBUG_R2141_NG_JUDGE_SET != null) DEBUG_R2141_NG_JUDGE_SET.BackColor = Global.Device.NGBUFFER.DEBUG_R2141_NG_JUDGE_SET.Value == 1 ? Color.Green : Color.DimGray;
-                if (Global.Device.NGBUFFER.DEBUG_R918_INSP_POS_ACTION != null) DEBUG_R918_INSP_POS_ACTION.BackColor = Global.Device.NGBUFFER.DEBUG_R918_INSP_POS_ACTION.Value == 1 ? Color.Green : Color.DimGray;
-                if (Global.Device.NGBUFFER.DEBUG_R559_RACK_ENTERING != null) DEBUG_R559_RACK_ENTERING.BackColor = Global.Device.NGBUFFER.DEBUG_R559_RACK_ENTERING.Value == 1 ? Color.Green : Color.DimGray;
-                if (Global.Device.NGBUFFER.DEBUG_R2120_RACK_ENTERING_NG_SET != null) DEBUG_R2141_NG_JUDGE_SET.BackColor = Global.Device.NGBUFFER.DEBUG_R2120_RACK_ENTERING_NG_SET.Value == 1 ? Color.Green : Color.DimGray;
-            }
 
             Init_CogDisplayVisible();
             if (Global.SeqVision != null)
@@ -320,164 +315,164 @@ namespace IntelligentFactory
 
             return (Exist, ID, Result);
         }
-        private void timerStatus_Tick(object sender, EventArgs e)
-        {
+        //private void timerStatus_Tick(object sender, EventArgs e)
+        //{
 
 
 
-            if (Global.Instance.Device.NGBUFFER != null)
-            {
-                gridBuffer.Rows.Clear();
+        //    if (Global.Instance.Device.NGBUFFER != null)
+        //    {
+        //        gridBuffer.Rows.Clear();
 
-                if (Global.Instance.Device.NGBUFFER.IsOpen)
-                {
-                    string strBufferQR = Global.Instance.Device.NGBUFFER.GetQRTitle();
-                    if (strBufferQR.Length > 0)
-                        lb_Buffer.Text = $"Buffer_Monitor , QR_Header = [{strBufferQR}]";
-                    else
-                        lb_Buffer.Text = $"Buffer_Monitor";
+        //        if (Global.Instance.Device.NGBUFFER.IsOpen)
+        //        {
+        //            string strBufferQR = Global.Instance.Device.NGBUFFER.GetQRTitle();
+        //            if (strBufferQR.Length > 0)
+        //                lb_Buffer.Text = $"Buffer_Monitor , QR_Header = [{strBufferQR}]";
+        //            else
+        //                lb_Buffer.Text = $"Buffer_Monitor";
 
-                    for (int i = 0; i < 12; i++)
-                    {
-                        (string exist, string id, string result) result = GetSignal_Mewtoxcol(i);
+        //            for (int i = 0; i < 12; i++)
+        //            {
+        //                (string exist, string id, string result) result = GetSignal_Mewtoxcol(i);
 
-                        gridBuffer.Rows.Add(new string[] { $"{(i + 1).ToString()}", result.exist, result.id, result.result });
-                    }
+        //                gridBuffer.Rows.Add(new string[] { $"{(i + 1).ToString()}", result.exist, result.id, result.result });
+        //            }
 
-                    for (int i = 0; i < gridBuffer.Rows.Count; i++)
-                    {
-                        if (gridBuffer[3, i].Value.ToString() == "OK" && gridBuffer[1, i].Value.ToString() == "V")
-                        {
-                            gridBuffer.Rows[i].DefaultCellStyle.BackColor = Color.Green;
-                            gridBuffer.Rows[i].DefaultCellStyle.SelectionBackColor = Color.Green;
-                        }
-                        else if (gridBuffer[3, i].Value.ToString() == "NG" && gridBuffer[1, i].Value.ToString() == "V" && gridBuffer[2, i].Value.ToString() != "")
-                        {
-                            gridBuffer.Rows[i].DefaultCellStyle.BackColor = Color.Orange;
-                            gridBuffer.Rows[i].DefaultCellStyle.SelectionBackColor = Color.Orange;
-                            if (Global.Instance.SetRMS.dicBUFFER_ID_Done.ContainsKey(i + 1))
-                            {
-                                if (Global.Instance.SetRMS.dicBUFFER_ID_Done[i + 1].Equals(gridBuffer[2, i].Value.ToString()))
-                                {
-                                    gridBuffer.Rows[i].DefaultCellStyle.BackColor = Color.Red;
-                                    gridBuffer.Rows[i].DefaultCellStyle.SelectionBackColor = Color.Red;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            gridBuffer.Rows[i].DefaultCellStyle.BackColor = Color.DimGray;
-                            gridBuffer.Rows[i].DefaultCellStyle.SelectionBackColor = Color.DimGray;
-                        }
-                    }
-                    //gridBuffer.Columns[0].HeaderText = "TEST";
-                    gridBuffer.Refresh();
-                }
-            }
-            else
-            {
-                lb_Buffer.Text = $"Buffer_Monitor";
-            }
+        //            for (int i = 0; i < gridBuffer.Rows.Count; i++)
+        //            {
+        //                if (gridBuffer[3, i].Value.ToString() == "OK" && gridBuffer[1, i].Value.ToString() == "V")
+        //                {
+        //                    gridBuffer.Rows[i].DefaultCellStyle.BackColor = Color.Green;
+        //                    gridBuffer.Rows[i].DefaultCellStyle.SelectionBackColor = Color.Green;
+        //                }
+        //                else if (gridBuffer[3, i].Value.ToString() == "NG" && gridBuffer[1, i].Value.ToString() == "V" && gridBuffer[2, i].Value.ToString() != "")
+        //                {
+        //                    gridBuffer.Rows[i].DefaultCellStyle.BackColor = Color.Orange;
+        //                    gridBuffer.Rows[i].DefaultCellStyle.SelectionBackColor = Color.Orange;
+        //                    if (Global.Instance.SetRMS.dicBUFFER_ID_Done.ContainsKey(i + 1))
+        //                    {
+        //                        if (Global.Instance.SetRMS.dicBUFFER_ID_Done[i + 1].Equals(gridBuffer[2, i].Value.ToString()))
+        //                        {
+        //                            gridBuffer.Rows[i].DefaultCellStyle.BackColor = Color.Red;
+        //                            gridBuffer.Rows[i].DefaultCellStyle.SelectionBackColor = Color.Red;
+        //                        }
+        //                    }
+        //                }
+        //                else
+        //                {
+        //                    gridBuffer.Rows[i].DefaultCellStyle.BackColor = Color.DimGray;
+        //                    gridBuffer.Rows[i].DefaultCellStyle.SelectionBackColor = Color.DimGray;
+        //                }
+        //            }
+        //            //gridBuffer.Columns[0].HeaderText = "TEST";
+        //            gridBuffer.Refresh();
+        //        }
+        //    }
+        //    else
+        //    {
+        //        lb_Buffer.Text = $"Buffer_Monitor";
+        //    }
 
-            if (Global.Instance.Device.Cameras.Count > 0)
-            {
-                if (Global.Instance.Device.Cameras[DEFINE.CAM1].ViewModeCross)
-                {
-                    if (cogDisplay_Array2.Image == null) return;
-                    CogLineSegment Hori = new CogLineSegment();
-                    Hori.Color = CogColorConstants.Yellow;
-                    Hori.StartX = 0;
-                    Hori.StartY = cogDisplay_Array2.Image.Height / 2;
-                    Hori.EndX = cogDisplay_Array2.Image.Width;
-                    Hori.EndY = cogDisplay_Array2.Image.Height / 2;
+        //    if (Global.Instance.Device.Cameras.Count > 0)
+        //    {
+        //        if (Global.Instance.Device.Cameras[DEFINE.CAM1].ViewModeCross)
+        //        {
+        //            if (cogDisplay_Array2.Image == null) return;
+        //            CogLineSegment Hori = new CogLineSegment();
+        //            Hori.Color = CogColorConstants.Yellow;
+        //            Hori.StartX = 0;
+        //            Hori.StartY = cogDisplay_Array2.Image.Height / 2;
+        //            Hori.EndX = cogDisplay_Array2.Image.Width;
+        //            Hori.EndY = cogDisplay_Array2.Image.Height / 2;
 
-                    CogLineSegment Verti = new CogLineSegment();
-                    Verti.Color = CogColorConstants.Yellow;
-                    Verti.StartX = cogDisplay_Array2.Image.Width / 2;
-                    Verti.StartY = 0;
-                    Verti.EndX = cogDisplay_Array2.Image.Width / 2;
-                    Verti.EndY = cogDisplay_Array2.Image.Height;
+        //            CogLineSegment Verti = new CogLineSegment();
+        //            Verti.Color = CogColorConstants.Yellow;
+        //            Verti.StartX = cogDisplay_Array2.Image.Width / 2;
+        //            Verti.StartY = 0;
+        //            Verti.EndX = cogDisplay_Array2.Image.Width / 2;
+        //            Verti.EndY = cogDisplay_Array2.Image.Height;
 
-                    cogDisplay_Array2.InteractiveGraphics.Add(Hori, "Hori", false);
-                    cogDisplay_Array2.InteractiveGraphics.Add(Verti, "Verti", false);
-                }
-                else
-                {
-                    //cogDisplay_Cam1.InteractiveGraphics.Clear();
-                }
-            }
-        }
+        //            cogDisplay_Array2.InteractiveGraphics.Add(Hori, "Hori", false);
+        //            cogDisplay_Array2.InteractiveGraphics.Add(Verti, "Verti", false);
+        //        }
+        //        else
+        //        {
+        //            //cogDisplay_Cam1.InteractiveGraphics.Clear();
+        //        }
+        //    }
+        //}
 
-        private void timerMode_Tick(object sender, EventArgs e)
-        {
-            if (Global.Instance.Mode.UseRms == false)
-            {
-                lbRmsNonUse.Visible = true;
-                lbRmsNonUse.Size = gridBuffer.Size;
-                gridBuffer.Visible = false;
-            }
-            else
-            {
-                lbRmsNonUse.Visible = false;
-                gridBuffer.Visible = true;
-            }
+        //private void timerMode_Tick(object sender, EventArgs e)
+        //{
+        //    if (Global.Instance.Mode.UseRms == false)
+        //    {
+        //        lbRmsNonUse.Visible = true;
+        //        lbRmsNonUse.Size = gridBuffer.Size;
+        //        gridBuffer.Visible = false;
+        //    }
+        //    else
+        //    {
+        //        lbRmsNonUse.Visible = false;
+        //        gridBuffer.Visible = true;
+        //    }
 
-            // 하드 상태값 모두 Not Use일 경우..
-            if (Global.m_DriverC.DriverUse || Global.m_DriverD.DriverUse && Global.m_DriverE.DriverUse)
-            {
-                //pnl_DriverStatus.Visible = true;               
-            }
-            else
-            {
-                //pnl_DriverStatus.Visible = false;
-            }
-        }
+        //    // 하드 상태값 모두 Not Use일 경우..
+        //    if (Global.m_DriverC.DriverUse || Global.m_DriverD.DriverUse && Global.m_DriverE.DriverUse)
+        //    {
+        //        //pnl_DriverStatus.Visible = true;               
+        //    }
+        //    else
+        //    {
+        //        //pnl_DriverStatus.Visible = false;
+        //    }
+        //}
 
 
-        private void gridBuffer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                //if (gridBuffer.Rows.Count == 0) return;
+        //private void gridBuffer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    try
+        //    {
+        //        //if (gridBuffer.Rows.Count == 0) return;
 
-                int nRowIndex = e.RowIndex; //gridBuffer.SelectedRows[0].Index;
+        //        int nRowIndex = e.RowIndex; //gridBuffer.SelectedRows[0].Index;
 
-                if (gridBuffer[1, nRowIndex].Value.ToString() != "V") return;
-                string str_BufferID = gridBuffer[0, nRowIndex].Value.ToString();
-                string strQrcodes = gridBuffer[2, nRowIndex].Value.ToString();
+        //        if (gridBuffer[1, nRowIndex].Value.ToString() != "V") return;
+        //        string str_BufferID = gridBuffer[0, nRowIndex].Value.ToString();
+        //        string strQrcodes = gridBuffer[2, nRowIndex].Value.ToString();
 
-                if (Global.Instance.FrmViewer == null || !Global.Instance.FrmViewer.Created)
-                {
-                    Global.Instance.FrmViewer = new FormMenu_Viewer(str_BufferID, strQrcodes, nRowIndex);
-                }
-                Global.Instance.Data.Buffer_ID = str_BufferID;
-                Global.Instance.FrmViewer.BringToFront();
-                Global.Instance.FrmViewer.Owner = this;
-                Global.Instance.FrmViewer.Show();
+        //        if (Global.Instance.FrmViewer == null || !Global.Instance.FrmViewer.Created)
+        //        {
+        //            Global.Instance.FrmViewer = new FormMenu_Viewer(str_BufferID, strQrcodes, nRowIndex);
+        //        }
+        //        Global.Instance.Data.Buffer_ID = str_BufferID;
+        //        Global.Instance.FrmViewer.BringToFront();
+        //        Global.Instance.FrmViewer.Owner = this;
+        //        Global.Instance.FrmViewer.Show();
 
-                //List<string> NgBufferIds = new List<string>();
-                //for (int i = 0; i < IGlobal.Instance.Device.NGBUFFER.GetBufferCount(); i++)
-                //{
-                //    string ids = IGlobal.Instance.Device.NGBUFFER.GetID(i);
+        //        //List<string> NgBufferIds = new List<string>();
+        //        //for (int i = 0; i < IGlobal.Instance.Device.NGBUFFER.GetBufferCount(); i++)
+        //        //{
+        //        //    string ids = IGlobal.Instance.Device.NGBUFFER.GetID(i);
 
-                //    if (ids.Length > 0)
-                //    {
-                //        string[] strParse = ids.Split('/');
-                //        QRParser qrMain = new QRParser(strParse[0], true);
-                //        NgBufferIds.Add(qrMain.GetQR());
-                //        for (int j = 1; j < strParse.Length; j++)
-                //        {
-                //            QRParser qrAdd = new QRParser(qrMain.GetQRTitle() + strParse[j], true);
-                //            NgBufferIds.Add(qrAdd.GetQR());
-                //        }
-                //    }
-                //}
-            }
-            catch (Exception ex)
-            {
-                CLogger.Exception(MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name, ex);
-            }
-        }
+        //        //    if (ids.Length > 0)
+        //        //    {
+        //        //        string[] strParse = ids.Split('/');
+        //        //        QRParser qrMain = new QRParser(strParse[0], true);
+        //        //        NgBufferIds.Add(qrMain.GetQR());
+        //        //        for (int j = 1; j < strParse.Length; j++)
+        //        //        {
+        //        //            QRParser qrAdd = new QRParser(qrMain.GetQRTitle() + strParse[j], true);
+        //        //            NgBufferIds.Add(qrAdd.GetQR());
+        //        //        }
+        //        //    }
+        //        //}
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        CLogger.Exception(MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name, ex);
+        //    }
+        //}
 
 
         Stopwatch sw = Stopwatch.StartNew();
@@ -768,36 +763,6 @@ namespace IntelligentFactory
 
             HW_DATA_DISP();
 
-            try
-            {
-                if (Global.SeqVision != null)
-                {
-                    gridDebug.Rows.Clear();
-
-                    lock (bufferLock)
-                    {
-                        for (int i = 0; i < Global.SeqVision.NgBuffer.Count; i++)
-                        {
-                            gridDebug.Rows.Add(new string[] { Global.SeqVision.NgBuffer[i].Item1.ToString("yy/MM/dd HH:mm:ss"), Global.SeqVision.NgBuffer[i].Item2 });
-                        }
-
-                        if (Global.SeqVision.NgBuffer.Count > 0)
-                        {
-                            gridDebug.ColumnHeadersDefaultCellStyle.BackColor = Color.IndianRed;
-                        }
-                        else
-                        {
-                            gridDebug.ColumnHeadersDefaultCellStyle.BackColor = Color.DimGray;
-                        }
-                    }
-
-
-                }
-            }
-            catch
-            {
-
-            }
         }
 
         Cognex.VisionPro.CogImage24PlanarColor m_imgSource_Color = new Cognex.VisionPro.CogImage24PlanarColor();
@@ -914,7 +879,7 @@ namespace IntelligentFactory
                     PMAlign.Tool.InputImage = images8_board;
                 }
                 else
-                {
+                {                    
                     Mat inImg = OpenCvSharp.Extensions.BitmapConverter.ToMat(images24_board.ToBitmap()).Clone();
                     Bitmap imgIn = CVisionTools.GetPatterernImage(false, ref job, inImg);
                     CogImage8Grey cogInImg = new Cognex.VisionPro.CogImage8Grey(imgIn);
@@ -1053,12 +1018,41 @@ namespace IntelligentFactory
             if (Global.m_DriverE.Percent > 90) processBar_DiskE.RectColor = Color.Red;
             else processBar_DiskE.RectColor = Color.FromArgb(68, 77, 86);
         }
-
-        private void chkAutoScroll_CheckedChanged(object sender, EventArgs e)
+        private void MainResultDrawHandler(object sender, bool drawDone)
         {
-            logViewList.AutoScroll = chkAutoScroll.Checked;
-        }
+            try
+            {
+                //CLogger.Add(LOG.SEQ, $"SEQ T/T : [{inspectorWatch.ElapsedMilliseconds:D4} ms] ==> inspect Complete");
 
+                bool[] result = new bool[4];
+                List<Global.LogicNGData>[] ArrayNG_list = { new List<Global.LogicNGData>(), new List<Global.LogicNGData>(), new List<Global.LogicNGData>(), new List<Global.LogicNGData>() };
+
+                //(result, ArrayNG_list) = inspector.ArrayJudge(); // 여기서 NG,OK NG list 값 받아옴. 이걸 전역 변수로 사용해서 Retry 진행해야함.
+                //if (Global.RunView == false)
+                //{
+                //    inspector.SaveImageAndWriteDB(result, Global.ImagesGrab, ArrayNG_list);
+
+                //    if (Global.ImageResults_array[0] != null)
+                //    {
+                //        DispMain.StaticGraphics.Clear();
+                //        DispMain.InteractiveGraphics.Clear();
+
+                //        // 첫번째 이미지에 비트맵 이미지로 결과 표시처리 해줌...
+                //        DispMain.Image = new CogImage24PlanarColor(Global.ImageResults_array[0]);
+                //        DispMain.Fit();
+                //    }
+
+                //    OnClickViewMode(btnView_Result1, new EventArgs());
+                //}
+                Global.Instance.OnEnd_Progress();
+
+            }
+            catch (Exception ex)
+            {
+                CLogger.Exception(MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name, ex);
+            }
+
+        }
         private void btnOpenLogFolder_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start($"{Application.StartupPath}\\log\\{DateTime.Now.Year:0000}\\{DateTime.Now.Month:00}\\{DateTime.Now.Day:00}");
@@ -1067,6 +1061,113 @@ namespace IntelligentFactory
         private void btnClear_Click(object sender, EventArgs e)
         {
             Global.SeqVision.NgBuffer.Clear();
+        }
+
+        //private void tmNGCount_Tick(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (IData.bNGCount && gridNGCount.RowCount > 10)
+        //        {
+        //            bool bInsert = false;
+        //            int arrayidx = 0;
+        //            List<NGInfo> list = new List<NGInfo>();
+        //            gridNGCount.Rows.Clear();
+        //            var sumNGList = Global.Instance.System.Recipe.LibraryNGCount.NGCount
+        //                .OrderByDescending(x => x.NGCount)
+        //                .Take(10)
+        //                .ToList();
+        //            list = sumNGList;
+        //            for (int i = 0; i < list.Count; i++)
+        //            {
+        //                gridNGCount.Rows.Add(i + 1,list[i].ArrayNum + 1, list[i].LocationNo, list[i].LogicName, list[i].NGCount);
+        //            }
+        //            IData.bNGCount = false;
+        //        }
+        //        else if (IData.bNGCount && gridNGCount.RowCount < 10)
+        //        {
+        //            gridNGCount.Rows.Clear();
+
+        //            List<NGInfo> list = new List<NGInfo>();
+        //            var sumNGList = Global.Instance.System.Recipe.LibraryNGCount.NGCount
+        //                .OrderByDescending(x => x.NGCount)
+        //                .ToList();
+        //            list = sumNGList;
+        //            if (list.Count > 0)
+        //            {
+        //                for (int i = 0; i < list.Count; i++)
+        //                {
+        //                    gridNGCount.Rows.Add(i + 1,list[i].ArrayNum + 1, list[i].LocationNo, list[i].LogicName, list[i].NGCount);
+        //                }
+        //            }
+        //            IData.bNGCount = false;
+        //        }
+
+
+        //        foreach (DataGridViewRow row in gridNGCount.Rows)   // 설정한 NG Limit에 도달하면 알람 발생 - JYH
+        //        {
+        //            if ((int)row.Cells[3].Value >= Global.Mode.Count_Limit)
+        //            {
+        //                if (!bAlarmTrigger)
+        //                {
+        //                    bAlarmTrigger = true;
+        //                    Global.System.Mode = CSystem.MODE.ALARM;
+        //                    IF_Util.ShowMessageBox("Error", "NG Count Over");
+
+        //                    Task.Delay(5000).ContinueWith(_ =>
+        //                    {
+        //                        bAlarmTrigger = false;
+        //                        tmNGCount.Start();
+        //                    });
+
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //    }
+        //}
+        
+        private void gridNGCount_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 4) //해당 항목 삭제를 위한 체크 기능 추가 - JYH
+            {
+                nSelectedGrid = e.RowIndex;
+            }
+        }
+
+        private void BtnDeleteNGCount_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int idx = 0;
+                int findIdx = 0;
+                string arrayNum = "";
+                string LocationNo = "";
+                string LogicName = "";
+                string ngCount = "";
+                //arrayNum = gridNGCount.Rows[nSelectedGrid].Cells[1].ToString();
+                //LocationNo = gridNGCount.Rows[nSelectedGrid].Cells[2].ToString();
+                //LogicName = gridNGCount.Rows[nSelectedGrid].Cells[3].ToString();
+                //ngCount = gridNGCount.Rows[nSelectedGrid].Cells[4].ToString();
+                foreach (NGInfo Info in Global.System.Recipe.LibraryNGCount.NGCount)
+                {
+                    if (Info.ArrayNum == int.Parse(arrayNum) &&
+                        Info.LocationNo == LocationNo &&
+                        Info.LogicName == LogicName)
+                    {
+                        findIdx = idx;
+                    }
+                    idx++;
+                }
+                Global.System.Recipe.LibraryNGCount.NGCount.RemoveAt(findIdx);
+                IData.bNGCount = true;
+            }
+            catch (Exception ex)
+            { 
+            }
+
         }
     }
 }

@@ -115,6 +115,34 @@ namespace IntelligentFactory
                 CLogger.Exception(MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name, ex);
             }
         }
+        public void New_TrainRegion(CogDisplay Cogdisp, CogImage8Grey ImageSource)
+        {
+            Cogdisp.InteractiveGraphics.Clear();
+            Cogdisp.StaticGraphics.Clear();
+
+            CogOCRMaxTool tmpOCR = new CogOCRMaxTool();
+
+            if (Tool.Region != null)
+            {
+                Train_Roi = new CogRectangleAffine[1];
+                tmpOCR.Region = new CogRectangleAffine();
+
+                for (int i = 0; i < Train_Roi.Length; i++)
+                {
+                    Train_Roi[i] = new CogRectangleAffine();
+                    Train_Roi[i].CenterX = 300;
+                    Train_Roi[i].CenterY = 300;
+                    Train_Roi[i].SideXLength = 200;
+                    Train_Roi[i].SideYLength = 100;
+                    Train_Roi[i].Interactive = true;
+                    Train_Roi[i].GraphicDOFEnable = CogRectangleAffineDOFConstants.All;
+                }
+
+                //Rect_Train_Region = new CogRectangleAffine();
+                Rect_Train_Region = Train_Roi[0];
+                Cogdisp.InteractiveGraphics.Add(Train_Roi[0], "Roi", false);
+            }
+        }
 
         public void New_RectangleROI(CogDisplay Cogdisp, CogImage8Grey ImageSource)
         {
@@ -127,53 +155,35 @@ namespace IntelligentFactory
                 //Tool.Region = roi;
                 Tool.Region = new CogRectangleAffine();
             }
+            CogRectangleAffine cogRegion = (CogRectangleAffine)Tool.Region; // CogRectangleAffine 타입 -> cogRegion 넣어줌
 
-            if (Tool.Region is CogRectangleAffine == false)
-            {
-                Tool.Region = new CogRectangleAffine();
-                var rectangle = Tool.Region;
+            cogRegion.GraphicDOFEnable = CogRectangleAffineDOFConstants.All; // 전 방향으로 조절
+            cogRegion.Interactive = true; // 마우스로 움직임
+            cogRegion.Color = CogColorConstants.Green; // 색상 그린
 
-                Rect_Roi = rectangle;        // 현재 ROI 기억
-            }
+            Rect_Roi = cogRegion;        // 현재 ROI 기억
 
-            CogRectangleAffine cogRegion = (CogRectangleAffine)Tool.Region;
             cogRegion.GraphicDOFEnable = CogRectangleAffineDOFConstants.All;
             cogRegion.Interactive = true;
             cogRegion.Color = CogColorConstants.Green;
-            if (cogRegion.CenterX == 0 || cogRegion.CenterY == 0)
+
+            //if (Tool.Region is CogRectangleAffine == false)
+            //{
+            //    Tool.Region = new CogRectangleAffine();
+            //    var rectangle = Tool.Region;
+            //}
+
+            if (cogRegion.CenterX == 0 || cogRegion.CenterY == 0) // ROI 중심 좌표가 초기값(0, 0)이면 → 기본 위치를 100,100으로 설정
             {
-                cogRegion.CenterX = 100;
-                cogRegion.CenterY = 100;
+                cogRegion.CenterX = 300;
+                cogRegion.CenterY = 300;
+                cogRegion.SideXLength = 200;
+                cogRegion.SideYLength = 100;
             }
 
             Cogdisp.InteractiveGraphics.Add(cogRegion, "Roi", false);
         }
 
-        public void New_TrainRegion(CogDisplay Cogdisp, CogImage8Grey ImageSource)
-        {
-            Cogdisp.InteractiveGraphics.Clear();
-            Cogdisp.StaticGraphics.Clear();
-
-            CogOCRMaxTool tmpOCR = new CogOCRMaxTool();
-
-            if (Tool.Region != null)
-            {
-                Train_Roi = new CogRectangleAffine[2];
-                tmpOCR.Region = new CogRectangleAffine();
-
-                for (int i = 0; i < Train_Roi.Length; i++)
-                {
-                    Train_Roi[i] = tmpOCR.Region;
-                    Train_Roi[i].Interactive = true;
-                    Train_Roi[i].GraphicDOFEnable = CogRectangleAffineDOFConstants.All;
-                }
-
-                Rect_Train_Region = new CogRectangleAffine();
-                Rect_Train_Region = Train_Roi[0];
-            }
-
-            Cogdisp.InteractiveGraphics.Add(Train_Roi[0], "Roi", false);
-        }
 
         public bool Font_Train(CogImage8Grey image8Grey, string TrainOCR)
         {
@@ -297,10 +307,6 @@ namespace IntelligentFactory
             int i = 0;
 
             return (cogImage8Greys, i);
-        }
-
-        public void Run()
-        {
         }
 
         public string Run(CogImage8Grey image)

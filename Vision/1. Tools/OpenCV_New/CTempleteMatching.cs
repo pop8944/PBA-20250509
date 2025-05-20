@@ -41,7 +41,7 @@ namespace IntelligentFactory
         public Rectangle MatchingSearchRoi { get; set; } = new Rectangle(0, 0, 150, 150);
         public Rectangle MatchingTemplateRoi { get; set; } = new Rectangle(5, 5, 100, 100);
         public Bitmap m_MatchingTemplateImage { get; set; } = null;
-
+        
         public double m_Score_Min { get; set; } = 60;
 
         public CTemplateMatching(string strAlgorism)

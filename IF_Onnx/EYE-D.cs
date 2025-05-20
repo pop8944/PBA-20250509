@@ -7,6 +7,7 @@ using OpenVinoSharp.Extensions.result;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Runtime.CompilerServices;
 
 namespace IFOnnxRuntime
@@ -14,11 +15,11 @@ namespace IFOnnxRuntime
     public class EYED
     {
         #region Fields
-        private Dictionary<string, V8Base> models = new Dictionary<string, V8Base> { };
+        private List<V8Base> models = new List<V8Base> { };
         #endregion
 
         #region Properties
-        public Dictionary<string, V8Base> Models { get => models; private set => models = value; }
+        public List<V8Base> Models { get => models; set => models = value; }
         #endregion
 
         #region Constructors
@@ -40,26 +41,28 @@ namespace IFOnnxRuntime
             {
                 case "detect":
                     //TODO : IFOnnxRuntimeControl에 datagridview랑 propertygridview 세팅해보고 Model 매개변수를 OnnxInfo로 바꾸는 것도 고려해볼 것
-                    model = new DetModel(onnxInfo.OnnxPath, onnxInfo.Device, onnxInfo.NmsThreshold);
+                    model = new DetModel(onnxInfo.OnnxPath, onnxInfo.Device, onnxInfo.NmsThreshold, onnxInfo.OnnxName );
                     break;
                 case "segment":
-                    model = new SegModel(onnxInfo.OnnxPath, onnxInfo.Device, onnxInfo.NmsThreshold);
+                    model = new SegModel(onnxInfo.OnnxPath, onnxInfo.Device, onnxInfo.NmsThreshold, onnxInfo.OnnxName);
                     break;
                 default:
                     throw new ArgumentException();
             }
-            models.Add(onnxInfo.OnnxName, model);
+            models.Add(model);
         }
         public void RemoveModel(string onnxName)
         {
-            models[onnxName].Dispose();
-            models.Remove(onnxName);
+            V8Base foundModel = Models.FirstOrDefault(m => m.OnnxName == onnxName);
+
+            foundModel.Dispose();
+            models.Remove(foundModel);
+
         }
         public void ClearModel()
         {
-            foreach (KeyValuePair<string, V8Base> kvp in models)
+            foreach (V8Base model in models)
             {
-                V8Base model = kvp.Value;
                 model.Dispose();
             }
             models.Clear();
@@ -67,8 +70,9 @@ namespace IFOnnxRuntime
         public List<BaseResultDTO> RunModel(string onnxName, Mat image, float threshold)
         {
             List<BaseResultDTO> ret = new List<BaseResultDTO>();
-            BaseResult result = models[onnxName].Run(image, threshold);
-            Dictionary<int, string> classes = models[onnxName].MetaData.Classes;
+            V8Base foundModel = Models.FirstOrDefault(m => m.OnnxName == onnxName);
+            BaseResult result = foundModel.Run(image, threshold);
+            Dictionary<int, string> classes = foundModel.MetaData.Classes;
             if (result is DetResult detResult)
             {
                 foreach (DetData detData in detResult.datas)

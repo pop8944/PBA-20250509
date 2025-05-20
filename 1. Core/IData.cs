@@ -137,12 +137,34 @@ namespace IntelligentFactory
         public int CountNG_T = 0;
         public int CountNG_F = 0;
         public string yield;
-        public string Last_Reset_D;
+        public int CurrentOK = 0;
+        public int CurrentNG = 0;
+        public string CurrentYield;
 
-        public int CountOK_M = 0;
-        public int CountNG_M = 0;
-        public string CountYield_M;
-        public string Last_Reset_M;
+        //public int CountOK_M = 0;
+        //public int CountNG_M = 0;
+        //public string CountYield_M;
+        //public string Last_Reset_M;
+        //서브 창 NG 카운트 배열 추가 (갯수를 정확히 알 수 없어 일단 99개로 지정...) - JYH
+        public static int iNGArray = 0;
+        public static List<string> sLocationNo { get; set; } = new List<string>();
+        public static List<string> sNGArray { get; set; } = new List<string>();
+        public static List<string> sNGLocationNo { get; set; } = new List<string>();
+        public static List<string> sNGLogicName { get; set; } = new List<string>();
+        public static List<string> sNGCount { get; set; } = new List<string>();
+
+        public static bool bNGCount = false;
+        public static bool bNGCountLoad = false;
+        public static int iNGCount = 0;
+        public static string sSubLocationNo;
+        public static string sSubLogicName;
+        public static string sResetTime;
+        public static int D_CountOK = 0;
+        public static int D_CountNG = 0;
+        public static int M_CountOK = 0;
+        public static int M_CountNG = 0;
+        public static string D_yield = "";
+        public static string M_yield = "";
         #endregion COUNT
 
         #region FLAG
@@ -213,8 +235,8 @@ namespace IntelligentFactory
         }
         public void ResetTotalCount_M()
         {
-            CountOK_M = 0;
-            CountNG_M = 0;
+            CurrentOK = 0;
+            CurrentNG = 0;
         }
         #region CONFIG BY XML
 

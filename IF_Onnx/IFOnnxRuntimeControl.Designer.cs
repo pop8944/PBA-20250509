@@ -1,4 +1,7 @@
-﻿namespace FrameworkOnnxTest
+﻿using OpenCvSharp;
+using System.Xml.Schema;
+
+namespace FrameworkOnnxTest
 {
     partial class IFOnnxRuntimeControl
     {
@@ -65,9 +68,8 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.DgvModel, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
@@ -75,13 +77,13 @@
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 6;
+            this.tableLayoutPanel1.RowCount = 5;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.00001F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1069, 814);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -100,7 +102,7 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(534, 40);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1069, 40);
             this.tableLayoutPanel4.TabIndex = 7;
             // 
             // uiLabel4
@@ -134,7 +136,7 @@
             this.TbPath.Radius = 0;
             this.TbPath.RectColor = System.Drawing.Color.DimGray;
             this.TbPath.ShowText = false;
-            this.TbPath.Size = new System.Drawing.Size(384, 40);
+            this.TbPath.Size = new System.Drawing.Size(919, 40);
             this.TbPath.TabIndex = 1;
             this.TbPath.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.TbPath.Watermark = "";
@@ -144,7 +146,7 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.panel1.Controls.Add(this.BtnLoadPath);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(484, 0);
+            this.panel1.Location = new System.Drawing.Point(1019, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(50, 40);
@@ -227,10 +229,11 @@
             this.DgvModel.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.DgvModel.SelectedIndex = -1;
             this.DgvModel.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvModel.Size = new System.Drawing.Size(534, 468);
+            this.DgvModel.Size = new System.Drawing.Size(1069, 704);
             this.DgvModel.StripeEvenColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.DgvModel.StripeOddColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.DgvModel.TabIndex = 3;
+            this.DgvModel.SelectIndexChange += new Sunny.UI.UIDataGridView.OnSelectIndexChange(this.DgvModel_SelectIndexChange);
             // 
             // No
             // 
@@ -262,7 +265,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(534, 30);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1069, 30);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
             // BtnRemoveModel
@@ -270,7 +273,7 @@
             this.BtnRemoveModel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnRemoveModel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
             this.BtnRemoveModel.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.BtnRemoveModel.Location = new System.Drawing.Point(487, 3);
+            this.BtnRemoveModel.Location = new System.Drawing.Point(1022, 3);
             this.BtnRemoveModel.MinimumSize = new System.Drawing.Size(1, 1);
             this.BtnRemoveModel.Name = "BtnRemoveModel";
             this.BtnRemoveModel.RectColor = System.Drawing.Color.DimGray;
@@ -286,7 +289,7 @@
             this.BtnAddModel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnAddModel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
             this.BtnAddModel.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.BtnAddModel.Location = new System.Drawing.Point(437, 3);
+            this.BtnAddModel.Location = new System.Drawing.Point(972, 3);
             this.BtnAddModel.MinimumSize = new System.Drawing.Size(1, 1);
             this.BtnAddModel.Name = "BtnAddModel";
             this.BtnAddModel.RectColor = System.Drawing.Color.DimGray;
@@ -305,7 +308,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(428, 30);
+            this.label1.Size = new System.Drawing.Size(963, 30);
             this.label1.TabIndex = 2;
             this.label1.Text = "Model Info";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -331,7 +334,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(534, 40);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1069, 40);
             this.tableLayoutPanel3.TabIndex = 6;
             // 
             // uiLabel3
@@ -341,7 +344,7 @@
             this.uiLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiLabel3.Font = new System.Drawing.Font("Arial", 9F);
             this.uiLabel3.ForeColor = System.Drawing.Color.White;
-            this.uiLabel3.Location = new System.Drawing.Point(312, 0);
+            this.uiLabel3.Location = new System.Drawing.Point(668, 0);
             this.uiLabel3.Margin = new System.Windows.Forms.Padding(0);
             this.uiLabel3.Name = "uiLabel3";
             this.uiLabel3.Size = new System.Drawing.Size(120, 40);
@@ -356,7 +359,7 @@
             this.uiLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiLabel2.Font = new System.Drawing.Font("Arial", 10F);
             this.uiLabel2.ForeColor = System.Drawing.Color.White;
-            this.uiLabel2.Location = new System.Drawing.Point(151, 0);
+            this.uiLabel2.Location = new System.Drawing.Point(329, 0);
             this.uiLabel2.Margin = new System.Windows.Forms.Padding(0);
             this.uiLabel2.Name = "uiLabel2";
             this.uiLabel2.Size = new System.Drawing.Size(60, 40);
@@ -373,7 +376,7 @@
             this.TbNmsThreshold.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.TbNmsThreshold.Font = new System.Drawing.Font("Arial", 10F);
             this.TbNmsThreshold.ForeColor = System.Drawing.Color.White;
-            this.TbNmsThreshold.Location = new System.Drawing.Point(432, 0);
+            this.TbNmsThreshold.Location = new System.Drawing.Point(788, 0);
             this.TbNmsThreshold.Margin = new System.Windows.Forms.Padding(0);
             this.TbNmsThreshold.MinimumSize = new System.Drawing.Size(1, 16);
             this.TbNmsThreshold.Name = "TbNmsThreshold";
@@ -381,7 +384,7 @@
             this.TbNmsThreshold.Radius = 0;
             this.TbNmsThreshold.RectColor = System.Drawing.Color.DimGray;
             this.TbNmsThreshold.ShowText = false;
-            this.TbNmsThreshold.Size = new System.Drawing.Size(102, 40);
+            this.TbNmsThreshold.Size = new System.Drawing.Size(281, 40);
             this.TbNmsThreshold.TabIndex = 5;
             this.TbNmsThreshold.Text = "0.5";
             this.TbNmsThreshold.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -403,7 +406,7 @@
             this.TbName.Radius = 0;
             this.TbName.RectColor = System.Drawing.Color.DimGray;
             this.TbName.ShowText = false;
-            this.TbName.Size = new System.Drawing.Size(101, 40);
+            this.TbName.Size = new System.Drawing.Size(279, 40);
             this.TbName.TabIndex = 1;
             this.TbName.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.TbName.Watermark = "";
@@ -428,10 +431,10 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.panel2.Controls.Add(this.CbDevice);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(211, 0);
+            this.panel2.Location = new System.Drawing.Point(389, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(101, 40);
+            this.panel2.Size = new System.Drawing.Size(279, 40);
             this.panel2.TabIndex = 9;
             // 
             // CbDevice
@@ -450,7 +453,7 @@
             this.CbDevice.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
             this.CbDevice.Radius = 0;
             this.CbDevice.RectColor = System.Drawing.Color.DimGray;
-            this.CbDevice.Size = new System.Drawing.Size(101, 40);
+            this.CbDevice.Size = new System.Drawing.Size(279, 40);
             this.CbDevice.SymbolSize = 24;
             this.CbDevice.TabIndex = 3;
             this.CbDevice.Text = "CPU";
@@ -480,10 +483,8 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private Sunny.UI.UIDataGridView DgvModel;
+        public Sunny.UI.UIDataGridView DgvModel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private Sunny.UI.UISymbolButton BtnRemoveModel;
-        private Sunny.UI.UISymbolButton BtnAddModel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private Sunny.UI.UITextBox TbName;
         private Sunny.UI.UIComboBox CbDevice;
@@ -500,5 +501,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn No;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private Sunny.UI.UISymbolButton BtnRemoveModel;
+        private Sunny.UI.UISymbolButton BtnAddModel;
     }
 }

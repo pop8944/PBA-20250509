@@ -72,11 +72,12 @@ namespace IntelligentFactory
 
             try
             {
+
                 using (Mat imgOrg = ImageOriginal.Clone())
                 using (Mat imgCvt = imgOrg)
                 //using (Mat imgBin = new Mat())
                 {
-                    Mat imgBin = new Mat();
+                   Mat imgBin = new Mat();
                     try
                     {
                         OpenCvSharp.Point[][] contours;
@@ -87,7 +88,6 @@ namespace IntelligentFactory
 
                         if (isThresholdInv) Cv2.Threshold(imgCvt, imgBin, threshold, 255, ThresholdTypes.BinaryInv);
                         else Cv2.Threshold(imgCvt, imgBin, threshold, 255, ThresholdTypes.Binary);
-
                         Cv2.FindContours(imgBin, out contours, out hierarchy, RetrievalModes.List, ContourApproximationModes.ApproxSimple, null);
 
                         for (int i = 0; i < contours.Length; i++)

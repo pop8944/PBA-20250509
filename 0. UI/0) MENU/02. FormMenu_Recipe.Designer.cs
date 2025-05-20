@@ -33,9 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridRecipe = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSelect = new System.Windows.Forms.Button();
             this.tbRecipe = new System.Windows.Forms.TextBox();
@@ -56,6 +53,9 @@
             this.tbRecipe_Add_Name = new System.Windows.Forms.TextBox();
             this.cbRecipe_Add_Reference = new System.Windows.Forms.ComboBox();
             this.lbRecipeCurr = new System.Windows.Forms.Label();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridRecipe)).BeginInit();
             this.pnRecipeAdd.SuspendLayout();
             this.SuspendLayout();
@@ -110,36 +110,9 @@
             this.gridRecipe.RowTemplate.Height = 50;
             this.gridRecipe.RowTemplate.ReadOnly = true;
             this.gridRecipe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridRecipe.Size = new System.Drawing.Size(757, 476);
+            this.gridRecipe.Size = new System.Drawing.Size(806, 476);
             this.gridRecipe.TabIndex = 2449;
             this.gridRecipe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRecipe_CellClick);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.FillWeight = 150F;
-            this.dataGridViewTextBoxColumn1.HeaderText = "No";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewTextBoxColumn2.FillWeight = 300F;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 400;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Code";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 250;
             // 
             // btnClose
             // 
@@ -150,11 +123,11 @@
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Image = global::IntelligentFactory.Properties.Resources.Cancel50_Normal;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(608, 596);
+            this.btnClose.Location = new System.Drawing.Point(648, 596);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Padding = new System.Windows.Forms.Padding(0, 0, 17, 0);
-            this.btnClose.Size = new System.Drawing.Size(150, 75);
+            this.btnClose.Size = new System.Drawing.Size(160, 75);
             this.btnClose.TabIndex = 2518;
             this.btnClose.Text = "CLOSE";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -176,7 +149,7 @@
             this.btnSelect.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Padding = new System.Windows.Forms.Padding(0, 0, 17, 0);
-            this.btnSelect.Size = new System.Drawing.Size(150, 75);
+            this.btnSelect.Size = new System.Drawing.Size(160, 75);
             this.btnSelect.TabIndex = 2519;
             this.btnSelect.Text = "SELECT";
             this.btnSelect.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -193,7 +166,7 @@
             this.tbRecipe.Location = new System.Drawing.Point(153, 54);
             this.tbRecipe.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbRecipe.Name = "tbRecipe";
-            this.tbRecipe.Size = new System.Drawing.Size(606, 29);
+            this.tbRecipe.Size = new System.Drawing.Size(654, 29);
             this.tbRecipe.TabIndex = 2532;
             this.tbRecipe.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbRecipe.TextChanged += new System.EventHandler(this.tbRecipe_KeyPress);
@@ -262,7 +235,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(531, 565);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(227, 29);
+            this.label2.Size = new System.Drawing.Size(276, 29);
             this.label2.TabIndex = 2199;
             this.label2.Text = "0000/00/00 00:00:000";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -276,11 +249,11 @@
             this.buttonSave.ForeColor = System.Drawing.Color.White;
             this.buttonSave.Image = global::IntelligentFactory.Properties.Resources.Save50_Normal;
             this.buttonSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSave.Location = new System.Drawing.Point(456, 596);
+            this.buttonSave.Location = new System.Drawing.Point(486, 596);
             this.buttonSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Padding = new System.Windows.Forms.Padding(0, 0, 17, 0);
-            this.buttonSave.Size = new System.Drawing.Size(150, 75);
+            this.buttonSave.Size = new System.Drawing.Size(160, 75);
             this.buttonSave.TabIndex = 2517;
             this.buttonSave.Text = "SAVE";
             this.buttonSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -297,11 +270,11 @@
             this.btnDelete.ForeColor = System.Drawing.Color.White;
             this.btnDelete.Image = global::IntelligentFactory.Properties.Resources.DeleteTrash50_Normal;
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDelete.Location = new System.Drawing.Point(304, 596);
+            this.btnDelete.Location = new System.Drawing.Point(324, 596);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Padding = new System.Windows.Forms.Padding(0, 0, 17, 0);
-            this.btnDelete.Size = new System.Drawing.Size(150, 75);
+            this.btnDelete.Size = new System.Drawing.Size(160, 75);
             this.btnDelete.TabIndex = 2520;
             this.btnDelete.Text = "DELETE";
             this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -319,11 +292,11 @@
             this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Image = global::IntelligentFactory.Properties.Resources.AddNew50_Normal;
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdd.Location = new System.Drawing.Point(153, 596);
+            this.btnAdd.Location = new System.Drawing.Point(163, 596);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Padding = new System.Windows.Forms.Padding(0, 0, 17, 0);
-            this.btnAdd.Size = new System.Drawing.Size(150, 75);
+            this.btnAdd.Size = new System.Drawing.Size(160, 75);
             this.btnAdd.TabIndex = 2521;
             this.btnAdd.Text = "ADD";
             this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -465,16 +438,43 @@
             this.lbRecipeCurr.ForeColor = System.Drawing.Color.White;
             this.lbRecipeCurr.Location = new System.Drawing.Point(1, 2);
             this.lbRecipeCurr.Name = "lbRecipeCurr";
-            this.lbRecipeCurr.Size = new System.Drawing.Size(758, 51);
+            this.lbRecipeCurr.Size = new System.Drawing.Size(806, 51);
             this.lbRecipeCurr.TabIndex = 2535;
             this.lbRecipeCurr.Text = "Model : -";
             this.lbRecipeCurr.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.FillWeight = 150F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "No";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewTextBoxColumn2.FillWeight = 300F;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 353;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Code";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 350;
             // 
             // FormMenuRecipe
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.ClientSize = new System.Drawing.Size(759, 673);
+            this.ClientSize = new System.Drawing.Size(811, 673);
             this.ControlBox = false;
             this.Controls.Add(this.lbRecipeCurr);
             this.Controls.Add(this.pnRecipeAdd);

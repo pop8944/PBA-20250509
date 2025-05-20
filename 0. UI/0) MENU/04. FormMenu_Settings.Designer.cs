@@ -60,8 +60,13 @@
             this.txtInspDelay = new Sunny.UI.UITextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.chkAddEnablechk = new MetroFramework.Controls.MetroCheckBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.tbNGCount = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.chkJudgeEnd = new MetroFramework.Controls.MetroCheckBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dtpCountTimeReset = new System.Windows.Forms.DateTimePicker();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btn_NGBuffer_Reflush = new System.Windows.Forms.Button();
             this.chb_NGBuffer_Type = new MetroFramework.Controls.MetroCheckBox();
@@ -172,15 +177,13 @@
             this.label25 = new System.Windows.Forms.Label();
             this.tmr_DISP = new System.Windows.Forms.Timer(this.components);
             this.tooltip_Driverpath = new System.Windows.Forms.ToolTip(this.components);
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label38 = new System.Windows.Forms.Label();
-            this.txtDailyReset = new System.Windows.Forms.TextBox();
-            this.label40 = new System.Windows.Forms.Label();
-            this.txtMonthlyReset = new System.Windows.Forms.TextBox();
+            this.chkAddEnablechk = new MetroFramework.Controls.MetroCheckBox();
             this.grPassSetting.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbDIO.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panel7.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -194,7 +197,6 @@
             this.grb_FileDel_C.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
@@ -606,6 +608,7 @@
             // txtInspDelay
             // 
             this.txtInspDelay.ButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.txtInspDelay.ButtonStyleInherited = false;
             this.txtInspDelay.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtInspDelay.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.txtInspDelay.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
@@ -615,6 +618,7 @@
             this.txtInspDelay.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtInspDelay.MinimumSize = new System.Drawing.Size(1, 16);
             this.txtInspDelay.Name = "txtInspDelay";
+            this.txtInspDelay.Padding = new System.Windows.Forms.Padding(5);
             this.txtInspDelay.RectColor = System.Drawing.Color.White;
             this.txtInspDelay.ShowText = false;
             this.txtInspDelay.Size = new System.Drawing.Size(150, 25);
@@ -623,7 +627,7 @@
             this.txtInspDelay.Text = "0";
             this.txtInspDelay.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.txtInspDelay.Type = Sunny.UI.UITextBox.UIEditType.Integer;
-            this.txtInspDelay.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.txtInspDelay.Watermark = "";
             // 
             // label4
             // 
@@ -641,9 +645,10 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.groupBox4);
+            this.panel1.Controls.Add(this.groupBox6);
             this.panel1.Controls.Add(this.chkAddEnablechk);
             this.panel1.Controls.Add(this.chkJudgeEnd);
+            this.panel1.Controls.Add(this.groupBox5);
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Controls.Add(this.gbDIO);
             this.panel1.Controls.Add(this.groupBox1);
@@ -664,22 +669,35 @@
             this.panel1.Size = new System.Drawing.Size(318, 726);
             this.panel1.TabIndex = 2753;
             // 
-            // chkAddEnablechk
+            // groupBox6
             // 
-            this.chkAddEnablechk.AutoSize = true;
-            this.chkAddEnablechk.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
-            this.chkAddEnablechk.ForeColor = System.Drawing.Color.White;
-            this.chkAddEnablechk.Location = new System.Drawing.Point(11, 376);
-            this.chkAddEnablechk.Name = "chkAddEnablechk";
-            this.chkAddEnablechk.Size = new System.Drawing.Size(253, 19);
-            this.chkAddEnablechk.Style = MetroFramework.MetroColorStyle.Green;
-            this.chkAddEnablechk.TabIndex = 2755;
-            this.chkAddEnablechk.Text = "Use/NotUse Add Job Enable Checked";
-            this.chkAddEnablechk.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.chkAddEnablechk.UseCustomBackColor = true;
-            this.chkAddEnablechk.UseCustomForeColor = true;
-            this.chkAddEnablechk.UseSelectable = true;
-            this.chkAddEnablechk.CheckedChanged += new System.EventHandler(this.chkAddEnablechk_CheckedChanged);
+            this.groupBox6.Controls.Add(this.tbNGCount);
+            this.groupBox6.Controls.Add(this.textBox2);
+            this.groupBox6.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.groupBox6.Location = new System.Drawing.Point(3, 667);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(152, 57);
+            this.groupBox6.TabIndex = 2768;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "NG Count (Limit : 0 - 99)";
+            // 
+            // tbNGCount
+            // 
+            this.tbNGCount.Location = new System.Drawing.Point(6, 24);
+            this.tbNGCount.Name = "tbNGCount";
+            this.tbNGCount.Size = new System.Drawing.Size(112, 20);
+            this.tbNGCount.TabIndex = 2759;
+            this.tbNGCount.Text = "0";
+            this.tbNGCount.TextChanged += new System.EventHandler(this.tbNGCount_TextChanged);
+            this.tbNGCount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNGCount_KeyPress);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(269, 20);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(33, 22);
+            this.textBox2.TabIndex = 2758;
             // 
             // chkJudgeEnd
             // 
@@ -697,6 +715,38 @@
             this.chkJudgeEnd.UseCustomForeColor = true;
             this.chkJudgeEnd.UseSelectable = true;
             this.chkJudgeEnd.CheckedChanged += new System.EventHandler(this.chkJudgeEnd_CheckedChanged);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.textBox1);
+            this.groupBox5.Controls.Add(this.dtpCountTimeReset);
+            this.groupBox5.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.groupBox5.Location = new System.Drawing.Point(160, 667);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(152, 57);
+            this.groupBox5.TabIndex = 2767;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Count Reset Time";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(269, 20);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(33, 22);
+            this.textBox1.TabIndex = 2758;
+            // 
+            // dtpCountTimeReset
+            // 
+            this.dtpCountTimeReset.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpCountTimeReset.Location = new System.Drawing.Point(6, 20);
+            this.dtpCountTimeReset.MinDate = new System.DateTime(2025, 4, 8, 0, 0, 0, 0);
+            this.dtpCountTimeReset.Name = "dtpCountTimeReset";
+            this.dtpCountTimeReset.ShowUpDown = true;
+            this.dtpCountTimeReset.Size = new System.Drawing.Size(133, 20);
+            this.dtpCountTimeReset.TabIndex = 2766;
+            this.dtpCountTimeReset.Value = new System.DateTime(2025, 4, 8, 14, 48, 51, 0);
+            this.dtpCountTimeReset.ValueChanged += new System.EventHandler(this.dtpCountTimeReset_ValueChanged);
             // 
             // groupBox3
             // 
@@ -956,6 +1006,7 @@
             // txtEyeD_Port
             // 
             this.txtEyeD_Port.ButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.txtEyeD_Port.ButtonStyleInherited = false;
             this.txtEyeD_Port.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtEyeD_Port.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.txtEyeD_Port.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
@@ -965,6 +1016,7 @@
             this.txtEyeD_Port.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtEyeD_Port.MinimumSize = new System.Drawing.Size(1, 16);
             this.txtEyeD_Port.Name = "txtEyeD_Port";
+            this.txtEyeD_Port.Padding = new System.Windows.Forms.Padding(5);
             this.txtEyeD_Port.RectColor = System.Drawing.Color.White;
             this.txtEyeD_Port.ShowText = false;
             this.txtEyeD_Port.Size = new System.Drawing.Size(150, 25);
@@ -973,7 +1025,7 @@
             this.txtEyeD_Port.Text = "0";
             this.txtEyeD_Port.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.txtEyeD_Port.Type = Sunny.UI.UITextBox.UIEditType.Integer;
-            this.txtEyeD_Port.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.txtEyeD_Port.Watermark = "";
             // 
             // txtEyeD_IP
             // 
@@ -992,7 +1044,6 @@
             this.txtEyeD_IP.Style = Sunny.UI.UIStyle.Custom;
             this.txtEyeD_IP.TabIndex = 2761;
             this.txtEyeD_IP.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.txtEyeD_IP.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // chkEyeD_Use
             // 
@@ -2214,59 +2265,22 @@
             this.tmr_DISP.Enabled = true;
             this.tmr_DISP.Tick += new System.EventHandler(this.tmr_DISP_Tick);
             // 
-            // groupBox4
+            // chkAddEnablechk
             // 
-            this.groupBox4.Controls.Add(this.label40);
-            this.groupBox4.Controls.Add(this.txtMonthlyReset);
-            this.groupBox4.Controls.Add(this.label38);
-            this.groupBox4.Controls.Add(this.txtDailyReset);
-            this.groupBox4.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.groupBox4.Location = new System.Drawing.Point(3, 664);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(309, 53);
-            this.groupBox4.TabIndex = 2763;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Time Setting for Count Reset";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label38.Location = new System.Drawing.Point(7, 25);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(99, 14);
-            this.label38.TabIndex = 2755;
-            this.label38.Text = "Daily quantity reset";
-            // 
-            // txtDailyReset
-            // 
-            this.txtDailyReset.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDailyReset.Location = new System.Drawing.Point(112, 20);
-            this.txtDailyReset.Name = "txtDailyReset";
-            this.txtDailyReset.Size = new System.Drawing.Size(33, 22);
-            this.txtDailyReset.TabIndex = 2756;
-            this.txtDailyReset.TextChanged += new System.EventHandler(this.txtDailyReset_TextChanged);
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label40.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label40.Location = new System.Drawing.Point(154, 25);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(113, 14);
-            this.label40.TabIndex = 2757;
-            this.label40.Text = "Monthly quantity reset";
-            // 
-            // txtMonthlyReset
-            // 
-            this.txtMonthlyReset.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMonthlyReset.Location = new System.Drawing.Point(269, 20);
-            this.txtMonthlyReset.Name = "txtMonthlyReset";
-            this.txtMonthlyReset.Size = new System.Drawing.Size(33, 22);
-            this.txtMonthlyReset.TabIndex = 2758;
-            this.txtMonthlyReset.TextChanged += new System.EventHandler(this.txtMonthlyReset_TextChanged);
+            this.chkAddEnablechk.AutoSize = true;
+            this.chkAddEnablechk.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.chkAddEnablechk.ForeColor = System.Drawing.Color.White;
+            this.chkAddEnablechk.Location = new System.Drawing.Point(11, 376);
+            this.chkAddEnablechk.Name = "chkAddEnablechk";
+            this.chkAddEnablechk.Size = new System.Drawing.Size(253, 19);
+            this.chkAddEnablechk.Style = MetroFramework.MetroColorStyle.Green;
+            this.chkAddEnablechk.TabIndex = 2755;
+            this.chkAddEnablechk.Text = "Use/NotUse Add Job Enable Checked";
+            this.chkAddEnablechk.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.chkAddEnablechk.UseCustomBackColor = true;
+            this.chkAddEnablechk.UseCustomForeColor = true;
+            this.chkAddEnablechk.UseSelectable = true;
+            this.chkAddEnablechk.CheckedChanged += new System.EventHandler(this.chkAddEnablechk_CheckedChanged);
             // 
             // FormMenu_Settings
             // 
@@ -2290,6 +2304,10 @@
             this.gbDIO.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.panel7.ResumeLayout(false);
@@ -2314,8 +2332,6 @@
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2463,11 +2479,12 @@
         public System.Windows.Forms.Label label34;
         private Sunny.UI.UITextBox txtInspDelay;
         private MetroFramework.Controls.MetroCheckBox chkJudgeEnd;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.TextBox tbNGCount;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.DateTimePicker dtpCountTimeReset;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.TextBox textBox1;
         private MetroFramework.Controls.MetroCheckBox chkAddEnablechk;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.TextBox txtMonthlyReset;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.TextBox txtDailyReset;
     }
 }

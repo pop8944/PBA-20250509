@@ -47,6 +47,7 @@ namespace IntelligentFactory
         public int g_FirstIndex;
         public Setting_RMS RMS = null;
         private Dictionary<int, string> dicBUFFER_ID_Viewer = new Dictionary<int, string>();
+        public CogImage24PlanarColor[] cogOriginImage = { new CogImage24PlanarColor(), new CogImage24PlanarColor(), new CogImage24PlanarColor() };
 
 
         public bool IsCell_Click_First_NG_Buffer_Grid = false;
@@ -425,11 +426,17 @@ namespace IntelligentFactory
                             {
                                 cogDisplay_NG.Image = new CogImage24PlanarColor(new Bitmap(imagePath[1]));
                             }
-
-                            string sOriImgPath = imagePath[1].Replace("_NG.jpg", "_ORI.jpg");
-                            if (File.Exists(sOriImgPath))
+                            for (int i = 0; i < cogOriginImage.Length; i++)
                             {
-                                cogDisplay_OriginImage.Image = new CogImage24PlanarColor(new Bitmap(sOriImgPath));
+                                string sOriImgPath = imagePath[1].Replace("_NG.jpg", $"_{i}_ORI.jpg");
+                                if (File.Exists(sOriImgPath))
+                                {
+                                    cogOriginImage[i] = new CogImage24PlanarColor(new Bitmap(sOriImgPath));
+                                }
+                            }
+                            if (cogOriginImage[0] != null)
+                            {
+                                OnClick_Origin(lblOrigin1, new EventArgs());
                             }
                         }
 
@@ -1415,12 +1422,17 @@ namespace IntelligentFactory
                             {
                                 cogDisplay_NG.Image = new CogImage24PlanarColor(new Bitmap(imagePath[1]));
                             }
-
-                            string sOriImgPath = imagePath[1].Replace("_NG.jpg", "_ORI.jpg");
-                            if (File.Exists(sOriImgPath))
+                            for (int i = 0; i < cogOriginImage.Length; i++)
                             {
-                                cogDisplay_OriginImage.Image = new CogImage24PlanarColor(new Bitmap(sOriImgPath));
-                                cogDisplay_OriginImage.Fit(false);
+                                string sOriImgPath = imagePath[1].Replace("_NG.jpg", $"_{i}_ORI.jpg");
+                                if (File.Exists(sOriImgPath))
+                                {
+                                    cogOriginImage[i] = new CogImage24PlanarColor(new Bitmap(sOriImgPath));
+                                }
+                            }
+                            if (cogOriginImage[0] != null)
+                            {
+                                OnClick_Origin(lblOrigin1, new EventArgs());
                             }
                         }
 
@@ -1993,7 +2005,41 @@ namespace IntelligentFactory
                 }
             }
         }
+        private void OnClick_Origin(object sender, EventArgs e)
+        {
+            lblOrigin1.BackColor = Color.Transparent;
+            lblOrigin2.BackColor = Color.Transparent;
+            lblOrigin3.BackColor = Color.Transparent;
 
+            System.Windows.Forms.Label lbl = sender as System.Windows.Forms.Label;
+            lbl.BackColor = DEFINE_COMMON.COLOR_GREEN;
+
+            if (lbl.Name == "lblOrigin1")
+            {
+                OriginSelected_ClickDisp(0);
+            }
+            else if (lbl.Name == "lblOrigin2")
+            {
+                OriginSelected_ClickDisp(1);
+            }
+            else
+            {
+                OriginSelected_ClickDisp(2);
+            }
+        }
+        private void OriginSelected_ClickDisp(int index)
+        {
+            if (cogOriginImage[index] != null)
+            {
+                cogDisplay_OriginImage.Image = cogOriginImage[index];
+                cogDisplay_OriginImage.Fit(true);
+            }
+            else
+            {
+                cogDisplay_OriginImage.Image = null;
+            }
+
+        }
         private void CSVFileMake(string strPath)
         {
             string filename = $"RMS_Report_Format.csv";
@@ -3047,10 +3093,16 @@ namespace IntelligentFactory
             if (radioViewOrigin.Checked)
             {
                 cogDisplay_OriginImage.Visible = true;
+                lblOrigin1.Enabled = true;
+                lblOrigin2.Enabled = true;
+                lblOrigin3.Enabled = true;
             }
             else
             {
                 cogDisplay_OriginImage.Visible = false;
+                lblOrigin1.Enabled = false;
+                lblOrigin2.Enabled = false;
+                lblOrigin3.Enabled = false;
             }
         }
 
@@ -3209,11 +3261,17 @@ namespace IntelligentFactory
                             cogDisplay_NG.Image = new CogImage24PlanarColor(new Bitmap(imagePath[1]));
                         }
 
-                        string sOriImgPath = imagePath[1].Replace("_NG.jpg", "_ORI.jpg");
-                        if (File.Exists(sOriImgPath))
+                        for (int i = 0; i < cogOriginImage.Length; i++)
                         {
-                            cogDisplay_OriginImage.Image = new CogImage24PlanarColor(new Bitmap(sOriImgPath));
-                            cogDisplay_OriginImage.Fit(false);
+                            string sOriImgPath = _lastImagePath_NG[1].Replace("_NG.jpg", $"_{i}_ORI.jpg");
+                            if (File.Exists(sOriImgPath))
+                            {
+                                cogOriginImage[i] = new CogImage24PlanarColor(new Bitmap(sOriImgPath));
+                            }
+                        }
+                        if (cogOriginImage[0] != null)
+                        {
+                            OnClick_Origin(lblOrigin1, new EventArgs());
                         }
                     }
 
@@ -3297,11 +3355,17 @@ namespace IntelligentFactory
                                 cogDisplay_NG.Image = new CogImage24PlanarColor(new Bitmap(imagePath[1]));
                             }
 
-                            string sOriImgPath = imagePath[1].Replace("_NG.jpg", "_ORI.jpg");
-                            if (File.Exists(sOriImgPath))
+                            for (int i = 0; i < cogOriginImage.Length; i++)
                             {
-                                cogDisplay_OriginImage.Image = new CogImage24PlanarColor(new Bitmap(sOriImgPath));
-                                cogDisplay_OriginImage.Fit(false);
+                                string sOriImgPath = _lastImagePath_NG[1].Replace("_NG.jpg", $"_{i}_ORI.jpg");
+                                if (File.Exists(sOriImgPath))
+                                {
+                                    cogOriginImage[i] = new CogImage24PlanarColor(new Bitmap(sOriImgPath));
+                                }
+                            }
+                            if (cogOriginImage[0] != null)
+                            {
+                                OnClick_Origin(lblOrigin1, new EventArgs());
                             }
                         }
 

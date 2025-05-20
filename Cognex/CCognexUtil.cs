@@ -108,7 +108,20 @@ namespace IntelligentFactory
                 //CUtil.ShowMessageBox("EXCEPTION", $"[FAILED] {MethodBase.GetCurrentMethod().ReflectedType.Name}==>{MethodBase.GetCurrentMethod().Name}   Execption ==> {ex.Message}");
             }
         }
+        public static CogPMAlignTool LoadCogTool_PMAlign(string strPath)
+        {
+            try
+            {
+                return (CogSerializer.LoadObjectFromFile(strPath) as CogPMAlignTool);
+            }
+            catch (Exception ex)
+            {
+                CLogger.Exception(MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name, ex);
+                IF_Util.ShowMessageBox("EXCEPTION", $"[FAILED] {MethodBase.GetCurrentMethod().ReflectedType.Name}==>{MethodBase.GetCurrentMethod().Name}   Execption ==> {ex.Message}");
 
+                return new CogPMAlignTool();
+            }
+        }
         public static void SaveCogTool(string strPath, Cognex.VisionPro.Implementation.CogToolBase tool)
         {
             try

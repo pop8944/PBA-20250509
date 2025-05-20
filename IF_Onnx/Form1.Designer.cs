@@ -36,6 +36,7 @@
             this.PbResult = new System.Windows.Forms.PictureBox();
             this.BtnRun = new System.Windows.Forms.Button();
             this.ifOnnxRuntimeControl1 = new FrameworkOnnxTest.IFOnnxRuntimeControl();
+            this.BtnSaveRecipe = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PbOrigin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbResult)).BeginInit();
             this.SuspendLayout();
@@ -111,11 +112,22 @@
             this.ifOnnxRuntimeControl1.Size = new System.Drawing.Size(759, 446);
             this.ifOnnxRuntimeControl1.TabIndex = 9;
             // 
+            // BtnSaveRecipe
+            // 
+            this.BtnSaveRecipe.Location = new System.Drawing.Point(257, 29);
+            this.BtnSaveRecipe.Name = "BtnSaveRecipe";
+            this.BtnSaveRecipe.Size = new System.Drawing.Size(75, 23);
+            this.BtnSaveRecipe.TabIndex = 10;
+            this.BtnSaveRecipe.Text = "Save";
+            this.BtnSaveRecipe.UseVisualStyleBackColor = true;
+            this.BtnSaveRecipe.Click += new System.EventHandler(this.BtnSaveRecipe_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1173, 676);
+            this.Controls.Add(this.BtnSaveRecipe);
             this.Controls.Add(this.ifOnnxRuntimeControl1);
             this.Controls.Add(this.BtnRun);
             this.Controls.Add(this.PbResult);
@@ -143,6 +155,7 @@
         private System.Windows.Forms.PictureBox PbResult;
         private System.Windows.Forms.Button BtnRun;
         private FrameworkOnnxTest.IFOnnxRuntimeControl ifOnnxRuntimeControl1;
+        private System.Windows.Forms.Button BtnSaveRecipe;
     }
 }
 

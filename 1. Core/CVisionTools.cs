@@ -2,7 +2,6 @@
 using Cognex.VisionPro.Caliper;
 using Cognex.VisionPro.PMAlign;
 using OpenCvSharp;
-using OpenCvSharp.Blob;
 using OpenCvSharp.Extensions;
 using Sunny.UI;
 using System;
@@ -827,7 +826,6 @@ namespace IntelligentFactory
             Mat[] images_cv = new Mat[images.Length];
             //최대 4연배 바코드 초기화
             for (int i = 0; i < 4; i++) Global.Data.Array_QrCodes[i] = new QRParser();
-
             try
             {
                 Stopwatch tactTime = new Stopwatch();
@@ -846,7 +844,6 @@ namespace IntelligentFactory
                         matchingRB.SetSourceImage(imgOrg);
 
                         matchingLT.Run(Global.System.Recipe.FiducialLibrary.Fiducial1);
-                        matchingRB.Run(Global.System.Recipe.FiducialLibrary.Fiducial2);
 
                         Point2d posLT = new Point2d(0, 0);
                         Point2d posRB = new Point2d(0, 0);
@@ -1015,6 +1012,14 @@ namespace IntelligentFactory
                         if (arrayIdx == 1) matchingArrayFiducial.Run(Global.System.Recipe.FiducialLibrary.Fiducial1, new Rect((int)Global.System.Recipe.FiducialLibrary.OffsetArray2.X - Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Width / 2, (int)Global.System.Recipe.FiducialLibrary.OffsetArray2.Y - Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Height / 2, Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Width, Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Height));
                         if (arrayIdx == 2) matchingArrayFiducial.Run(Global.System.Recipe.FiducialLibrary.Fiducial1, new Rect((int)Global.System.Recipe.FiducialLibrary.OffsetArray3.X - Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Width / 2, (int)Global.System.Recipe.FiducialLibrary.OffsetArray3.Y - Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Height / 2, Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Width, Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Height));
                         if (arrayIdx == 3) matchingArrayFiducial.Run(Global.System.Recipe.FiducialLibrary.Fiducial1, new Rect((int)Global.System.Recipe.FiducialLibrary.OffsetArray4.X - Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Width / 2, (int)Global.System.Recipe.FiducialLibrary.OffsetArray4.Y - Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Height / 2, Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Width, Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Height));
+                        if (arrayIdx == 4) matchingArrayFiducial.Run(Global.System.Recipe.FiducialLibrary.Fiducial1, new Rect((int)Global.System.Recipe.FiducialLibrary.OffsetArray5.X - Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Width / 2, (int)Global.System.Recipe.FiducialLibrary.OffsetArray5.Y - Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Height / 2, Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Width, Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Height));
+                        if (arrayIdx == 5) matchingArrayFiducial.Run(Global.System.Recipe.FiducialLibrary.Fiducial1, new Rect((int)Global.System.Recipe.FiducialLibrary.OffsetArray6.X - Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Width / 2, (int)Global.System.Recipe.FiducialLibrary.OffsetArray6.Y - Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Height / 2, Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Width, Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Height));
+                        if (arrayIdx == 6) matchingArrayFiducial.Run(Global.System.Recipe.FiducialLibrary.Fiducial1, new Rect((int)Global.System.Recipe.FiducialLibrary.OffsetArray7.X - Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Width / 2, (int)Global.System.Recipe.FiducialLibrary.OffsetArray7.Y - Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Height / 2, Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Width, Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Height));
+                        if (arrayIdx == 7) matchingArrayFiducial.Run(Global.System.Recipe.FiducialLibrary.Fiducial1, new Rect((int)Global.System.Recipe.FiducialLibrary.OffsetArray8.X - Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Width / 2, (int)Global.System.Recipe.FiducialLibrary.OffsetArray8.Y - Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Height / 2, Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Width, Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Height));
+                        if (arrayIdx == 8) matchingArrayFiducial.Run(Global.System.Recipe.FiducialLibrary.Fiducial1, new Rect((int)Global.System.Recipe.FiducialLibrary.OffsetArray9.X - Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Width / 2, (int)Global.System.Recipe.FiducialLibrary.OffsetArray9.Y - Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Height / 2, Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Width, Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Height));
+                        if (arrayIdx == 9) matchingArrayFiducial.Run(Global.System.Recipe.FiducialLibrary.Fiducial1, new Rect((int)Global.System.Recipe.FiducialLibrary.OffsetArray10.X - Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Width / 2, (int)Global.System.Recipe.FiducialLibrary.OffsetArray10.Y - Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Height / 2, Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Width, Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Height));
+                        if (arrayIdx == 10) matchingArrayFiducial.Run(Global.System.Recipe.FiducialLibrary.Fiducial1, new Rect((int)Global.System.Recipe.FiducialLibrary.OffsetArray11.X - Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Width / 2, (int)Global.System.Recipe.FiducialLibrary.OffsetArray11.Y - Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Height / 2, Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Width, Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Height));
+                        if (arrayIdx == 11) matchingArrayFiducial.Run(Global.System.Recipe.FiducialLibrary.Fiducial1, new Rect((int)Global.System.Recipe.FiducialLibrary.OffsetArray12.X - Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Width / 2, (int)Global.System.Recipe.FiducialLibrary.OffsetArray12.Y - Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Height / 2, Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Width, Global.System.Recipe.FiducialLibrary.Fiducial1.SearchRoi.Height));
 
                         Point2d posFiducial_Array = new Point2d();
 
@@ -1044,7 +1049,7 @@ namespace IntelligentFactory
 
                                 if (images8_board[i] != null & images8_board[i].Allocated)
                                 {
-                                    qrCode = IDTool.Read(images8_board[i], Global.Setting.Recipe.Insp.GetQrRegion(arrayIdx), out ICogGraphic resultGraphic);
+                                    qrCode = "";
 
                                     if (qrCode != "") break;
                                 }
@@ -3630,43 +3635,43 @@ namespace IntelligentFactory
                 IF_Util.SetImageRange(imgArea, scrMin, scrMax, imgBin);
             }
 
-            CvBlobs blobs = new CvBlobs();
-            blobs.Label(imgBin);
-            if (job != null) blobs.FilterByArea(100, 200000);
-            int nCountIn = 0;
-            int nFind = 0;
-            int nMax = 0;
-            int nMin = int.MaxValue;
-            job.dRate = 0;
-            foreach (var b in blobs)
-            {
-                CogRectangle boundingRect = new CogRectangle();
-                boundingRect.X = Roi.X + b.Value.Rect.X;
-                boundingRect.Y = Roi.Y + b.Value.Rect.Y;
-                boundingRect.Width = b.Value.Rect.Width;
-                boundingRect.Height = b.Value.Rect.Height;
-                boundingRect.Color = CogColorConstants.Green;
-                boundingRect.LineWidthInScreenPixels = 3;
+            //CvBlobs blobs = new CvBlobs();
+            //blobs.Label(imgBin);
+            //if (job != null) blobs.FilterByArea(100, 200000);
+            //int nCountIn = 0;
+            //int nFind = 0;
+            //int nMax = 0;
+            //int nMin = int.MaxValue;
+            //job.dRate = 0;
+            //foreach (var b in blobs)
+            //{
+            //    CogRectangle boundingRect = new CogRectangle();
+            //    boundingRect.X = Roi.X + b.Value.Rect.X;
+            //    boundingRect.Y = Roi.Y + b.Value.Rect.Y;
+            //    boundingRect.Width = b.Value.Rect.Width;
+            //    boundingRect.Height = b.Value.Rect.Height;
+            //    boundingRect.Color = CogColorConstants.Green;
+            //    boundingRect.LineWidthInScreenPixels = 3;
 
-                nFind++;
-                if (b.Value.Area > job.RangeAreaMin && b.Value.Area < job.RangeAreaMax)
-                {
-                    g.DrawRectangle(penPatternRegion_OK, CVisionCognex.CogRectToRectangle(boundingRect));
-                    nCountIn++;
-                    job.dRate = b.Value.Area;
-                }
-                if (b.Value.Area > nMax) nMax = b.Value.Area;
-                if (b.Value.Area < nMin) nMin = b.Value.Area;
-            }
+            //    nFind++;
+            //    if (b.Value.Area > job.RangeAreaMin && b.Value.Area < job.RangeAreaMax)
+            //    {
+            //        g.DrawRectangle(penPatternRegion_OK, CVisionCognex.CogRectToRectangle(boundingRect));
+            //        nCountIn++;
+            //        job.dRate = b.Value.Area;
+            //    }
+            //    if (b.Value.Area > nMax) nMax = b.Value.Area;
+            //    if (b.Value.Area < nMin) nMin = b.Value.Area;
+            //}
 
-            if (nCountIn > 0) bResult_Job = true;
-            else
-            {
-                if (nMin == int.MaxValue)
-                    nMin = 0;
-                job.dRate = job.RangeAreaMin - nMin > nMax - job.RangeAreaMax ? nMax : nMin;
-                bResult_Job = false;
-            }
+            //if (nCountIn > 0) bResult_Job = true;
+            //else
+            //{
+            //    if (nMin == int.MaxValue)
+            //        nMin = 0;
+            //    job.dRate = job.RangeAreaMin - nMin > nMax - job.RangeAreaMax ? nMax : nMin;
+            //    bResult_Job = false;
+            //}
 
             DrawResultImageAdjust(bResult_Job, Global.Instance.System.Recipe.JobManager[nArrayIndex].Jobs, nJobIndex, "", "nofuse", ref imgResult);
 
@@ -4169,21 +4174,21 @@ namespace IntelligentFactory
         {
             Mat imgBin = new Mat();
             Cv2.Threshold(imgIn, imgBin, nThres, 255, ThresholdTypes.Binary);
-            CvBlobs blobs = new CvBlobs();
-            blobs.Label(imgBin);
-            blobs.FilterByArea(100, 200000);
+            //CvBlobs blobs = new CvBlobs();
+            //blobs.Label(imgBin);
+            //blobs.FilterByArea(100, 200000);
 
-            int nMaxArea = -1;
-            foreach (var b in blobs)
-            {
-                if (b.Value.Rect.Width == imgIn.Width || b.Value.Rect.Height == imgIn.Height)
-                {
-                    nMaxArea = imgIn.Width * imgIn.Height;
-                }
+            //int nMaxArea = -1;
+            //foreach (var b in blobs)
+            //{
+            //    if (b.Value.Rect.Width == imgIn.Width || b.Value.Rect.Height == imgIn.Height)
+            //    {
+            //        nMaxArea = imgIn.Width * imgIn.Height;
+            //    }
 
-                if (nMaxArea < b.Value.Area) nMaxArea = b.Value.Area;
-            }
-            return nMaxArea;
+            //    if (nMaxArea < b.Value.Area) nMaxArea = b.Value.Area;
+            //}
+            return 0;
         }
 
         public static Tuple<Scalar, Scalar> GetMinMaxAreaValues(Mat inImg, CJob.ColorMethod enMethod)
@@ -4384,7 +4389,6 @@ namespace IntelligentFactory
                     imgBin = CVisionTools.GetThresholImage(imgArea, nThreshold, (int)job.CCoordinate, (int)job.CMethod);
                     Cv2.CvtColor(imgBin, imgCopy, ColorConversionCodes.GRAY2BGR);
                     InsertResultImg(imgBin, inImg, Roi);
-                    blopProcessTool2(ref imgBin, Roi, ref inImg, job);
                 }
                 else
                 {
@@ -4399,7 +4403,6 @@ namespace IntelligentFactory
                     IF_Util.SetImageRange(imgArea, scrMin, scrMax, imgBin);
                     Cv2.CvtColor(imgBin, imgCopy, ColorConversionCodes.GRAY2BGR);
                     InsertResultImg(imgBin, inImg, Roi);
-                    blopProcessTool2(ref imgBin, Roi, ref inImg, job);
                 }
                 Results.Add(inImg);
                 Results.Add(inImg.SubMat(cutRect));
@@ -4434,115 +4437,6 @@ namespace IntelligentFactory
             Mat retImg = targetImg.SubMat(Roi);
             convertImg.CopyTo(retImg);
             return targetImg;
-        }
-
-        public static int blopProcessTool(ref Mat imgIn, Rect Roi, ref Mat imgAll, Cognex.VisionPro.Display.CogDisplay display, CJob job)
-        {
-            //display.InteractiveGraphics.Clear();
-            //display.StaticGraphics.Clear();
-
-            CvBlobs blobs = new CvBlobs();
-            blobs.Label(imgIn);
-            if (job != null) blobs.FilterByArea(100, 200000);
-
-            int nMaxArea = 0;
-            Bitmap img = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(imgAll);
-            display.Image = new Cognex.VisionPro.CogImage24PlanarColor(img);
-            foreach (var b in blobs)
-            {
-                Cognex.VisionPro.CogRectangle boundingRect = new Cognex.VisionPro.CogRectangle();
-                boundingRect.X = Roi.X + b.Value.Rect.X;
-                boundingRect.Y = Roi.Y + b.Value.Rect.Y;
-                boundingRect.Width = b.Value.Rect.Width;
-                boundingRect.Height = b.Value.Rect.Height;
-                if (b.Value.Area > job.RangeAreaMin && b.Value.Area < job.RangeAreaMax)
-                    boundingRect.Color = Cognex.VisionPro.CogColorConstants.Green;
-                else
-                    boundingRect.Color = Cognex.VisionPro.CogColorConstants.Red;
-                boundingRect.LineWidthInScreenPixels = 3;
-
-                Cognex.VisionPro.CogGraphicLabel lb = new Cognex.VisionPro.CogGraphicLabel();
-                if (b.Value.Area > job.RangeAreaMin && b.Value.Area < job.RangeAreaMax)
-                    lb.Color = Cognex.VisionPro.CogColorConstants.Green;
-                else
-                    lb.Color = Cognex.VisionPro.CogColorConstants.Red;
-                lb.Text = $"Area : {b.Value.Area}";
-                lb.Font = new System.Drawing.Font("Arial", 12);
-                lb.X = boundingRect.CenterX;
-                lb.Y = boundingRect.CenterY;
-
-                if (nMaxArea < b.Value.Area) nMaxArea = b.Value.Area;
-
-                display.StaticGraphics.Add(boundingRect, "Rect");
-                display.StaticGraphics.Add(lb, "Rect");
-                //cogDisplay_Source.GetImage
-            }
-            Image imgLast = display.CreateContentBitmap(Cognex.VisionPro.Display.CogDisplayContentBitmapConstants.Image);
-            Bitmap bmpLast = (Bitmap)imgLast.Clone();
-            imgAll = OpenCvSharp.Extensions.BitmapConverter.ToMat(bmpLast).Clone();
-            imgIn = imgAll.SubMat(Roi);
-            //Cv2.ImWrite("E:\\Roi.jpg", imgIn);
-            //Cv2.ImWrite("E:\\All.jpg", imgIn);
-
-            //job.AreaMin = (int)(nMaxArea * 0.5);
-            //job.AreaMax = (int)(nMaxArea * 1.5);
-
-            //display.InteractiveGraphics.Clear();
-            //display.StaticGraphics.Clear();
-
-            return nMaxArea;
-        }
-
-        public static int blopProcessTool2(ref Mat imgIn, Rect Roi, ref Mat imgAll, CJob job)
-        {
-            //display.InteractiveGraphics.Clear();
-            //display.StaticGraphics.Clear();
-
-            Mat imgResult = imgAll.Clone();
-            Bitmap bmp = imgResult.ToBitmap();
-            Graphics g = Graphics.FromImage(bmp);
-
-            //// Overlay Draw
-            System.Drawing.Pen pen_OK = new System.Drawing.Pen(System.Drawing.Color.FromArgb(128, 156, 255, 16), 5);
-            System.Drawing.Pen pen_NG = new System.Drawing.Pen(System.Drawing.Color.FromArgb(128, 255, 64, 32), 15);
-            SolidBrush brush_OK = new SolidBrush(System.Drawing.Color.FromArgb(128, 156, 255, 16));
-            SolidBrush brush_NG = new SolidBrush(System.Drawing.Color.FromArgb(128, 255, 64, 32));
-            System.Drawing.Font font = new System.Drawing.Font("Arial", 12, FontStyle.Bold);
-
-            CvBlobs blobs = new CvBlobs();
-            blobs.Label(imgIn);
-            if (job != null) blobs.FilterByArea(100, 200000);
-
-            int nMaxArea = 0;
-            Bitmap img = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(imgAll);
-            string strDisp = "";
-            foreach (var b in blobs)
-            {
-                System.Drawing.Rectangle boundingRect = new System.Drawing.Rectangle();
-                boundingRect.X = Roi.X + b.Value.Rect.X;
-                boundingRect.Y = Roi.Y + b.Value.Rect.Y;
-                boundingRect.Width = b.Value.Rect.Width;
-                boundingRect.Height = b.Value.Rect.Height;
-
-                if (nMaxArea < b.Value.Area) nMaxArea = b.Value.Area;
-
-                System.Drawing.Point ptDisp =
-                    new System.Drawing.Point((int)(boundingRect.X + boundingRect.Width) / 2, (int)(boundingRect.Y + boundingRect.Height) / 2);
-                if (b.Value.Area > job.RangeAreaMin && b.Value.Area < job.RangeAreaMax)
-                {
-                    g.DrawString(strDisp, font, brush_OK, ptDisp);
-                    g.DrawRectangle(pen_OK, boundingRect);
-                }
-                else
-                {
-                    g.DrawString(strDisp, font, brush_NG, ptDisp);
-                    g.DrawRectangle(pen_NG, boundingRect);
-                }
-            }
-            imgAll = OpenCvSharp.Extensions.BitmapConverter.ToMat(bmp).Clone();
-            imgIn = imgAll.SubMat(Roi);
-
-            return nMaxArea;
         }
 
         public static Mat DrawQRCode(Mat inImg, QRParser qrData, List<CJob> jobs, int nJobIndex)
@@ -4952,7 +4846,6 @@ namespace IntelligentFactory
                         matchingRB.SetSourceImage(imgSrc_Grab0.ToBitmap());
 
                         matchingLT.Run(Recipe.Fiducial1);
-                        matchingRB.Run(Recipe.Fiducial2);
 
                         Point2d posLT = new Point2d(0, 0);
                         Point2d posRB = new Point2d(0, 0);
@@ -4976,7 +4869,7 @@ namespace IntelligentFactory
                             double angle = IF_Util.GetAngle(posLT, posRB);
                             double angleDelta = angle - Recipe.MasterAngle;
 
-                            if (Math.Abs(angleDelta) < 0.05)
+                            if (Math.Abs(angleDelta) < 0.02)
                             {
                                 matchingLT.Run(Recipe.Fiducial1);
                                 posFiducialMark = matchingLT.Results[0].Center;

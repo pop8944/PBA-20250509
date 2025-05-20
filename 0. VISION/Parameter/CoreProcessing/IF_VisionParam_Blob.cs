@@ -3,6 +3,7 @@ using System.ComponentModel;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using OpenCvSharp;
 
 namespace IntelligentFactory
 {
@@ -10,7 +11,7 @@ namespace IntelligentFactory
     public class IF_VisionParam_Blob : IF_VisionParamObject
     {
         [CategoryAttribute("Parameter"), DescriptionAttribute(""), DisplayNameAttribute("Threshold Type")]
-        public IF_ImageProcessing.ThresholdTypes ThresholdType { get; set; } = IF_ImageProcessing.ThresholdTypes.Binary;
+        public ThresholdTypes ThresholdType { get; set; } = ThresholdTypes.Binary;
 
         [CategoryAttribute("Parameter"), DescriptionAttribute(""), DisplayNameAttribute("Threshold Value")]
         public int Threshold { get; set; } = 10;

@@ -46,28 +46,51 @@ namespace IntelligentFactory
             this.btnCountReset = new System.Windows.Forms.Button();
             this.timerStatus = new System.Windows.Forms.Timer(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnCountReset_M = new System.Windows.Forms.Button();
-            this.lbYield_M = new System.Windows.Forms.Label();
+            this.BtnInsp = new System.Windows.Forms.Button();
+            this.lbCurrentYield = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.lbNG_M = new System.Windows.Forms.Label();
+            this.lbCurrentNG = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.lbOK_M = new System.Windows.Forms.Label();
+            this.lbCurrentOK = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.lbTotal_M = new System.Windows.Forms.Label();
+            this.lbCurrentTotal = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.lbRecipeName = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.lbCountYield = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.lbNGfalsePER = new System.Windows.Forms.Label();
             this.lbCountNG_F = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lbNGtruePer = new System.Windows.Forms.Label();
+            this.lbCountNG_T = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.lbCountOK = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lbCountTOTAL = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.statusBar = new Sunny.UI.UIPanel();
+            this.lblBuffer = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.uiSymbolButton5 = new Sunny.UI.UISymbolButton();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.statusVisionLicense = new Sunny.UI.UILedBulb();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.label37 = new System.Windows.Forms.Label();
+            this.statusCamera = new Sunny.UI.UILedBulb();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.label36 = new System.Windows.Forms.Label();
+            this.statusLightController = new Sunny.UI.UILedBulb();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.label35 = new System.Windows.Forms.Label();
+            this.statusIO = new Sunny.UI.UILedBulb();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.statusBuffer = new Sunny.UI.UILedBulb();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.statusMES = new Sunny.UI.UILedBulb();
             this.comboCountry = new Sunny.UI.UIComboBox();
             this.label18 = new System.Windows.Forms.Label();
             this.uiLine5 = new Sunny.UI.UILine();
@@ -91,7 +114,7 @@ namespace IntelligentFactory
             this.lblMessage = new System.Windows.Forms.Label();
             this.lblVersion = new Sunny.UI.UISymbolButton();
             this.btnMenu_Setting = new Sunny.UI.UISymbolButton();
-            this.uiSymbolButton2 = new Sunny.UI.UISymbolButton();
+            this.btnMenu_RMS = new Sunny.UI.UISymbolButton();
             this.btnMenu_Device = new Sunny.UI.UISymbolButton();
             this.btnMenu_Vision = new Sunny.UI.UISymbolButton();
             this.btnMenu_Model = new Sunny.UI.UISymbolButton();
@@ -107,36 +130,13 @@ namespace IntelligentFactory
             this.uiPanel5 = new Sunny.UI.UIPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.btnOpenLogFolder = new Sunny.UI.UISymbolButton();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.uiSymbolButton5 = new Sunny.UI.UISymbolButton();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.label19 = new System.Windows.Forms.Label();
-            this.statusVisionLicense = new Sunny.UI.UILedBulb();
-            this.panel17 = new System.Windows.Forms.Panel();
-            this.label37 = new System.Windows.Forms.Label();
-            this.statusCamera = new Sunny.UI.UILedBulb();
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.label36 = new System.Windows.Forms.Label();
-            this.statusLightController = new Sunny.UI.UILedBulb();
-            this.panel15 = new System.Windows.Forms.Panel();
-            this.label35 = new System.Windows.Forms.Label();
-            this.statusIO = new Sunny.UI.UILedBulb();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.statusEyeD = new Sunny.UI.UILedBulb();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.label15 = new System.Windows.Forms.Label();
-            this.statusBuffer = new Sunny.UI.UILedBulb();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label17 = new System.Windows.Forms.Label();
-            this.statusMES = new Sunny.UI.UILedBulb();
             this.uiPanel3 = new Sunny.UI.UIPanel();
             this.btnAuthorization = new Sunny.UI.UISymbolButton();
             this.lbl_DateTime = new System.Windows.Forms.Label();
             this.lblStatusMode = new System.Windows.Forms.Label();
             this.lblMode = new Sunny.UI.UILedLabel();
             this.btnAutoStart = new Sunny.UI.UISymbolButton();
-            this.uiSymbolButton3 = new Sunny.UI.UISymbolButton();
+            this.BtnReset = new Sunny.UI.UISymbolButton();
             this.btnOper_Pause = new Sunny.UI.UISymbolButton();
             this.btnOper_Stop = new Sunny.UI.UISymbolButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -145,19 +145,18 @@ namespace IntelligentFactory
             this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
             this.statusBar.SuspendLayout();
-            this.uiPanel1.SuspendLayout();
-            this.pnlMessage.SuspendLayout();
-            this.pnlLogViewer.SuspendLayout();
-            this.uiPanel4.SuspendLayout();
-            this.uiPanel5.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel17.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel15.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.panel14.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.uiPanel1.SuspendLayout();
+            this.pnlMessage.SuspendLayout();
+            this.pnlLogViewer.SuspendLayout();
+            this.uiPanel4.SuspendLayout();
+            this.uiPanel5.SuspendLayout();
             this.uiPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -198,7 +197,7 @@ namespace IntelligentFactory
             // pnMDI
             // 
             this.pnMDI.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.pnMDI.Location = new System.Drawing.Point(0, 106);
+            this.pnMDI.Location = new System.Drawing.Point(0, 107);
             this.pnMDI.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnMDI.Name = "pnMDI";
             this.pnMDI.Size = new System.Drawing.Size(1920, 860);
@@ -312,14 +311,14 @@ namespace IntelligentFactory
             // btnCountReset
             // 
             this.btnCountReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btnCountReset.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnCountReset.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnCountReset.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnCountReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCountReset.Font = new System.Drawing.Font("Arial", 9F);
             this.btnCountReset.ForeColor = System.Drawing.Color.White;
-            this.btnCountReset.Location = new System.Drawing.Point(615, 0);
+            this.btnCountReset.Location = new System.Drawing.Point(608, 0);
             this.btnCountReset.Name = "btnCountReset";
-            this.btnCountReset.Size = new System.Drawing.Size(81, 40);
+            this.btnCountReset.Size = new System.Drawing.Size(70, 40);
             this.btnCountReset.TabIndex = 3390;
             this.btnCountReset.Text = "RESET";
             this.btnCountReset.UseVisualStyleBackColor = false;
@@ -334,51 +333,51 @@ namespace IntelligentFactory
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.panel3.Controls.Add(this.btnCountReset_M);
-            this.panel3.Controls.Add(this.lbYield_M);
+            this.panel3.Controls.Add(this.btnCountReset);
+            this.panel3.Controls.Add(this.BtnInsp);
+            this.panel3.Controls.Add(this.lbCurrentYield);
             this.panel3.Controls.Add(this.label16);
-            this.panel3.Controls.Add(this.lbNG_M);
+            this.panel3.Controls.Add(this.lbCurrentNG);
             this.panel3.Controls.Add(this.label12);
-            this.panel3.Controls.Add(this.lbOK_M);
+            this.panel3.Controls.Add(this.lbCurrentOK);
             this.panel3.Controls.Add(this.label14);
-            this.panel3.Controls.Add(this.lbTotal_M);
+            this.panel3.Controls.Add(this.lbCurrentTotal);
             this.panel3.Controls.Add(this.label9);
-            this.panel3.Controls.Add(this.label8);
-            this.panel3.Location = new System.Drawing.Point(437, 26);
+            this.panel3.Location = new System.Drawing.Point(434, 66);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(696, 40);
+            this.panel3.Size = new System.Drawing.Size(748, 40);
             this.panel3.TabIndex = 3185;
             // 
-            // btnCountReset_M
+            // BtnInsp
             // 
-            this.btnCountReset_M.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btnCountReset_M.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnCountReset_M.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnCountReset_M.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCountReset_M.Font = new System.Drawing.Font("Arial", 9F);
-            this.btnCountReset_M.ForeColor = System.Drawing.Color.White;
-            this.btnCountReset_M.Location = new System.Drawing.Point(615, 0);
-            this.btnCountReset_M.Name = "btnCountReset_M";
-            this.btnCountReset_M.Size = new System.Drawing.Size(81, 40);
-            this.btnCountReset_M.TabIndex = 3399;
-            this.btnCountReset_M.Text = "RESET";
-            this.btnCountReset_M.UseVisualStyleBackColor = false;
-            this.btnCountReset_M.Click += new System.EventHandler(this.btnCountReset_M_Click);
+            this.BtnInsp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.BtnInsp.Dock = System.Windows.Forms.DockStyle.Right;
+            this.BtnInsp.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnInsp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnInsp.Font = new System.Drawing.Font("Arial", 9F);
+            this.BtnInsp.ForeColor = System.Drawing.Color.White;
+            this.BtnInsp.Location = new System.Drawing.Point(678, 0);
+            this.BtnInsp.Name = "BtnInsp";
+            this.BtnInsp.Size = new System.Drawing.Size(70, 40);
+            this.BtnInsp.TabIndex = 3399;
+            this.BtnInsp.Text = "INSP";
+            this.BtnInsp.UseVisualStyleBackColor = false;
+            this.BtnInsp.Click += new System.EventHandler(this.BtnInsp_Click);
             // 
-            // lbYield_M
+            // lbCurrentYield
             // 
-            this.lbYield_M.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbYield_M.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbYield_M.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbYield_M.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbYield_M.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbYield_M.ForeColor = System.Drawing.Color.White;
-            this.lbYield_M.Location = new System.Drawing.Point(545, 0);
-            this.lbYield_M.Name = "lbYield_M";
-            this.lbYield_M.Size = new System.Drawing.Size(70, 40);
-            this.lbYield_M.TabIndex = 3398;
-            this.lbYield_M.Text = "0000";
-            this.lbYield_M.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbCurrentYield.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbCurrentYield.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbCurrentYield.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lbCurrentYield.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbCurrentYield.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCurrentYield.ForeColor = System.Drawing.Color.White;
+            this.lbCurrentYield.Location = new System.Drawing.Point(450, 0);
+            this.lbCurrentYield.Name = "lbCurrentYield";
+            this.lbCurrentYield.Size = new System.Drawing.Size(70, 40);
+            this.lbCurrentYield.TabIndex = 3398;
+            this.lbCurrentYield.Text = "0000";
+            this.lbCurrentYield.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label16
             // 
@@ -388,27 +387,27 @@ namespace IntelligentFactory
             this.label16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label16.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(480, 0);
+            this.label16.Location = new System.Drawing.Point(385, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(65, 40);
             this.label16.TabIndex = 3397;
             this.label16.Text = "YIELD";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lbNG_M
+            // lbCurrentNG
             // 
-            this.lbNG_M.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbNG_M.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbNG_M.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbNG_M.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbNG_M.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNG_M.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(17)))), ((int)(((byte)(65)))));
-            this.lbNG_M.Location = new System.Drawing.Point(410, 0);
-            this.lbNG_M.Name = "lbNG_M";
-            this.lbNG_M.Size = new System.Drawing.Size(70, 40);
-            this.lbNG_M.TabIndex = 3396;
-            this.lbNG_M.Text = "0000";
-            this.lbNG_M.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbCurrentNG.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbCurrentNG.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbCurrentNG.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lbCurrentNG.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbCurrentNG.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCurrentNG.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(17)))), ((int)(((byte)(65)))));
+            this.lbCurrentNG.Location = new System.Drawing.Point(320, 0);
+            this.lbCurrentNG.Name = "lbCurrentNG";
+            this.lbCurrentNG.Size = new System.Drawing.Size(65, 40);
+            this.lbCurrentNG.TabIndex = 3396;
+            this.lbCurrentNG.Text = "0000";
+            this.lbCurrentNG.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label12
             // 
@@ -418,27 +417,27 @@ namespace IntelligentFactory
             this.label12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label12.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(17)))), ((int)(((byte)(65)))));
-            this.label12.Location = new System.Drawing.Point(345, 0);
+            this.label12.Location = new System.Drawing.Point(255, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(65, 40);
             this.label12.TabIndex = 3395;
             this.label12.Text = "NG";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lbOK_M
+            // lbCurrentOK
             // 
-            this.lbOK_M.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbOK_M.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbOK_M.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbOK_M.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbOK_M.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbOK_M.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
-            this.lbOK_M.Location = new System.Drawing.Point(275, 0);
-            this.lbOK_M.Name = "lbOK_M";
-            this.lbOK_M.Size = new System.Drawing.Size(70, 40);
-            this.lbOK_M.TabIndex = 3383;
-            this.lbOK_M.Text = "0000";
-            this.lbOK_M.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbCurrentOK.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbCurrentOK.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbCurrentOK.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lbCurrentOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbCurrentOK.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCurrentOK.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            this.lbCurrentOK.Location = new System.Drawing.Point(190, 0);
+            this.lbCurrentOK.Name = "lbCurrentOK";
+            this.lbCurrentOK.Size = new System.Drawing.Size(65, 40);
+            this.lbCurrentOK.TabIndex = 3383;
+            this.lbCurrentOK.Text = "0000";
+            this.lbCurrentOK.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label14
             // 
@@ -448,27 +447,27 @@ namespace IntelligentFactory
             this.label14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label14.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
-            this.label14.Location = new System.Drawing.Point(210, 0);
+            this.label14.Location = new System.Drawing.Point(130, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(65, 40);
+            this.label14.Size = new System.Drawing.Size(60, 40);
             this.label14.TabIndex = 3382;
             this.label14.Text = "OK";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lbTotal_M
+            // lbCurrentTotal
             // 
-            this.lbTotal_M.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbTotal_M.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbTotal_M.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbTotal_M.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbTotal_M.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotal_M.ForeColor = System.Drawing.Color.White;
-            this.lbTotal_M.Location = new System.Drawing.Point(140, 0);
-            this.lbTotal_M.Name = "lbTotal_M";
-            this.lbTotal_M.Size = new System.Drawing.Size(70, 40);
-            this.lbTotal_M.TabIndex = 3378;
-            this.lbTotal_M.Text = "0000";
-            this.lbTotal_M.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbCurrentTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbCurrentTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbCurrentTotal.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lbCurrentTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbCurrentTotal.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCurrentTotal.ForeColor = System.Drawing.Color.White;
+            this.lbCurrentTotal.Location = new System.Drawing.Point(65, 0);
+            this.lbCurrentTotal.Name = "lbCurrentTotal";
+            this.lbCurrentTotal.Size = new System.Drawing.Size(65, 40);
+            this.lbCurrentTotal.TabIndex = 3378;
+            this.lbCurrentTotal.Text = "0000";
+            this.lbCurrentTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label9
             // 
@@ -478,27 +477,12 @@ namespace IntelligentFactory
             this.label9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label9.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(75, 0);
+            this.label9.Location = new System.Drawing.Point(0, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 40);
             this.label9.TabIndex = 3377;
             this.label9.Text = "Total";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label8
-            // 
-            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label8.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label8.Font = new System.Drawing.Font("Arial", 12F);
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(0, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(75, 40);
-            this.label8.TabIndex = 3400;
-            this.label8.Text = "Monthly";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lbRecipeName
             // 
@@ -517,19 +501,21 @@ namespace IntelligentFactory
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.panel6.Controls.Add(this.btnCountReset);
             this.panel6.Controls.Add(this.lbCountYield);
             this.panel6.Controls.Add(this.label7);
+            this.panel6.Controls.Add(this.lbNGfalsePER);
             this.panel6.Controls.Add(this.lbCountNG_F);
+            this.panel6.Controls.Add(this.label8);
+            this.panel6.Controls.Add(this.lbNGtruePer);
+            this.panel6.Controls.Add(this.lbCountNG_T);
             this.panel6.Controls.Add(this.label10);
             this.panel6.Controls.Add(this.lbCountOK);
             this.panel6.Controls.Add(this.label5);
             this.panel6.Controls.Add(this.lbCountTOTAL);
             this.panel6.Controls.Add(this.label11);
-            this.panel6.Controls.Add(this.label6);
-            this.panel6.Location = new System.Drawing.Point(437, 67);
+            this.panel6.Location = new System.Drawing.Point(434, 25);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(696, 40);
+            this.panel6.Size = new System.Drawing.Size(748, 40);
             this.panel6.TabIndex = 3187;
             // 
             // lbCountYield
@@ -540,7 +526,7 @@ namespace IntelligentFactory
             this.lbCountYield.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbCountYield.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCountYield.ForeColor = System.Drawing.Color.White;
-            this.lbCountYield.Location = new System.Drawing.Point(545, 0);
+            this.lbCountYield.Location = new System.Drawing.Point(678, 0);
             this.lbCountYield.Name = "lbCountYield";
             this.lbCountYield.Size = new System.Drawing.Size(70, 40);
             this.lbCountYield.TabIndex = 3390;
@@ -555,12 +541,27 @@ namespace IntelligentFactory
             this.label7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label7.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(480, 0);
+            this.label7.Location = new System.Drawing.Point(613, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 40);
             this.label7.TabIndex = 3389;
             this.label7.Text = "YIELD";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbNGfalsePER
+            // 
+            this.lbNGfalsePER.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.lbNGfalsePER.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbNGfalsePER.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lbNGfalsePER.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbNGfalsePER.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNGfalsePER.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(17)))), ((int)(((byte)(65)))));
+            this.lbNGfalsePER.Location = new System.Drawing.Point(564, 0);
+            this.lbNGfalsePER.Name = "lbNGfalsePER";
+            this.lbNGfalsePER.Size = new System.Drawing.Size(49, 40);
+            this.lbNGfalsePER.TabIndex = 3395;
+            this.lbNGfalsePER.Text = "0000";
+            this.lbNGfalsePER.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbCountNG_F
             // 
@@ -570,12 +571,57 @@ namespace IntelligentFactory
             this.lbCountNG_F.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbCountNG_F.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCountNG_F.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(17)))), ((int)(((byte)(65)))));
-            this.lbCountNG_F.Location = new System.Drawing.Point(410, 0);
+            this.lbCountNG_F.Location = new System.Drawing.Point(499, 0);
             this.lbCountNG_F.Name = "lbCountNG_F";
-            this.lbCountNG_F.Size = new System.Drawing.Size(70, 40);
-            this.lbCountNG_F.TabIndex = 3387;
+            this.lbCountNG_F.Size = new System.Drawing.Size(65, 40);
+            this.lbCountNG_F.TabIndex = 3394;
             this.lbCountNG_F.Text = "0000";
             this.lbCountNG_F.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label8
+            // 
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label8.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label8.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(17)))), ((int)(((byte)(65)))));
+            this.label8.Location = new System.Drawing.Point(434, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(65, 40);
+            this.label8.TabIndex = 3393;
+            this.label8.Text = "NG (false)";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbNGtruePer
+            // 
+            this.lbNGtruePer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.lbNGtruePer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbNGtruePer.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lbNGtruePer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbNGtruePer.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNGtruePer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(17)))), ((int)(((byte)(65)))));
+            this.lbNGtruePer.Location = new System.Drawing.Point(385, 0);
+            this.lbNGtruePer.Name = "lbNGtruePer";
+            this.lbNGtruePer.Size = new System.Drawing.Size(49, 40);
+            this.lbNGtruePer.TabIndex = 3392;
+            this.lbNGtruePer.Text = "0000";
+            this.lbNGtruePer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbCountNG_T
+            // 
+            this.lbCountNG_T.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.lbCountNG_T.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbCountNG_T.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lbCountNG_T.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbCountNG_T.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCountNG_T.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(17)))), ((int)(((byte)(65)))));
+            this.lbCountNG_T.Location = new System.Drawing.Point(320, 0);
+            this.lbCountNG_T.Name = "lbCountNG_T";
+            this.lbCountNG_T.Size = new System.Drawing.Size(65, 40);
+            this.lbCountNG_T.TabIndex = 3387;
+            this.lbCountNG_T.Text = "0000";
+            this.lbCountNG_T.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label10
             // 
@@ -585,11 +631,11 @@ namespace IntelligentFactory
             this.label10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label10.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(17)))), ((int)(((byte)(65)))));
-            this.label10.Location = new System.Drawing.Point(345, 0);
+            this.label10.Location = new System.Drawing.Point(255, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(65, 40);
             this.label10.TabIndex = 3386;
-            this.label10.Text = "NG";
+            this.label10.Text = "NG (true)";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbCountOK
@@ -600,9 +646,9 @@ namespace IntelligentFactory
             this.lbCountOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbCountOK.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCountOK.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
-            this.lbCountOK.Location = new System.Drawing.Point(275, 0);
+            this.lbCountOK.Location = new System.Drawing.Point(190, 0);
             this.lbCountOK.Name = "lbCountOK";
-            this.lbCountOK.Size = new System.Drawing.Size(70, 40);
+            this.lbCountOK.Size = new System.Drawing.Size(65, 40);
             this.lbCountOK.TabIndex = 3382;
             this.lbCountOK.Text = "0000";
             this.lbCountOK.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -615,9 +661,9 @@ namespace IntelligentFactory
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label5.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
-            this.label5.Location = new System.Drawing.Point(210, 0);
+            this.label5.Location = new System.Drawing.Point(130, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 40);
+            this.label5.Size = new System.Drawing.Size(60, 40);
             this.label5.TabIndex = 3381;
             this.label5.Text = "OK";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -630,9 +676,9 @@ namespace IntelligentFactory
             this.lbCountTOTAL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbCountTOTAL.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCountTOTAL.ForeColor = System.Drawing.Color.White;
-            this.lbCountTOTAL.Location = new System.Drawing.Point(140, 0);
+            this.lbCountTOTAL.Location = new System.Drawing.Point(65, 0);
             this.lbCountTOTAL.Name = "lbCountTOTAL";
-            this.lbCountTOTAL.Size = new System.Drawing.Size(70, 40);
+            this.lbCountTOTAL.Size = new System.Drawing.Size(65, 40);
             this.lbCountTOTAL.TabIndex = 3380;
             this.lbCountTOTAL.Text = "0000";
             this.lbCountTOTAL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -645,31 +691,18 @@ namespace IntelligentFactory
             this.label11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label11.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(75, 0);
+            this.label11.Location = new System.Drawing.Point(0, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(65, 40);
             this.label11.TabIndex = 3378;
             this.label11.Text = "Total";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label6
-            // 
-            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label6.Font = new System.Drawing.Font("Arial", 12F);
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(0, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(75, 40);
-            this.label6.TabIndex = 3391;
-            this.label6.Text = "Daily";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // statusBar
             // 
             this.statusBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.statusBar.Controls.Add(this.lblBuffer);
+            this.statusBar.Controls.Add(this.panel2);
             this.statusBar.Controls.Add(this.comboCountry);
             this.statusBar.Controls.Add(this.label18);
             this.statusBar.Controls.Add(this.uiLine5);
@@ -701,6 +734,278 @@ namespace IntelligentFactory
             this.statusBar.Text = "-";
             this.statusBar.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // lblBuffer
+            // 
+            this.lblBuffer.BackColor = System.Drawing.Color.Transparent;
+            this.lblBuffer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblBuffer.Font = new System.Drawing.Font("Arial", 8F);
+            this.lblBuffer.ForeColor = System.Drawing.Color.White;
+            this.lblBuffer.Location = new System.Drawing.Point(689, 6);
+            this.lblBuffer.Name = "lblBuffer";
+            this.lblBuffer.Size = new System.Drawing.Size(133, 20);
+            this.lblBuffer.TabIndex = 3621;
+            this.lblBuffer.Text = "Buff : ms";
+            this.lblBuffer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.uiSymbolButton5);
+            this.panel2.Controls.Add(this.panel7);
+            this.panel2.Controls.Add(this.panel17);
+            this.panel2.Controls.Add(this.panel16);
+            this.panel2.Controls.Add(this.panel15);
+            this.panel2.Controls.Add(this.panel14);
+            this.panel2.Controls.Add(this.panel5);
+            this.panel2.Location = new System.Drawing.Point(3, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(681, 28);
+            this.panel2.TabIndex = 3397;
+            // 
+            // uiSymbolButton5
+            // 
+            this.uiSymbolButton5.BackColor = System.Drawing.Color.Transparent;
+            this.uiSymbolButton5.CircleRectWidth = 0;
+            this.uiSymbolButton5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiSymbolButton5.FillColor = System.Drawing.Color.Transparent;
+            this.uiSymbolButton5.FillColor2 = System.Drawing.Color.Transparent;
+            this.uiSymbolButton5.FillDisableColor = System.Drawing.Color.Transparent;
+            this.uiSymbolButton5.FillHoverColor = System.Drawing.Color.Transparent;
+            this.uiSymbolButton5.FillPressColor = System.Drawing.Color.Transparent;
+            this.uiSymbolButton5.FillSelectedColor = System.Drawing.Color.Transparent;
+            this.uiSymbolButton5.Font = new System.Drawing.Font("Arial", 8F);
+            this.uiSymbolButton5.ForeDisableColor = System.Drawing.Color.Transparent;
+            this.uiSymbolButton5.ForeHoverColor = System.Drawing.Color.Transparent;
+            this.uiSymbolButton5.ForePressColor = System.Drawing.Color.Transparent;
+            this.uiSymbolButton5.ForeSelectedColor = System.Drawing.Color.Transparent;
+            this.uiSymbolButton5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiSymbolButton5.Location = new System.Drawing.Point(585, 1);
+            this.uiSymbolButton5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.uiSymbolButton5.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiSymbolButton5.Name = "uiSymbolButton5";
+            this.uiSymbolButton5.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.uiSymbolButton5.RectColor = System.Drawing.Color.White;
+            this.uiSymbolButton5.RectDisableColor = System.Drawing.Color.Transparent;
+            this.uiSymbolButton5.RectHoverColor = System.Drawing.Color.Transparent;
+            this.uiSymbolButton5.RectPressColor = System.Drawing.Color.Transparent;
+            this.uiSymbolButton5.RectSelectedColor = System.Drawing.Color.Transparent;
+            this.uiSymbolButton5.Size = new System.Drawing.Size(93, 25);
+            this.uiSymbolButton5.Style = Sunny.UI.UIStyle.Custom;
+            this.uiSymbolButton5.StyleCustomMode = true;
+            this.uiSymbolButton5.Symbol = 61473;
+            this.uiSymbolButton5.SymbolHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
+            this.uiSymbolButton5.SymbolOffset = new System.Drawing.Point(-5, 0);
+            this.uiSymbolButton5.SymbolSize = 18;
+            this.uiSymbolButton5.TabIndex = 3620;
+            this.uiSymbolButton5.Tag = "ZoomIn";
+            this.uiSymbolButton5.Text = "Re-Init";
+            this.uiSymbolButton5.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.label19);
+            this.panel7.Controls.Add(this.statusVisionLicense);
+            this.panel7.Location = new System.Drawing.Point(454, 3);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(108, 18);
+            this.panel7.TabIndex = 3457;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.Transparent;
+            this.label19.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label19.Font = new System.Drawing.Font("Arial", 8F);
+            this.label19.ForeColor = System.Drawing.Color.White;
+            this.label19.Location = new System.Drawing.Point(18, 0);
+            this.label19.Name = "label19";
+            this.label19.Padding = new System.Windows.Forms.Padding(5, 2, 0, 0);
+            this.label19.Size = new System.Drawing.Size(83, 16);
+            this.label19.TabIndex = 3449;
+            this.label19.Text = "Vision License";
+            // 
+            // statusVisionLicense
+            // 
+            this.statusVisionLicense.Color = System.Drawing.Color.LimeGreen;
+            this.statusVisionLicense.Dock = System.Windows.Forms.DockStyle.Left;
+            this.statusVisionLicense.Location = new System.Drawing.Point(0, 0);
+            this.statusVisionLicense.Name = "statusVisionLicense";
+            this.statusVisionLicense.On = false;
+            this.statusVisionLicense.Size = new System.Drawing.Size(18, 18);
+            this.statusVisionLicense.TabIndex = 3448;
+            this.statusVisionLicense.Text = "uiLedBulb1";
+            // 
+            // panel17
+            // 
+            this.panel17.Controls.Add(this.label37);
+            this.panel17.Controls.Add(this.statusCamera);
+            this.panel17.Location = new System.Drawing.Point(8, 3);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(73, 18);
+            this.panel17.TabIndex = 3450;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.BackColor = System.Drawing.Color.Transparent;
+            this.label37.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label37.Font = new System.Drawing.Font("Arial", 8F);
+            this.label37.ForeColor = System.Drawing.Color.White;
+            this.label37.Location = new System.Drawing.Point(18, 0);
+            this.label37.Name = "label37";
+            this.label37.Padding = new System.Windows.Forms.Padding(5, 2, 0, 0);
+            this.label37.Size = new System.Drawing.Size(49, 16);
+            this.label37.TabIndex = 3449;
+            this.label37.Text = "Camera";
+            // 
+            // statusCamera
+            // 
+            this.statusCamera.Color = System.Drawing.Color.LimeGreen;
+            this.statusCamera.Dock = System.Windows.Forms.DockStyle.Left;
+            this.statusCamera.Location = new System.Drawing.Point(0, 0);
+            this.statusCamera.Name = "statusCamera";
+            this.statusCamera.On = false;
+            this.statusCamera.Size = new System.Drawing.Size(18, 18);
+            this.statusCamera.TabIndex = 3448;
+            this.statusCamera.Text = "uiLedBulb25";
+            // 
+            // panel16
+            // 
+            this.panel16.Controls.Add(this.label36);
+            this.panel16.Controls.Add(this.statusLightController);
+            this.panel16.Location = new System.Drawing.Point(269, 3);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(108, 18);
+            this.panel16.TabIndex = 3451;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.BackColor = System.Drawing.Color.Transparent;
+            this.label36.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label36.Font = new System.Drawing.Font("Arial", 8F);
+            this.label36.ForeColor = System.Drawing.Color.White;
+            this.label36.Location = new System.Drawing.Point(18, 0);
+            this.label36.Name = "label36";
+            this.label36.Padding = new System.Windows.Forms.Padding(5, 2, 0, 0);
+            this.label36.Size = new System.Drawing.Size(84, 16);
+            this.label36.TabIndex = 3449;
+            this.label36.Text = "Light Controller";
+            // 
+            // statusLightController
+            // 
+            this.statusLightController.Color = System.Drawing.Color.LimeGreen;
+            this.statusLightController.Dock = System.Windows.Forms.DockStyle.Left;
+            this.statusLightController.Location = new System.Drawing.Point(0, 0);
+            this.statusLightController.Name = "statusLightController";
+            this.statusLightController.On = false;
+            this.statusLightController.Size = new System.Drawing.Size(18, 18);
+            this.statusLightController.TabIndex = 3448;
+            this.statusLightController.Text = "uiLedBulb24";
+            // 
+            // panel15
+            // 
+            this.panel15.Controls.Add(this.label35);
+            this.panel15.Controls.Add(this.statusIO);
+            this.panel15.Location = new System.Drawing.Point(87, 3);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(62, 18);
+            this.panel15.TabIndex = 3452;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.BackColor = System.Drawing.Color.Transparent;
+            this.label35.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label35.Font = new System.Drawing.Font("Arial", 8F);
+            this.label35.ForeColor = System.Drawing.Color.White;
+            this.label35.Location = new System.Drawing.Point(18, 0);
+            this.label35.Name = "label35";
+            this.label35.Padding = new System.Windows.Forms.Padding(5, 2, 0, 0);
+            this.label35.Size = new System.Drawing.Size(25, 16);
+            this.label35.TabIndex = 3449;
+            this.label35.Text = "I/O";
+            // 
+            // statusIO
+            // 
+            this.statusIO.Color = System.Drawing.Color.LimeGreen;
+            this.statusIO.Dock = System.Windows.Forms.DockStyle.Left;
+            this.statusIO.Location = new System.Drawing.Point(0, 0);
+            this.statusIO.Name = "statusIO";
+            this.statusIO.On = false;
+            this.statusIO.Size = new System.Drawing.Size(18, 18);
+            this.statusIO.TabIndex = 3448;
+            this.statusIO.Text = "uiLedBulb23";
+            // 
+            // panel14
+            // 
+            this.panel14.Controls.Add(this.label15);
+            this.panel14.Controls.Add(this.statusBuffer);
+            this.panel14.Location = new System.Drawing.Point(383, 3);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(65, 18);
+            this.panel14.TabIndex = 3453;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label15.Font = new System.Drawing.Font("Arial", 8F);
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(18, 0);
+            this.label15.Name = "label15";
+            this.label15.Padding = new System.Windows.Forms.Padding(5, 2, 0, 0);
+            this.label15.Size = new System.Drawing.Size(43, 16);
+            this.label15.TabIndex = 3449;
+            this.label15.Text = "Buffer";
+            // 
+            // statusBuffer
+            // 
+            this.statusBuffer.Color = System.Drawing.Color.LimeGreen;
+            this.statusBuffer.Dock = System.Windows.Forms.DockStyle.Left;
+            this.statusBuffer.Location = new System.Drawing.Point(0, 0);
+            this.statusBuffer.Name = "statusBuffer";
+            this.statusBuffer.On = false;
+            this.statusBuffer.Size = new System.Drawing.Size(18, 18);
+            this.statusBuffer.TabIndex = 3448;
+            this.statusBuffer.Text = "uiLedBulb22";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.label17);
+            this.panel5.Controls.Add(this.statusMES);
+            this.panel5.Location = new System.Drawing.Point(155, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(108, 18);
+            this.panel5.TabIndex = 3454;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label17.Font = new System.Drawing.Font("Arial", 8F);
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(18, 0);
+            this.label17.Name = "label17";
+            this.label17.Padding = new System.Windows.Forms.Padding(5, 2, 0, 0);
+            this.label17.Size = new System.Drawing.Size(77, 16);
+            this.label17.TabIndex = 3449;
+            this.label17.Text = "MES (Recipe)";
+            // 
+            // statusMES
+            // 
+            this.statusMES.Color = System.Drawing.Color.LimeGreen;
+            this.statusMES.Dock = System.Windows.Forms.DockStyle.Left;
+            this.statusMES.Location = new System.Drawing.Point(0, 0);
+            this.statusMES.Name = "statusMES";
+            this.statusMES.On = false;
+            this.statusMES.Size = new System.Drawing.Size(18, 18);
+            this.statusMES.TabIndex = 3448;
+            this.statusMES.Text = "uiLedBulb21";
+            // 
             // comboCountry
             // 
             this.comboCountry.DataSource = null;
@@ -716,7 +1021,7 @@ namespace IntelligentFactory
             "MAL"});
             this.comboCountry.ItemSelectBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
             this.comboCountry.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.comboCountry.Location = new System.Drawing.Point(943, 6);
+            this.comboCountry.Location = new System.Drawing.Point(870, 6);
             this.comboCountry.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboCountry.MinimumSize = new System.Drawing.Size(63, 0);
             this.comboCountry.Name = "comboCountry";
@@ -736,7 +1041,7 @@ namespace IntelligentFactory
             this.label18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label18.Font = new System.Drawing.Font("Arial", 8F);
             this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(908, 5);
+            this.label18.Location = new System.Drawing.Point(835, 5);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(36, 20);
             this.label18.TabIndex = 3458;
@@ -751,7 +1056,7 @@ namespace IntelligentFactory
             this.uiLine5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLine5.LineColor = System.Drawing.Color.White;
             this.uiLine5.LineDashStyle = Sunny.UI.UILineDashStyle.Solid;
-            this.uiLine5.Location = new System.Drawing.Point(1045, 0);
+            this.uiLine5.Location = new System.Drawing.Point(972, 0);
             this.uiLine5.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiLine5.Name = "uiLine5";
             this.uiLine5.Padding = new System.Windows.Forms.Padding(5, 8, 5, 0);
@@ -765,9 +1070,9 @@ namespace IntelligentFactory
             this.lblSeqStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSeqStatus.Font = new System.Drawing.Font("Arial", 8F);
             this.lblSeqStatus.ForeColor = System.Drawing.Color.White;
-            this.lblSeqStatus.Location = new System.Drawing.Point(1076, 5);
+            this.lblSeqStatus.Location = new System.Drawing.Point(998, 5);
             this.lblSeqStatus.Name = "lblSeqStatus";
-            this.lblSeqStatus.Size = new System.Drawing.Size(193, 20);
+            this.lblSeqStatus.Size = new System.Drawing.Size(234, 20);
             this.lblSeqStatus.TabIndex = 3456;
             this.lblSeqStatus.Text = "VISION SEQUENCE : IDLE";
             this.lblSeqStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -780,7 +1085,7 @@ namespace IntelligentFactory
             this.uiLine4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLine4.LineColor = System.Drawing.Color.White;
             this.uiLine4.LineDashStyle = Sunny.UI.UILineDashStyle.Solid;
-            this.uiLine4.Location = new System.Drawing.Point(1265, 0);
+            this.uiLine4.Location = new System.Drawing.Point(1238, 0);
             this.uiLine4.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiLine4.Name = "uiLine4";
             this.uiLine4.Padding = new System.Windows.Forms.Padding(5, 8, 5, 0);
@@ -794,9 +1099,9 @@ namespace IntelligentFactory
             this.lblStopReason.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStopReason.Font = new System.Drawing.Font("Arial", 8F);
             this.lblStopReason.ForeColor = System.Drawing.Color.White;
-            this.lblStopReason.Location = new System.Drawing.Point(1282, 5);
+            this.lblStopReason.Location = new System.Drawing.Point(1255, 5);
             this.lblStopReason.Name = "lblStopReason";
-            this.lblStopReason.Size = new System.Drawing.Size(151, 20);
+            this.lblStopReason.Size = new System.Drawing.Size(168, 20);
             this.lblStopReason.TabIndex = 3454;
             this.lblStopReason.Text = "STOP REASON : IDLE";
             this.lblStopReason.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -966,7 +1271,7 @@ namespace IntelligentFactory
             this.uiPanel1.Controls.Add(this.pnlMessage);
             this.uiPanel1.Controls.Add(this.lblVersion);
             this.uiPanel1.Controls.Add(this.btnMenu_Setting);
-            this.uiPanel1.Controls.Add(this.uiSymbolButton2);
+            this.uiPanel1.Controls.Add(this.btnMenu_RMS);
             this.uiPanel1.Controls.Add(this.btnMenu_Device);
             this.uiPanel1.Controls.Add(this.btnMenu_Vision);
             this.uiPanel1.Controls.Add(this.btnMenu_Model);
@@ -1031,6 +1336,7 @@ namespace IntelligentFactory
             this.btnOper_Reset.Text = "RESET";
             this.btnOper_Reset.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnOper_Reset.TipsFont = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnOper_Reset.Click += new System.EventHandler(this.btnOper_Reset_Click);
             // 
             // statusAlarm
             // 
@@ -1158,44 +1464,44 @@ namespace IntelligentFactory
             this.btnMenu_Setting.TipsFont = new System.Drawing.Font("Arial", 9.75F);
             this.btnMenu_Setting.Click += new System.EventHandler(this.OnMenuClick);
             // 
-            // uiSymbolButton2
+            // btnMenu_RMS
             // 
-            this.uiSymbolButton2.CircleRectWidth = 0;
-            this.uiSymbolButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiSymbolButton2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.uiSymbolButton2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.uiSymbolButton2.FillColor2 = System.Drawing.Color.Gray;
-            this.uiSymbolButton2.FillColorGradientDirection = System.Windows.Forms.FlowDirection.BottomUp;
-            this.uiSymbolButton2.FillDisableColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.uiSymbolButton2.FillHoverColor = System.Drawing.Color.SlateGray;
-            this.uiSymbolButton2.FillPressColor = System.Drawing.Color.SlateGray;
-            this.uiSymbolButton2.FillSelectedColor = System.Drawing.Color.White;
-            this.uiSymbolButton2.Font = new System.Drawing.Font("Arial", 9F);
-            this.uiSymbolButton2.ForeSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.uiSymbolButton2.Location = new System.Drawing.Point(392, 0);
-            this.uiSymbolButton2.Margin = new System.Windows.Forms.Padding(1);
-            this.uiSymbolButton2.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiSymbolButton2.Name = "uiSymbolButton2";
-            this.uiSymbolButton2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
-            this.uiSymbolButton2.Radius = 0;
-            this.uiSymbolButton2.RectColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton2.RectHoverColor = System.Drawing.Color.SlateGray;
-            this.uiSymbolButton2.RectPressColor = System.Drawing.Color.SlateGray;
-            this.uiSymbolButton2.RectSelectedColor = System.Drawing.Color.SlateGray;
-            this.uiSymbolButton2.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
-            this.uiSymbolButton2.Size = new System.Drawing.Size(98, 55);
-            this.uiSymbolButton2.Symbol = 561487;
-            this.uiSymbolButton2.SymbolColor = System.Drawing.Color.Gainsboro;
-            this.uiSymbolButton2.SymbolOffset = new System.Drawing.Point(0, -7);
-            this.uiSymbolButton2.SymbolPressColor = System.Drawing.Color.PaleGoldenrod;
-            this.uiSymbolButton2.SymbolSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.uiSymbolButton2.SymbolSize = 36;
-            this.uiSymbolButton2.TabIndex = 28;
-            this.uiSymbolButton2.Tag = "";
-            this.uiSymbolButton2.Text = "RMS";
-            this.uiSymbolButton2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.uiSymbolButton2.TipsFont = new System.Drawing.Font("Arial", 9.75F);
-            this.uiSymbolButton2.Click += new System.EventHandler(this.OnMenuClick);
+            this.btnMenu_RMS.CircleRectWidth = 0;
+            this.btnMenu_RMS.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMenu_RMS.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnMenu_RMS.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnMenu_RMS.FillColor2 = System.Drawing.Color.Gray;
+            this.btnMenu_RMS.FillColorGradientDirection = System.Windows.Forms.FlowDirection.BottomUp;
+            this.btnMenu_RMS.FillDisableColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnMenu_RMS.FillHoverColor = System.Drawing.Color.SlateGray;
+            this.btnMenu_RMS.FillPressColor = System.Drawing.Color.SlateGray;
+            this.btnMenu_RMS.FillSelectedColor = System.Drawing.Color.White;
+            this.btnMenu_RMS.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnMenu_RMS.ForeSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnMenu_RMS.Location = new System.Drawing.Point(392, 0);
+            this.btnMenu_RMS.Margin = new System.Windows.Forms.Padding(1);
+            this.btnMenu_RMS.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnMenu_RMS.Name = "btnMenu_RMS";
+            this.btnMenu_RMS.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
+            this.btnMenu_RMS.Radius = 0;
+            this.btnMenu_RMS.RectColor = System.Drawing.Color.Transparent;
+            this.btnMenu_RMS.RectHoverColor = System.Drawing.Color.SlateGray;
+            this.btnMenu_RMS.RectPressColor = System.Drawing.Color.SlateGray;
+            this.btnMenu_RMS.RectSelectedColor = System.Drawing.Color.SlateGray;
+            this.btnMenu_RMS.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
+            this.btnMenu_RMS.Size = new System.Drawing.Size(98, 55);
+            this.btnMenu_RMS.Symbol = 561487;
+            this.btnMenu_RMS.SymbolColor = System.Drawing.Color.Gainsboro;
+            this.btnMenu_RMS.SymbolOffset = new System.Drawing.Point(0, -7);
+            this.btnMenu_RMS.SymbolPressColor = System.Drawing.Color.PaleGoldenrod;
+            this.btnMenu_RMS.SymbolSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btnMenu_RMS.SymbolSize = 36;
+            this.btnMenu_RMS.TabIndex = 28;
+            this.btnMenu_RMS.Tag = "";
+            this.btnMenu_RMS.Text = "RMS";
+            this.btnMenu_RMS.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnMenu_RMS.TipsFont = new System.Drawing.Font("Arial", 9.75F);
+            this.btnMenu_RMS.Click += new System.EventHandler(this.OnMenuClick);
             // 
             // btnMenu_Device
             // 
@@ -1525,300 +1831,6 @@ namespace IntelligentFactory
             this.btnOpenLogFolder.TabIndex = 0;
             this.btnOpenLogFolder.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.uiSymbolButton5);
-            this.panel2.Controls.Add(this.panel7);
-            this.panel2.Controls.Add(this.panel17);
-            this.panel2.Controls.Add(this.panel16);
-            this.panel2.Controls.Add(this.panel15);
-            this.panel2.Controls.Add(this.panel4);
-            this.panel2.Controls.Add(this.panel14);
-            this.panel2.Controls.Add(this.panel5);
-            this.panel2.Location = new System.Drawing.Point(1134, 26);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(354, 81);
-            this.panel2.TabIndex = 3397;
-            // 
-            // uiSymbolButton5
-            // 
-            this.uiSymbolButton5.BackColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton5.CircleRectWidth = 0;
-            this.uiSymbolButton5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiSymbolButton5.FillColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton5.FillColor2 = System.Drawing.Color.Transparent;
-            this.uiSymbolButton5.FillDisableColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton5.FillHoverColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton5.FillPressColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton5.FillSelectedColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton5.Font = new System.Drawing.Font("Arial", 8F);
-            this.uiSymbolButton5.ForeDisableColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton5.ForeHoverColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton5.ForePressColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton5.ForeSelectedColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiSymbolButton5.Location = new System.Drawing.Point(239, 49);
-            this.uiSymbolButton5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.uiSymbolButton5.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiSymbolButton5.Name = "uiSymbolButton5";
-            this.uiSymbolButton5.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.uiSymbolButton5.RectColor = System.Drawing.Color.White;
-            this.uiSymbolButton5.RectDisableColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton5.RectHoverColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton5.RectPressColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton5.RectSelectedColor = System.Drawing.Color.Transparent;
-            this.uiSymbolButton5.Size = new System.Drawing.Size(108, 25);
-            this.uiSymbolButton5.Style = Sunny.UI.UIStyle.Custom;
-            this.uiSymbolButton5.StyleCustomMode = true;
-            this.uiSymbolButton5.Symbol = 61473;
-            this.uiSymbolButton5.SymbolHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
-            this.uiSymbolButton5.SymbolOffset = new System.Drawing.Point(-5, 0);
-            this.uiSymbolButton5.SymbolSize = 18;
-            this.uiSymbolButton5.TabIndex = 3620;
-            this.uiSymbolButton5.Tag = "ZoomIn";
-            this.uiSymbolButton5.Text = "Re-Init";
-            this.uiSymbolButton5.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.label19);
-            this.panel7.Controls.Add(this.statusVisionLicense);
-            this.panel7.Location = new System.Drawing.Point(5, 44);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(108, 18);
-            this.panel7.TabIndex = 3457;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label19.Font = new System.Drawing.Font("Arial", 8F);
-            this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(18, 0);
-            this.label19.Name = "label19";
-            this.label19.Padding = new System.Windows.Forms.Padding(5, 2, 0, 0);
-            this.label19.Size = new System.Drawing.Size(83, 16);
-            this.label19.TabIndex = 3449;
-            this.label19.Text = "Vision License";
-            // 
-            // statusVisionLicense
-            // 
-            this.statusVisionLicense.Color = System.Drawing.Color.LimeGreen;
-            this.statusVisionLicense.Dock = System.Windows.Forms.DockStyle.Left;
-            this.statusVisionLicense.Location = new System.Drawing.Point(0, 0);
-            this.statusVisionLicense.Name = "statusVisionLicense";
-            this.statusVisionLicense.On = false;
-            this.statusVisionLicense.Size = new System.Drawing.Size(18, 18);
-            this.statusVisionLicense.TabIndex = 3448;
-            this.statusVisionLicense.Text = "uiLedBulb1";
-            // 
-            // panel17
-            // 
-            this.panel17.Controls.Add(this.label37);
-            this.panel17.Controls.Add(this.statusCamera);
-            this.panel17.Location = new System.Drawing.Point(5, 3);
-            this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(108, 18);
-            this.panel17.TabIndex = 3450;
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.BackColor = System.Drawing.Color.Transparent;
-            this.label37.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label37.Font = new System.Drawing.Font("Arial", 8F);
-            this.label37.ForeColor = System.Drawing.Color.White;
-            this.label37.Location = new System.Drawing.Point(18, 0);
-            this.label37.Name = "label37";
-            this.label37.Padding = new System.Windows.Forms.Padding(5, 2, 0, 0);
-            this.label37.Size = new System.Drawing.Size(49, 16);
-            this.label37.TabIndex = 3449;
-            this.label37.Text = "Camera";
-            // 
-            // statusCamera
-            // 
-            this.statusCamera.Color = System.Drawing.Color.LimeGreen;
-            this.statusCamera.Dock = System.Windows.Forms.DockStyle.Left;
-            this.statusCamera.Location = new System.Drawing.Point(0, 0);
-            this.statusCamera.Name = "statusCamera";
-            this.statusCamera.On = false;
-            this.statusCamera.Size = new System.Drawing.Size(18, 18);
-            this.statusCamera.TabIndex = 3448;
-            this.statusCamera.Text = "uiLedBulb25";
-            // 
-            // panel16
-            // 
-            this.panel16.Controls.Add(this.label36);
-            this.panel16.Controls.Add(this.statusLightController);
-            this.panel16.Location = new System.Drawing.Point(5, 23);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(108, 18);
-            this.panel16.TabIndex = 3451;
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.BackColor = System.Drawing.Color.Transparent;
-            this.label36.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label36.Font = new System.Drawing.Font("Arial", 8F);
-            this.label36.ForeColor = System.Drawing.Color.White;
-            this.label36.Location = new System.Drawing.Point(18, 0);
-            this.label36.Name = "label36";
-            this.label36.Padding = new System.Windows.Forms.Padding(5, 2, 0, 0);
-            this.label36.Size = new System.Drawing.Size(84, 16);
-            this.label36.TabIndex = 3449;
-            this.label36.Text = "Light Controller";
-            // 
-            // statusLightController
-            // 
-            this.statusLightController.Color = System.Drawing.Color.LimeGreen;
-            this.statusLightController.Dock = System.Windows.Forms.DockStyle.Left;
-            this.statusLightController.Location = new System.Drawing.Point(0, 0);
-            this.statusLightController.Name = "statusLightController";
-            this.statusLightController.On = false;
-            this.statusLightController.Size = new System.Drawing.Size(18, 18);
-            this.statusLightController.TabIndex = 3448;
-            this.statusLightController.Text = "uiLedBulb24";
-            // 
-            // panel15
-            // 
-            this.panel15.Controls.Add(this.label35);
-            this.panel15.Controls.Add(this.statusIO);
-            this.panel15.Location = new System.Drawing.Point(122, 3);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(108, 18);
-            this.panel15.TabIndex = 3452;
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.BackColor = System.Drawing.Color.Transparent;
-            this.label35.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label35.Font = new System.Drawing.Font("Arial", 8F);
-            this.label35.ForeColor = System.Drawing.Color.White;
-            this.label35.Location = new System.Drawing.Point(18, 0);
-            this.label35.Name = "label35";
-            this.label35.Padding = new System.Windows.Forms.Padding(5, 2, 0, 0);
-            this.label35.Size = new System.Drawing.Size(25, 16);
-            this.label35.TabIndex = 3449;
-            this.label35.Text = "I/O";
-            // 
-            // statusIO
-            // 
-            this.statusIO.Color = System.Drawing.Color.LimeGreen;
-            this.statusIO.Dock = System.Windows.Forms.DockStyle.Left;
-            this.statusIO.Location = new System.Drawing.Point(0, 0);
-            this.statusIO.Name = "statusIO";
-            this.statusIO.On = false;
-            this.statusIO.Size = new System.Drawing.Size(18, 18);
-            this.statusIO.TabIndex = 3448;
-            this.statusIO.Text = "uiLedBulb23";
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.label13);
-            this.panel4.Controls.Add(this.statusEyeD);
-            this.panel4.Location = new System.Drawing.Point(239, 23);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(108, 18);
-            this.panel4.TabIndex = 3455;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label13.Font = new System.Drawing.Font("Arial", 8F);
-            this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(18, 0);
-            this.label13.Name = "label13";
-            this.label13.Padding = new System.Windows.Forms.Padding(5, 2, 0, 0);
-            this.label13.Size = new System.Drawing.Size(87, 16);
-            this.label13.TabIndex = 3449;
-            this.label13.Text = "EYE-D (Server)";
-            // 
-            // statusEyeD
-            // 
-            this.statusEyeD.Color = System.Drawing.Color.LimeGreen;
-            this.statusEyeD.Dock = System.Windows.Forms.DockStyle.Left;
-            this.statusEyeD.Location = new System.Drawing.Point(0, 0);
-            this.statusEyeD.Name = "statusEyeD";
-            this.statusEyeD.On = false;
-            this.statusEyeD.Size = new System.Drawing.Size(18, 18);
-            this.statusEyeD.TabIndex = 3448;
-            this.statusEyeD.Text = "uiLedBulb20";
-            // 
-            // panel14
-            // 
-            this.panel14.Controls.Add(this.label15);
-            this.panel14.Controls.Add(this.statusBuffer);
-            this.panel14.Location = new System.Drawing.Point(122, 23);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(108, 18);
-            this.panel14.TabIndex = 3453;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label15.Font = new System.Drawing.Font("Arial", 8F);
-            this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(18, 0);
-            this.label15.Name = "label15";
-            this.label15.Padding = new System.Windows.Forms.Padding(5, 2, 0, 0);
-            this.label15.Size = new System.Drawing.Size(43, 16);
-            this.label15.TabIndex = 3449;
-            this.label15.Text = "Buffer";
-            // 
-            // statusBuffer
-            // 
-            this.statusBuffer.Color = System.Drawing.Color.LimeGreen;
-            this.statusBuffer.Dock = System.Windows.Forms.DockStyle.Left;
-            this.statusBuffer.Location = new System.Drawing.Point(0, 0);
-            this.statusBuffer.Name = "statusBuffer";
-            this.statusBuffer.On = false;
-            this.statusBuffer.Size = new System.Drawing.Size(18, 18);
-            this.statusBuffer.TabIndex = 3448;
-            this.statusBuffer.Text = "uiLedBulb22";
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.label17);
-            this.panel5.Controls.Add(this.statusMES);
-            this.panel5.Location = new System.Drawing.Point(239, 3);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(108, 18);
-            this.panel5.TabIndex = 3454;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.label17.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label17.Font = new System.Drawing.Font("Arial", 8F);
-            this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(18, 0);
-            this.label17.Name = "label17";
-            this.label17.Padding = new System.Windows.Forms.Padding(5, 2, 0, 0);
-            this.label17.Size = new System.Drawing.Size(77, 16);
-            this.label17.TabIndex = 3449;
-            this.label17.Text = "MES (Recipe)";
-            // 
-            // statusMES
-            // 
-            this.statusMES.Color = System.Drawing.Color.LimeGreen;
-            this.statusMES.Dock = System.Windows.Forms.DockStyle.Left;
-            this.statusMES.Location = new System.Drawing.Point(0, 0);
-            this.statusMES.Name = "statusMES";
-            this.statusMES.On = false;
-            this.statusMES.Size = new System.Drawing.Size(18, 18);
-            this.statusMES.TabIndex = 3448;
-            this.statusMES.Text = "uiLedBulb21";
-            // 
             // uiPanel3
             // 
             this.uiPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
@@ -1895,10 +1907,10 @@ namespace IntelligentFactory
             // 
             this.lblMode.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblMode.ForeColor = System.Drawing.Color.White;
-            this.lblMode.Location = new System.Drawing.Point(1504, 35);
+            this.lblMode.Location = new System.Drawing.Point(1508, 31);
             this.lblMode.MinimumSize = new System.Drawing.Size(1, 1);
             this.lblMode.Name = "lblMode";
-            this.lblMode.Size = new System.Drawing.Size(100, 36);
+            this.lblMode.Size = new System.Drawing.Size(400, 49);
             this.lblMode.TabIndex = 3439;
             this.lblMode.Text = "READY";
             // 
@@ -1913,9 +1925,9 @@ namespace IntelligentFactory
             this.btnAutoStart.FillHoverColor = System.Drawing.Color.SlateGray;
             this.btnAutoStart.FillPressColor = System.Drawing.Color.SlateGray;
             this.btnAutoStart.FillSelectedColor = System.Drawing.Color.White;
-            this.btnAutoStart.Font = new System.Drawing.Font("맑은 고딕", 8F, System.Drawing.FontStyle.Bold);
+            this.btnAutoStart.Font = new System.Drawing.Font("맑은 고딕", 14F, System.Drawing.FontStyle.Bold);
             this.btnAutoStart.ForeSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.btnAutoStart.Location = new System.Drawing.Point(1611, 30);
+            this.btnAutoStart.Location = new System.Drawing.Point(1188, 31);
             this.btnAutoStart.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnAutoStart.Name = "btnAutoStart";
             this.btnAutoStart.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
@@ -1925,50 +1937,52 @@ namespace IntelligentFactory
             this.btnAutoStart.RectPressColor = System.Drawing.Color.White;
             this.btnAutoStart.RectSelectedColor = System.Drawing.Color.White;
             this.btnAutoStart.RectSize = 2;
-            this.btnAutoStart.Size = new System.Drawing.Size(75, 45);
+            this.btnAutoStart.Size = new System.Drawing.Size(77, 69);
             this.btnAutoStart.Symbol = 61515;
             this.btnAutoStart.SymbolOffset = new System.Drawing.Point(0, -7);
             this.btnAutoStart.SymbolSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.btnAutoStart.SymbolSize = 20;
+            this.btnAutoStart.SymbolSize = 35;
             this.btnAutoStart.TabIndex = 3435;
             this.btnAutoStart.Tag = "MAIN";
             this.btnAutoStart.Text = "START";
             this.btnAutoStart.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAutoStart.TipsFont = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnAutoStart.Click += new System.EventHandler(this.OnClick_Auto);
             // 
-            // uiSymbolButton3
+            // BtnReset
             // 
-            this.uiSymbolButton3.CircleRectWidth = 0;
-            this.uiSymbolButton3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiSymbolButton3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.uiSymbolButton3.FillColor2 = System.Drawing.Color.Gray;
-            this.uiSymbolButton3.FillColorGradientDirection = System.Windows.Forms.FlowDirection.BottomUp;
-            this.uiSymbolButton3.FillDisableColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.uiSymbolButton3.FillHoverColor = System.Drawing.Color.SlateGray;
-            this.uiSymbolButton3.FillPressColor = System.Drawing.Color.SlateGray;
-            this.uiSymbolButton3.FillSelectedColor = System.Drawing.Color.White;
-            this.uiSymbolButton3.Font = new System.Drawing.Font("맑은 고딕", 8F, System.Drawing.FontStyle.Bold);
-            this.uiSymbolButton3.Location = new System.Drawing.Point(1839, 30);
-            this.uiSymbolButton3.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiSymbolButton3.Name = "uiSymbolButton3";
-            this.uiSymbolButton3.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.uiSymbolButton3.Radius = 4;
-            this.uiSymbolButton3.RectColor = System.Drawing.Color.White;
-            this.uiSymbolButton3.RectHoverColor = System.Drawing.Color.White;
-            this.uiSymbolButton3.RectPressColor = System.Drawing.Color.White;
-            this.uiSymbolButton3.RectSelectedColor = System.Drawing.Color.White;
-            this.uiSymbolButton3.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
-            this.uiSymbolButton3.RectSize = 2;
-            this.uiSymbolButton3.Size = new System.Drawing.Size(75, 45);
-            this.uiSymbolButton3.Symbol = 557410;
-            this.uiSymbolButton3.SymbolOffset = new System.Drawing.Point(0, -7);
-            this.uiSymbolButton3.SymbolSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.uiSymbolButton3.SymbolSize = 20;
-            this.uiSymbolButton3.TabIndex = 3438;
-            this.uiSymbolButton3.Tag = "MAIN";
-            this.uiSymbolButton3.Text = "RESET";
-            this.uiSymbolButton3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.uiSymbolButton3.TipsFont = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.BtnReset.CircleRectWidth = 0;
+            this.BtnReset.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnReset.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.BtnReset.FillColor2 = System.Drawing.Color.Gray;
+            this.BtnReset.FillColorGradientDirection = System.Windows.Forms.FlowDirection.BottomUp;
+            this.BtnReset.FillDisableColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.BtnReset.FillHoverColor = System.Drawing.Color.SlateGray;
+            this.BtnReset.FillPressColor = System.Drawing.Color.SlateGray;
+            this.BtnReset.FillSelectedColor = System.Drawing.Color.White;
+            this.BtnReset.Font = new System.Drawing.Font("맑은 고딕", 14F, System.Drawing.FontStyle.Bold);
+            this.BtnReset.Location = new System.Drawing.Point(1425, 31);
+            this.BtnReset.MinimumSize = new System.Drawing.Size(1, 1);
+            this.BtnReset.Name = "BtnReset";
+            this.BtnReset.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.BtnReset.Radius = 4;
+            this.BtnReset.RectColor = System.Drawing.Color.White;
+            this.BtnReset.RectHoverColor = System.Drawing.Color.White;
+            this.BtnReset.RectPressColor = System.Drawing.Color.White;
+            this.BtnReset.RectSelectedColor = System.Drawing.Color.White;
+            this.BtnReset.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+            this.BtnReset.RectSize = 2;
+            this.BtnReset.Size = new System.Drawing.Size(77, 69);
+            this.BtnReset.Symbol = 557410;
+            this.BtnReset.SymbolOffset = new System.Drawing.Point(0, -7);
+            this.BtnReset.SymbolSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.BtnReset.SymbolSize = 35;
+            this.BtnReset.TabIndex = 3438;
+            this.BtnReset.Tag = "MAIN";
+            this.BtnReset.Text = "RESET";
+            this.BtnReset.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnReset.TipsFont = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.BtnReset.Click += new System.EventHandler(this.OnClick_Auto);
             // 
             // btnOper_Pause
             // 
@@ -1981,8 +1995,8 @@ namespace IntelligentFactory
             this.btnOper_Pause.FillHoverColor = System.Drawing.Color.SlateGray;
             this.btnOper_Pause.FillPressColor = System.Drawing.Color.SlateGray;
             this.btnOper_Pause.FillSelectedColor = System.Drawing.Color.White;
-            this.btnOper_Pause.Font = new System.Drawing.Font("맑은 고딕", 8F, System.Drawing.FontStyle.Bold);
-            this.btnOper_Pause.Location = new System.Drawing.Point(1687, 30);
+            this.btnOper_Pause.Font = new System.Drawing.Font("맑은 고딕", 14F, System.Drawing.FontStyle.Bold);
+            this.btnOper_Pause.Location = new System.Drawing.Point(1267, 31);
             this.btnOper_Pause.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnOper_Pause.Name = "btnOper_Pause";
             this.btnOper_Pause.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
@@ -1993,30 +2007,31 @@ namespace IntelligentFactory
             this.btnOper_Pause.RectSelectedColor = System.Drawing.Color.White;
             this.btnOper_Pause.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
             this.btnOper_Pause.RectSize = 2;
-            this.btnOper_Pause.Size = new System.Drawing.Size(75, 45);
+            this.btnOper_Pause.Size = new System.Drawing.Size(77, 69);
             this.btnOper_Pause.Symbol = 61516;
             this.btnOper_Pause.SymbolOffset = new System.Drawing.Point(0, -7);
             this.btnOper_Pause.SymbolSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.btnOper_Pause.SymbolSize = 20;
+            this.btnOper_Pause.SymbolSize = 35;
             this.btnOper_Pause.TabIndex = 3436;
             this.btnOper_Pause.Tag = "MAIN";
             this.btnOper_Pause.Text = "PAUSE";
             this.btnOper_Pause.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnOper_Pause.TipsFont = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnOper_Pause.Click += new System.EventHandler(this.OnClick_Auto);
             // 
             // btnOper_Stop
             // 
             this.btnOper_Stop.CircleRectWidth = 0;
             this.btnOper_Stop.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnOper_Stop.FillColor = System.Drawing.Color.Green;
+            this.btnOper_Stop.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.btnOper_Stop.FillColor2 = System.Drawing.Color.Gray;
             this.btnOper_Stop.FillColorGradientDirection = System.Windows.Forms.FlowDirection.BottomUp;
             this.btnOper_Stop.FillDisableColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
             this.btnOper_Stop.FillHoverColor = System.Drawing.Color.SlateGray;
             this.btnOper_Stop.FillPressColor = System.Drawing.Color.SlateGray;
             this.btnOper_Stop.FillSelectedColor = System.Drawing.Color.White;
-            this.btnOper_Stop.Font = new System.Drawing.Font("맑은 고딕", 8F, System.Drawing.FontStyle.Bold);
-            this.btnOper_Stop.Location = new System.Drawing.Point(1763, 30);
+            this.btnOper_Stop.Font = new System.Drawing.Font("맑은 고딕", 14F, System.Drawing.FontStyle.Bold);
+            this.btnOper_Stop.Location = new System.Drawing.Point(1346, 31);
             this.btnOper_Stop.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnOper_Stop.Name = "btnOper_Stop";
             this.btnOper_Stop.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
@@ -2027,16 +2042,17 @@ namespace IntelligentFactory
             this.btnOper_Stop.RectSelectedColor = System.Drawing.Color.White;
             this.btnOper_Stop.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
             this.btnOper_Stop.RectSize = 2;
-            this.btnOper_Stop.Size = new System.Drawing.Size(75, 45);
+            this.btnOper_Stop.Size = new System.Drawing.Size(77, 69);
             this.btnOper_Stop.Symbol = 61517;
             this.btnOper_Stop.SymbolOffset = new System.Drawing.Point(0, -7);
             this.btnOper_Stop.SymbolSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
-            this.btnOper_Stop.SymbolSize = 20;
+            this.btnOper_Stop.SymbolSize = 35;
             this.btnOper_Stop.TabIndex = 3437;
             this.btnOper_Stop.Tag = "MAIN";
             this.btnOper_Stop.Text = "STOP";
             this.btnOper_Stop.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnOper_Stop.TipsFont = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnOper_Stop.Click += new System.EventHandler(this.OnClick_Auto);
             // 
             // FormMenu_MainFrame
             // 
@@ -2048,19 +2064,18 @@ namespace IntelligentFactory
             this.ControlBox = false;
             this.Controls.Add(this.lblMode);
             this.Controls.Add(this.btnAutoStart);
-            this.Controls.Add(this.uiSymbolButton3);
+            this.Controls.Add(this.BtnReset);
             this.Controls.Add(this.btnOper_Pause);
             this.Controls.Add(this.btnOper_Stop);
             this.Controls.Add(this.pnlLogViewer);
             this.Controls.Add(this.uiPanel3);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.lbRecipeName);
             this.Controls.Add(this.uiPanel1);
             this.Controls.Add(this.statusBar);
             this.Controls.Add(this.pnMDI);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2080,13 +2095,6 @@ namespace IntelligentFactory
             this.panel3.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.statusBar.ResumeLayout(false);
-            this.uiPanel1.ResumeLayout(false);
-            this.pnlMessage.ResumeLayout(false);
-            this.pnlLogViewer.ResumeLayout(false);
-            this.pnlLogViewer.PerformLayout();
-            this.uiPanel4.ResumeLayout(false);
-            this.uiPanel5.ResumeLayout(false);
-            this.uiPanel5.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
@@ -2096,12 +2104,17 @@ namespace IntelligentFactory
             this.panel16.PerformLayout();
             this.panel15.ResumeLayout(false);
             this.panel15.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.uiPanel1.ResumeLayout(false);
+            this.pnlMessage.ResumeLayout(false);
+            this.pnlLogViewer.ResumeLayout(false);
+            this.pnlLogViewer.PerformLayout();
+            this.uiPanel4.ResumeLayout(false);
+            this.uiPanel5.ResumeLayout(false);
+            this.uiPanel5.PerformLayout();
             this.uiPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -2124,27 +2137,24 @@ namespace IntelligentFactory
         private System.Windows.Forms.Timer timerStatus;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lbRecipeName;
-        private System.Windows.Forms.Label lbTotal_M;
+        private System.Windows.Forms.Label lbCurrentTotal;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnCountReset;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label lbCountYield;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label lbCountNG_F;
+        private System.Windows.Forms.Label lbCountNG_T;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label lbCountOK;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lbCountTOTAL;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label lbYield_M;
+        private System.Windows.Forms.Label lbCurrentYield;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label lbNG_M;
+        private System.Windows.Forms.Label lbCurrentNG;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label lbOK_M;
+        private System.Windows.Forms.Label lbCurrentOK;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button btnCountReset_M;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label6;
         private Sunny.UI.UIPanel statusBar;
         private Sunny.UI.UILine uiLine2;
         private Sunny.UI.UIProcessBar processBar_DiskD;
@@ -2160,7 +2170,7 @@ namespace IntelligentFactory
         private System.Windows.Forms.Label lblMessage;
         private Sunny.UI.UISymbolButton lblVersion;
         private Sunny.UI.UISymbolButton btnMenu_Setting;
-        private Sunny.UI.UISymbolButton uiSymbolButton2;
+        private Sunny.UI.UISymbolButton btnMenu_RMS;
         private Sunny.UI.UISymbolButton btnMenu_Device;
         private Sunny.UI.UISymbolButton btnMenu_Vision;
         private Sunny.UI.UISymbolButton btnMenu_Model;
@@ -2192,9 +2202,6 @@ namespace IntelligentFactory
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Label label35;
         private Sunny.UI.UILedBulb statusIO;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label13;
-        private Sunny.UI.UILedBulb statusEyeD;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Label label15;
         private Sunny.UI.UILedBulb statusBuffer;
@@ -2214,8 +2221,14 @@ namespace IntelligentFactory
         private Sunny.UI.UISymbolButton uiSymbolButton5;
         private Sunny.UI.UILedLabel lblMode;
         private Sunny.UI.UISymbolButton btnAutoStart;
-        private Sunny.UI.UISymbolButton uiSymbolButton3;
+        private Sunny.UI.UISymbolButton BtnReset;
         private Sunny.UI.UISymbolButton btnOper_Pause;
         private Sunny.UI.UISymbolButton btnOper_Stop;
+        private System.Windows.Forms.Label lbNGfalsePER;
+        private System.Windows.Forms.Label lbCountNG_F;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lbNGtruePer;
+        private System.Windows.Forms.Label lblBuffer;
+        private System.Windows.Forms.Button BtnInsp;
     }
 }

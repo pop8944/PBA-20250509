@@ -1,5 +1,6 @@
 ﻿using Cognex.VisionPro;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -8,62 +9,50 @@ namespace IntelligentFactory
 {
     public class Recipe_Insp
     {
-        public Rectangle QrRegionArray1 { get; set; } = new Rectangle(100, 100, 100, 100);
-        public Rectangle QrRegionArray2 { get; set; } = new Rectangle(100, 100, 100, 100);
-        public Rectangle QrRegionArray3 { get; set; } = new Rectangle(100, 100, 100, 100);
-        public Rectangle QrRegionArray4 { get; set; } = new Rectangle(100, 100, 100, 100);
+        List<Rectangle> QRRegionArrayList = new List<Rectangle>();
 
+        public List<Rectangle> QrRegionList { get; set; }
         public Recipe_Insp()
         {
+            QrRegionList = new List<Rectangle>();
+            int defaultNumberOfRegions = 12;
+            for (int i = 0; i < defaultNumberOfRegions; i++)
+            {
+                QrRegionList.Add(new Rectangle(100, 100, 100, 100));
+            }
         }
 
-        public Recipe_Insp Load(string recipeName)
+        public Rectangle GetQrRegion(int index)
         {
-            string path = $"{Application.StartupPath}\\RECIPE\\{recipeName}\\Recipe_Insp.xml";
-            Recipe_Insp newData = null;
-
-            if (File.Exists(path))
+            if (index >= 0 && index < QrRegionList.Count)
             {
-                newData = SerializeHelper.FromXmlFile<Recipe_Insp>(path);
-
-                if (newData != null)
-                {
-
-                    return newData;
-                }
+                return QrRegionList[index];
             }
-
-            newData = new Recipe_Insp();
-            newData.Save(recipeName);
-            return newData;
+            else
+            {
+                return Rectangle.Empty;
+            }
         }
 
         public CogRectangle GetQrCogRegion(int idx)
         {
-            if (idx == 0) return CConverter.RectToCogRect(QrRegionArray1);
-            if (idx == 1) return CConverter.RectToCogRect(QrRegionArray2);
-            if (idx == 2) return CConverter.RectToCogRect(QrRegionArray3);
-            if (idx == 3) return CConverter.RectToCogRect(QrRegionArray4);
-
+            Rectangle region = GetQrRegion(idx);
+            if (!region.IsEmpty)
+            {
+                return CConverter.RectToCogRect(region);
+            }
             return new CogRectangle();
         }
-
-        public Rectangle GetQrRegion(int idx)
+        public void SetQrRegion(int index, Rectangle value)
         {
-            if (idx == 0) return QrRegionArray1;
-            if (idx == 1) return QrRegionArray2;
-            if (idx == 2) return QrRegionArray3;
-            if (idx == 3) return QrRegionArray4;
+            if (index >= 0 && index < QrRegionList.Count)
+            {
+                QrRegionList[index] = value;
+            }
+            else
+            {
 
-            return new Rectangle();
-        }
-
-        public void Save(string recipeName)
-        {
-            string path = $"{Application.StartupPath}\\RECIPE\\{recipeName}\\Recipe_Insp.xml";
-            Directory.CreateDirectory(Path.GetDirectoryName(path));
-
-            try { SerializeHelper.ToXmlFile(path, this); } catch (Exception ex) { }
+            }
         }
     }
 }

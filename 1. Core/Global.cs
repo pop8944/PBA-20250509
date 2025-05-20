@@ -134,6 +134,7 @@ namespace IntelligentFactory
         public FormMenu_PbaLibrary Frm_PBA_Library = null;
         public FormPopUp_ImageView2 FrmPopup_View = null;
         public FormMenu_PbaLibrary2 Frm_PBA_Library2 = null;
+        public FormPopUp_EYEDuserControl FrmPopup_EYED = null;
         // TCP 자동기종변경 테스트 폼
         public FormMenu_ARC_Tester Frm_ARC_Tester = null;
         public static string Notice = "";
@@ -141,7 +142,7 @@ namespace IntelligentFactory
 
         private bool isPass = false;
         public bool isOnGrab = false;
-        public EYED eyeD = null;
+        public EYED eyeD = new EYED();
         public void SetPass(bool pass)
         {
             isPass = pass;
@@ -170,6 +171,75 @@ namespace IntelligentFactory
 
         // Auto 결과 이미지 뿌리기..
         public Bitmap[] ImageResults_array = new Bitmap[4];
+        public Bitmap[] ImageNG_array = new Bitmap[4];
+        public Bitmap[][] ImageOrigin_array =
+            {
+             new Bitmap[4],
+             new Bitmap[4],
+             new Bitmap[4],
+             new Bitmap[4]
+          };
+       
+
+        public CogImage24PlanarColor[][] Crop_Images =
+         {
+            new CogImage24PlanarColor[4],
+            new CogImage24PlanarColor[4],
+            new CogImage24PlanarColor[4],
+            new CogImage24PlanarColor[4]
+        };
+        public List<LogicNGData> NGDataList = new List<LogicNGData>();
+        public static EventHandler<bool> resultdrawEvent;
+        public static EventHandler<bool> resultdrawVisionEvent;
+        public List<Global.LogicNGData>[] Retry_ArrayList = { new List<Global.LogicNGData>(), new List<Global.LogicNGData>(), new List<Global.LogicNGData>(), new List<Global.LogicNGData>() };
+        public bool[] Result_Array = new bool[4];
+        public int Retry_Count = 0;
+        public bool bSimulation = false;
+        public class LogicNGData
+        {
+            public int ArrayIdx;
+            public Dictionary<string, object> NG_data;
+            public LogicNGData(int arrayIdx, Dictionary<string, object> Data)
+            {
+                ArrayIdx = arrayIdx; // array 값
+                NG_data = Data; // NG DATA
+            }
+        }
+        public int totalCount = 0;
+
+        public static int logicCount = 0;
+        public int LogicCount 
+        { 
+            get => logicCount; 
+            set
+            {
+                logicCount = value; 
+                if(logicCount == totalCount)
+                {
+                    if (bSimulation == true) resultdrawVisionEvent?.Invoke(this, true);
+                    else 
+                    {
+                        resultdrawEvent?.Invoke(this, true);
+                        //if (Mode.ReInspecUse == true)
+                        //{
+                        //    if (Retry_Count >= Mode.ReInspecCnt)
+                        //    {
+
+                        //    }
+                        //}
+                        //else
+                        //{ 
+                        //    resultdrawEvent?.Invoke(this, true);
+                        //}
+                    }
+
+                   
+                    logicCount = 0;
+                }
+            }
+            
+        }
+        public bool RunView = false;
         // 메인 체크 쓰레드 런 플래그
         bool nMainSystemCheck = false;
         // 파일 삭제 쓰레드 플래그
@@ -303,7 +373,7 @@ namespace IntelligentFactory
             FrmPopup_View = new FormPopUp_ImageView2();
             Frm_PBA_Library2 = new FormMenu_PbaLibrary2();
             Frm_ARC_Tester = new FormMenu_ARC_Tester(); // TCP ARC 폼 테스트..
-
+            FrmPopup_EYED = new FormPopUp_EYEDuserControl();
             InitCamera();
             InitDB(); //SQLite 추가
         }
@@ -337,7 +407,6 @@ namespace IntelligentFactory
             m_DriverD.DriverUse = Util.GetDriverCheck("D");
             m_DriverE.DriverUse = Util.GetDriverCheck("E");
 
-            eyeD = new EYED();
             CognexLicense_Check();
         }
 
@@ -485,254 +554,254 @@ namespace IntelligentFactory
 
         // RMS 결과 프로세싱 처리
         // 결과값 쓰기..
-        public bool RMS_PostProcessing()
-        {
-            Notice = "Inspecting : Judging";
-            bool bTotalResult = true;
-            string strData = "";
-            int nErrorQR = 0;
+        //public bool RMS_PostProcessing()
+        //{
+        //    Notice = "Inspecting : Judging";
+        //    bool bTotalResult = true;
+        //    string strData = "";
+        //    int nErrorQR = 0;
 
-            QRParser cStandardQR = Data.GetStandardQR();
+        //    QRParser cStandardQR = Data.GetStandardQR();
 
-            for (int i = 0; i < System.Recipe.ArrayCount; i++)
-            {
-                string strTitle = cStandardQR.GetQRTitle();
-                //QRParser qrID = new QRParser(strID);
+        //    for (int i = 0; i < System.Recipe.ArrayCount; i++)
+        //    {
+        //        string strTitle = cStandardQR.GetQRTitle();
+        //        //QRParser qrID = new QRParser(strID);
 
-                //int nindex = strID.IndexOf("DT");
-                //if (nindex > 0 && strID.Length >= (nindex + 8))
-                //{
-                //    strID = strID.Substring(nindex, 8);
-                //}
+        //        //int nindex = strID.IndexOf("DT");
+        //        //if (nindex > 0 && strID.Length >= (nindex + 8))
+        //        //{
+        //        //    strID = strID.Substring(nindex, 8);
+        //        //}
 
-                if (Data.Array_QrCodes[i].IsError()) nErrorQR++;
+        //        if (Data.Array_QrCodes[i].IsError()) nErrorQR++;
 
-                // 여기 변경한다.
-                //if (i == 0)
-                //{
-                //    //strData = cStandardQR.GetQRTitle() + Data.Board_QrCode[i].GetSerialNo();
-                //    strData = Data.Board_QrCode[i].GetSerialNo();
-                //}
-                //else
-                //{
-                //    //strData = strData + "/" + Data.Board_QrCode[i].GetSerialNo();
-                //    strData = strData + "/" + Data.Board_QrCode[i].GetSerialNo();
-                //}
-                if (i == 0)
-                {
-                    strData = Data.Array_QrCodes[i].GetSerialNo();
-                }
-                else
-                {
-                    strData = strData + "/" + Data.Array_QrCodes[i].GetSerialNo();
-                }
+        //        // 여기 변경한다.
+        //        //if (i == 0)
+        //        //{
+        //        //    //strData = cStandardQR.GetQRTitle() + Data.Board_QrCode[i].GetSerialNo();
+        //        //    strData = Data.Board_QrCode[i].GetSerialNo();
+        //        //}
+        //        //else
+        //        //{
+        //        //    //strData = strData + "/" + Data.Board_QrCode[i].GetSerialNo();
+        //        //    strData = strData + "/" + Data.Board_QrCode[i].GetSerialNo();
+        //        //}
+        //        if (i == 0)
+        //        {
+        //            strData = Data.Array_QrCodes[i].GetSerialNo();
+        //        }
+        //        else
+        //        {
+        //            strData = strData + "/" + Data.Array_QrCodes[i].GetSerialNo();
+        //        }
 
-                //if (ArrayResults[i] == false)
-                //{
-                //    bTotalResult = false;
-                //    Data.CountNG_F++;
-                //    Data.CurrentNG++;
-                //}
-                //else
-                //{
-                //    Data.CountOK++;
-                //    Data.CurrentOK++;
-                //}
+        //        //if (ArrayResults[i] == false)
+        //        //{
+        //        //    bTotalResult = false;
+        //        //    Data.CountNG_F++;
+        //        //    Data.CurrentNG++;
+        //        //}
+        //        //else
+        //        //{
+        //        //    Data.CountOK++;
+        //        //    Data.CurrentOK++;
+        //        //}
 
-                //FileManager.IdDataSave(Data.Board_QrCode[i].GetQR(), ArrayResults[i]);
-            }
+        //        //FileManager.IdDataSave(Data.Board_QrCode[i].GetQR(), ArrayResults[i]);
+        //    }
 
-            if (nErrorQR > 0)
-            {
-                CLogger.Add(LOG.ABNORMAL, "[QR] ReadError");
-            }
+        //    if (nErrorQR > 0)
+        //    {
+        //        CLogger.Add(LOG.ABNORMAL, "[QR] ReadError");
+        //    }
 
-            double yield = 0;
-            if (Data.yield != null) yield = double.Parse(Data.yield);
+        //    double yield = 0;
+        //    if (Data.yield != null) yield = double.Parse(Data.yield);
 
-            //FileManager.CountSave(Data.CountOK, Data.CountNG_T, Data.CountNG_F, yield);
-            FileManager.CountSave(Data);
+        //    //FileManager.CountSave(Data.CountOK, Data.CountNG_T, Data.CountNG_F, yield);
+        //    //FileManager.CountSave(Data);
 
-            bool bRecent = false;
-            if (!Mode.NGisRecent)
-                bRecent = true;
-            else
-            {
-                if (!bTotalResult)
-                    bRecent = true;
-            }
+        //    bool bRecent = false;
+        //    if (!Mode.NGisRecent)
+        //        bRecent = true;
+        //    else
+        //    {
+        //        if (!bTotalResult)
+        //            bRecent = true;
+        //    }
 
-            if (bRecent)
-            {
-                CogRecentImage recent = new CogRecentImage();
-                recent.Name = strData;
-                recent.DateTime = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
+        //    if (bRecent)
+        //    {
+        //        CogRecentImage recent = new CogRecentImage();
+        //        recent.Name = strData;
+        //        recent.DateTime = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
 
-                for (int i = 0; i < recent.recentImages.Length; i++)
-                {
-                    if (ImagesGrab[i] != null && ImagesGrab[i].Allocated)
-                    {
-                        recent.recentImages[i] = new Cognex.VisionPro.CogImage24PlanarColor(ImagesGrab[i]);
-                    }
-                }
+        //        for (int i = 0; i < recent.recentImages.Length; i++)
+        //        {
+        //            if (ImagesGrab[i] != null && ImagesGrab[i].Allocated)
+        //            {
+        //                recent.recentImages[i] = new Cognex.VisionPro.CogImage24PlanarColor(ImagesGrab[i]);
+        //            }
+        //        }
 
-                Data.cogRecentImages.Add(recent);
+        //        Data.cogRecentImages.Add(recent);
 
-                if (Data.cogRecentImages.Count > 20)
-                    Data.cogRecentImages.RemoveAt(0);
-            }
+        //        if (Data.cogRecentImages.Count > 20)
+        //            Data.cogRecentImages.RemoveAt(0);
+        //    }
 
-            Device.strRMSQR = Device.NGBUFFER.GetQR().GetQR();
-            Device.SaveConfig();
+        //    Device.strRMSQR = Device.NGBUFFER.GetQR().GetQR();
+        //    Device.SaveConfig();
 
-            // 폴란드 버젼에서 해당 비트가 ON되어있는지 체크를 위해 로그 기록..
-            if (Global.Instance.Setting.Enviroment.Country == Setting_Enviroment.COUNTRY.POL)
-            {
-                if (!Mode.isForceJudge) //정상 시퀀스
-                {
-                    CLogger.Add(LOG.SEQ, $"SEQ isForceJudge ==> false");
-                    if (bTotalResult) //OK
-                    {
-                        CLogger.Add(LOG.SEQ, $"SEQ NORMAL JUDGE ==> OK");
-                        CLogger.Add(LOG.COMM, $"SEQ NORMAL JUDGE ==> OK");
-                        Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_OK, true);
-                        Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_NG, false);
-                        Device.NGBUFFER.Command_PCBID_END_JUDGE(true);
-                    }
-                    else//NG
-                    {
-                        CLogger.Add(LOG.SEQ, $"SEQ NORMAL JUDGE ==> NG");
-                        CLogger.Add(LOG.COMM, $"SEQ NORMAL JUDGE ==> NG");
+        //    // 폴란드 버젼에서 해당 비트가 ON되어있는지 체크를 위해 로그 기록..
+        //    if (Global.Instance.Setting.Enviroment.Country == Setting_Enviroment.COUNTRY.POL)
+        //    {
+        //        if (!Mode.isForceJudge) //정상 시퀀스
+        //        {
+        //            CLogger.Add(LOG.SEQ, $"SEQ isForceJudge ==> false");
+        //            if (bTotalResult) //OK
+        //            {
+        //                CLogger.Add(LOG.SEQ, $"SEQ NORMAL JUDGE ==> OK");
+        //                CLogger.Add(LOG.COMM, $"SEQ NORMAL JUDGE ==> OK");
+        //                Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_OK, true);
+        //                Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_NG, false);
+        //                Device.NGBUFFER.Command_PCBID_END_JUDGE(true);
+        //            }
+        //            else//NG
+        //            {
+        //                CLogger.Add(LOG.SEQ, $"SEQ NORMAL JUDGE ==> NG");
+        //                CLogger.Add(LOG.COMM, $"SEQ NORMAL JUDGE ==> NG");
 
-                        if (!Global.Instance.Mode.isDebugMode)
-                        {
-                            Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_OK, false);
-                            Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_NG, true);
-                            Device.NGBUFFER.Command_PCBID_END_JUDGE(false);
-                        }
-                        else // 디버그모드 ON이면 NG시 신호 안나가고 멈추고 수정후 재검사
-                        {
-                            CLogger.Add(LOG.SEQ, $"SEQ NORMAL JUDGE ==> DEBUG");
-                            Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_OK, false);
-                            Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_NG, false);
-                        }
-                    }
-                }
-                else
-                {
-                    // 강제 결과 판정...
-                    CLogger.Add(LOG.SEQ, $"SEQ isForceJudge ==> true");
-                    // 강제 OK판정
-                    if (Mode.AutoJudge)
-                    {
-                        CLogger.Add(LOG.SEQ, $"SEQ AUTO JUDGE ==> OK");
-                        Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_OK, true);
-                        Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_NG, false);
+        //                if (!Global.Instance.Mode.isDebugMode)
+        //                {
+        //                    Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_OK, false);
+        //                    Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_NG, true);
+        //                    Device.NGBUFFER.Command_PCBID_END_JUDGE(false);
+        //                }
+        //                else // 디버그모드 ON이면 NG시 신호 안나가고 멈추고 수정후 재검사
+        //                {
+        //                    CLogger.Add(LOG.SEQ, $"SEQ NORMAL JUDGE ==> DEBUG");
+        //                    Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_OK, false);
+        //                    Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_NG, false);
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
+        //            // 강제 결과 판정...
+        //            CLogger.Add(LOG.SEQ, $"SEQ isForceJudge ==> true");
+        //            // 강제 OK판정
+        //            if (Mode.AutoJudge)
+        //            {
+        //                CLogger.Add(LOG.SEQ, $"SEQ AUTO JUDGE ==> OK");
+        //                Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_OK, true);
+        //                Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_NG, false);
 
-                        Device.NGBUFFER.Command_PCBID_END_JUDGE(true);
-                    }
-                    // 강제 NG판정
-                    else
-                    {
-                        CLogger.Add(LOG.SEQ, $"SEQ AUTO JUDGE ==> NG");
-                        Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_OK, false);
-                        Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_NG, true);
+        //                Device.NGBUFFER.Command_PCBID_END_JUDGE(true);
+        //            }
+        //            // 강제 NG판정
+        //            else
+        //            {
+        //                CLogger.Add(LOG.SEQ, $"SEQ AUTO JUDGE ==> NG");
+        //                Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_OK, false);
+        //                Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_NG, true);
 
-                        Device.NGBUFFER.Command_PCBID_END_JUDGE(false);
-                    }
-                }
+        //                Device.NGBUFFER.Command_PCBID_END_JUDGE(false);
+        //            }
+        //        }
 
-                Stopwatch sw = Stopwatch.StartNew();
-                while (sw.ElapsedMilliseconds < 300000)
-                {
-                    Thread.Sleep(1);
+        //        Stopwatch sw = Stopwatch.StartNew();
+        //        while (sw.ElapsedMilliseconds < 300000)
+        //        {
+        //            Thread.Sleep(1);
 
-                    if (Device.NGBUFFER.GetInPutBoard())
-                    {
-                        CLogger.Add(LOG.SEQ, $"INPUT BOARD ING BIT : ON");
-                        break;
-                    }
-                    else
-                    {
-                        CLogger.Add(LOG.SEQ, $"INPUT BOARD ING BIT : OFF");
-                    }
-                }
+        //            if (Device.NGBUFFER.GetInPutBoard())
+        //            {
+        //                CLogger.Add(LOG.SEQ, $"INPUT BOARD ING BIT : ON");
+        //                break;
+        //            }
+        //            else
+        //            {
+        //                CLogger.Add(LOG.SEQ, $"INPUT BOARD ING BIT : OFF");
+        //            }
+        //        }
 
-                Device.NGBUFFER.CommandQueue.Enqueue(("D", "10000", typeof(string), strData));
-                CLogger.Add(LOG.COMM, $"QR Send -> NG Buffer : {strData}");
-            }
-            else
-            {
-                Device.NGBUFFER.CommandQueue.Enqueue(("D", "9800", typeof(string), strData));
-                CLogger.Add(LOG.COMM, $"QR Send -> NG Buffer : {strData}");
-                //var r = Device.NGBUFFER.engine.WriteDataAreaRegister("D", 9800, typeof(string), strData);
+        //        Device.NGBUFFER.CommandQueue.Enqueue(("D", "10000", typeof(string), strData));
+        //        CLogger.Add(LOG.COMM, $"QR Send -> NG Buffer : {strData}");
+        //    }
+        //    else
+        //    {
+        //        Device.NGBUFFER.CommandQueue.Enqueue(("D", "9800", typeof(string), strData));
+        //        CLogger.Add(LOG.COMM, $"QR Send -> NG Buffer : {strData}");
+        //        //var r = Device.NGBUFFER.engine.WriteDataAreaRegister("D", 9800, typeof(string), strData);
 
-                //Device.NGBUFFER.SetString(9800, strData);
-                //bool tmp = Device.NGBUFFER.Command_PCBID_INPUT(strData); //NG시 PCB 데이터 입력
-                Device.strRMSQR = Device.NGBUFFER.GetQR().GetQR();
-                Device.SaveConfig();
+        //        //Device.NGBUFFER.SetString(9800, strData);
+        //        //bool tmp = Device.NGBUFFER.Command_PCBID_INPUT(strData); //NG시 PCB 데이터 입력
+        //        Device.strRMSQR = Device.NGBUFFER.GetQR().GetQR();
+        //        Device.SaveConfig();
 
-                Thread.Sleep(1000);
+        //        Thread.Sleep(1000);
 
-                if (!Mode.isForceJudge) //정상 시퀀스
-                {
-                    CLogger.Add(LOG.SEQ, $"SEQ isForceJudge ==> false");
-                    if (bTotalResult) //OK
-                    {
-                        CLogger.Add(LOG.SEQ, $"SEQ NORMAL JUDGE ==> OK");
-                        CLogger.Add(LOG.COMM, $"SEQ NORMAL JUDGE ==> OK");
-                        Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_OK, true);
-                        Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_NG, false);
-                        Device.NGBUFFER.Command_PCBID_END_JUDGE(true);
-                    }
-                    else//NG
-                    {
-                        CLogger.Add(LOG.SEQ, $"SEQ NORMAL JUDGE ==> NG");
-                        CLogger.Add(LOG.COMM, $"SEQ NORMAL JUDGE ==> NG");
+        //        if (!Mode.isForceJudge) //정상 시퀀스
+        //        {
+        //            CLogger.Add(LOG.SEQ, $"SEQ isForceJudge ==> false");
+        //            if (bTotalResult) //OK
+        //            {
+        //                CLogger.Add(LOG.SEQ, $"SEQ NORMAL JUDGE ==> OK");
+        //                CLogger.Add(LOG.COMM, $"SEQ NORMAL JUDGE ==> OK");
+        //                Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_OK, true);
+        //                Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_NG, false);
+        //                Device.NGBUFFER.Command_PCBID_END_JUDGE(true);
+        //            }
+        //            else//NG
+        //            {
+        //                CLogger.Add(LOG.SEQ, $"SEQ NORMAL JUDGE ==> NG");
+        //                CLogger.Add(LOG.COMM, $"SEQ NORMAL JUDGE ==> NG");
 
-                        if (!Mode.isDebugMode)
-                        {
-                            Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_OK, false);
-                            Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_NG, true);
-                            Device.NGBUFFER.Command_PCBID_END_JUDGE(false);
-                        }
-                        else // 디버그모드 ON이면 NG시 신호 안나가고 멈추고 수정후 재검사
-                        {
-                            CLogger.Add(LOG.SEQ, $"SEQ NORMAL JUDGE ==> DEBUG");
-                            Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_OK, false);
-                            Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_NG, false);
-                        }
-                    }
-                }
-                else
-                {
-                    // 강제 결과 판정...
-                    CLogger.Add(LOG.SEQ, $"SEQ isForceJudge ==> true");
-                    // 강제 OK판정
-                    if (Mode.AutoJudge)
-                    {
-                        CLogger.Add(LOG.SEQ, $"SEQ AUTO JUDGE ==> OK");
-                        Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_OK, true);
-                        Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_NG, false);
+        //                if (!Mode.isDebugMode)
+        //                {
+        //                    Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_OK, false);
+        //                    Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_NG, true);
+        //                    Device.NGBUFFER.Command_PCBID_END_JUDGE(false);
+        //                }
+        //                else // 디버그모드 ON이면 NG시 신호 안나가고 멈추고 수정후 재검사
+        //                {
+        //                    CLogger.Add(LOG.SEQ, $"SEQ NORMAL JUDGE ==> DEBUG");
+        //                    Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_OK, false);
+        //                    Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_NG, false);
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
+        //            // 강제 결과 판정...
+        //            CLogger.Add(LOG.SEQ, $"SEQ isForceJudge ==> true");
+        //            // 강제 OK판정
+        //            if (Mode.AutoJudge)
+        //            {
+        //                CLogger.Add(LOG.SEQ, $"SEQ AUTO JUDGE ==> OK");
+        //                Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_OK, true);
+        //                Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_NG, false);
 
-                        Device.NGBUFFER.Command_PCBID_END_JUDGE(true);
-                    }
-                    // 강제 NG판정
-                    else
-                    {
-                        CLogger.Add(LOG.SEQ, $"SEQ AUTO JUDGE ==> NG");
-                        Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_OK, false);
-                        Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_NG, true);
+        //                Device.NGBUFFER.Command_PCBID_END_JUDGE(true);
+        //            }
+        //            // 강제 NG판정
+        //            else
+        //            {
+        //                CLogger.Add(LOG.SEQ, $"SEQ AUTO JUDGE ==> NG");
+        //                Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_OK, false);
+        //                Device.DIO_BD.Bit_OnOff(CDIO_BITNAME.RESULT_NG, true);
 
-                        Device.NGBUFFER.Command_PCBID_END_JUDGE(false);
-                    }
-                }
-            }
+        //                Device.NGBUFFER.Command_PCBID_END_JUDGE(false);
+        //            }
+        //        }
+        //    }
 
 
 
-            return bTotalResult;
-        }
+        //    return bTotalResult;
+        //}
 
         public void InitRecipe(bool bInit = false)
         {
@@ -744,10 +813,11 @@ namespace IntelligentFactory
             System.Recipe.InitDirectory(System.Recipe.Name);
             CLogger.Add(LOG.NORMAL, $"[CRecipe]Init Directory");
             System.Recipe.LoadTools();
-            CLogger.Add(LOG.NORMAL, $"[CRecipe]LoadTools");
-
-            Setting.Load(System.Recipe.Name);
-
+            CLogger.Add(LOG.NORMAL, $"[CRecipe]LoadConfig");
+            
+            //Global.Instance.FileManager.Load_LoactionNo(System.Recipe.CODE);    // LocationNo, LogicName 불러오기 - JYH
+            //Global.Instance.FileManager.Load_LogicName(System.Recipe.Name);
+            //Global.Instance.FileManager.NG_Count_Load(System.Recipe.Name);  // 모델 별 NGCount 불러오기 - JYH
             if (bInit)
             {
                 Global.Instance.System.Recipe.Name = Global.Instance.Recent.LastModel;
@@ -985,6 +1055,8 @@ namespace IntelligentFactory
 
         // true : key 없음, false : key 있음
         public static bool m_Vision_CognexLicense_Error;
+        private int logicCount1;
+
         public static bool CognexLicense_Check()
         {
             // 코그넥스 라이센스 키 확인

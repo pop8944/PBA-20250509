@@ -63,7 +63,7 @@ namespace IntelligentFactory
                 DIO_BD = new CDIO_ADLINK7432();
                 EyeD = new TcpIp("EYE-D");
 
-                EyeD.Init(Global.Instance.Setting.Enviroment.EyeD);
+                //EyeD.Init(Global.Instance.Setting.Enviroment.EyeD);
 
                 //2024.03.15 송현수->안춘길 : 임시 주석
 

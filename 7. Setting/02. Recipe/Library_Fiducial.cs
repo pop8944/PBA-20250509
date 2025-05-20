@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Windows.Forms;
@@ -11,86 +11,44 @@ namespace IntelligentFactory
 {
     public class Library_Fiducial
     {
-        public string LibraryNumber { get; set; } = "";
-        public string Memo { get; set; } = "";
         public Recipe_FiducialMatching Fiducial1 { get; set; } = new Recipe_FiducialMatching("Fiducial1");
-        public Recipe_FiducialMatching Fiducial2 { get; set; } = new Recipe_FiducialMatching("Fiducial2");
-
+        public string LibraryNumber { get; set; } = "0";
+        public string Code { get; set; } = "867C";
         public double MasterAngle { get; set; }
-
         public int FiducialGrabIndex { get; set; } = 0;
 
-        public Rectangle RegionArray1 { get; set; } = new Rectangle(260, 150, 2340, 3400);
-        public Rectangle RegionArray2 { get; set; } = new Rectangle(100, 100, 100, 100);
-        public Rectangle RegionArray3 { get; set; } = new Rectangle(100, 100, 100, 100);
-        public Rectangle RegionArray4 { get; set; } = new Rectangle(100, 100, 100, 100);
-
-        public PointF OffsetArray1 { get; set; } = new PointF(0, 0);
-        public PointF OffsetArray2 { get; set; } = new PointF(0, 0);
-        public PointF OffsetArray3 { get; set; } = new PointF(0, 0);
-        public PointF OffsetArray4 { get; set; } = new PointF(0, 0);
+        public List<Rectangle> RegionArrayList { get; set; } // 기존 RegionArrayX 들을 대체할 리스트
+        public List<PointF> OffsetArrayList { get; set; }    // 기존 OffsetArrayX 들을 대체할 리스트
 
         [JsonIgnore]
+        public Bitmap MasterImage;
+        [JsonIgnore]
         public Bitmap ImagePreview;
+        public string Name
+        {
+            get { return Code; }
+            set { Code = value; }
+        }
 
         public Library_Fiducial()
         {
-        }
+            RegionArrayList = new List<Rectangle>();
+            OffsetArrayList = new List<PointF>();
+            int defaultNumberOfArrays = 12;
 
-        public Library_Fiducial Load(string partLibraryCode, string libraryNumber)
-        {
-            if (string.IsNullOrEmpty(libraryNumber) || libraryNumber == "\r\n")
+            for (int i = 0; i < defaultNumberOfArrays; i++)
             {
-                libraryNumber = "0";
+                RegionArrayList.Add(new Rectangle(100, 100, 100, 100));
+                OffsetArrayList.Add(new PointF(0, 0));
             }
-
-            string path = $"{Application.StartupPath}\\PBA_LIBRARY\\{partLibraryCode}\\FIDUCIAL_LIBRARY\\FiducialLibrary_{libraryNumber}.json";
-            Library_Fiducial newData = null;
-
-
-
-            if (File.Exists(path))
-            {
-                try { newData = JsonSerializer.Deserialize<Library_Fiducial>(File.ReadAllText(path)); } catch (Exception ex) { }
-
-                if (newData != null)
-                {
-                    try { newData.Fiducial1.LoadImages(partLibraryCode, libraryNumber, Fiducial1.Name); } catch (Exception ex) { }
-                    try { newData.Fiducial2.LoadImages(partLibraryCode, libraryNumber, Fiducial2.Name); } catch (Exception ex) { }
-                    try
-                    {
-                        ImagePreview = IF_Util.SafetyImageLoad($"{Application.StartupPath}\\PBA_LIBRARY\\{partLibraryCode}\\FIDUCIAL_LIBRARY\\FiducialLibrary_{libraryNumber}_Preview.bmp");
-                    }
-                    catch (Exception ex) { }
-
-                    return newData;
-                }
-            }
-
-            newData = new Library_Fiducial();
-            newData.Save(partLibraryCode, libraryNumber);
-            return newData;
         }
-
-        public Rectangle GetArrayRegion(int idx)
+        public void Save(string libraryCode)
         {
-            if (idx == 0) return RegionArray1;
-            if (idx == 1) return RegionArray2;
-            if (idx == 2) return RegionArray3;
-            if (idx == 3) return RegionArray4;
-
-            return new Rectangle();
-        }
-
-        public void Save(string partLibraryCode, string libraryNumber)
-        {
-            string path = $"{Application.StartupPath}\\PBA_LIBRARY\\{partLibraryCode}\\FIDUCIAL_LIBRARY\\FiducialLibrary_{libraryNumber}.json";
+            string path = $"{Application.StartupPath}\\LIBRARY\\PBA_LIBRARY\\{libraryCode}\\FiducialLibrary_.json";
             Directory.CreateDirectory(Path.GetDirectoryName(path));
-
 
             JsonSerializerOptions options = new JsonSerializerOptions
             {
-                IgnoreNullValues = true,
                 WriteIndented = true
             };
 
@@ -98,53 +56,98 @@ namespace IntelligentFactory
 
             try
             {
-                currRecipe = JsonSerializer.Serialize(this, options);
+                currRecipe = System.Text.Json.JsonSerializer.Serialize(this, options);
+                File.WriteAllText(path, currRecipe);
+            }
+            catch (JsonException)
+            {
+            }
+            catch (Exception)
+            {
+            }
 
-                if (File.Exists(path))
+            try { Fiducial1?.SaveImages(libraryCode, Fiducial1.Name); } catch (Exception) { }
+            try { IF_Util.SafetyImageSave($"{Application.StartupPath}\\LIBRARY\\PBA_LIBRARY\\{libraryCode}\\FiducialLibrary_Preview.bmp", ImagePreview); } catch (Exception) { }
+            try { IF_Util.SafetyImageSave($"{Application.StartupPath}\\LIBRARY\\PBA_LIBRARY\\{libraryCode}\\FiducialLibrary_Master.bmp", MasterImage); } catch (Exception) { }
+        }
+
+        public Library_Fiducial Load(string libraryCode)
+        {
+            if (string.IsNullOrEmpty(libraryCode) || libraryCode == "\r\n")
+            {
+                libraryCode = "867C";
+            }
+            string path = $"{Application.StartupPath}\\LIBRARY\\PBA_LIBRARY\\{libraryCode}\\FiducialLibrary_.json";
+            Library_Fiducial newData = null;
+
+            if (File.Exists(path))
+            {
+                try
                 {
-                    //이전값과 비교하여 바뀐 부분 로깅
-                    string prevRecipe = File.ReadAllText(path);
-
-                    JObject previousObject = JObject.Parse(prevRecipe);
-                    JObject currentObject = JObject.Parse(currRecipe);
-
-                    var result = JToken.DeepEquals(previousObject, currentObject);
-
-                    if (!result)
-                    {
-                        foreach (var item in previousObject)
-                        {
-                            if (!JToken.DeepEquals(item.Value, currentObject[item.Key]))
-                            {
-                                CLogger.Add(LOG.NORMAL, $"Property '{item.Key}' changed'");//from '{item.Value}' to '{currentObject[item.Key]}'");
-                            }
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("JSON objects are equal");
-                    }
+                    newData = System.Text.Json.JsonSerializer.Deserialize<Library_Fiducial>(File.ReadAllText(path));
                 }
+                catch (Exception) { }
 
+                if (newData != null)
+                {
+                    if (newData.RegionArrayList == null || newData.RegionArrayList.Count != 12)
+                    {
+                        newData.RegionArrayList = new List<Rectangle>();
+                        for (int i = 0; i < 12; i++) newData.RegionArrayList.Add(new Rectangle(100, 100, 100, 100));
+                    }
+                    if (newData.OffsetArrayList == null || newData.OffsetArrayList.Count != 12)
+                    {
+                        newData.OffsetArrayList = new List<PointF>();
+                        for (int i = 0; i < 12; i++) newData.OffsetArrayList.Add(PointF.Empty);
+                    }
 
-                File.WriteAllText(path, currRecipe);
+                    try { newData.Fiducial1?.LoadImages(libraryCode, newData.Fiducial1.Name); } catch (Exception) { }
+                    try
+                    {
+                        newData.ImagePreview = IF_Util.SafetyImageLoad($"{Application.StartupPath}\\LIBRARY\\PBA_LIBRARY\\{libraryCode}\\FiducialLibrary_Preview.bmp");
+                    }
+                    catch (Exception) { }
+                    return newData;
+                }
             }
-            catch (JsonException ex)
+
+            newData = new Library_Fiducial();
+            newData.Save(libraryCode);
+            return newData;
+        }
+
+        public Rectangle GetArrayRegion(int idx)
+        {
+            if (idx >= 0 && idx < RegionArrayList.Count)
             {
-                options.IgnoreNullValues = true;
-                currRecipe = JsonSerializer.Serialize(this, options);
-                File.WriteAllText(path, currRecipe);
-
-                CLogger.Exception(MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name, ex);
+                return RegionArrayList[idx];
             }
-            catch (Exception ex)
+            return Rectangle.Empty;
+        }
+
+        public void SetArrayRegion(int idx, Rectangle value)
+        {
+            if (idx >= 0 && idx < RegionArrayList.Count)
             {
-                CLogger.Exception(MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name, ex);
+                RegionArrayList[idx] = value;
             }
+        }
 
-            try { Fiducial1.SaveImages(partLibraryCode, libraryNumber, Fiducial1.Name); } catch (Exception ex) { }
-            try { Fiducial2.SaveImages(partLibraryCode, libraryNumber, Fiducial2.Name); } catch (Exception ex) { }
-            try { IF_Util.SafetyImageSave($"{Application.StartupPath}\\PBA_LIBRARY\\{partLibraryCode}\\FIDUCIAL_LIBRARY\\FiducialLibrary_{libraryNumber}_Preview.bmp", ImagePreview); } catch (Exception ex) { }
+        public PointF GetArrayOffset(int idx)
+        {
+            if (idx >= 0 && idx < OffsetArrayList.Count)
+            {
+                return OffsetArrayList[idx];
+            }
+            return PointF.Empty;
+        }
+
+        public void SetArrayOffset(int idx, PointF value)
+        {
+            if (idx >= 0 && idx < OffsetArrayList.Count)
+            {
+                OffsetArrayList[idx] = value;
+            }
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using Microsoft.ML.OnnxRuntime;
+﻿using IFOnnxRuntime.Models;
+using Microsoft.ML.OnnxRuntime;
 using OpenCvSharp;
 using OpenCvSharp.Dnn;
 using OpenVinoSharp.Extensions.process;
@@ -24,7 +25,7 @@ namespace IFOnnxRuntime
         #endregion
 
         #region Constructors
-        public DetModel(string onnxModel, string device, float nmsThreshold) : base(onnxModel, device, nmsThreshold)
+        public DetModel(string onnxModel, string device, float nmsThreshold, string onnxName) : base(onnxModel, device, nmsThreshold, onnxName)
         {
             //predictor = new Predictor(onnxModel, device);
         }
@@ -77,7 +78,11 @@ namespace IFOnnxRuntime
 
         protected override BaseResult PostProcess(List<float[]> results, float detectThreshold)
         {
-            Mat result_data = new Mat(Session.OutputMetadata[Session.OutputNames[0]].Dimensions[1], Session.OutputMetadata[Session.OutputNames[0]].Dimensions[2], MatType.CV_32F, results[0]);
+            float[] data = results[0];
+            int rows = Session.OutputMetadata[Session.OutputNames[0]].Dimensions[1];
+            int cols = Session.OutputMetadata[Session.OutputNames[0]].Dimensions[2];
+            Mat result_data = new Mat(rows,cols, MatType.CV_32F);
+            result_data.SetArray(data);
             result_data = result_data.T();
             // Storage results list
             List<Rect> position_boxes = new List<Rect>();

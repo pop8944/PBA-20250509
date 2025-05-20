@@ -5,6 +5,8 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Metadata;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows.Forms;
 
 using Newtonsoft.Json;
@@ -14,82 +16,43 @@ namespace IntelligentFactory
 {
     public class LibraryManager
     {
-        //public ConcurrentDictionary<int, List<IF_VisionLogicInfo>> Library { get; set; } = null;
-        //public ConcurrentDictionary<int, Dictionary<string, IF_VisionLogicInfo>> Library { get; set; } = new ConcurrentDictionary<int, Dictionary<string, IF_VisionLogicInfo>> ();
         public string Name { get; set; } = "";
-
+        public string FiducialCode { get; set; } = "867C";
         public ConcurrentDictionary<int, List<IF_VisionLogicInfo>> Library { get; set; } = new ConcurrentDictionary<int, List<IF_VisionLogicInfo>>();
 
-        public LibraryManager(string name)
+        public LibraryManager()
         {
-            Name = name;
+            
         }
 
         public LibraryManager Load(string libraryName)
         {
-            string path = $"{Application.StartupPath}\\LIBRARY\\{libraryName}\\{Name}.json";
+            string path = $"{Application.StartupPath}\\RECIPE\\{libraryName}\\Recipe.json";
 
             LibraryManager newData = null;
 
             if (File.Exists(path))
             {
-                newData = JsonConvert.DeserializeObject<LibraryManager>(File.ReadAllText(path), new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All });
+                newData = JsonConvert.DeserializeObject<LibraryManager>(File.ReadAllText(path), new JsonSerializerSettings 
+                { 
+                    TypeNameHandling = TypeNameHandling.All,
+                    Formatting = Formatting.Indented
+                });
 
                 if (newData != null)
                     return newData;
             }
-
-            newData = new LibraryManager(Name);
+                
+            newData = new LibraryManager();
             newData.Save(libraryName);
 
           
             return newData;
         }
 
-        //public LibraryManager LoadGerber(string gerberPath)
-        //{
-        //    LibraryManager newData = new LibraryManager(Name);
-        //    List<PBA_GerberInfo> parts = PBA_GerberHelper.GetGerberInfo(gerberPath);
-
-        //    // 가장 큰 ArrayIndex 값
-        //    int arrayCount = parts.Max(p => p.ArrayIndex);
-
-        //    if(newData.Library != null) newData.Library.Clear();
-
-        //    for (int i = 0; i < arrayCount; i++)
-        //    {
-        //        newData.Library.TryAdd((i + 1), new Dictionary<string, IF_VisionLogicInfo>());
-        //    }
-
-        //    //Library
-        //    foreach (var part in parts)
-        //    {
-        //        //newData.Library[part.ArrayIndex].Add(new IF_VisionLogicInfo(part.PartCode)
-        //        IF_VisionLogicInfo iF_VisionLogicInfo = new IF_VisionLogicInfo(part.PartCode)
-        //        {
-        //            //LocationNo = part.LocationNo,
-        //            PosX = (int)(double.Parse(part.PosX) / 0.07),
-        //            PosY = (int)(Global.Instance.System.Recipe.FiducialLibrary.RegionArray1.Height - double.Parse(part.PosY) / 0.07),
-        //            PosAngle = double.Parse(part.PosAngle),
-        //            Enabled = part.Enabled,
-        //            PartCode = part.PartCode,
-        //        };
-        //        newData.Library[part.ArrayIndex].Add(part.LocationNo, iF_VisionLogicInfo);
-        //        //{
-        //        //    LocationNo = part.LocationNo,
-        //        //    PosX = (int)(double.Parse(part.PosX) / 0.07),
-        //        //    PosY = (int)(Global.Instance.System.Recipe.FiducialLibrary.RegionArray1.Height - double.Parse(part.PosY) / 0.07),
-        //        //    PosAngle = double.Parse(part.PosAngle),
-        //        //    Enabled = part.Enabled,
-        //        //    PartCode = part.PartCode,
-        //        //});
-        //    }
-
-        //    return newData;
-        //}
         public LibraryManager LoadGerber(string gerberPath)
         {
-            LibraryManager newData = new LibraryManager(Name);
+            LibraryManager newData = new LibraryManager();
             List<PBA_GerberInfo> parts = PBA_GerberHelper.GetGerberInfo(gerberPath);
 
             // 가장 큰 ArrayIndex 값
@@ -97,7 +60,7 @@ namespace IntelligentFactory
 
             if (newData.Library != null) newData.Library.Clear();
 
-            for (int i = 0; i < arrayCount; i++)
+            for (int i = 0;  i < arrayCount;  i++)
             {
                 newData.Library.TryAdd((i + 1), new List<IF_VisionLogicInfo>());
             }
@@ -105,11 +68,11 @@ namespace IntelligentFactory
             //Library
             foreach (var part in parts)
             {
-                newData.Library[part.ArrayIndex].Add(new IF_VisionLogicInfo(part.PartCode)
+                newData.Library[part.ArrayIndex].Add(new IF_VisionLogicInfo()
                 {
                     LocationNo = part.LocationNo,
-                    PosX = (int)(double.Parse(part.PosX) / 0.07),
-                    PosY = (int)(Global.Instance.System.Recipe.FiducialLibrary.RegionArray1.Height - double.Parse(part.PosY) / 0.07),
+                    PosX = (int)(double.Parse(part.PosX) / 0.068),
+                    PosY = (int)(Global.Instance.System.Recipe.FiducialLibrary.RegionArray1.Height - double.Parse(part.PosY) / 0.068),
                     PosAngle = double.Parse(part.PosAngle),
                     Enabled = part.Enabled,
                     PartCode = part.PartCode,
@@ -120,13 +83,17 @@ namespace IntelligentFactory
         }
         public void Save(string libraryName)
         {
-            string path = $"{Application.StartupPath}\\LIBRARY\\{libraryName}\\{Name}.json";
-            string forderpath = $"{Application.StartupPath}\\LIBRARY\\{libraryName}";
+            string path = $"{Application.StartupPath}\\RECIPE\\{libraryName}\\Recipe.json";
+            string forderpath = $"{Application.StartupPath}\\RECIPE\\{libraryName}";
             string currRecipe;
 
             try
             {
-                currRecipe = JsonConvert.SerializeObject(this, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All });
+                currRecipe = JsonConvert.SerializeObject(this, new JsonSerializerSettings 
+                { 
+                    TypeNameHandling = TypeNameHandling.All,
+                    Formatting = Formatting.Indented
+                });
 
                 if(!Directory.Exists(forderpath)) Directory.CreateDirectory(forderpath);
 
@@ -140,20 +107,6 @@ namespace IntelligentFactory
 
                     var result = JToken.DeepEquals(previousObject, currentObject);
 
-                    //if (!result)
-                    //{
-                    //    foreach (var item in previousObject)
-                    //    {
-                    //        if (!JToken.DeepEquals(item.Value, currentObject[item.Key]))
-                    //        {
-                    //            CLogger.Add(LOG.NORMAL, $"Property '{item.Key}' changed from '{item.Value}' to '{currentObject[item.Key]}'");
-                    //        }
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    Console.WriteLine("JSON objects are equal");
-                    //}
                 }
 
                 File.WriteAllText(path, currRecipe);
@@ -167,36 +120,19 @@ namespace IntelligentFactory
                 CLogger.Exception(MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name, ex);
             }
         }
+        public string GetHash()
+        {
+            // 여기서 부터 작업
+            // 1. Library 변수를 직렬화
+            string libraryData = JsonConvert.SerializeObject(Library);
 
+            // 2. 해쉬값 생성 
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(libraryData));
+                return Convert.ToBase64String(hashBytes);
+            }
+        }
 
-
-        //IF_VisionParam_Blob blobParameter = new IF_VisionParam_Blob();
-        //blobParameter.Name = "";
-        //    blobParameter.Threshold = 100;
-        //    blobParameter.ThresholdType = IF_ImageProcessing.ThresholdTypes.Binary;
-        //    blobParameter.MinArea = 10;
-        //    blobParameter.MaxArea = 100;
-
-        //    IF_VisionLogicInfo AA = new IF_VisionLogicInfo("AA");
-        //AA.LocationNo = "Blob1";
-        //    AA.Logics.Add(binalizeParameter);
-        //    AA.Logics.Add(moporlogyParameter);
-        //    AA.Logics.Add(blobParameter);
-
-        //    IF_VisionParam_Matching matchingParameter = new IF_VisionParam_Matching();
-        //IF_VisionLogicInfo BB = new IF_VisionLogicInfo("BB");
-        //BB.LocationNo = "Pattern1";
-        //    BB.Logics.Add(moporlogyParamer);
-        //    BB.Logics.Add(matchingParameter);
-
-        //    List<IF_VisionLogicInfo> logics = new List<IF_VisionLogicInfo>();
-        //logics.Add(AA);
-        //    logics.Add(BB);
-
-        //    LibraryManager job = new LibraryManager("BYD");
-        //job.Library.TryAdd(0, logics);
-
-        //    job.Save("");
-      
     }
 }

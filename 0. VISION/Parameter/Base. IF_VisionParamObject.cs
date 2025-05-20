@@ -7,9 +7,9 @@ using System.Reflection;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-
+using Cognex.VisionPro.ImageProcessing;
 using Cognex.VisionPro.PMAlign;
-
+using ImageProcessing;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -25,7 +25,7 @@ namespace IntelligentFactory
         public string Description { get; set; } = "";
         public string Type { get; set; } = "";
         //기존 Not OK 기능에 대한 변수로 조건 만족 시 OK 판정이면 true, NG 판정이면 false
-        public bool JudgeType_ConditionOK_JudgeOK { get; set; } = true;
+        public bool JudgeType_Judge_NaisNg { get; set; } = true;
         public int SamplingCount { get; set; } = 1;
         public int GrabIndex { get; set; } = 0;
         public int ID { get; set; } = 0;
@@ -40,7 +40,8 @@ namespace IntelligentFactory
 
         #region 전처리 관련
         public bool UseImageProcessing { get; set; } = false;
-        public List<IF_ImageProcessing> ImgProcessingList { get; set; } = new List<IF_ImageProcessing>();
+
+        public Dictionary<string, IF_ImageProcessing> ImgProcessingList { get; set; } = new Dictionary<string, IF_ImageProcessing>();
         #endregion
 
         public IF_VisionParamObject()
@@ -53,18 +54,9 @@ namespace IntelligentFactory
 
 
     [Serializable]
-    public class IF_ImageProcessing
+    public class IF_ImageProcessing 
     {
-        public enum ThresholdTypes
-        {
-            Binary = 0,
-            BinaryInv = 1,
-            Trunc = 2,
-            Tozero = 3,
-            TozeroInv = 4,
-            Mask = 7,
-            Otsu = 8,
-            Triangle = 0x10
-        }
+        public bool ImageType { get; set; } = false; // false Color, True Mono
+        public ImageProcessingMethod Type { get; set; }
     }
 }

@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using IntelligentFactory.Properties;
 
 namespace IntelligentFactory
 {
@@ -61,7 +63,6 @@ namespace IntelligentFactory
 
                 string strParameterPath = $"{strpath}\\{strName}\\JOBS\\Parameter.xml";
                 string strCode = "";
-
                 if (File.Exists(strParameterPath))
                 {
                     XmlTextReader xmlReader = new XmlTextReader(strParameterPath);
@@ -199,7 +200,7 @@ namespace IntelligentFactory
             try
             {
                 string strRecipeName = lbRecipeName.Text;
-
+                string strCodeName = "";
                 if (IF_Util.ShowMessageBox("RECIPE", string.Format("Do you want to Select the Recipe ==> [{0}]?", strRecipeName), FormPopUp_MessageBox.MESSAGEBOX_TYPE.OKCANCEL))
                 {
                     if (strRecipeName != "")
@@ -212,14 +213,18 @@ namespace IntelligentFactory
                         Global.Recent.SaveConfig();
 
                         Global.SeqRecipeChage.ChageRecipe(Global.System.Recipe.Name);
-
-
+                        Global.System.Recipe.Load_NGCount(Global.System.Recipe.Name);
+                        //Global.FileManager.NG_Count_Load(Global.System.Recipe.Name); // 레시피 변경 시 NG Count 정보가 있으면 불러오기 - JYH
                         // 해당 모델의 라이브러리 잡 리드..
                         // 레시피 데이터 가져올때 task로 가동하여서 별도 정지된 현상 없애기위함..
                         // 백그라운드의 별도 TASK쓰레드 형태로 가동되므로 폼을 건드릴때는 반드시 인보크 처리 필요함..
                         Task.Run(() =>
                         {
+                            //Global.System.Recipe.Load_LibraryManager(Global.System.Recipe.Name);
+                            //Global.Instance.FrmVision.SetRecipeInfo();
 
+                            //Global.System.Recipe.LoadCogTools(Global.System.Recipe.Name);
+                            //CLogger.Add(LOG.NORMAL, $"[CRecipe]LoadCogTools");
                         });
 
                         this.Close();
@@ -249,7 +254,7 @@ namespace IntelligentFactory
             }
             else
             {
-                //Global.Instance.FrmVision.InitJobs();
+                //Global.Instance.System.Recipe.LoadTools();
             }
         }
 
@@ -336,8 +341,8 @@ namespace IntelligentFactory
 
                         InitRecipeList();
 
-                        Global.Instance.System.Recipe.LoadTools();
                         CLogger.Add(LOG.NORMAL, $"[Model : {Global.System.Recipe.Name}]LoadTools");
+                        Global.Instance.System.Recipe.LoadTools();
 
                         //IGlobal.Instance.System.Recipe.LoadConfig();
                         //IGlobal.Instance.System.Recipe.SettingJob();

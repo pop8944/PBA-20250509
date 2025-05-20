@@ -21,24 +21,28 @@ namespace IntelligentFactory
             else ThreadName = strName;
 
             StartThread();
+            Global.resultdrawEvent += ResultDrawHandler;
         }
 
+        public CInspector Inspector = new CInspector();
+      
 
         public enum ManualType { AUTO, GRAB_INSP, IMAGE_INSP };
         public ManualType ManualInsp = ManualType.AUTO;
 
         private object grabSync = new object();
         private int _InspRetryIndex = 0;
-
+        private bool bRetry = false;
         private List<bool> _Array_Results = new List<bool>();
         private Stopwatch _tt_CycleTime = new Stopwatch();
+        private Stopwatch tt_Insp = new Stopwatch();
         public long CycleTime
         {
             get => _tt_CycleTime.ElapsedMilliseconds;
         }
 
         (bool totalResult, bool qrResult, List<bool> results) results = (false, false, new List<bool>());
-
+        public bool qrResult = false;
         public string LastCommInfo = "";
         private Stopwatch _tt_WaitPCB = new Stopwatch();
 
@@ -63,7 +67,6 @@ namespace IntelligentFactory
                 CMewtocol NGBUFFER = Global.Device.NGBUFFER;
 
                 CRecipe Recipe = Global.System.Recipe;
-
                 if (ManualInsp == ManualType.AUTO)
                 {
                     if (DIO == null || DIO.IsOpen == false)
@@ -122,15 +125,18 @@ namespace IntelligentFactory
                     case "INIT":
                         {
                             Global.Instance.OnStart_Porgess("DEVICE INIT");
-
+                            Global.Data.Result_NG_Count = new int[4];
+                            Global.logicCount = 0;
+                            Global.NGDataList.Clear();
+                            Global.totalCount = Inspector.TotalCount();
                             _InspRetryIndex = 0;
-
+                            Global.Retry_Count = 0;
                             //비트 초기화
                             DIO.Off(CDIO_BITNAME.RESULT_OK);
                             DIO.Off(CDIO_BITNAME.RESULT_NG);
 
                             _Array_Results = new List<bool>();
-
+                            Global.Result_Array = new bool[4];
                             //for (int i = 0; i < Light.ChannelCount; i++) Light.SetValue(i + 1, 254);
                             //Light.AllOn();
 
@@ -138,15 +144,6 @@ namespace IntelligentFactory
                             GC.Collect();
 
                             _tt_CycleTime = Stopwatch.StartNew();
-
-                            //for (int arrayIdx = 0; arrayIdx < Global.System.Recipe.JobManager.Length; arrayIdx++)
-                            //{
-                            //    if (Global.System.Recipe.JobManager[arrayIdx] == null) continue;
-                            //    for (int jobIdx = 0; jobIdx < Global.System.Recipe.JobManager[arrayIdx].Jobs.Count; jobIdx++)
-                            //    {
-                            //        Global.System.Recipe.JobManager[arrayIdx].Jobs[jobIdx].AlreadyPass = false;
-                            //    }
-                            //}
 
                             SetStepEx("GRAB");
                         }
@@ -157,14 +154,14 @@ namespace IntelligentFactory
                             Stopwatch tt_Grab = Stopwatch.StartNew();
                             //카메라 그랩 실패 할 수 있기 때문에 3번 진행, 완료하면 break                            
 
-                            for (int arrayIdx = 0; arrayIdx < Global.System.Recipe.JobManager.Length; arrayIdx++)
-                            {
-                                for (int jobIdx = 0; jobIdx < Global.System.Recipe.JobManager[arrayIdx].Jobs.Count; jobIdx++)
-                                {
-                                    CJob job = Global.System.Recipe.JobManager[arrayIdx].Jobs[jobIdx];
-                                    isGrab[job.GrabIndex] = true;
-                                }
-                            }
+                            //for (int arrayIdx = 0; arrayIdx < Global.System.Recipe.JobManager.Length; arrayIdx++)
+                            //{
+                            //    for (int jobIdx = 0; jobIdx < Global.System.Recipe.JobManager[arrayIdx].Jobs.Count; jobIdx++)
+                            //    {
+                            //        CJob job = Global.System.Recipe.JobManager[arrayIdx].Jobs[jobIdx];
+                            //        isGrab[job.GrabIndex] = true;
+                            //    }
+                            //}
 
 
                             if (ManualInsp == ManualType.GRAB_INSP || ManualInsp == ManualType.AUTO)
@@ -173,13 +170,14 @@ namespace IntelligentFactory
                                 {
                                     try
                                     {
-                                        if (isGrab[i] == false)
-                                        {
-                                            Global.ImagesGrab[i] = null;
-                                            continue;
-                                        }
+                                        //if (isGrab[i] == false)
+                                        //{
+                                        //    Global.ImagesGrab[i] = null;
+                                        //    continue;
+                                        //}
 
                                         Camera.SetExposure(Recipe.GrabManager.Nodes[i].ExposureTime_us);
+                                        Camera.SetGain(Recipe.GrabManager.Nodes[i].Gain);
 
                                         //그랩 실패 시 재 시도
                                         for (int grabRetryIndex = 0; grabRetryIndex < 3; grabRetryIndex++)
@@ -214,13 +212,12 @@ namespace IntelligentFactory
 
                             CLogger.Add(LOG.SEQ, $"#01. Grab Cycle Time : {tt_Grab.ElapsedMilliseconds}ms");
 
-                            //ManualInsp = ManualType.AUTO;
                             SetStepEx("INSP");
                         }
                         break;
                     case "INSP":
                         {
-                            Stopwatch tt_Insp = Stopwatch.StartNew();
+                            tt_Insp = Stopwatch.StartNew();
 
                             bool inspSuccess = true;
 
@@ -228,18 +225,22 @@ namespace IntelligentFactory
                             {
                                 if (Global.Mode.ReInspecUse == false || ManualInsp == ManualType.GRAB_INSP)
                                 {
-                                    _InspRetryIndex = Global.Mode.ReInspecCnt + 1;
+                                    Global.Retry_Count = _InspRetryIndex = Global.Mode.ReInspecCnt + 1;
                                 }
-
-                                results = CVisionTools.MainInsp(_tt_CycleTime, _InspRetryIndex, Global.ImagesGrab, out Global.ImageResults_array, false);
-
+                                if (bRetry == true)
+                                {
+                                    Global.totalCount = 0;
+                                    for (int i = 0; i < Global.Retry_ArrayList.Length; i++)
+                                    { 
+                                        Global.totalCount += Global.Retry_ArrayList[i].Count;
+                                    }
+                                } 
+                                qrResult = Inspector.Execute(_tt_CycleTime, bRetry, Global.ImagesGrab);
                                 if (Global.System.Mode == CSystem.MODE.ALARM)
                                 {
                                     return;
                                 }
 
-                                //어레이별 검사 결과를 가져오자.
-                                _Array_Results = results.results.ToList();
                             }
                             catch (Exception ex)
                             {
@@ -247,46 +248,26 @@ namespace IntelligentFactory
                                 CLogger.Add(LOG.EXCEPTION, "[FAILED] {0}==>{1}   Execption ==> {2}", MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name, ex.Message);
                             }
 
-                            CLogger.Add(LOG.SEQ, $"#02. Insp [{_InspRetryIndex}] Cycle Time : {tt_Insp.ElapsedMilliseconds}ms");
 
                             //QR 실패 시 어떻게 처리할건지?
-                            if (results.qrResult == false)
+                            if (qrResult == false)
                             {
                                 CAlarm.Add("QR CODE", "Can't Read the QR Code");
+                                Global.Instance.OnEnd_Progress();
                                 return;
                             }
 
-                            //전체 검사 결과와, 어레이별 검사 결과를 비교하여 재검사 할지 선택
-                            if (inspSuccess == false || _Array_Results.Contains(false))
-                            {
-                                if (Global.Mode.ReInspecUse)
-                                {
-                                    if (_InspRetryIndex < Global.Mode.ReInspecCnt)
-                                    {
-                                        CLogger.Add(LOG.SEQ, $"Inspection Result : Fail ==> Retry {_InspRetryIndex} Insp Start");
-                                        SetStepEx("GRAB");
-                                    }
-                                    else
-                                    {
-                                        CLogger.Add(LOG.SEQ, $"Inspection Result : Fail ==> Retry Insp Over ==> Judge : NG");
-                                        SetStepEx("RESULT_PROCESS");
-                                    }
-                                }
-                                else
-                                {
-                                    CLogger.Add(LOG.SEQ, $"Inspection Result : Fail ==> Retry Insp Over ==> Judge : NG");
-                                    SetStepEx("RESULT_PROCESS");
-                                }
-
-                                _InspRetryIndex++;
-
-                                return;
-                            }
                         }
 
                         _tt_CycleTime.Stop();
-                        SetStepEx("RESULT_PROCESS");
+                        SetStepEx("Wait_RESULT");
                         break;
+
+                    case "Wait_RESULT":
+                        { 
+                            break;
+                        }
+
                     case "RESULT_PROCESS":
                         {
                             Stopwatch tt_ResultProcess = Stopwatch.StartNew();
@@ -317,12 +298,12 @@ namespace IntelligentFactory
                                 if (_Array_Results[i])
                                 {
                                     Data.CountOK++;
-                                    Data.CountOK_M++;
+                                    Data.CurrentOK++;
                                 }
                                 else
                                 {
                                     Data.CountNG_F++;
-                                    Data.CountNG_M++;
+                                    Data.CurrentNG++;
                                     totalResult = false;
                                 }
                                 bool bRecent = false;
@@ -428,7 +409,6 @@ namespace IntelligentFactory
                                         NGBUFFER.Command_PCBID_END_JUDGE(false);
                                     }
                                 }
-
                                 Stopwatch sw = Stopwatch.StartNew();
                                 while (sw.ElapsedMilliseconds < 200000)
                                 {
@@ -436,170 +416,25 @@ namespace IntelligentFactory
 
                                     if (NGBUFFER.GetInPutBoard())
                                     {
-                                        CLogger.Add(LOG.SEQ, $"INPUT BOARD ING BIT : ON");
+                                        CLogger.Add(LOG.SEQ, $"INPUT BOARDING BIT : ON");
                                         break;
                                     }
                                     else
                                     {
-                                        CLogger.Add(LOG.SEQ, $"INPUT BOARD ING BIT : OFF");
+                                        CLogger.Add(LOG.SEQ, $"INPUT BOARDING BIT : OFF");
                                     }
                                 }
-                                
+                                if (sw.ElapsedMilliseconds > 200000)
+                                {
+                                    CAlarm.Add("BOARDING BIT", "BOARDING BIT TimeOut");
+                                    Global.Instance.OnEnd_Progress();
+                                    return;
+                                }
                                 NGBUFFER.CommandQueue.Enqueue(("D", "10000", typeof(string), qrDateToNgBuffer));
                                 CLogger.Add(LOG.COMM, $"QR Send -> NG Buffer : {qrDateToNgBuffer}");
                             }
                             else
                             {
-                                //LastCommInfo = qrDateToNgBuffer;
-
-                                //NGBUFFER.CommandQueue.Enqueue(("D", "9800", typeof(string), qrDateToNgBuffer));
-                                //CLogger.Add(LOG.COMM, $"QR Send -> NG Buffer : {qrDateToNgBuffer}");
-
-                                //if(totalResult == false)
-                                //{
-                                //    Task.Run(() =>
-                                //    {
-                                //        Stopwatch timeout = Stopwatch.StartNew();
-                                //        string qrData = qrDateToNgBuffer;
-                                //        string qrCode = "";
-                                //        if (Data.Array_QrCodes != null && Data.Array_QrCodes.Length > 1)
-                                //        {
-                                //            qrCode = $"{Data.Array_QrCodes[0].GetQR()}/{Data.Array_QrCodes[1].GetQR()}";                                            
-                                //        }
-
-                                //        lock (bufferLock)
-                                //        {
-                                //            NgBuffer.Add((DateTime.Now, qrCode));
-                                //        }
-
-                                //        bool success = false;
-                                //        while (true)
-                                //        {
-                                //            Thread.Sleep(100);
-
-                                //            if (timeout.ElapsedMilliseconds > 20000)
-                                //            {
-                                //                CLogger.Add(LOG.ABNORMAL, $"[FAILED] NG BUFFER ENTERING ==> {qrData}");
-                                //                break;
-                                //            }
-                                //            else
-                                //            {
-                                //                if (NGBUFFER == null) break;
-
-                                //                if (Global.Device.NGBUFFER.IN_BUFFER1_ID != null
-                                //                && Global.Device.NGBUFFER.IN_BUFFER1_EXISTS != null
-                                //                && Global.Device.NGBUFFER.IN_BUFFER1_RESULT != null
-
-                                //                && Global.Device.NGBUFFER.IN_BUFFER3_ID != null
-                                //                && Global.Device.NGBUFFER.IN_BUFFER3_EXISTS != null
-                                //                && Global.Device.NGBUFFER.IN_BUFFER3_RESULT != null
-
-                                //                && Global.Device.NGBUFFER.IN_BUFFER5_ID != null
-                                //                && Global.Device.NGBUFFER.IN_BUFFER5_EXISTS != null
-                                //                && Global.Device.NGBUFFER.IN_BUFFER5_RESULT != null
-
-                                //                && Global.Device.NGBUFFER.IN_BUFFER6_ID != null
-                                //                && Global.Device.NGBUFFER.IN_BUFFER6_EXISTS != null
-                                //                && Global.Device.NGBUFFER.IN_BUFFER6_RESULT != null
-
-                                //                && Global.Device.NGBUFFER.IN_BUFFER7_ID != null
-                                //                && Global.Device.NGBUFFER.IN_BUFFER7_EXISTS != null
-                                //                && Global.Device.NGBUFFER.IN_BUFFER7_RESULT != null
-
-                                //                && Global.Device.NGBUFFER.IN_BUFFER9_ID != null
-                                //                && Global.Device.NGBUFFER.IN_BUFFER9_EXISTS != null
-                                //                && Global.Device.NGBUFFER.IN_BUFFER9_RESULT != null
-
-                                //                && Global.Device.NGBUFFER.IN_BUFFER11_ID != null
-                                //                && Global.Device.NGBUFFER.IN_BUFFER11_EXISTS != null
-                                //                && Global.Device.NGBUFFER.IN_BUFFER11_RESULT != null
-
-                                //                && Global.Device.NGBUFFER.IN_BUFFER12_ID != null
-                                //                && Global.Device.NGBUFFER.IN_BUFFER12_EXISTS != null
-                                //                && Global.Device.NGBUFFER.IN_BUFFER12_RESULT != null)
-                                //                {
-                                //                    if (Global.Device.NGBUFFER.IN_BUFFER1_EXISTS.Value == 1
-                                //                    && Global.Device.NGBUFFER.IN_BUFFER1_RESULT.Value == 0
-                                //                    && string.Equals(Global.Device.NGBUFFER.IN_BUFFER1_ID.ID, qrData))
-                                //                    {
-                                //                        success = true;
-                                //                    }
-
-                                //                    if (Global.Device.NGBUFFER.IN_BUFFER3_EXISTS.Value == 1
-                                //                    && Global.Device.NGBUFFER.IN_BUFFER3_RESULT.Value == 0
-                                //                    && string.Equals(Global.Device.NGBUFFER.IN_BUFFER3_ID.ID, qrData))
-                                //                    {
-                                //                        success = true;
-                                //                    }
-
-                                //                    if (Global.Device.NGBUFFER.IN_BUFFER5_EXISTS.Value == 1
-                                //                    && Global.Device.NGBUFFER.IN_BUFFER5_RESULT.Value == 0
-                                //                    && string.Equals(Global.Device.NGBUFFER.IN_BUFFER5_ID.ID, qrData))
-                                //                    {
-                                //                        success = true;
-                                //                    }
-
-                                //                    if (Global.Device.NGBUFFER.IN_BUFFER6_EXISTS.Value == 1
-                                //                    && Global.Device.NGBUFFER.IN_BUFFER6_RESULT.Value == 0
-                                //                    && string.Equals(Global.Device.NGBUFFER.IN_BUFFER6_ID.ID, qrData))
-                                //                    {
-                                //                        success = true;
-                                //                    }
-
-                                //                    if (Global.Device.NGBUFFER.IN_BUFFER7_EXISTS.Value == 1
-                                //                    && Global.Device.NGBUFFER.IN_BUFFER7_RESULT.Value == 0
-                                //                    && string.Equals(Global.Device.NGBUFFER.IN_BUFFER7_ID.ID, qrData))
-                                //                    {
-                                //                        success = true;
-                                //                    }
-
-                                //                    if (Global.Device.NGBUFFER.IN_BUFFER9_EXISTS.Value == 1
-                                //                    && Global.Device.NGBUFFER.IN_BUFFER9_RESULT.Value == 0
-                                //                    && string.Equals(Global.Device.NGBUFFER.IN_BUFFER9_ID.ID, qrData))
-                                //                    {
-                                //                        success = true;
-                                //                    }
-
-                                //                    if (Global.Device.NGBUFFER.IN_BUFFER11_EXISTS.Value == 1
-                                //                    && Global.Device.NGBUFFER.IN_BUFFER11_RESULT.Value == 0
-                                //                    && string.Equals(Global.Device.NGBUFFER.IN_BUFFER11_ID.ID, qrData))
-                                //                    {
-                                //                        success = true;
-                                //                    }
-
-                                //                    if (Global.Device.NGBUFFER.IN_BUFFER12_EXISTS.Value == 1
-                                //                    && Global.Device.NGBUFFER.IN_BUFFER12_RESULT.Value == 0
-                                //                    && string.Equals(Global.Device.NGBUFFER.IN_BUFFER12_ID.ID, qrData))
-                                //                    {
-                                //                        success = true;
-                                //                    }
-                                //                }
-
-                                //                if (success)
-                                //                {
-                                //                    CLogger.Add(LOG.SEQ, $"[SUCCESS] NG BUFFER ENTERING ==> {qrData}");
-
-                                //                    for (int i = 0; i < NgBuffer.Count; i++)
-                                //                    {
-                                //                        if (NgBuffer[i].Item2 == qrCode)
-                                //                        {
-                                //                            lock (bufferLock)
-                                //                            {
-                                //                                NgBuffer.RemoveAt(i);
-                                //                            }
-                                //                        }
-                                //                    }
-
-                                //                    break;
-                                //                }
-                                //            }
-                                //        }
-                                //        if (Global.Mode.isJudgeScreenShot) IF_Util.SaveCaptureScreen($"{Application.StartupPath}\\CAPTURE\\{qrData.Replace("/", "_")}_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}_WaitEnd_{success}");
-
-
-                                //});
-                                //}
-                                //Thread.Sleep(100);
 
                                 if (Mode.isForceJudge == false) //정상 시퀀스
                                 {
@@ -616,7 +451,7 @@ namespace IntelligentFactory
                                     {
                                         CLogger.Add(LOG.SEQ, $"SEQ NORMAL JUDGE ==> NG");
                                         CLogger.Add(LOG.COMM, $"SEQ NORMAL JUDGE ==> NG");
-
+                                        IData.bNGCount = true;
                                         if (Mode.isDebugMode == false)
                                         {
                                             DIO.Bit_OnOff(CDIO_BITNAME.RESULT_OK, false);
@@ -652,24 +487,10 @@ namespace IntelligentFactory
                                         DIO.Bit_OnOff(CDIO_BITNAME.RESULT_NG, true);
 
                                         NGBUFFER.Command_PCBID_END_JUDGE(false);
+                                        IData.bNGCount = true;
                                     }
                                 }
-                                Stopwatch sw = Stopwatch.StartNew();
-                                while (sw.ElapsedMilliseconds < 200000)
-                                {
-                                    Thread.Sleep(1);
-
-                                    if (NGBUFFER.GetInPutBoard())
-                                    {
-                                        CLogger.Add(LOG.SEQ, $"INPUT BOARD ING BIT : ON");
-                                        break;
-                                    }
-                                    else
-                                    {
-                                        CLogger.Add(LOG.SEQ, $"INPUT BOARD ING BIT : OFF");
-                                    }
-                                }
-
+                                Thread.Sleep(200);
                                 NGBUFFER.CommandQueue.Enqueue(("D", "9800", typeof(string), qrDateToNgBuffer));
                                 CLogger.Add(LOG.COMM, $"QR Send -> NG Buffer : {qrDateToNgBuffer}");
 
@@ -730,6 +551,66 @@ namespace IntelligentFactory
         {
             CLogger.Add(LOG.SEQ, $"{ThreadName} ==> STEP {SeqIndex} ==> {strStep}");
             base.SetStep(strStep);
+        }
+
+        private void ResultDrawHandler(object sender, bool drawDone)
+        {
+            try
+            {
+                //CLogger.Add(LOG.SEQ, $"SEQ T/T : [{inspectorWatch.ElapsedMilliseconds:D4} ms] ==> inspect Complete");
+
+                (Global.Result_Array, Global.Retry_ArrayList) = Inspector.ArrayJudge(); // 여기서 NG,OK NG list 값 받아옴. 이걸 전역 변수로 사용해서 Retry 진행해야함.
+                CLogger.Add(LOG.SEQ, $"#02. Insp [{_InspRetryIndex}] Cycle Time : {tt_Insp.ElapsedMilliseconds}ms");
+                if (Global.Result_Array.Contains(false) && Global.Mode.ReInspecUse)
+                {
+                    if (_InspRetryIndex < Global.Mode.ReInspecCnt)
+                    {
+                        CLogger.Add(LOG.SEQ, $"Inspection Result : Fail ==> Retry {_InspRetryIndex} Insp Start");
+                        bRetry = true;
+                        _InspRetryIndex++;
+                        Global.Retry_Count++;
+                        SetStepEx("GRAB");
+                    }
+                    else
+                    {
+                        bRetry = false;
+                        CLogger.Add(LOG.SEQ, $"Inspection Result : Fail ==> Retry Insp Over ==> Judge : NG");
+                        Inspector.SaveImageAndWriteDB(Global.Result_Array, Global.ImagesGrab, Global.Retry_ArrayList);
+                        for (int i = 0; i < Global.Retry_ArrayList.Length; i++)
+                        {
+                            Global.Data.Result_NG_Count[i] = Global.Retry_ArrayList[i].Count;
+                        }
+                        SetStepEx("RESULT_PROCESS");
+                    }
+
+                }
+                else if (Global.Result_Array.Contains(false))
+                {
+                    CLogger.Add(LOG.SEQ, $"Inspection Result : Fail ==> Retry Insp Over ==> Judge : NG");
+                    Inspector.SaveImageAndWriteDB(Global.Result_Array, Global.ImagesGrab, Global.Retry_ArrayList);
+                    for (int i = 0; i < Global.Retry_ArrayList.Length; i++)
+                    {
+                        Global.Data.Result_NG_Count[i] = Global.Retry_ArrayList[i].Count;
+                    }
+                    SetStepEx("RESULT_PROCESS");
+                }
+                else
+                {
+                    CLogger.Add(LOG.SEQ, $"Inspection Result : OK ==> Judge : OK");
+                    Inspector.SaveImageAndWriteDB(Global.Result_Array, Global.ImagesGrab, Global.Retry_ArrayList);
+                    for (int i = 0; i < Global.Retry_ArrayList.Length; i++)
+                    {
+                        Global.Data.Result_NG_Count[i] = Global.Retry_ArrayList[i].Count;
+                    }
+                    SetStepEx("RESULT_PROCESS");
+                }
+                _Array_Results = Global.Result_Array.ToList();
+            }
+            catch (Exception ex)
+            {
+                CLogger.Exception(MethodBase.GetCurrentMethod().ReflectedType.Name, MethodBase.GetCurrentMethod().Name, ex);
+            }
+
         }
     }
 }

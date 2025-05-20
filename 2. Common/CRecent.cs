@@ -6,6 +6,7 @@ namespace IntelligentFactory
     {
         public string LastModel { get; set; } = "";
         public string ImagePath { get; set; } = "";
+        public int LastFiducialindex { get; set; } = 0;
         // Model Count
         public string szModelChangeTime = "20240101:000000";
 

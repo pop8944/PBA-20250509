@@ -60,9 +60,8 @@ namespace IntelligentFactory
             chb_ReInspec_Use.Checked = Global.Mode.ReInspecUse;
             txt_ReInspec_cnt.Text = Global.Mode.ReInspecCnt.ToString();
             lbl_ImageSavePath.Text = Global.m_ImageFileRoot;
-            txtDailyReset.Text = Global.Mode.Count_Reset_D.ToString();
-            txtMonthlyReset.Text = Global.Mode.Count_Reset_M.ToString();
-
+            tbNGCount.Text = Global.Mode.Count_Limit.ToString();
+            dtpCountTimeReset.Text = Global.Mode.Count_ResetTime.ToString();
             // RMS 체크박스 상태 디스플레이
             chb_RMS_CallStage_RetestUse.Checked = Global.Instance.Mode.IsRMS_CallStage_ReTest;
             chb_RMS_NGBuffer_RetestUse.Checked = Global.Instance.Mode.IsRMS_NGBUFFER_ReTest;
@@ -1040,14 +1039,25 @@ namespace IntelligentFactory
             CLogger.Add(LOG.DEVICE, _log);
         }
 
-        private void txtDailyReset_TextChanged(object sender, EventArgs e)
+        private void tbNGCount_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Global.Mode.Count_Reset_D = int.Parse(txtDailyReset.Text);
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;   // 숫자 + 백스페이스 이외의 입력 무시 - JYH
+            }
+        }
+        private void tbNGCount_TextChanged(object sender, EventArgs e)
+        {
+            if (tbNGCount.Text != "" && int.Parse(tbNGCount.Text) > 99)
+            {
+                tbNGCount.Text = "99"; 
+            }
+            Global.Mode.Count_Limit = int.Parse(tbNGCount.Text);
         }
 
-        private void txtMonthlyReset_TextChanged(object sender, EventArgs e)
+        private void dtpCountTimeReset_ValueChanged(object sender, EventArgs e)
         {
-            Global.Mode.Count_Reset_M = int.Parse(txtMonthlyReset.Text);
+            Global.Mode.Count_ResetTime = dtpCountTimeReset.Text; 
         }
     }
 }

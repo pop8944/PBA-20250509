@@ -35,23 +35,23 @@ namespace IntelligentFactory
                     Global.Setting.Save(Global.System.Recipe.Name);
 
                     // 비정상적인 레시피 이름이 있을경우...레시피 이름 변경후 저장 요청...
-                    if (RecipeName_Check())
-                    {
-                        StopThread();
-                        return;
-                    }
-                    else
-                    {
-                        Global.Instance.SelectedMenu = "Main";
-                        CRecipe.RecipeSaving_Flg = true;
-                        CRecipe.RecipeSaving_CheckCnt = 1;          // 세이브 상태의 프로그레스 표시를 위한 값..
-                                                                    //저장 때 살려놓기
+                    //if (RecipeName_Check())
+                    //{
+                    //    StopThread();
+                    //    return;
+                    //}
+                    //else
+                    //{
+                    //    Global.Instance.SelectedMenu = "Main";
+                    //    CRecipe.RecipeSaving_Flg = true;
+                    //    CRecipe.RecipeSaving_CheckCnt = 1;          // 세이브 상태의 프로그레스 표시를 위한 값..
+                    //                                                //저장 때 살려놓기
 
-                        CRecipe.RecipeSaving_CheckCnt = 3;
-                        Global.Instance.System.Recipe.RecipeSave();
-                        CRecipe.RecipeSaving_CheckCnt = 10;
-                        CRecipe.RecipeSaving_Flg = false;
-                    }
+                    //    CRecipe.RecipeSaving_CheckCnt = 3;
+                    //    Global.Instance.System.Recipe.RecipeSave();
+                    //    CRecipe.RecipeSaving_CheckCnt = 10;
+                    //    CRecipe.RecipeSaving_Flg = false;
+                    //}
                 }
                 catch (Exception ex)
                 {

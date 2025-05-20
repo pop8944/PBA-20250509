@@ -18,7 +18,7 @@ namespace IntelligentFactory
 
         public Setting_Recipe Load(string recipeName)
         {
-            string path = $"{Application.StartupPath}\\RECIPE\\{recipeName}\\Setting.json";
+            string path = $"{Application.StartupPath}\\LIBRARY\\PBA_LIBRARY\\{recipeName}\\QR_Setting.json";
 
             Setting_Recipe newData = null;
 
@@ -37,8 +37,8 @@ namespace IntelligentFactory
 
         public void Save(string recipeName)
         {
-            string path = $"{Application.StartupPath}\\RECIPE\\{recipeName}\\Setting.json";
-            Directory.CreateDirectory($"{Application.StartupPath}\\RECIPE\\{recipeName}\\");
+            string path = $"{Application.StartupPath}\\LIBRARY\\PBA_LIBRARY\\{recipeName}\\QR_Setting.json";
+            Directory.CreateDirectory($"{Application.StartupPath}\\LIBRARY\\PBA_LIBRARY\\{recipeName}\\");
 
             JsonSerializerOptions options = new JsonSerializerOptions
             {

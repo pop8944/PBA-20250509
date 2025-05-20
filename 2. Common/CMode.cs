@@ -73,7 +73,10 @@ namespace IntelligentFactory
         // 생산 Count Reset time
         public int Count_Reset_D { get; set; } = 0;
         public int Count_Reset_M { get; set; } = 0;
-       
+
+        public int Count_Limit { get; set; } = 0;
+        public string Count_ResetTime { get; set; } = "";
+
         public CMode LoadConfig()
         {
             string savePath = $"{Global.m_MainPJTRoot}\\CONFIG\\Mode.xml";
